@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<script type="application/json" id="report-meta">
+{
+  "title": "인프라의 장기 위험조정성과와 포트폴리오 역할",
+  "sub": "단기 상장시장 비교, 리스크 시나리오, 그리고 결론",
+  "cat": "insights",
+  "date": "260624",
+  "author": "jhahn",
+  "published": true
+}
+</script>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>인프라의 장기 위험조정성과와 포트폴리오 역할 — RE &amp; Infra Report Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/report.css">
+<style>
+  .toc-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+  .toc a::before { content: none; }
+  .callout-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .formula { background: #2c2e30; }
+  .formula .eq {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.0rem;
+    letter-spacing: 0.01em;
+    line-height: 1.9;
+  }
+  .formula .eq b { color: var(--accent-bright); font-weight: 700; }
+  .formula .eq-note {
+    color: rgba(237,237,236,0.75);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-arrow">←</span>
+      <span><span class="brand-mark">RE &amp; Infra</span> Report Archive</span>
+    </a>
+    <div class="crumb">
+      <span class="dot"></span>
+      <span>Insights</span>
+      <span class="crumb-hide">— 개념·구조 해설</span>
+    </div>
+  </div>
+  <div class="progress"></div>
+</header>
+
+<article class="article">
+  <header class="article-head">
+    <div class="a-eyebrow">
+      <span>Insights</span>
+      <span class="idx">03 of 03</span>
+      <span class="bar"></span>
+    </div>
+    <h1 class="a-title">인프라의 장기 위험조정성과와 포트폴리오 역할</h1>
+    <p class="a-standfirst">단기 상장시장 비교, 리스크 시나리오, 그리고 결론</p>
+    <div class="a-meta">
+      <span>2026 · 06</span>
+      <span class="sep"></span>
+      <span class="author">jhahn</span>
+    </div>
+  </header>
+
+  <div class="prose">
+
+    <p class="lead">한 달 수익률로 보면 KOSPI가 압도적이다. 그러나 인프라의 핵심은 시장을 이기는 것이 아니다. 안정적 현금흐름과 낮은 변동성으로 장기 포트폴리오의 Sharpe ratio를 개선하는 데 있다. 단기와 장기를 함께 보아야 인프라의 포트폴리오 역할이 보인다.</p>
+
+    <nav class="toc" aria-label="목차">
+      <div class="toc-label">목차</div>
+      <ol>
+        <li><a href="#sec-short">단기 상장시장 성과: KOSPI의 압도적 우위와 인프라의 방어성</a></li>
+        <li><a href="#sec-longterm">장기 자산군 비교: 인프라의 핵심은 장기 Sharpe ratio</a></li>
+        <li><a href="#sec-inflation">인플레이션·금리 국면에서의 비교</a></li>
+        <li><a href="#sec-portfolio">포트폴리오 배분 관점</a></li>
+        <li><a href="#sec-risk">주요 리스크와 시나리오</a></li>
+        <li><a href="#sec-conclusion">결론</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="sec-short">단기 상장시장 성과: KOSPI의 압도적 우위와 인프라의 방어성</h2>
+
+    <p>최근 한 달만 놓고 보면 결론은 명확하다. KOSPI는 24.65% 상승했고, KB 발해인프라는 2.55% 상승했다. 맥쿼리인프라는 −2.78%, ESR켄달스퀘어리츠는 −3.63%로 부진했다. 주식시장 초강세 국면에서 인컴 자산이 상대적으로 뒤처지는 전형적인 모습이다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>자산</th><th>1개월 가격수익률</th><th>연율화 변동성</th><th>단기 Sharpe</th><th>KOSPI 베타</th><th>최대낙폭</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>KB 발해인프라</td><td class="num">2.55%</td><td class="num">28.3%</td><td class="num">1.11</td><td class="num">0.11</td><td class="num">−7.6%</td></tr>
+          <tr><td>맥쿼리인프라</td><td class="num">−2.78%</td><td class="num">15.2%</td><td class="num">−2.32</td><td class="num">0.08</td><td class="num">−3.6%</td></tr>
+          <tr><td>KOSPI</td><td class="num">24.65%</td><td class="num">66.5%</td><td class="num">3.67</td><td class="num">1.00</td><td class="num">−15.0%</td></tr>
+        </tbody>
+      </table>
+      <figcaption><b>주</b> 2026.05.18–2026.06.18 일별 가격자료 기준. 배당은 미반영. 단기 지표이므로 해석에 주의가 필요하다.</figcaption>
+    </figure>
+
+    <p>그러나 이 결과를 장기 투자 판단으로 연결하면 곤란하다. 최근 한 달 KOSPI의 연율화 변동성은 매우 높게 산출되며, 가격 급등으로 인해 단기 Sharpe ratio가 비정상적으로 높아진다. KB 발해인프라는 가격 움직임이 작기 때문에 단기 수익률은 낮지만, KOSPI 대비 베타가 0.1 내외다. 이 자산은 시장 상승을 추종하기보다 포트폴리오의 변동성을 낮추는 역할에 가깝다. 1년 관점에서도 KOSPI의 204%에는 못 미치지만, KB 발해인프라는 1년 총수익률 33.79%를 기록했다(StockAnalysis). 맥쿼리인프라는 1년 가격 −7.83%였지만 6.97% 배당수익률이 손실을 상당 부분 완화해 총수익 −1.34%에 그쳤다.</p>
+
+    <h2 id="sec-longterm">장기 자산군 비교: 인프라의 핵심은 장기 Sharpe ratio</h2>
+
+    <p>최근 한 달 또는 1년의 가격수익률만으로 인프라를 평가하면 결론이 지나치게 주식시장에 종속된다. Macquarie Asset Management 자료는 2003년 4분기부터 2022년 3분기까지 인프라가 다른 주요 자산군 대비 양호한 장기 위험조정성과를 기록했음을 보여준다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>자산군</th><th>연율화 수익률</th><th>Sharpe ratio</th><th>높은 인플레이션</th><th>낮은 인플레이션</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>인프라</strong></td><td class="num"><strong>9.8%</strong></td><td class="num"><strong>0.89</strong></td><td class="num">11.0%</td><td class="num">9.7%</td></tr>
+          <tr><td>미국 주식</td><td class="num">8.6%</td><td class="num">0.62</td><td class="num">4.2%</td><td class="num">14.0%</td></tr>
+          <tr><td>글로벌 주식</td><td class="num">7.1%</td><td class="num">0.57</td><td class="num">3.4%</td><td class="num">12.3%</td></tr>
+          <tr><td>Core 부동산</td><td class="num">6.5%</td><td class="num">0.47</td><td class="num">10.1%</td><td class="num">4.5%</td></tr>
+          <tr><td>미국 10년채</td><td class="num">3.1%</td><td class="num">0.34</td><td class="num">1.7%</td><td class="num">4.6%</td></tr>
+          <tr><td>글로벌 채권</td><td class="num">2.0%</td><td class="num">0.26</td><td class="num">−0.4%</td><td class="num">4.0%</td></tr>
+        </tbody>
+      </table>
+      <figcaption><b>출처</b> Macquarie Asset Management. 2003.4Q–2022.3Q 기준. 글로벌 비상장 인프라 자산군 포함 — KB 발해인프라의 미래 성과를 직접 예측하는 수치가 아님.</figcaption>
+    </figure>
+
+    <p>인프라의 Sharpe ratio 0.89는 미국 주식 0.62, 글로벌 주식 0.57, Core 부동산 0.47보다 높다. 이는 인프라가 단순히 수익률이 높은 자산이 아니라 변동성 대비 보상이 좋은 자산군이었음을 의미한다. 장기 결과가 우수한 이유는 다음으로 나뉜다. 첫째, 필수 서비스 성격으로 수요 탄력성이 낮다. 둘째, 물가 또는 사용료 조정 메커니즘을 통해 인플레이션을 일부 전가할 수 있다. 셋째, 초기 투자비와 인허가 장벽이 높아 경쟁 공급이 제한된다. 넷째, 장기 계약과 실시협약이 현금흐름의 예측가능성을 높인다.</p>
+
+    <h2 id="sec-inflation">인플레이션·금리 국면에서의 비교</h2>
+
+    <p>인프라는 인플레이션 국면에서 두드러진 방어력을 보였다. 평균보다 높은 인플레이션 구간에서 인프라의 연율화 수익률은 11.0%였다. 반면 미국 주식은 같은 구간에서 4.2%, 글로벌 주식은 3.4%에 그쳤다.</p>
+
+    <p>금리 국면에서도 흥미로운 결과가 나타난다. 인프라는 금리상승기 연율화 수익률 13.3%, 금리하락기 7.2%를 기록했다. 일반적으로 금리 상승은 할인율 상승 때문에 인프라와 부동산에 부정적이라고 생각하기 쉽다. 그러나 금리 상승이 경기와 물가 상승을 동반할 때는 인프라의 사용료, 물가연동 수입, 수요 기반이 할인율 부담을 일부 상쇄할 수 있다. 핵심은 금리가 오를 때 무조건 인프라를 피해야 하는 것이 아니라, 금리 상승분을 현금흐름으로 얼마나 흡수할 수 있는지 확인해야 한다는 점이다.</p>
+
+    <div class="callout">
+      <div class="callout-label">적용의 한계</div>
+      <p>이 장기 결과를 그대로 KB 발해인프라에 적용할 수는 없다. Macquarie는 글로벌 비상장 인프라 자산군을 포함하고, KB 발해인프라는 한국 상장 인프라펀드다. 그럼에도 인프라 자산의 경제적 성격을 이해하는 데 유용한 구조적 근거를 제공한다.</p>
+    </div>
+
+    <h2 id="sec-portfolio">포트폴리오 배분 관점</h2>
+
+    <p>KOSPI 100% 포트폴리오는 강세장에서 가장 높은 수익률을 제공하지만, 시장 베타가 1이고 배당수익률이 낮다. KB 발해인프라를 10~20% 편입하면 기대 capital gain은 낮아질 수 있지만 포트폴리오의 현금수익률이 올라가고 시장 민감도는 낮아진다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>예시 포트폴리오</th><th>단순 베타</th><th>인컴 기여</th><th>KOSPI −20% 시 베타 기반 가격충격</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>KOSPI 100% / KB 0%</td><td class="num">1.00</td><td class="num">0.0%</td><td class="num">−20.0%</td></tr>
+          <tr><td>KOSPI 90% / KB 10%</td><td class="num">0.91</td><td class="num">0.65%</td><td class="num">−18.2%</td></tr>
+          <tr><td>KOSPI 80% / KB 20%</td><td class="num">0.82</td><td class="num">1.29%</td><td class="num">−16.4%</td></tr>
+          <tr><td>KOSPI 70% / KB 30%</td><td class="num">0.73</td><td class="num">1.94%</td><td class="num">−14.7%</td></tr>
+        </tbody>
+      </table>
+      <figcaption><b>주</b> KOSPI 베타=1, KB 발해인프라 단기 베타=0.11 가정. 실제 성과는 시점·배당 재투자·세금에 따라 달라진다.</figcaption>
+    </figure>
+
+    <p>KB 발해인프라의 역할은 "주식시장 대체"가 아니라 "주식 포트폴리오의 베타와 현금흐름 조절"에 있다. 주식시장 랠리가 특정 업종에 집중될수록 이러한 보완재의 가치가 커진다.</p>
+
+    <h2 id="sec-risk">주요 리스크와 시나리오</h2>
+
+    <p><strong>금리 및 리파이낸싱:</strong> 장기금리가 추가 상승하면 DDM 적정가치와 NAV가 하락할 수 있다. 인프라 사업은 대규모 차입을 통해 장기간 운영되므로 만기 구조와 금리 조건이 배당가능이익에 직접 영향을 준다. 조달금리가 4~5%대로 높아지면 신규 자산 편입 시 투자 스프레드가 빠르게 축소될 수 있다.</p>
+
+    <p><strong>Construction risk와 C-loan 구조:</strong> 신규 인프라 자산은 건설기간에 C-loan을 통해 공사비를 조달하고, 준공 이후 장기 운영대출로 리파이낸싱한다. 준공 지연, 공사비 증가, 인허가 지연이 발생할 경우 금융비용이 누적된다. 데이터센터와 에너지 인프라의 경우 전력망 접속 지연, 수전용량 확보 실패, 냉각설비 비용 증가가 추가적인 위험 요인이다.</p>
+
+    <p><strong>정책·수요·계약:</strong> 도로 자산은 교통량, 요금 정책, 실시협약 조건에 민감하다. LNG 자산은 에너지 수요와 계약 상대방 신용도에 영향을 받는다. 데이터센터 관련 자산은 전력비와 기술 변화, 고객 집중도, 지역별 공급 과잉에 민감하다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>시나리오</th><th>주요 가정</th><th>적정가치 범위</th><th>투자 해석</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bear case</td>
+            <td>10년 국고채 4.5% 이상, 신규 자산 리파이낸싱 부담, NAV 할인 확대</td>
+            <td>9,000~9,600원</td>
+            <td>분배수익률이 방어하지만 가격 하락 가능</td>
+          </tr>
+          <tr>
+            <td><strong>Base case</strong></td>
+            <td>DPS 650원 유지, P/NAV 0.90~0.95배, 신규 투자 스프레드 유지</td>
+            <td><strong>10,500~11,300원</strong></td>
+            <td>현금수익률과 제한적 상승여력</td>
+          </tr>
+          <tr>
+            <td>Bull case</td>
+            <td>금리 안정, P/NAV 1.0배 회복, LNG·데이터센터 자산 성과 확인</td>
+            <td>11,500원 이상</td>
+            <td>NAV 할인 축소와 성장 옵션 반영</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <h2 id="sec-conclusion">결론</h2>
+
+    <p>주식시장 호황기에는 대체투자의 상대적 가격 매력이 약해질 수 있다. 2026년 6월 현재 KOSPI의 상승률은 매우 높고, 이 관점만 보면 인프라펀드와 리츠는 매력이 낮아 보인다. 그러나 장기 비교를 포함하면 결론은 달라진다.</p>
+
+    <p>Macquarie의 장기 자산군 자료는 인프라가 2003년 4분기부터 2022년 3분기까지 연율화 수익률 9.8%, Sharpe ratio 0.89를 기록해 주요 상장주식 및 부동산 자산군을 위험조정 기준으로 상회했음을 보여준다. 인프라는 단기 주식시장 랠리를 따라가는 자산이 아니라, 장기 현금흐름과 낮은 변동성을 통해 포트폴리오의 효율성을 높이는 자산이다.</p>
+
+    <p>KB 발해인프라는 이 장기 논리를 국내 상장시장 안에서 구현하는 수단이다. 현재가 10,070원 기준 분배수익률 6.50%, 국고채 대비 스프레드 약 235bp, P/NAV 0.89배다. DDM base case와 NAV/SOTP 접근은 현재가 대비 제한적 상승여력을 지지한다. KB 발해인프라는 KOSPI를 대체하는 공격적 성장자산이 아니라, 고배당·낮은 베타·실물자산 exposure를 제공하는 방어적 인컴 자산으로 평가하는 것이 적절하다.</p>
+
+    <blockquote>
+      상대 매력이 사라진 것이 아니라 역할이 달라졌다. 주식시장 초강세 국면에서 단기 상대수익률은 약해질 수 있다. 그러나 포트폴리오 관점에서는 높은 배당수익률, NAV 할인, 낮은 시장 민감도, 데이터센터·LNG·에너지 전환 인프라의 성장 옵션이 여전히 의미를 갖는다.
+    </blockquote>
+
+    <hr>
+
+    <div class="footnotes">
+      <div class="footnotes-label">출처</div>
+      <ol>
+        <li>Macquarie Asset Management. Global Infrastructure Long-Term Performance Data, 2003.4Q–2022.3Q</li>
+        <li>Trading Economics. South Korea Stock Market - KOSPI, June 18, 2026</li>
+        <li>StockAnalysis.com. KB Balhae Infrastructure Fund (KRX:415640), June 18, 2026</li>
+        <li>StockAnalysis.com. Macquarie Korea Infrastructure Fund (KRX:088980), June 18, 2026</li>
+        <li>S&P Global. 2024 PE-backed Bankruptcy Report, 2025</li>
+        <li>Deloitte. 2026 Real Estate Outlook</li>
+        <li>KKR. 2026 Infrastructure Outlook: Infrastructure Is No Longer Optional</li>
+        <li>BlackRock. 2026 Private Markets Outlook</li>
+      </ol>
+    </div>
+
+  </div>
+</article>
+
+<footer class="article-foot">
+  <a class="foot-back" href="../index.html">← 아카이브로 돌아가기</a>
+  <nav class="pager" aria-label="이전/다음 글">
+    <a class="prev" href="insights_kb-balhae-2_260624_jhahn.html"><span class="pg-dir">← Insights</span><span class="pg-title">KB 발해인프라 기업분석과 Valuation</span></a>
+    <a class="next disabled" href="#"><span class="pg-dir">다음 →</span><span class="pg-title">—</span></a>
+  </nav>
+</footer>
+
+<script src="../assets/report.js"></script>
+</body>
+</html>

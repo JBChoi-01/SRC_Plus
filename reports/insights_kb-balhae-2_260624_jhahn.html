@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<script type="application/json" id="report-meta">
+{
+  "title": "KB 발해인프라 기업분석과 Valuation",
+  "sub": "NAV/SOTP, DDM, 배당수익률 스프레드로 본 상장 인프라펀드",
+  "cat": "insights",
+  "date": "260624",
+  "author": "jhahn",
+  "published": true
+}
+</script>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KB 발해인프라 기업분석과 Valuation — RE &amp; Infra Report Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/report.css">
+<style>
+  .toc-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+  .toc a::before { content: none; }
+  .callout-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .formula { background: #2c2e30; }
+  .formula .eq {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.0rem;
+    letter-spacing: 0.01em;
+    line-height: 1.9;
+  }
+  .formula .eq b { color: var(--accent-bright); font-weight: 700; }
+  .formula .eq-note {
+    color: rgba(237,237,236,0.75);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+  }
+  .sensitivity-table td, .sensitivity-table th {
+    text-align: center;
+  }
+  .sensitivity-table td:first-child {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+  }
+  .highlight-cell {
+    background: var(--accent-soft);
+    font-weight: 600;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-arrow">←</span>
+      <span><span class="brand-mark">RE &amp; Infra</span> Report Archive</span>
+    </a>
+    <div class="crumb">
+      <span class="dot"></span>
+      <span>Insights</span>
+      <span class="crumb-hide">— 개념·구조 해설</span>
+    </div>
+  </div>
+  <div class="progress"></div>
+</header>
+
+<article class="article">
+  <header class="article-head">
+    <div class="a-eyebrow">
+      <span>Insights</span>
+      <span class="idx">02 of 03</span>
+      <span class="bar"></span>
+    </div>
+    <h1 class="a-title">KB 발해인프라 기업분석과 Valuation</h1>
+    <p class="a-standfirst">NAV/SOTP, DDM, 배당수익률 스프레드로 본 상장 인프라펀드</p>
+    <div class="a-meta">
+      <span>2026 · 06</span>
+      <span class="sep"></span>
+      <span class="author">jhahn</span>
+    </div>
+  </header>
+
+  <div class="prose">
+
+    <p class="lead">KB 발해인프라(415640)는 국내 상장 인프라펀드다. 도로·터널·LNG·데이터센터 관련 자산에 투자하고, 자산별 사용료·장기계약 현금흐름·후순위대출 이자를 분배금으로 지급한다. 2026년 6월 18일 종가 10,070원, 예상 연간 DPS 650원 기준 분배수익률은 6.50%다. P/NAV는 0.89배. 이 숫자들이 의미하는 바를 세 가지 valuation 방법으로 해석한다.</p>
+
+    <nav class="toc" aria-label="목차">
+      <div class="toc-label">목차</div>
+      <ol>
+        <li><a href="#sec-biz">사업 구조와 자산 포트폴리오</a></li>
+        <li><a href="#sec-moat">실물자산의 물리적 진입장벽과 경제적 해자</a></li>
+        <li><a href="#sec-peer">맥쿼리인프라·ESR켄달스퀘어리츠와의 비교</a></li>
+        <li><a href="#sec-nav">NAV/SOTP 접근</a></li>
+        <li><a href="#sec-ddm">DDM 접근</a></li>
+        <li><a href="#sec-spread">배당수익률 스프레드</a></li>
+        <li><a href="#sec-bridge">총수익률 관점의 Valuation Bridge</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="sec-biz">사업 구조와 자산 포트폴리오</h2>
+
+    <p>상장 인프라펀드의 장점은 접근성과 유동성이다. 인프라 자산은 대규모 자본과 긴 투자기간이 필요해 개인투자자가 직접 접근하기 어렵다. 상장 인프라펀드는 주식처럼 매매할 수 있으므로 소액 투자자도 인프라 현금흐름에 참여할 수 있다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>구분</th><th>내용</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>투자대상</td><td>도로, 터널, LNG, 데이터센터, 기타 사회기반시설</td></tr>
+          <tr><td>수익 원천</td><td>사용료, 장기계약 현금흐름, 후순위대출 이자, 배당가능이익</td></tr>
+          <tr><td>투자자 보상</td><td>반기 분배금과 NAV 할인 축소에 따른 자본차익</td></tr>
+          <tr><td>valuation 기준</td><td>자산별 NPV, 주당 NAV, P/NAV, 예상 DPS, 요구수익률</td></tr>
+          <tr><td>핵심 리스크</td><td>금리, 리파이낸싱, 정책 변화, 교통량 또는 이용량, 신규 투자 가격</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <h2 id="sec-moat">실물자산의 물리적 진입장벽과 경제적 해자</h2>
+
+    <p>인프라 valuation을 재무 모델로만 보면 현금흐름이 왜 오래 유지되는지 설명하기 어렵다. 기초자산의 물리적·공학적 특성이 장기 계약의 안정성을 뒷받침한다는 점을 함께 보아야 한다.</p>
+
+    <p>데이터센터는 서버 수요뿐 아니라 전력 수전용량, 변전설비, 냉각설비, 전력망 접속 인허가, 입지 확보가 동시에 충족되어야 한다. 이러한 제약은 단기간에 경쟁 공급이 진입하기 어렵게 만들며 장기 임대계약의 안정성을 높이는 경제적 해자로 작용한다. LNG 인프라도 마찬가지다. LNG 저장·하역·운송 설비는 높은 초기 투자비, 안전 규제, 항만 접근성, 장기 수요처 확보가 결합되어야 한다.</p>
+
+    <div class="callout">
+      <div class="callout-label">해자의 한계</div>
+      <p>물리적 해자가 있다고 해서 valuation 프리미엄이 자동으로 부여되는 것은 아니다. 장기계약의 상대방 신용도, 계약 기간, 물가연동 여부, 운영비 전가 가능성, 유지보수 책임, 규제 변화가 함께 확인되어야 한다. 해자는 현금흐름의 안정성을 높이는 조건이지, 모든 투자위험을 제거하는 장치가 아니다.</p>
+    </div>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>기초자산</th><th>물리적·계약적 해자</th><th>재무 모델 반영 방식</th><th>확인할 위험</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>도로·터널</td>
+            <td>대체 노선 제한, 실시협약, MRG 여부</td>
+            <td>교통량 가정, 잔존 운영기간, 할인율</td>
+            <td>통행료 정책, 교통량 둔화</td>
+          </tr>
+          <tr>
+            <td>LNG 인프라</td>
+            <td>저장·하역 설비, 안전 규제, 장기 수요처</td>
+            <td>계약기간, take-or-pay 비중, terminal value</td>
+            <td>에너지 전환, 계약 갱신 조건</td>
+          </tr>
+          <tr>
+            <td>데이터센터</td>
+            <td>전력 수전용량, 냉각설비, 전력망 접속 인허가</td>
+            <td>장기 임대계약, 전력비 전가, 재계약률</td>
+            <td>전력망 지연, 고객 집중도</td>
+          </tr>
+          <tr>
+            <td>신규 개발자산</td>
+            <td>사업권, 인허가, 조달 구조</td>
+            <td>construction premium, 보수적 NPV</td>
+            <td>준공 지연, 비용 초과, 리파이낸싱</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <h2 id="sec-peer">맥쿼리인프라·ESR켄달스퀘어리츠와의 비교</h2>
+
+    <p>맥쿼리인프라(088980)는 국내 상장 인프라펀드의 대표 사례로, 오랜 거래기간과 높은 투자자 인지도를 갖고 있다. 2026년 6월 18일 기준 주가 10,830원, 연간 배당금 760원, 배당수익률 6.97%, 5년 베타 0.12다.</p>
+
+    <p>KB 발해인프라는 상장 이후 track record가 짧다. 이 점은 유동성 할인과 요구수익률에 반영될 수 있다. 반면 신규 상장 자산이라는 약점은 동시에 성장 여지도 의미한다. ESR켄달스퀘어리츠(365550)는 물류 부동산에 투자하는 리츠로, 배당수익률 6.97%이지만 베타가 0.40으로 인프라펀드보다 높다. 인프라펀드와 리츠는 모두 인컴 자산이지만 리스크의 성격은 다르다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>구분</th><th>KB 발해인프라</th><th>맥쿼리인프라</th><th>ESR켄달스퀘어리츠</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>자산 성격</td><td>도로·LNG·디지털 인프라</td><td>도로·항만·에너지 등 인프라</td><td>물류센터 중심 리츠</td></tr>
+          <tr><td>2026.06.18 종가</td><td>10,070원</td><td>10,830원</td><td>3,980원</td></tr>
+          <tr><td>예상 분배수익률</td><td>6.50%</td><td>6.97%</td><td>6.97%</td></tr>
+          <tr><td>시장 민감도</td><td>상장 이력 짧아 장기 베타 부재</td><td>5년 베타 0.12</td><td>베타 0.40</td></tr>
+          <tr><td>핵심 관찰 포인트</td><td>NAV 할인 축소와 신규 자산 편입</td><td>배당 지속성과 투자 여력</td><td>금리, 임대료, 물류 수요</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <h2 id="sec-nav">NAV/SOTP 접근</h2>
+
+    <p>KB 발해인프라와 같은 인프라펀드는 PER만으로 평가하기 어렵다. 핵심은 보유 자산별 현금흐름의 현재가치를 합산한 NAV다. NAV/SOTP 방식에서는 각 인프라 자산의 예상 현금흐름을 할인하여 NPV를 계산하고, 이를 합산한 뒤 순차입금과 기타 조정을 반영하여 주주에게 귀속되는 순자산가치를 추정한다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>항목</th><th>수치</th><th>해석</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>현재가</td><td>10,070원</td><td>2026.06.18 종가</td></tr>
+          <tr><td>주당 NAV</td><td>11,341원</td><td>기업분석 리포트 기준</td></tr>
+          <tr><td>P/NAV</td><td>0.89배</td><td>현재가 / 주당 NAV</td></tr>
+          <tr><td>NAV 할인율</td><td>11.2%</td><td>1 − P/NAV</td></tr>
+          <tr><td>NAV 기준 단순 상승여력</td><td>12.6%</td><td>현재가가 NAV까지 회복된다고 가정</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <p>NAV 할인은 항상 매수 근거가 되지는 않는다. NAV가 하향 조정될 가능성이 크거나 배당이 지속가능하지 않다면 할인은 정당하다. 그러나 배당가능이익이 유지되고 신규 투자가 기대수익률 이상으로 집행된다면 할인율은 축소될 수 있다.</p>
+
+    <h2 id="sec-ddm">DDM 접근</h2>
+
+    <p>상장 인프라펀드는 분배금이 투자수익의 핵심이므로 DDM을 적용하기 적합하다. 단순화한 Gordon Growth Model은 P₀ = DPS₁ / (r - g)다.</p>
+
+    <div class="formula">
+      <div class="eq"><b>P₀</b> = DPS₁ / ( r − g ) &nbsp;=&nbsp; 650 / ( 0.07 − 0.01 ) = <b>10,833원</b></div>
+      <div class="eq-note">Base case: DPS 650원, 요구수익률 r = 7.0%, 장기 성장률 g = 1.0%</div>
+    </div>
+
+    <figure class="table-wrap">
+      <table class="sensitivity-table">
+        <thead>
+          <tr><th>r \ g</th><th>0.0%</th><th>0.5%</th><th>1.0%</th><th>1.5%</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6.5%</td><td>10,000</td><td>10,833</td><td>11,818</td><td>13,000</td></tr>
+          <tr><td>7.0%</td><td>9,286</td><td>10,000</td><td class="highlight-cell">10,833</td><td>11,818</td></tr>
+          <tr><td>7.5%</td><td>8,667</td><td>9,286</td><td>10,000</td><td>10,833</td></tr>
+          <tr><td>8.0%</td><td>8,125</td><td>8,667</td><td>9,286</td><td>10,000</td></tr>
+          <tr><td>8.5%</td><td>7,647</td><td>8,125</td><td>8,667</td><td>9,286</td></tr>
+        </tbody>
+      </table>
+      <figcaption><b>DDM 민감도</b> DPS 650원 기준. 음영 셀이 base case. 단위: 원</figcaption>
+    </figure>
+
+    <p>요구수익률이 50bp 상승할 때마다 적정가치가 빠르게 낮아지는 구조다. DDM은 직관성이 장점이지만, 자산별 계약 구조와 잔존 운영기간, terminal value를 충분히 반영하지 못한다. NAV/SOTP를 보완하는 도구로 사용하는 것이 적절하다.</p>
+
+    <h2 id="sec-spread">배당수익률 스프레드</h2>
+
+    <p>현재가 10,070원과 연간 DPS 650원을 적용한 KB 발해인프라의 분배수익률은 6.50%다. 한국 10년 국고채 금리 4.10%와 비교하면 스프레드는 약 235bp다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>자산</th><th>배당/분배수익률</th><th>10년 국고채 대비 스프레드</th><th>해석</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>KB 발해인프라</td><td>6.50%</td><td>235bp</td><td>NAV 할인과 함께 인컴 보상이 존재</td></tr>
+          <tr><td>맥쿼리인프라</td><td>6.97%</td><td>287bp</td><td>높은 인지도와 낮은 베타가 장점</td></tr>
+          <tr><td>ESR켄달스퀘어리츠</td><td>6.97%</td><td>287bp</td><td>리츠 특성상 금리와 자산재평가 민감도 큼</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <p>스프레드의 의미는 단순히 "채권보다 수익률이 높다"가 아니다. 인프라펀드에는 금리, 유동성, 정책, 교통량, 신규 투자 리스크가 있으므로 채권보다 높은 수익률이 필요하다. 중요한 것은 현재 스프레드가 이 리스크를 보상하기에 충분한지다. KB 발해인프라의 235bp는 직접 프라임 오피스 cap rate와 국고채 금리 간 스프레드보다 상대적으로 넓다. 다만 10년 국고채 금리가 4.5%로 상승하고 KB 발해인프라의 가격이 그대로라면 스프레드는 197bp로 축소된다. 스프레드가 150bp 이하로 축소되면 투자자는 인프라펀드의 유동성 및 사업위험에 대한 보상이 부족하다고 판단할 수 있다.</p>
+
+    <h2 id="sec-bridge">총수익률 관점의 Valuation Bridge</h2>
+
+    <p>인컴 자산은 목표주가만으로 투자 판단을 내리기 어렵다. 주가 상승여력이 7~10%에 그쳐도 연간 6%대 분배금이 함께 제공되면 총수익률은 충분히 의미가 있을 수 있다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>1년 후 주가 가정</th><th>가격수익률</th><th>분배금 수익률</th><th>단순 총수익률</th><th>해석</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>9,500원</td><td class="num">−5.7%</td><td class="num">6.5%</td><td class="num">0.8%</td><td>가격 하락을 분배금이 상당 부분 완충</td></tr>
+          <tr><td>10,070원</td><td class="num">0.0%</td><td class="num">6.5%</td><td class="num">6.5%</td><td>주가 횡보 시에도 인컴 수익 확보</td></tr>
+          <tr><td>10,800원</td><td class="num">7.2%</td><td class="num">6.5%</td><td class="num">13.7%</td><td>DDM base에 근접한 총수익률</td></tr>
+          <tr><td>11,341원</td><td class="num">12.6%</td><td class="num">6.5%</td><td class="num">19.1%</td><td>NAV 회복 시 bull case에 가까움</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <p>NAV/SOTP와 DDM을 종합하면 KB 발해인프라의 적정가치 범위는 보수적으로 10,500~11,300원 수준으로 판단된다. 기존 리서치 목표주가 11,160원과 시장 집계 12개월 목표주가 11,500원도 이 범위와 크게 어긋나지 않는다. KB 발해인프라는 주가가 두 배로 오르는 성장주가 아니다. 대신 가격이 크게 오르지 않아도 현금흐름을 통해 수익률을 만들고, NAV 할인 축소가 발생하면 추가 자본차익을 제공하는 구조다.</p>
+
+    <hr>
+
+    <div class="footnotes">
+      <div class="footnotes-label">출처</div>
+      <ol>
+        <li>StockAnalysis.com. KB Balhae Infrastructure Fund (KRX:415640), checked June 18, 2026</li>
+        <li>StockAnalysis.com. Macquarie Korea Infrastructure Fund (KRX:088980), checked June 18, 2026</li>
+        <li>StockAnalysis.com. ESR Kendall Square REIT (KRX:365550), checked June 18, 2026</li>
+        <li>Samsung Securities. KB 발해인프라(415640): Corporate day 후기, 2026.4.1</li>
+        <li>학생 제공 자료. KB 발해인프라(415640) Equity Research, 2026.5.18</li>
+        <li>Investing.com. KB Balhae Infrastructure Fund (415640) 12개월 목표주가 집계, checked June 18, 2026</li>
+      </ol>
+    </div>
+
+  </div>
+</article>
+
+<footer class="article-foot">
+  <a class="foot-back" href="../index.html">← 아카이브로 돌아가기</a>
+  <nav class="pager" aria-label="이전/다음 글">
+    <a class="prev" href="insights_kb-balhae-1_260624_jhahn.html"><span class="pg-dir">← Insights</span><span class="pg-title">주식시장 호황기, 대체투자를 어떻게 볼 것인가</span></a>
+    <a class="next" href="insights_kb-balhae-3_260624_jhahn.html"><span class="pg-dir">다음 · Insights →</span><span class="pg-title">위험조정수익률 비교와 리스크 시나리오</span></a>
+  </nav>
+</footer>
+
+<script src="../assets/report.js"></script>
+</body>
+</html>
