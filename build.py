@@ -103,8 +103,8 @@ def collect_reports():
         # 메타 블록 우선, 파일명은 보조
         report = {
             "cat":       meta.get("cat",    file_info["cat"]),
+            "topic":     meta.get("topic",  ""),
             "title":     meta.get("title",  ""),
-            "sub":       meta.get("sub",    ""),
             "date":      date_to_display(meta.get("date", file_info["date"])),
             "author":    meta.get("author", file_info["author"]),
             "href":      f"reports/{filename}",
@@ -112,7 +112,7 @@ def collect_reports():
             "upcoming":  meta.get("upcoming",  False),
         }
         reports.append(report)
-        print(f"  [수집] {filename} → {report['title']}")
+        print(f"  [수집] {filename} → {report['topic']} / {report['title']}")
 
     return reports
 
@@ -131,8 +131,8 @@ def build_reports_js(reports):
             upcoming_str = ", upcoming: true" if r.get("upcoming") else ""
             published_str = ", published: true" if r.get("published") else ""
             lines.append(
-                f'  {{ cat: \'{r["cat"]}\', title: "{r["title"]}", '
-                f'sub: "{r["sub"]}", date: \'{r["date"]}\', '
+                f'  {{ cat: \'{r["cat"]}\', topic: "{r["topic"]}", '
+                f'title: "{r["title"]}", date: \'{r["date"]}\', '
                 f'author: \'{r["author"]}\', n: {n}, '
                 f'href: \'{r["href"]}\'{published_str}{upcoming_str} }},'
             )

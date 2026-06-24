@@ -364,20 +364,22 @@
     padding-top: 0.3rem;
     letter-spacing: 0.05em;
   }
+  .report-topic {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+  }
   .report-title {
     font-family: var(--font-sans);
-    font-size: 0.95rem;
-    font-weight: 500;
-    line-height: 1.55;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5;
     color: var(--ink);
     margin-bottom: 0.32rem;
     transition: color 0.16s;
-    text-wrap: pretty;
-  }
-  .report-sub {
-    font-size: 0.74rem;
-    color: var(--ink-light);
-    line-height: 1.6;
     text-wrap: pretty;
   }
   .report-meta {
@@ -612,15 +614,15 @@
 ══════════════════════════════════════ */
 const REPORTS = [
   // ── INSIGHTS ──
-  { cat: 'insights', title: "주식시장 호황기, 대체투자를 어떻게 볼 것인가", sub: "상장 인프라·리츠의 이론적 기반과 2026년 시장 환경", date: '2026-06', author: 'jhahn', n: 1, href: 'reports/insights_kb-balhae-1_260624_jhahn.html', published: true },
-  { cat: 'insights', title: "KB 발해인프라 기업분석과 Valuation", sub: "NAV/SOTP, DDM, 배당수익률 스프레드로 본 상장 인프라펀드", date: '2026-06', author: 'jhahn', n: 2, href: 'reports/insights_kb-balhae-2_260624_jhahn.html', published: true },
-  { cat: 'insights', title: "인프라의 장기 위험조정성과와 포트폴리오 역할", sub: "단기 상장시장 비교, 리스크 시나리오, 그리고 결론", date: '2026-06', author: 'jhahn', n: 3, href: 'reports/insights_kb-balhae-3_260624_jhahn.html', published: true },
+  { cat: 'insights', topic: "KB 발해인프라 Valuation (1)", title: "주식시장 호황기, 대체투자를 어떻게 볼 것인가", date: '2026-06', author: 'jhahn', n: 1, href: 'reports/insights_kb-balhae-1_260624_jhahn.html', published: true },
+  { cat: 'insights', topic: "KB 발해인프라 Valuation (2)", title: "기업분석과 NAV/SOTP·DDM·배당수익률 스프레드", date: '2026-06', author: 'jhahn', n: 2, href: 'reports/insights_kb-balhae-2_260624_jhahn.html', published: true },
+  { cat: 'insights', topic: "KB 발해인프라 Valuation (3)", title: "장기 위험조정성과와 포트폴리오 역할", date: '2026-06', author: 'jhahn', n: 3, href: 'reports/insights_kb-balhae-3_260624_jhahn.html', published: true },
   // ── ISSUES ──
-  { cat: 'issues', title: "에셋라이트는 틀리지 않았다 — 다만 유효기간이 있었을 뿐", sub: "부동산 소유 전략의 화려한 귀환 — 조건의 논리와 붕괴", date: '2026-06', author: 'sjahn', n: 1, href: 'reports/issues_asset-lite-1_260624_sjahn.html', published: true },
-  { cat: 'issues', title: "소유와 임차의 선택 — 케이스 스터디", sub: "무신사·홈플러스·세일앤리스백의 청구서, 그리고 질문의 전환", date: '2026-06', author: 'sjahn', n: 2, href: 'reports/issues_asset-lite-2_260624_sjahn.html', published: true },
-  { cat: 'issues', title: "2026 북중미 월드컵과 인프라 금융", sub: "월드컵 개최 모델은 어떻게 분산되고 있는가", date: '2025-06', author: 'jbchoi', n: 3, href: 'reports/issues_worldcup-infra_250624_jbchoi.html', published: true },
+  { cat: 'issues', topic: "에셋라이트 (1)", title: "에셋라이트는 틀리지 않았다, 다만 유효기간이 있었을 뿐", date: '2026-06', author: 'sjahn', n: 1, href: 'reports/issues_asset-lite-1_260624_sjahn.html', published: true },
+  { cat: 'issues', topic: "에셋라이트 (2)", title: "소유와 임차의 선택 — 케이스 스터디", date: '2026-06', author: 'sjahn', n: 2, href: 'reports/issues_asset-lite-2_260624_sjahn.html', published: true },
+  { cat: 'issues', topic: "2026 북중미 월드컵과 인프라 금융", title: "월드컵 개최 모델은 어떻게 분산되고 있는가", date: '2025-06', author: 'jbchoi', n: 3, href: 'reports/issues_worldcup-infra_250624_jbchoi.html', published: true },
   // ── SECTORS ──
-  { cat: 'sectors', title: "공유수면매립사업", sub: "공공의 바다를 누군가의 땅으로", date: '2025-06', author: 'jbchoi', n: 1, href: 'reports/sectors_land-reclamation_250624_jbchoi.html', published: true },
+  { cat: 'sectors', topic: "공유수면매립사업", title: "공공의 바다를 누군가의 땅으로", date: '2025-06', author: 'jbchoi', n: 1, href: 'reports/sectors_land-reclamation_250624_jbchoi.html', published: true },
 ];
 
 const CAT_META = {
@@ -704,11 +706,11 @@ function renderAll() {
   cats.forEach(cat => {
     const published = REPORTS.filter(r =>
       r.cat === cat && r.published &&
-      (!query || r.title.toLowerCase().includes(query) || (r.sub || '').toLowerCase().includes(query))
+      (!query || r.title.toLowerCase().includes(query) || (r.topic || '').toLowerCase().includes(query))
     ).sort(sortFn);
     const upcoming = REPORTS.filter(r =>
       r.cat === cat && r.upcoming &&
-      (!query || r.title.toLowerCase().includes(query))
+      (!query || r.title.toLowerCase().includes(query) || (r.topic || '').toLowerCase().includes(query))
     );
 
     if (published.length === 0 && upcoming.length === 0) return;
@@ -730,8 +732,8 @@ function renderAll() {
       html += `
         <a class="report-item anim-in" href="${esc(r.href)}" style="animation-delay:${idx * 0.04}s">
           <div class="report-body">
+            ${r.topic ? `<div class="report-topic">${esc(r.topic)}</div>` : ''}
             <div class="report-title">${esc(r.title)}</div>
-            ${r.sub ? `<div class="report-sub">${esc(r.sub)}</div>` : ''}
             <div class="report-meta">
               <span class="report-date">${esc(r.date)}</span>
               <span class="tag">${CAT_META[cat].label}</span>
