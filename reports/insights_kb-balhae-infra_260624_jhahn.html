@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<script type="application/json" id="report-meta">
+{
+  "title": "주식시장이 너무 뜨거울 때, 인프라는 왜 필요할까",
+  "cat": "insights",
+  "date": "260624",
+  "author": "sjahn",
+  "published": true,
+  "topic": "KB 발해인프라로 보는 상장 인프라펀드의 역할"
+}
+</script>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주식시장이 너무 뜨거울 때, 인프라는 왜 필요할까</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/report.css">
+<style>
+  .toc-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+  .toc a::before { content: none; }
+  .callout-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .formula {
+    background: #2c2e30;
+  }
+  .formula .eq {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.0rem;
+    letter-spacing: 0.01em;
+    line-height: 1.9;
+  }
+  .formula .eq b { color: var(--accent-bright); font-weight: 700; }
+  .formula .eq-note {
+    color: rgba(237,237,236,0.75);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-arrow">←</span>
+      <span><span class="brand-mark">RE &amp; Infra</span> Report Archive</span>
+    </a>
+    <div class="crumb">
+      <span class="dot"></span>
+      <span>Insights</span>
+      <span class="crumb-hide">— 개념·구조 해설</span>
+    </div>
+  </div>
+  <div class="progress"></div>
+</header>
+
+<article class="article">
+  <header class="article-head">
+    <div class="a-eyebrow">
+      <span>Insights</span>
+      <span class="idx">No. 01</span>
+      <span class="bar"></span>
+    </div>
+    <p class="a-topic">KB 발해인프라로 보는 상장 인프라펀드의 역할</p>
+    <h1 class="a-title">주식시장이 너무 뜨거울 때, 인프라는 왜 필요할까</h1>
+    <p class="a-standfirst">KB 발해인프라는 KOSPI를 이기기 위한 자산일까, 아니면 KOSPI만 들고 있기 불편할 때 포트폴리오의 온도를 낮춰주는 자산일까.</p>
+    <div class="a-meta">
+      <span>2026 · 06</span>
+      <span class="sep"></span>
+      <span class="author">sjahn</span>
+    </div>
+  </header>
+
+  <div class="prose">
+
+    <p class="lead">2026년 6월, 한국 주식시장은 이례적인 강세를 보였다. KOSPI가 단기간에 급등하는 시장에서 6%대 분배수익률을 제공하는 인프라펀드는 다소 밋밋해 보인다. 성장주가 하루에도 몇 퍼센트씩 움직이는 장세에서, 도로·LNG·데이터센터 같은 실물자산의 현금흐름은 느리고 지루해 보일 수밖에 없다. 하지만 질문을 바꾸면 이야기가 달라진다.</p>
+
+    <div class="callout">
+      <div class="callout-label">핵심 요약</div>
+      <p><strong>KB 발해인프라는 주식의 대체재가 아니라 포트폴리오 보완재다.</strong> 시장 beta를 낮추고 현금흐름을 더해주는 역할에 가깝다.</p>
+      <p>현재 가격 기준 핵심 매력은 <strong>예상 분배수익률 6.47%, P/NAV 0.89배, NAV 할인율 약 11.2%</strong>다. 글로벌 장기 자료 기준 인프라 자산은 주식보다 절대 수익률이 항상 높지는 않지만, 변동성 대비 보상은 우수하게 나타난다.</p>
+    </div>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>항목</th><th>수치</th><th>의미</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>기준일</td><td class="num">2026.06.18</td><td>첨부 리포트 기준</td></tr>
+          <tr><td>현재가</td><td class="num">10,070원</td><td>시장에서 거래되는 가격</td></tr>
+          <tr><td>예상 연간 DPS</td><td class="num">650원</td><td>연간 분배금 가정</td></tr>
+          <tr><td>예상 분배수익률</td><td class="num">6.47%</td><td>이 자산의 핵심 인컴 매력</td></tr>
+          <tr><td>한국 10년 국고채</td><td class="num">약 4.10%</td><td>비교 기준이 되는 장기 무위험금리</td></tr>
+          <tr><td>국고채 대비 스프레드</td><td class="num">약 237bp</td><td>금리·유동성·사업 리스크에 대한 추가 보상</td></tr>
+          <tr><td>주당 NAV</td><td class="num">11,341원</td><td>기초자산 가치 기준</td></tr>
+          <tr><td>P/NAV</td><td class="num">0.89배</td><td>NAV 대비 할인 거래</td></tr>
+          <tr><td>NAV 할인율</td><td class="num">약 11.2%</td><td>시장이 기초자산 가치를 전부 인정하지 않는 상태</td></tr>
+          <tr><td>DDM 적정가치</td><td class="num">10,833원</td><td>요구수익률 7.0%, 장기 성장률 1.0% 가정</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <nav class="toc" aria-label="목차">
+      <div class="toc-label">목차</div>
+      <ol>
+        <li><a href="#sec-complement">포트폴리오 보완재 — 주식과 인프라는 다른 게임을 한다</a></li>
+        <li><a href="#sec-sharpe">변동성 대비 수익률 — 덜 오르지만 덜 흔들리는 자산</a></li>
+        <li><a href="#sec-income">인컴 자산 — 가격보다 현금흐름이 먼저다</a></li>
+        <li><a href="#sec-growth">실물자산 성장성 — 지루한 자산에도 성장 스토리는 있다</a></li>
+        <li><a href="#sec-korea">대한민국이라는 배경 — 인구, 기술, 금리, 정책, 신용, 환</a></li>
+        <li><a href="#sec-duality">상장 인프라펀드의 이중성 — 실물자산을 주식처럼 거래할 때</a></li>
+        <li><a href="#sec-conclusion">그래서 KB 발해인프라는 어떤 자산인가</a></li>
+        <li><a href="#sec-glossary">핵심 용어</a></li>
+        <li><a href="#sec-faq">FAQ</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="sec-complement">포트폴리오 보완재 — 주식과 인프라는 다른 게임을 한다</h2>
+
+    <p>주식시장이 강할 때 인프라펀드는 초라해 보인다. 특히 KOSPI가 단기간에 크게 오르는 구간에서는 6%대 분배수익률보다 성장주의 가격 상승이 훨씬 매력적으로 느껴진다. 그러나 모든 자산을 같은 기준으로 비교하면 중요한 점을 놓치게 된다.</p>
+
+    <p>주식은 기업이익 성장과 밸류에이션 확장에 투자하는 자산이다. 반면 인프라는 도로, 터널, LNG 터미널, 데이터센터 같은 실물자산에서 발생하는 장기 현금흐름에 투자하는 자산이다. 수익의 성격이 다르다. KB 발해인프라의 역할은 KOSPI를 대체하는 것이 아니라, KOSPI에 집중된 포트폴리오를 보완하는 것이다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>구분</th><th>상장 주식</th><th>상장 인프라펀드</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>핵심 질문</td><td>이 기업이 얼마나 더 성장할까?</td><td>이 현금흐름이 얼마나 오래 지속될까?</td></tr>
+          <tr><td>주요 수익원</td><td>EPS 성장, PER 확장, 자본차익</td><td>사용료, 이자, 배당, 분배금</td></tr>
+          <tr><td>시장 민감도</td><td>높음</td><td>낮거나 제한적</td></tr>
+          <tr><td>강세장에서의 특징</td><td>빠르게 오를 수 있음</td><td>상대적으로 소외될 수 있음</td></tr>
+          <tr><td>조정장에서의 특징</td><td>손실폭이 커질 수 있음</td><td>현금흐름이 방어력 제공</td></tr>
+          <tr><td>포트폴리오 내 역할</td><td>성장 엔진</td><td>변동성 완충재와 인컴 자산</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <div class="callout">
+      <div class="callout-label">핵심</div>
+      <p>KB 발해인프라는 시장을 이기는 자산이라기보다, 시장이 너무 뜨거워졌을 때 포트폴리오의 온도를 낮춰주는 자산에 가깝다.</p>
+    </div>
+
+    <h2 id="sec-sharpe">변동성 대비 수익률 — 덜 오르지만 덜 흔들리는 자산</h2>
+
+    <p>인프라 자산은 상승장에서 주식보다 느리다. 그래서 단기 수익률만 보면 매력이 약해 보일 수 있다. 하지만 장기 투자에서는 절대 수익률만큼 중요한 것이 있다. 바로 <strong>변동성 대비 수익률</strong>이다.</p>
+
+    <p>Macquarie Asset Management의 글로벌 인프라 자료에 따르면 2003년 4분기부터 2022년 3분기까지 인프라 자산은 연율화 수익률 9.8%, Sharpe ratio 0.89를 기록했다. 이는 미국 주식, 글로벌 주식, core 부동산보다 높은 위험조정성과로 제시된다.</p>
+
+    <p>즉, 인프라가 매번 주식보다 많이 오른다는 뜻은 아니다. 중요한 것은 <em>위험 1단위당 받은 보상</em>이다. 인프라는 단기적으로 덜 화려하지만, 장기적으로는 변동성 대비 효율적인 자산군으로 평가될 수 있다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>자산군</th><th>장기 특징</th><th>해석</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>주식</td><td>높은 성장성과 높은 변동성</td><td>강세장에서 유리하지만 조정장 위험도 큼</td></tr>
+          <tr><td>부동산</td><td>임대료와 자산가치에 기반</td><td>금리와 cap rate에 민감</td></tr>
+          <tr><td>인프라</td><td>장기계약과 사용료 기반</td><td>변동성 대비 수익률이 강점</td></tr>
+          <tr><td>채권</td><td>이자수익과 원금상환 기반</td><td>안정적이지만 금리 상승에 취약</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <p>KB 발해인프라도 이 맥락에서 봐야 한다. 상장 이력이 짧기 때문에 장기 Sharpe ratio를 직접 확정하기는 어렵지만, 자산의 성격은 명확하다. 투자자의 질문도 달라져야 한다 — "이게 KOSPI보다 더 오를까?"가 아니라 <strong>"이 자산을 넣었을 때 내 포트폴리오의 변동성 대비 수익률이 좋아질까?"</strong>가 핵심이다.</p>
+
+    <h2 id="sec-income">인컴 자산 — 가격보다 현금흐름이 먼저다</h2>
+
+    <p>KB 발해인프라의 가장 직관적인 매력은 분배수익률이다. 현재가 10,070원과 예상 연간 DPS 650원을 적용하면 예상 분배수익률은 약 6.47%다. 같은 시점 한국 10년 국고채 금리 약 4.10%와 비교하면 약 237bp의 스프레드가 존재한다.</p>
+
+    <p>이 스프레드는 공짜 수익이 아니다. 인프라펀드는 채권이 아니기 때문에 금리, 정책, 교통량, 이용률, 리파이낸싱, 유동성 위험을 부담한다. 핵심은 이 추가 수익률이 위험을 충분히 보상하느냐이다. 현재 가격에서는 두 가지 완충장치가 있다. 첫째는 6%대 분배수익률이 가격 상승 없이도 현금흐름으로 수익을 제공한다는 점이고, 둘째는 P/NAV 0.89배의 NAV 할인이다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>자산</th><th>수익률</th><th>한 줄 해석</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>한국 10년 국고채</td><td class="num">약 4.10%</td><td>장기금리 기준점</td></tr>
+          <tr><td>KB 발해인프라</td><td class="num">약 6.47%</td><td>국고채 대비 약 237bp 추가 보상</td></tr>
+          <tr><td>맥쿼리인프라</td><td class="num">약 6.97%</td><td>유사 상장 인프라 비교군</td></tr>
+          <tr><td>ESR 켄달스퀘어리츠</td><td class="num">약 6.97%</td><td>상장 리츠 비교군</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <div class="formula">
+      <div class="eq"><b>DDM 적정가치</b> = DPS / ( <b>요구수익률</b> − 장기 성장률 ) = 650 / ( 7.0% − 1.0% ) = <b>10,833원</b></div>
+      <div class="eq-note">요구수익률과 장기 성장률 가정에 따라 적정가치 범위는 달라진다 — 가정의 변화가 곧 리스크다</div>
+    </div>
+
+    <p><strong>KB 발해인프라는 가격 상승을 기다리는 자산이 아니라, 보유하는 동안 현금흐름을 받는 자산이다.</strong> 이것이 성장주와 가장 다른 지점이다.</p>
+
+    <h2 id="sec-growth">실물자산 성장성 — 지루한 자산에도 성장 스토리는 있다</h2>
+
+    <p>인프라라고 하면 도로, 터널, 항만처럼 오래된 SOC를 떠올리기 쉽다. 맞다. 전통 인프라의 핵심은 안정성이다. 하지만 최근 인프라의 범위는 훨씬 넓어졌다. 전력망, LNG, 데이터센터, 클라우드, AI 인프라, 에너지 전환 설비까지 모두 인프라의 영역으로 들어오고 있다.</p>
+
+    <p>KB 발해인프라의 흥미로운 점도 여기에 있다. 단순히 도로와 터널만 들고 있는 고배당 상품이 아니라, LNG와 데이터센터 같은 신규 인프라 성장축에 노출될 수 있는 플랫폼이라는 점이다. AI가 성장하려면 반도체만 필요한 것이 아니다. 전력, 냉각, 토지, 송전망, 데이터센터가 모두 필요하다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>자산군</th><th>포트폴리오 내 역할</th><th>성장성</th><th>주요 리스크</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>도로·터널</td><td>안정적 사용료 기반</td><td>낮음~중간</td><td>교통량, 통행료 정책</td></tr>
+          <tr><td>LNG 인프라</td><td>에너지 인프라 현금흐름</td><td>중간</td><td>계약 갱신, 이용률, 에너지 전환</td></tr>
+          <tr><td>데이터센터</td><td>AI·클라우드 수요 노출</td><td>높음</td><td>전력비, 전력망, 고객 집중도</td></tr>
+          <tr><td>신규 개발자산</td><td>성장 옵션</td><td>높음</td><td>준공 지연, 비용 초과, 리파이낸싱</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <p>다만 성장 스토리는 항상 좋은 가격에 사야 의미가 있다. 신규 자산 편입이 무리한 가격에 이루어지거나, 유상증자가 기존 주주에게 불리한 조건으로 진행되면 성장 옵션은 <em>희석 요인</em>이 될 수 있다.</p>
+
+    <h2 id="sec-korea">대한민국이라는 배경 — 인구, 기술, 금리, 정책, 신용, 환</h2>
+
+    <p>KB 발해인프라는 국내 상장 인프라펀드다. 따라서 글로벌 인프라 자산군의 일반론만으로는 부족하다. 한국이라는 시장의 특수성을 함께 봐야 한다.</p>
+
+    <p>한국은 인구구조 측면에서 장기 저성장 압력을 받고 있다. 생산가능인구 감소와 고령화는 장기 소비와 부동산 수요에 부담을 줄 수 있다. 그러나 동시에 AI, 반도체, 배터리, 클라우드, 데이터센터, 전력망 투자 수요가 존재한다. 인구는 줄어도 전력과 데이터 수요는 늘어날 수 있다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>변수</th><th>KB 발해인프라에 주는 의미</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>인구구조</td><td>전통 부동산 수요에는 부담, 필수 인프라 수요는 상대적으로 방어적</td></tr>
+          <tr><td>기술</td><td>AI, 클라우드, 데이터센터, 전력 수요가 신규 인프라 성장성 제공</td></tr>
+          <tr><td>금리</td><td>할인율, 분배수익률 매력, 리파이낸싱 비용에 직접 영향</td></tr>
+          <tr><td>정책</td><td>통행료, 에너지, 전력망, 인허가가 현금흐름 안정성 좌우</td></tr>
+          <tr><td>신용</td><td>유상증자, 차입, 리파이낸싱, 신규 자산 편입 가격에 영향</td></tr>
+          <tr><td>환율</td><td>에너지 비용, 기자재 비용, 외국인 수급에 간접 영향</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <p>한국은 단순히 "인구가 줄어드는 나라"가 아니다. 동시에 "전력과 데이터 수요가 커지는 기술 제조국"이기도 하다. KB 발해인프라의 장기 스토리는 이 두 가지 힘이 어디서 균형을 잡는지에 달려 있다.</p>
+
+    <h2 id="sec-duality">상장 인프라펀드의 이중성 — 실물자산을 주식처럼 거래할 때</h2>
+
+    <p>KB 발해인프라는 인프라 자산에 투자하지만, 거래 방식은 주식이다. 이 이중성이 가장 중요하다. 비상장 인프라 자산은 평가 주기가 길고 거래가 어렵다. 그래서 단기 가격 변동성이 낮게 보인다. 반면 상장 인프라펀드는 매일 거래된다. 기초자산의 현금흐름이 안정적이어도, 주식시장 수급이 나빠지면 가격은 흔들릴 수 있다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>구분</th><th>장점</th><th>조심할 점</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>거래소 상장</td><td>쉽게 사고팔 수 있음</td><td>주식시장 수급에 따라 가격 변동</td></tr>
+          <tr><td>유동성</td><td>비상장 인프라보다 접근성 높음</td><td>유동성 프리미엄이 줄면 할인 확대</td></tr>
+          <tr><td>NAV 공시</td><td>기초자산 가치와 시장가격 비교 가능</td><td>NAV 자체가 하향 조정될 수 있음</td></tr>
+          <tr><td>유상증자</td><td>신규 자산 편입과 성장에 유리</td><td>할인 발행 시 기존 주주 희석 가능</td></tr>
+          <tr><td>분배금</td><td>인컴 투자자에게 명확한 수익원</td><td>분배 지속성이 흔들리면 가격 압박</td></tr>
+          <tr><td>신규 자산 편입</td><td>LNG·데이터센터 등 성장 옵션 확보</td><td>비싸게 사면 성장보다 희석이 커질 수 있음</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <blockquote>
+      상장되어 있기 때문에 더 편리하지만, 상장되어 있기 때문에 더 흔들린다.
+    </blockquote>
+
+    <h2 id="sec-conclusion">그래서 KB 발해인프라는 어떤 자산인가</h2>
+
+    <p>KB 발해인프라는 공격적인 성장주가 아니다. KOSPI 초강세장에서 시장을 따라잡기 위한 자산도 아니다. 이 자산을 그렇게 보면 실망할 가능성이 높다. 대신 세 가지 질문으로 봐야 한다.</p>
+
+    <ul>
+      <li>6%대 분배수익률이 금리와 사업 리스크를 충분히 보상하는가</li>
+      <li>P/NAV 0.89배의 할인이 과도한가, 아니면 정당한가</li>
+      <li>도로·LNG·데이터센터 포트폴리오가 장기적으로 안정성과 성장성을 함께 제공할 수 있는가</li>
+    </ul>
+
+    <p>현재 가격 기준으로는 완전히 싸다고 단정하기 어렵지만, 무시하기도 어렵다. 국고채 대비 스프레드가 존재하고, NAV 대비 할인되어 있으며, 인프라 자산의 장기 현금흐름이라는 본질도 살아 있다. 다만 금리 재상승, 리파이낸싱 비용 증가, 신규 자산 편입 가격, 유상증자 조건, 데이터센터와 LNG 관련 운영 리스크는 계속 확인해야 한다.</p>
+
+    <div class="callout">
+      <div class="callout-label">핵심 판단</div>
+      <p>KB 발해인프라는 KOSPI를 이기는 자산이 아니다. 대신 KOSPI만 들고 있기 불편한 투자자에게 필요한 다른 종류의 수익률을 제공하는 자산이다.</p>
+      <p>그 수익률의 이름은 성장률이 아니라 <strong>인컴, 낮은 beta, NAV 할인, 그리고 실물자산 현금흐름</strong>이다.</p>
+    </div>
+
+    <h2 id="sec-glossary">핵심 용어</h2>
+
+    <h3>P/NAV</h3>
+    <p>시장가격을 주당 순자산가치(Net Asset Value)로 나눈 값이다. 1배보다 낮으면 시장가격이 기초자산 가치보다 할인되어 거래된다는 뜻이다. KB 발해인프라의 P/NAV 0.89배는 시장이 NAV를 전부 인정하지 않고 있다는 의미다. 다만 NAV 자체가 하향 조정될 가능성도 함께 점검해야 한다.</p>
+
+    <h3>분배수익률</h3>
+    <p>현재 가격 대비 연간 분배금의 비율이다. 인프라펀드와 리츠에서는 주식의 배당수익률과 비슷한 역할을 한다. 다만 분배금은 고정된 값이 아니므로, 지속 가능한 분배금 수준인지 판단해야 한다.</p>
+
+    <h3>배당수익률 스프레드</h3>
+    <p>분배수익률과 국고채 금리의 차이다. 투자자가 금리, 유동성, 사업 리스크를 감수하는 대가로 받는 추가 보상이다. 이 스프레드가 좁혀지면 — 국고채 금리 상승 또는 분배수익률 하락 — 인컴 자산의 상대매력은 낮아진다.</p>
+
+    <h3>Beta</h3>
+    <p>시장 수익률에 대한 민감도다. beta가 낮은 자산은 상승장에서 덜 오를 수 있지만, 조정장에서는 포트폴리오의 변동성을 낮추는 데 도움이 될 수 있다.</p>
+
+    <h3>유상증자</h3>
+    <p>펀드가 새 주식을 발행해 자금을 조달하는 방식이다. 상장 인프라펀드는 유상증자를 통해 신규 자산을 빠르게 편입할 수 있지만, 발행 가격과 사용처가 적절하지 않으면 기존 주주에게 희석 부담이 생길 수 있다.</p>
+
+    <h3>DDM (Dividend Discount Model)</h3>
+    <p>미래 분배금을 요구수익률로 할인해 현재 적정가치를 산출하는 평가 방법이다. 요구수익률과 장기 성장률 가정에 따라 결과가 크게 달라지므로, 가정의 민감도 분석이 중요하다.</p>
+
+    <hr>
+
+    <h2 id="sec-faq">FAQ</h2>
+
+    <h3>Q. KB 발해인프라는 KOSPI 대신 살 수 있는 자산인가?</h3>
+    <p>아니다. KB 발해인프라는 KOSPI의 대체재라기보다 포트폴리오 보완재에 가깝다. 시장 상승을 그대로 따라가는 능력보다, 현금흐름과 낮은 시장 민감도가 핵심이다.</p>
+
+    <h3>Q. 6.47% 분배수익률이면 충분히 매력적인가?</h3>
+    <p>국고채 대비 약 237bp의 스프레드는 의미가 있다. 다만 이 스프레드는 금리, 리파이낸싱, 정책, 유동성, 신규 자산 리스크를 감수하는 대가다. 금리가 더 오르거나 분배금 지속성이 흔들리면 매력은 낮아질 수 있다.</p>
+
+    <h3>Q. NAV 대비 할인되어 있으면 무조건 싼 것 아닌가?</h3>
+    <p>그렇지 않다. NAV 할인은 투자 기회일 수도 있지만, 시장이 정당한 이유로 할인하는 것일 수도 있다. NAV가 하향 조정될 가능성, 배당 지속성, 신규 자산 편입 가격, 유동성 할인 등을 함께 봐야 한다.</p>
+
+    <h3>Q. KB 발해인프라에서 가장 중요한 체크포인트는 무엇인가?</h3>
+    <p>분배금 지속성, P/NAV 할인율, 금리 방향, 유상증자 조건, 신규 자산 편입 가격, 데이터센터와 LNG 자산의 계약 구조를 봐야 한다. 특히 상장 인프라펀드는 좋은 자산을 편입하더라도 너무 비싸게 사면 주주가치가 희석될 수 있다.</p>
+
+  </div>
+</article>
+
+<footer class="article-foot">
+  <a class="foot-back" href="../index.html">← 아카이브로 돌아가기</a>
+  <nav class="pager" aria-label="이전/다음 글">
+    <a class="prev disabled" href="#"><span class="pg-dir">← 이전</span><span class="pg-title">—</span></a>
+    <a class="next disabled" href="#"><span class="pg-dir">다음 →</span><span class="pg-title">—</span></a>
+  </nav>
+</footer>
+
+<script src="../assets/report.js"></script>
+</body>
+</html>
