@@ -104,6 +104,14 @@ def parse_filename(filename):
     }
 
 
+def date_to_display(yymmdd):
+    """'260624' → '2026 · 06' (개별 리포트 페이지 a-meta와 동일한 표기)"""
+    if isinstance(yymmdd, str) and len(yymmdd) == 6 and yymmdd.isdigit():
+        yy, mm = yymmdd[:2], yymmdd[2:4]
+        return f"20{yy} · {mm}"
+    return yymmdd
+
+
 def collect_reports():
     """저장소 루트에서 reports_*.html 파일을 스캔해 메타데이터 목록을 반환합니다."""
     reports = []
@@ -123,7 +131,7 @@ def collect_reports():
             "cat":       meta.get("cat", file_info["cat"]),
             "topic":     meta.get("topic", ""),
             "title":     meta.get("title", ""),
-            "date":      meta.get("date", ""),
+            "date":      date_to_display(meta.get("date", "")),  # 최초 업로드일(YYMMDD) → YYYY · MM
             "author":    meta.get("author", ""),
             "seq":       file_info["seq"],
             "href":      filename,  # 루트 직속이므로 경로 접두어 없이 파일명 그대로

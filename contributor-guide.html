@@ -465,7 +465,7 @@
 
       <div class="callout warn">
         <div class="callout-label">수정 시 규칙</div>
-        <p>기존 리포트 내용을 고칠 때는 <strong>같은 파일명으로 덮어써서 재업로드</strong>한다. seq 번호를 새로 매기지 않는다. 이전 내용은 GitHub History에서 항상 확인 가능하니 걱정하지 않아도 된다.</p>
+        <p>기존 리포트 내용을 고칠 때는 <strong>같은 파일명으로 덮어써서 재업로드</strong>한다. seq 번호를 새로 매기지 않는다. report-meta의 <code>date</code>도 <strong>최초 업로드일 그대로 유지</strong>하고 수정일로 바꾸지 않는다 — 아카이브 정렬이 이 값을 기준으로 하기 때문이다. 실제 수정 시점과 변경 이력은 GitHub History에서 항상 확인 가능하니 걱정하지 않아도 된다.</p>
       </div>
 
       <h2 id="sec-meta">report-meta 블록</h2>
@@ -553,7 +553,7 @@ reports_{cat}_{slug}.html  (한 편으로 끝나는 단일 리포트 — seq 생
   "title": "리포트 제목 (한국어, 문장형)",
   "topic": "주제어 (짧게, 예: 공유수면매립사업)",
   "cat": "insights / issues / sectors 중 하나",
-  "date": "오늘 날짜 YYMMDD",
+  "date": "최초 작성일 YYMMDD (신규 작성이면 오늘 날짜, 기존 리포트 수정이면 처음 게시했던 날짜 그대로 유지 — 수정일로 바꾸지 않음)",
   "author": "<span class="ph">[본인 author ID — 예: jbchoi, jhahn, sjahn]</span>",
   "published": true
 }
@@ -777,7 +777,7 @@ reports_{cat}_{slug}.html  (한 편으로 끝나는 단일 리포트 — seq 생
   "title": "리포트 제목 (한국어, 문장형)",
   "topic": "주제어 (짧게, 예: 공유수면매립사업)",
   "cat": "insights / issues / sectors 중 하나",
-  "date": "오늘 날짜 YYMMDD",
+  "date": "최초 작성일 YYMMDD (신규 작성이면 오늘 날짜, 기존 리포트 수정이면 처음 게시했던 날짜 그대로 유지 — 수정일로 바꾸지 않음)",
   "author": "[본인 author ID — 예: jbchoi, jhahn, sjahn]",
   "published": true
 }
