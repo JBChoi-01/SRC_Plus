@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Archive — Real Estate & Finance Reports</title>
+<title>SRC Plus</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -31,6 +31,8 @@
     /* ── 타입: 산세리프 / 고딕 (간결하게) ── */
     --font-sans: 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    /* ── 타입: 브랜드 타이틀·태그라인 전용 세리프 ── */
+    --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -103,12 +105,12 @@
   }
 
   .site-title {
-    font-family: var(--font-sans);
-    font-size: 2.25rem;
-    font-weight: 500;
-    line-height: 1.32;
+    font-family: var(--font-display);
+    font-size: 2.35rem;
+    font-weight: 700;
+    line-height: 1.28;
     color: var(--on-dark);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
 
   .site-rule {
@@ -116,6 +118,17 @@
     height: 1px;
     background: var(--on-dark-dim);
     margin: 1.7rem 0;
+  }
+
+  .site-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: var(--on-dark-dim);
+    letter-spacing: 0.005em;
+    margin-bottom: 1.5rem;
   }
 
   .site-desc {
@@ -184,7 +197,7 @@
     flex-wrap: wrap;
   }
   .stat-group { display: flex; align-items: baseline; gap: 1.7rem; }
-  .stat { display: flex; flex-direction: column; gap: 0.42rem; }
+  .stat { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.42rem; }
   .stat-num {
     font-family: var(--font-sans);
     font-size: 1.5rem;
@@ -196,8 +209,9 @@
   }
   .stat-num em { font-style: normal; color: var(--accent); }
   .stat-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.55rem;
+    font-weight: 500;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--ink-light);
@@ -274,7 +288,7 @@
     padding: 0.5rem 0.7rem;
     border: 1px solid var(--rule);
     background: transparent;
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -318,7 +332,7 @@
   }
   .section-count {
     margin-left: auto;
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.58rem;
     color: var(--ink-faint);
     letter-spacing: 0.05em;
@@ -365,17 +379,18 @@
     letter-spacing: 0.05em;
   }
   .report-topic {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.62rem;
+    font-weight: 500;
     letter-spacing: 0.08em;
-    color: var(--ink-faint);
+    color: var(--ink-light);
     margin-bottom: 0.3rem;
     text-transform: uppercase;
   }
   .report-title {
     font-family: var(--font-sans);
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.5;
     color: var(--ink);
     margin-bottom: 0.32rem;
@@ -444,7 +459,7 @@
   /* ── UPCOMING ── */
   .upcoming-wrap { margin-top: 0.7rem; }
   .upcoming-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.54rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -484,7 +499,7 @@
   /* ── EMPTY ── */
   .empty-state {
     padding: 3rem 0;
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.7rem;
     color: var(--ink-faint);
     letter-spacing: 0.06em;
@@ -548,6 +563,7 @@
       <div class="site-eyebrow">RE &amp; Infra Report Archive</div>
       <h1 class="site-title">SRC Plus</h1>
       <div class="site-rule"></div>
+      <p class="site-tagline">Beyond Land, Behold Life</p>
       <p class="site-desc">
         부동산·인프라 금융 관련 이슈를 정리한 아카이브입니다.
         인프라, 개발사업, 도시공간, 미래기술 등 다양한 분야의
@@ -614,18 +630,18 @@
 ══════════════════════════════════════ */
 const REPORTS = [
   // ── INSIGHTS ──
-  { cat: 'insights', topic: "KB 발해인프라 Valuation (1)", title: "주식시장 호황기, 대체투자를 어떻게 볼 것인가", date: '2026-06', author: 'jhahn', n: 1, href: 'reports/insights_kb-balhae-1_260624_jhahn.html', published: true },
-  { cat: 'insights', topic: "KB 발해인프라 Valuation (2)", title: "기업분석과 NAV/SOTP·DDM·배당수익률 스프레드", date: '2026-06', author: 'jhahn', n: 2, href: 'reports/insights_kb-balhae-2_260624_jhahn.html', published: true },
-  { cat: 'insights', topic: "KB 발해인프라 Valuation (3)", title: "장기 위험조정성과와 포트폴리오 역할", date: '2026-06', author: 'jhahn', n: 3, href: 'reports/insights_kb-balhae-3_260624_jhahn.html', published: true },
-  { cat: 'insights', topic: "KB 발해인프라로 보는 상장 인프라펀드의 역할", title: "주식시장이 너무 뜨거울 때, 인프라는 왜 필요할까", date: '2026-06', author: 'sjahn', n: 4, href: 'reports/insights_kb-balhae-infra_260624_jhahn.html', published: true },
+  { cat: 'insights', topic: "KB 발해인프라 Valuation (1)", title: "주식시장 호황기, 대체투자를 어떻게 볼 것인가", date: '2026-06', author: 'jhahn', n: 1, href: 'reports_insights_kb-balhae_1.html', published: true },
+  { cat: 'insights', topic: "KB 발해인프라 Valuation (2)", title: "기업분석과 NAV/SOTP·DDM·배당수익률 스프레드", date: '2026-06', author: 'jhahn', n: 2, href: 'reports_insights_kb-balhae_2.html', published: true },
+  { cat: 'insights', topic: "KB 발해인프라 Valuation (3)", title: "장기 위험조정성과와 포트폴리오 역할", date: '2026-06', author: 'jhahn', n: 3, href: 'reports_insights_kb-balhae_3.html', published: true },
+  { cat: 'insights', topic: "KB 발해인프라로 보는 상장 인프라펀드의 역할", title: "주식시장이 너무 뜨거울 때, 인프라는 왜 필요할까", date: '2026-06', author: 'jhahn', n: 4, href: 'reports_insights_kb-balhae_4.html', published: true },
   // ── ISSUES ──
-  { cat: 'issues', topic: "에셋라이트 (1)", title: "Cap Rate가 아니라 NOI를 봐야할 때", date: '2026-06', author: 'sjahn', n: 1, href: 'reports/issues_asset-lite-1_260624_sjahn.html', published: true },
-  { cat: 'issues', topic: "에셋라이트 (1)", title: "에셋 라이트냐, 자산보유냐, 그것이 문제로다", date: '2026-06', author: 'sjahn', n: 2, href: 'reports/issues_asset-lite-1_260624_sjahn_revised.html', published: true },
-  { cat: 'issues', topic: "에셋라이트 (2)", title: "소유와 임차의 선택 — 케이스 스터디", date: '2026-06', author: 'sjahn', n: 3, href: 'reports/issues_asset-lite-2_260624_sjahn.html', published: true },
-  { cat: 'issues', topic: "에셋라이트 (2)", title: "에셋라이트와 자산 보유 사이의 선택 — 케이스 스터디", date: '2026-06', author: 'sjahn', n: 4, href: 'reports/issues_asset-lite-2_260624_sjahn_revised.html', published: true },
-  { cat: 'issues', topic: "2026 북중미 월드컵과 인프라 금융", title: "월드컵 개최 모델은 어떻게 분산되고 있는가", date: '2025-06', author: 'jbchoi', n: 5, href: 'reports/issues_worldcup-infra_250624_jbchoi.html', published: true },
+  { cat: 'issues', topic: "에셋라이트 (1)", title: "Cap Rate가 아니라 NOI를 봐야할 때", date: '2026-06', author: 'sjahn', n: 1, href: 'reports_issues_asset-lite_1.html', published: true },
+  { cat: 'issues', topic: "에셋라이트 (2)", title: "소유와 임차의 선택 — 케이스 스터디", date: '2026-06', author: 'sjahn', n: 2, href: 'reports_issues_asset-lite_2.html', published: true },
+  { cat: 'issues', topic: "에셋라이트 (1)", title: "에셋 라이트냐, 자산보유냐, 그것이 문제로다", date: '2026-06', author: 'sjahn', n: 1, href: 'reports_issues_asset-lite-revised_1.html', published: true },
+  { cat: 'issues', topic: "에셋라이트 (2)", title: "에셋라이트와 자산 보유 사이의 선택 — 케이스 스터디", date: '2026-06', author: 'sjahn', n: 2, href: 'reports_issues_asset-lite-revised_2.html', published: true },
+  { cat: 'issues', topic: "2026 북중미 월드컵과 인프라 금융", title: "월드컵 개최 모델은 어떻게 분산되고 있는가", date: '2025-06', author: 'jbchoi', n: 1, href: 'reports_issues_worldcup-infra.html', published: true },
   // ── SECTORS ──
-  { cat: 'sectors', topic: "공유수면매립사업", title: "공공의 바다를 누군가의 땅으로", date: '2025-06', author: 'jbchoi', n: 1, href: 'reports/sectors_land-reclamation_250624_jbchoi.html', published: true },
+  { cat: 'sectors', topic: "공유수면매립사업", title: "공공의 바다를 누군가의 땅으로", date: '2025-06', author: 'jbchoi', n: 1, href: 'reports_sectors_land-reclamation.html', published: true },
 ];
 
 const CAT_META = {

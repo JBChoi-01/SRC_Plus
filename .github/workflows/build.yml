@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'reports/**.html'   # 리포트 파일이 추가/수정될 때만 실행
+      - 'reports_*.html'   # 루트 직속 리포트 파일이 추가/수정될 때만 실행
 
 jobs:
   build:
