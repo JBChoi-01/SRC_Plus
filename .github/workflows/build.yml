@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'reports_*.html'   # 루트 직속 리포트 파일이 추가/수정될 때만 실행
+    # 경로 필터를 두지 않고 main에 대한 모든 push에서 실행한다.
+    # reports_*.html 추가/수정/삭제뿐 아니라 index.html 수동 편집 등으로
+    # 목록이 실제 파일과 어긋나는 경우까지 매번 스캔해 재동기화하기 위함.
+    # build.py는 저장소를 스캔만 하므로 매번 실행해도 비용이 낮다.
 
 jobs:
   build:
