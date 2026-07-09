@@ -489,8 +489,8 @@ a { color: inherit; }
 .foot-back:hover { color: var(--accent); gap: 0.8rem; }
 
 .pager {
+  display: none;
   margin-top: 1.4rem;
-  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.8rem;
   border-top: 1px solid var(--rule);
