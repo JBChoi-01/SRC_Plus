@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>팀 가이드 — RE & Infra Report Archive</title>
+<title>SRC Plus 팀 가이드</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
     --on-dark: #ededec;
     --on-dark-dim: rgba(237,237,236,0.55);
     --on-dark-faint: rgba(237,237,236,0.32);
-    --font-sans: 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+    --font-sans: 'Noto Sans KR', 'Dotum', '돋움', 'Helvetica Neue', Arial, sans-serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
     --measure: 40rem;
     --pad: 2rem;
@@ -142,7 +142,7 @@
     scroll-margin-top: 110px;
   }
   .prose h2::before {
-    content: counter(h2, decimal-leading-zero);
+    content: var(--chnum, '00') '-' counter(h2);
     display: block;
     font-family: var(--font-mono); font-size: 0.6rem;
     font-weight: 400; letter-spacing: 0.1em; color: var(--accent);
@@ -159,6 +159,43 @@
   .prose ul { margin: 0 0 1.3rem; padding-left: 0; list-style: none; }
   .prose li { position: relative; padding-left: 1.3rem; margin-bottom: 0.55rem; font-size: 0.97rem; line-height: 1.85; color: var(--ink); }
   .prose ul li::before { content: ''; position: absolute; left: 0; top: 0.78em; width: 5px; height: 5px; background: var(--accent); }
+
+  /* ── 아코디언 (챕터 1 하위 문단) ── */
+  .accordion { border-top: 1px solid var(--rule); margin: 2.6rem 0 0; }
+  .accordion + .accordion { margin-top: 0; }
+  .accordion > summary {
+    cursor: pointer; list-style: none;
+    padding: 1.3rem 0 1.3rem;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+  }
+  .accordion > summary::-webkit-details-marker { display: none; }
+  .acc-num {
+    display: block;
+    font-family: var(--font-mono); font-size: 0.6rem;
+    font-weight: 400; letter-spacing: 0.1em; color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .acc-title { font-size: 1.22rem; font-weight: 600; color: var(--ink); line-height: 1.4; }
+  .acc-toggle {
+    flex-shrink: 0;
+    font-family: var(--font-mono); font-size: 0.56rem;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
+    border: 1px solid var(--rule); padding: 0.32rem 0.7rem;
+  }
+  .acc-toggle::before { content: '펼치기 +'; }
+  .accordion[open] .acc-toggle { color: var(--accent); border-color: var(--accent); }
+  .accordion[open] .acc-toggle::before { content: '접기 −'; }
+  .acc-body { padding: 0 0 2rem; }
+  .acc-body h3:first-child { margin-top: 0; }
+
+  .wip-bar {
+    margin: 1.6rem 0 0.4rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px dashed var(--rule);
+    text-align: center;
+    font-family: var(--font-mono); font-size: 0.62rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
+  }
 
   .flow { margin: 1.4rem 0; display: flex; flex-direction: column; gap: 0; }
   .flow-step { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0 1rem; position: relative; }
@@ -282,8 +319,8 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <div class="brand"><span>RE &amp; Infra</span> Report Archive</div>
-    <div class="crumb">Team Guide <span style="margin-left:1rem;opacity:0.5;">— Updated 2026.07.08</span></div>
+    <div class="brand"><span>SRC Plus</span> Team Guide</div>
+    <div class="crumb">2026.07.09</div>
   </div>
   <div class="progress" id="progress"></div>
 </header>
@@ -300,55 +337,54 @@
 <div class="page-wrap">
 
   <!-- 00 시작하기 전에 -->
-  <section class="chapter" id="ch-intro">
+  <section class="chapter" id="ch-intro" style="--chnum:'00';">
     <div class="chapter-divider" style="border-top:none; padding-top: 2.8rem;">
       <span class="div-num">00</span>
       <span class="div-title">시작하기 전에</span>
     </div>
-    <p class="ch-desc">이 가이드를 읽기 전에 — 리포트를 만들 때의 작업 흐름을 한 눈에 파악한다.</p>
 
     <div class="prose">
-      <p>각 기여자가 자유 양식으로 작성한 리서치 자료를 AI를 활용해 HTML 리포트로 변환하고, 공통 디자인 시스템이 적용된 웹 아카이브에 게시한다. 리포트가 게시될 때마다 핵심 내용을 추린 인스타그램 카드뉴스를 별도로 제작해 아카이브로의 유입을 유도한다.</p>
+      <p>각 참여자가 자유 양식으로 작성한 리서치 자료를 AI를 활용해 HTML 리포트로 변환하고, 공통 디자인 시스템이 적용된 웹 아카이브에 게시한다. 리포트가 게시될 때마다 핵심 내용을 추린 인스타그램 카드뉴스를 별도로 제작해 아카이브로의 유입을 유도한다.</p>
 
       <div class="flow">
         <div class="flow-step">
           <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
           <div class="flow-body">
-            <div class="flow-label">STEP 1 · 입력</div>
-            <div class="flow-title">자유 양식 자료 + 프롬프트 입력</div>
-            <div class="flow-desc">본인이 평소 쓰는 AI(Claude, ChatGPT, Gemini 등 무관)에 원본 자료와 아래 챕터 1의 고정 프롬프트를 함께 입력한다.</div>
+            <div class="flow-label">STEP 1</div>
+            <div class="flow-title">자료조사 및 작성</div>
+            <div class="flow-desc">자유 양식의 리서치 자료 및 데이터 작성</div>
           </div>
         </div>
         <div class="flow-step">
           <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
           <div class="flow-body">
-            <div class="flow-label">STEP 2 · 미리보기</div>
-            <div class="flow-title">_PREVIEW 버전으로 먼저 확인</div>
-            <div class="flow-desc">AI가 실제 서비스 스타일이 적용된 미리보기 파일을 준다. 다운로드해서 아무 폴더에나 두고 더블클릭으로 열면 된다 (인터넷 연결 필요). 폴더 구조를 맞출 필요 없음.</div>
+            <div class="flow-label">STEP 2</div>
+            <div class="flow-title">AI 리포트 변환</div>
+            <div class="flow-desc">AI 활용, 공통 양식의 리포트(html 파일)로 변환</div>
           </div>
         </div>
         <div class="flow-step">
           <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
           <div class="flow-body">
-            <div class="flow-label">STEP 3 · 수정</div>
-            <div class="flow-title">AI와 대화하며 편집 / 메모장으로 오탈자 수정</div>
-            <div class="flow-desc">도식화·구조 변경은 AI에게 자연어로 요청. 오탈자·문장 다듬기 같은 단순 텍스트 수정은 메모장으로 직접 고쳐도 된다.</div>
+            <div class="flow-label">STEP 3</div>
+            <div class="flow-title">웹페이지 업로드</div>
+            <div class="flow-desc">변환된 리포트를 GitHub 리포지토리(공유 데이터 공간)에 업로드 시 현재 웹페이지에 자동으로 게시 가능</div>
           </div>
         </div>
         <div class="flow-step">
           <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
           <div class="flow-body">
-            <div class="flow-label">STEP 4 · 최종본 요청</div>
-            <div class="flow-title">"최종본 줘"라고 반드시 요청</div>
-            <div class="flow-desc">수정이 끝났다고 미리보기 파일을 그대로 올리면 안 된다. AI에게 최종본을 요청하면 _PREVIEW 표시와 절대경로가 제거되고, 저장소에 맞는 상대경로로 바뀐 업로드용 파일이 나온다.</div>
+            <div class="flow-label">STEP 4</div>
+            <div class="flow-title">카드뉴스 변환</div>
+            <div class="flow-desc">주요 내용 발췌 및 요약, 공통 양식의 카드뉴스(pptx 파일)로 변환</div>
           </div>
         </div>
         <div class="flow-step">
           <div class="flow-left"><div class="flow-dot"></div></div>
           <div class="flow-body">
-            <div class="flow-label">STEP 5 · 업로드</div>
-            <div class="flow-title">GitHub에 업로드</div>
-            <div class="flow-desc">최종본 파일을 다운로드해 GitHub 저장소 루트에 업로드하면 자동으로 아카이브에 반영되고 Vercel을 통해 배포된다.</div>
+            <div class="flow-label">STEP 5</div>
+            <div class="flow-title">인스타그램 업로드</div>
+            <div class="flow-desc">이미지 파일로 변환해 인스타그램(SRC_Plus 계정) 게시</div>
           </div>
         </div>
       </div>
@@ -356,36 +392,49 @@
   </section>
 
   <!-- 01 리포트 제작 & 업로드 -->
-  <section class="chapter" id="ch-guide">
+  <section class="chapter" id="ch-guide" style="--chnum:'01';">
     <div class="chapter-divider">
       <span class="div-num">01</span>
       <span class="div-title">리포트 제작 &amp; 업로드</span>
       <span class="div-line"></span>
     </div>
-    <p class="ch-desc">원본 자료를 AI로 변환해 미리보기로 확인하고, 수정한 뒤, 최종본을 GitHub에 업로드하는 절차를 단계별로 안내한다.</p>
+    <p class="ch-desc">원본 자료를 AI로 변환해 미리보기로 확인하고, 수정한 뒤, 최종본을 GitHub에 업로드한다.</p>
 
     <div class="prose">
 
-      <h2 id="sec-files">AI에 첨부할 파일</h2>
-      <p>어떤 AI를 쓰든(Claude, ChatGPT, Gemini 등) 요청할 때 아래 3개 파일을 반드시 첨부한다. 본인 원본 자료(PDF, 마크다운 등)는 별도로 함께 첨부한다.</p>
-      <div class="file-list">
-        <div class="file-item"><div class="file-name">assets_report.css</div><div class="file-desc">디자인 시스템 CSS — 시각 스타일 참조용</div></div>
-        <div class="file-item"><div class="file-name">assets_report.js</div><div class="file-desc">공용 스크립트 — 구조 참조용</div></div>
-        <div class="file-item"><div class="file-name">레퍼런스 리포트 .html 1개</div><div class="file-desc">HTML 구조·말투·포맷 참조용. 기존 리포트 파일 중 아무거나 하나 사용한다.</div></div>
-      </div>
+      <details class="accordion" open>
+        <summary>
+          <div>
+            <span class="acc-num">01-1</span>
+            <span class="acc-title">일반 AI 활용</span>
+          </div>
+          <span class="acc-toggle"></span>
+        </summary>
+        <div class="acc-body">
 
-      <h2 id="sec-prompt">AI에 입력할 프롬프트</h2>
-      <p>아래 프롬프트를 복사해 대화창에 붙여넣는다. <em>노란색으로 표시된 부분</em>만 본인 정보로 채워서 사용한다. 이 프롬프트는 <strong>미리보기 → 수정 → 최종본 요청</strong>까지 전체 흐름을 AI에게 미리 지시해두는 내용이다.</p>
+          <h3>STEP 1 · 준비사항</h3>
+          <ul>
+            <li><strong>GitHub 가입</strong> — GitHub 계정을 생성하고(구글계정 연결 가능), 기존 참여자에게 문의해 'SRC_Plus' 리포지토리의 업로드 및 수정권한을 부여(Collaborators로 추가)받는다.</li>
+            <li><strong>양식 파일 다운로드</strong> — 중앙 폴더에서 아래 3개 파일을 미리 다운로드받는다. 자유양식의 리포트를 공통 양식으로 변환할 때, 이 3개 파일을 AI에게 주어진 프롬프트와 함께 첨부하면 된다.</li>
+          </ul>
+          <div class="file-list">
+            <div class="file-item"><div class="file-name">assets_report.css</div><div class="file-desc">디자인 시스템 CSS — 시각 스타일 참조용</div></div>
+            <div class="file-item"><div class="file-name">assets_report.js</div><div class="file-desc">공용 스크립트 — 구조 참조용</div></div>
+            <div class="file-item"><div class="file-name">레퍼런스 리포트 .html 1개</div><div class="file-desc">HTML 구조·말투·포맷 참조용. 기존 리포트 파일 중 아무거나 하나 사용한다.</div></div>
+          </div>
 
-      <div class="prompt-wrap">
-        <div class="prompt-header">
-          <div class="prompt-label">Prompt — 대화창에 붙여넣기</div>
-          <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/></svg>
-            <span id="copyLabel">복사</span>
-          </button>
-        </div>
-        <div class="prompt-body" id="promptBody">첨부한 파일은 다음과 같아:
+          <h3>STEP 2 · AI에 입력할 프롬프트</h3>
+          <p>아래 프롬프트를 복사해 대화창에 붙여넣는다. <em>노란색으로 표시된 부분</em>만 본인 정보로 채워서 사용한다. 이 프롬프트는 <strong>미리보기 → 수정 → 최종본 요청</strong>까지 전체 흐름을 AI에게 미리 지시해두는 내용이다.</p>
+
+          <div class="prompt-wrap">
+            <div class="prompt-header">
+              <div class="prompt-label">Prompt — 대화창에 붙여넣기</div>
+              <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/></svg>
+                <span id="copyLabel">복사</span>
+              </button>
+            </div>
+            <div class="prompt-body" id="promptBody">첨부한 파일은 다음과 같아:
 
 1. assets_report.css — 디자인 시스템 CSS
 2. assets_report.js — 공용 스크립트
@@ -466,84 +515,107 @@ a-meta에는 날짜만 표시하고, author(작성자)는 화면에 표시하지
     c. "PREVIEW — 업로드 금지" 표시를 제거한다.
     d. 완성된 최종 파일명을 명확히 알려준다.
   - 이 최종본 파일이 GitHub에 실제로 업로드할 파일이다.</div>
-      </div>
+          </div>
 
-      <h2 id="sec-preview">미리보기 확인 방법</h2>
-      <p>1단계에서 받은 <code>_PREVIEW</code> 파일은 다음과 같이 확인한다.</p>
-      <ol class="step-list">
-        <li>파일을 다운로드한다 (바탕화면, 다운로드 폴더 등 아무 곳이나 상관없음)</li>
-        <li>더블클릭해서 브라우저로 연다</li>
-        <li>인터넷에 연결되어 있으면 실제 서비스와 동일한 디자인으로 보인다</li>
-      </ol>
-      <div class="callout">
-        <div class="callout-label">폴더 구조 신경 쓸 필요 없음</div>
-        <p>이 파일은 스타일을 실제 배포된 사이트에서 실시간으로 불러오기 때문에, zip을 다운받아 압축을 풀고 정확한 폴더에 넣는 과정이 필요 없다. 파일 하나만 다운로드해서 열면 된다.</p>
-      </div>
-      <div class="callout warn">
-        <div class="callout-label">이 파일은 업로드 금지</div>
-        <p><code>_PREVIEW</code>가 붙은 파일, 또는 링크에 <code>srcplus.vercel.app</code>이 하드코딩된 파일은 절대 GitHub에 올리지 않는다. 실수로 올라간 걸 발견하면 내용을 고칠 필요 없이 그 파일만 삭제하면 된다 (파일명에 PREVIEW가 그대로 보이니 식별이 쉽다).</p>
-      </div>
+          <h3>STEP 3 · 미리보기 확인 방법</h3>
+          <p>1단계에서 받은 <code>_PREVIEW</code> 파일은 다음과 같이 확인한다.</p>
+          <ol class="step-list">
+            <li>파일을 다운로드한다 (바탕화면, 다운로드 폴더 등 아무 곳이나 상관없음)</li>
+            <li>더블클릭해서 브라우저로 연다</li>
+            <li>인터넷에 연결되어 있으면 실제 서비스와 동일한 디자인으로 보인다</li>
+          </ol>
+          <div class="callout">
+            <div class="callout-label">폴더 구조 신경 쓸 필요 없음</div>
+            <p>이 파일은 스타일을 실제 배포된 사이트에서 실시간으로 불러오기 때문에, zip을 다운받아 압축을 풀고 정확한 폴더에 넣는 과정이 필요 없다. 파일 하나만 다운로드해서 열면 된다.</p>
+          </div>
+          <div class="callout warn">
+            <div class="callout-label">이 파일은 업로드 금지</div>
+            <p><code>_PREVIEW</code>가 붙은 파일, 또는 링크에 <code>srcplus.vercel.app</code>이 하드코딩된 파일은 절대 GitHub에 올리지 않는다. 실수로 올라간 걸 발견하면 내용을 고칠 필요 없이 그 파일만 삭제하면 된다 (파일명에 PREVIEW가 그대로 보이니 식별이 쉽다).</p>
+          </div>
 
-      <h2 id="sec-edit">검토 및 수정</h2>
-      <p>미리보기를 열어보고 마음에 들 때까지 아래 두 방식으로 반복 수정한다.</p>
-      <h3>AI에게 재요청 — 도식화, 레이아웃, 문단 구조 수정</h3>
-      <p>대화창에 자연어로 요청한다. AI가 수정된 새 <code>_PREVIEW</code> 파일을 다시 준다. 매 응답 끝에 "최종본을 요청하라"는 안내가 따라온다.</p>
-      <h3>메모장으로 직접 편집 — 오탈자, 단순 텍스트 수정</h3>
-      <p><code>_PREVIEW</code> 파일을 메모장(Mac은 텍스트 편집기)으로 열어 <code>Ctrl+F</code>(Mac: <code>Cmd+F</code>)로 찾아 고쳐도 된다. 다만 이렇게 직접 고친 파일도 <code>_PREVIEW</code> 상태 그대로이므로, <strong>수정이 끝나면 반드시 AI에게 다시 "최종본 줘"라고 요청</strong>해서 절대경로를 상대경로로 바꾼 버전을 받아야 한다.</p>
+          <h3>STEP 4 · 검토 및 수정</h3>
+          <p>미리보기를 열어보고 마음에 들 때까지 아래 두 방식으로 반복 수정한다.</p>
+          <p><strong>AI에게 재요청 — 도식화, 레이아웃, 문단 구조 수정.</strong> 대화창에 자연어로 요청한다. AI가 수정된 새 <code>_PREVIEW</code> 파일을 다시 준다. 매 응답 끝에 "최종본을 요청하라"는 안내가 따라온다.</p>
+          <p><strong>메모장으로 직접 편집 — 오탈자, 단순 텍스트 수정.</strong> <code>_PREVIEW</code> 파일을 메모장(Mac은 텍스트 편집기)으로 열어 <code>Ctrl+F</code>(Mac: <code>Cmd+F</code>)로 찾아 고쳐도 된다. 다만 이렇게 직접 고친 파일도 <code>_PREVIEW</code> 상태 그대로이므로, <strong>수정이 끝나면 반드시 AI에게 다시 "최종본 줘"라고 요청</strong>해서 절대경로를 상대경로로 바꾼 버전을 받아야 한다.</p>
 
-      <div class="callout warn">
-        <div class="callout-label">가장 중요한 한 가지</div>
-        <p>수정을 아무리 많이 해도, <strong>업로드 직전에는 반드시 "최종본 줘"라고 요청해서 받은 파일</strong>만 GitHub에 올린다. _PREVIEW가 붙어있거나 절대경로가 남아있는 파일을 그대로 올리면 안 된다.</p>
-      </div>
+          <div class="callout warn">
+            <div class="callout-label">가장 중요한 한 가지</div>
+            <p>수정을 아무리 많이 해도, <strong>업로드 직전에는 반드시 "최종본 줘"라고 요청해서 받은 파일</strong>만 GitHub에 올린다. _PREVIEW가 붙어있거나 절대경로가 남아있는 파일을 그대로 올리면 안 된다.</p>
+          </div>
 
-      <h2 id="sec-upload">완성 후 업로드</h2>
-      <ol class="step-list">
-        <li>GitHub 저장소 접속</li>
-        <li>우측 상단 <strong>Add file → Upload files</strong></li>
-        <li>최종본 HTML 파일(파일명에 _PREVIEW 없는 것)을 저장소 루트에 드래그앤드롭</li>
-        <li>하단 커밋 메시지 입력란에 작업 유형에 맞게 작성 <em>(아래 표 참고)</em></li>
-        <li><strong>Commit directly to main branch</strong> 선택 후 커밋</li>
-      </ol>
+          <h3>STEP 5 · 완성 후 업로드</h3>
+          <ol class="step-list">
+            <li>GitHub 저장소 접속</li>
+            <li>우측 상단 <strong>Add file → Upload files</strong></li>
+            <li>최종본 HTML 파일(파일명에 _PREVIEW 없는 것)을 저장소 루트에 드래그앤드롭</li>
+            <li>하단 커밋 메시지 입력란에 작업 유형에 맞게 작성 <em>(아래 표 참고)</em></li>
+            <li><strong>Commit directly to main branch</strong> 선택 후 커밋</li>
+          </ol>
 
-      <table class="data-table">
-        <thead><tr><th>메시지</th><th>사용 시점</th><th>예시</th></tr></thead>
-        <tbody>
-          <tr><td>add:</td><td>신규 리포트 추가</td><td><code>add: reports_issues_asset-lite_1.html</code></td></tr>
-          <tr><td>update:</td><td>기존 리포트 수정 후 재업로드</td><td><code>update: reports_issues_asset-lite_1.html</code></td></tr>
-          <tr><td>remove:</td><td>리포트 삭제</td><td><code>remove: reports_issues_asset-lite_1.html</code></td></tr>
-        </tbody>
-      </table>
+          <table class="data-table">
+            <thead><tr><th>메시지</th><th>사용 시점</th><th>예시</th></tr></thead>
+            <tbody>
+              <tr><td>add:</td><td>신규 리포트 추가</td><td><code>add: reports_issues_asset-lite_1.html</code></td></tr>
+              <tr><td>update:</td><td>기존 리포트 수정 후 재업로드</td><td><code>update: reports_issues_asset-lite_1.html</code></td></tr>
+              <tr><td>remove:</td><td>리포트 삭제</td><td><code>remove: reports_issues_asset-lite_1.html</code></td></tr>
+            </tbody>
+          </table>
 
-      <div class="callout warn">
-        <div class="callout-label">주의</div>
-        <p>GitHub 웹 UI 업로드만 사용한다. 업로드 후 약 1~2분 내 자동 배포되며, GitHub Actions 탭에서 진행 상황을 확인할 수 있다.</p>
-      </div>
+          <div class="callout warn">
+            <div class="callout-label">주의</div>
+            <p>GitHub 웹 UI 업로드만 사용한다. 업로드 후 약 1~2분 내 자동 배포되며, GitHub Actions 탭에서 진행 상황을 확인할 수 있다.</p>
+          </div>
+
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <div>
+            <span class="acc-num">01-2</span>
+            <span class="acc-title">코딩 에이전트 활용</span>
+          </div>
+          <span class="acc-toggle"></span>
+        </summary>
+        <div class="acc-body">
+
+          <h3>STEP 1 · 준비사항</h3>
+          <ul>
+            <li><strong>GitHub 가입</strong> — GitHub 계정을 생성하고(구글계정 연결 가능), 기존 참여자에게 문의해 'SRC_Plus' 리포지토리의 업로드 및 수정권한을 부여(Collaborators로 추가)받는다.</li>
+            <li><strong>리포지토리 연결</strong> — 코딩 에이전트(Claude Code, OpenAI Codex, Gemini CLI..)에 GitHub 계정을 연결, SRC_Plus 리포지토리에서 이 가이드 문서와 폴더 구조를 학습시킨다.</li>
+          </ul>
+
+          <div class="wip-bar">(준비중)</div>
+
+        </div>
+      </details>
 
     </div>
   </section>
 
   <!-- 02 카드뉴스 제작 & 업로드 -->
-  <section class="chapter" id="ch-cardnews">
+  <section class="chapter" id="ch-cardnews" style="--chnum:'02';">
     <div class="chapter-divider">
       <span class="div-num">02</span>
       <span class="div-title">카드뉴스 제작 &amp; 업로드</span>
       <span class="div-line"></span>
     </div>
-    <p class="ch-desc">완성된 리포트를 바탕으로 인스타그램용 카드뉴스를 제작하고 게시하는 절차를 안내한다.</p>
+    <p class="ch-desc">완성된 리포트를 바탕으로 인스타그램용 카드뉴스를 제작하고 게시한다.</p>
 
     <div class="prose">
-      <h2 id="sec-cardnews-overview">구조 개요</h2>
-      <p>카드뉴스는 <strong>표지 1장 + 본문 최대 5장</strong>으로 구성한다. 리포트의 모든 내용을 담으려 하지 않는다. 게시물 본문이나 댓글에 리포트 전체 링크를 달아 전체 내용은 아카이브에서 읽도록 유도한다.</p>
+      <h2 id="sec-cardnews-overview">카드뉴스 개요</h2>
+      <p>카드뉴스는 <strong>표지 1장 + 본문 최대 5장</strong>으로 구성한다. 리포트의 모든 내용을 담으려 하지 않는다. SRC Plus 인스타그램 게시물 본문이나 댓글에 리포트 전체 링크를 달아 전체 내용은 아카이브에서 읽도록 유도한다.</p>
 
       <table class="data-table">
         <thead><tr><th>슬라이드</th><th>역할</th><th>내용</th></tr></thead>
         <tbody>
           <tr><td>표지 (1장)</td><td>주목 유도</td><td>리포트 제목 또는 핵심 질문</td></tr>
           <tr><td>본문 (최대 5장)</td><td>내용 전달</td><td>각 장마다 하나의 포인트</td></tr>
+          <tr><td>뒤표지</td><td>본문 연결</td><td>HTML 리포트 내용 예고 및 방문 유도</td></tr>
         </tbody>
       </table>
 
-      <h2 id="sec-cardnews-content">콘텐츠 구성 — AI 활용</h2>
+      <h2 id="sec-cardnews-content">콘텐츠 구성</h2>
       <div class="prompt-wrap">
         <div class="prompt-header">
           <div class="prompt-label">Prompt — 콘텐츠 구성 요청</div>
@@ -567,7 +639,11 @@ a-meta에는 날짜만 표시하고, author(작성자)는 화면에 표시하지
       </div>
 
       <h2 id="sec-cardnews-template">템플릿 편집</h2>
-      <p>AI가 제안한 구성안을 바탕으로 PowerPoint 템플릿(<code>cardnews-template.pptx</code>, Google Drive 보관)을 편집한다.</p>
+      <p>AI가 제안한 구성안을 바탕으로 PowerPoint 템플릿(<code>cardnews-template.pptx</code>)을 편집한다. 편집 시 아래 두 가지도 함께 채운다.</p>
+      <ul>
+        <li>우측 상단 카테고리 — <strong>Insights / Issues / Sectors</strong> 중 해당 리포트의 카테고리를 하나 선택해 표시한다.</li>
+        <li>우측 하단 이미지 출처 — 슬라이드에 사용한 이미지의 출처를 기입한다.</li>
+      </ul>
       <div class="callout warn">
         <div class="callout-label">건드리지 말 것</div>
         <p>검은색 그라데이션 박스, 좌상단 브랜드명(SRC Plus), 텍스트 폰트 유형 및 크기는 그대로 유지한다.</p>
@@ -583,13 +659,13 @@ a-meta에는 날짜만 표시하고, author(작성자)는 화면에 표시하지
   </section>
 
   <!-- 03 참고: 전체 페이지 배포 구조 -->
-  <section class="chapter" id="ch-reference">
+  <section class="chapter" id="ch-reference" style="--chnum:'03';">
     <div class="chapter-divider">
       <span class="div-num">03</span>
       <span class="div-title">참고: 전체 페이지 배포 구조</span>
       <span class="div-line"></span>
     </div>
-    <p class="ch-desc">리포트를 만드는 데 몰라도 되는 내용이다. 최종본 파일이 GitHub에 올라간 뒤 실제 웹사이트에 반영되기까지의 흐름과, 저장소가 어떻게 구성되어 있는지 궁금할 때 참고한다.</p>
+    <p class="ch-desc">리포트/카드뉴스 작업 및 업로드에 직접적으로 관련있는 내용은 아니다. 최종본 파일이 GitHub에 올라간 뒤 실제 웹사이트에 반영되기까지의 흐름과, 저장소가 어떻게 구성되어 있는지 궁금할 때 참고한다.</p>
 
     <div class="prose">
 
@@ -600,7 +676,7 @@ a-meta에는 날짜만 표시하고, author(작성자)는 화면에 표시하지
           <div class="flow-body">
             <div class="flow-label">Step 01</div>
             <div class="flow-title">최종본 HTML 파일 업로드</div>
-            <div class="flow-desc">기여자가 GitHub 웹 UI에서 저장소 <strong>루트</strong>에 <code>reports_...html</code> 파일을 업로드하고 <code>main</code> 브랜치에 커밋한다.</div>
+            <div class="flow-desc">참여자가 GitHub 웹 UI에서 저장소 <strong>루트</strong>에 <code>reports_...html</code> 파일을 업로드하고 <code>main</code> 브랜치에 커밋한다.</div>
           </div>
         </div>
         <div class="flow-step">
@@ -677,7 +753,7 @@ a-meta에는 날짜만 표시하고, author(작성자)는 화면에 표시하지
         </div>
         <div class="file-item">
           <div class="file-name">seq</div>
-          <div class="file-desc">같은 슬러그 안에서 몇 번째 글인지 나타내는 순번(1, 2, 3...). 기여자가 직접 부여한다. 시리즈 파트든, 나중에 같은 주제로 새로 쓴 별개의 글이든 이 번호 하나로 구분한다. <strong>2편 이상으로 이어지는 시리즈물에만 붙인다.</strong> 한 편으로 끝나는 단일 리포트는 seq를 생략한다 — 파일명 끝에 번호를 붙이지 않는다.</div>
+          <div class="file-desc">같은 슬러그 안에서 몇 번째 글인지 나타내는 순번(1, 2, 3...). 참여자가 직접 부여한다. 시리즈 파트든, 나중에 같은 주제로 새로 쓴 별개의 글이든 이 번호 하나로 구분한다. <strong>2편 이상으로 이어지는 시리즈물에만 붙인다.</strong> 한 편으로 끝나는 단일 리포트는 seq를 생략한다 — 파일명 끝에 번호를 붙이지 않는다.</div>
         </div>
       </div>
 
