@@ -21,6 +21,7 @@
     --accent: oklch(0.56 0.05 248);
     --accent-bright: oklch(0.64 0.07 248);
     --accent-soft: oklch(0.56 0.05 248 / 0.10);
+    --hl: oklch(0.59 0.17 15);
     --on-dark: #ededec;
     --on-dark-dim: rgba(237,237,236,0.55);
     --on-dark-faint: rgba(237,237,236,0.32);
@@ -151,6 +152,7 @@
   .prose h3 { font-size: 1rem; font-weight: 600; color: var(--ink); margin: 1.8rem 0 0.6rem; }
   .prose strong { font-weight: 600; }
   .prose em { font-style: normal; color: var(--accent); font-weight: 500; }
+  .prose em.hl { color: var(--hl); }
   .prose code {
     font-family: var(--font-mono); font-size: 0.82em;
     background: var(--bg-card); border: 1px solid var(--rule);
@@ -293,7 +295,7 @@
     line-height: 1.9; color: #e8e9e8;
     white-space: pre-wrap; word-break: keep-all;
   }
-  .prompt-body .ph { color: var(--accent-bright); background: oklch(0.64 0.07 248 / 0.13); padding: 0 0.2em; }
+  .prompt-body .ph { color: var(--hl); background: oklch(0.59 0.17 15 / 0.13); padding: 0 0.2em; }
 
   .page-foot {
     margin-top: 4rem; padding: 1.4rem 0 5rem;
@@ -423,8 +425,8 @@
             <div class="file-item"><div class="file-name">레퍼런스 리포트 .html 1개</div><div class="file-desc">HTML 구조·말투·포맷 참조용. 기존 리포트 파일 중 아무거나 하나 사용한다.</div></div>
           </div>
 
-          <h3>STEP 2 · AI에 입력할 프롬프트</h3>
-          <p>아래 프롬프트를 복사해 대화창에 붙여넣는다. <em>노란색으로 표시된 부분</em>만 본인 정보로 채워서 사용한다. 이 프롬프트는 <strong>미리보기 → 수정 → 최종본 요청</strong>까지 전체 흐름을 AI에게 미리 지시해두는 내용이다.</p>
+          <h3>STEP 2 · AI에 입력할 내용</h3>
+          <p>아래 프롬프트를 복사해, 리포트로 변환할 원본 자료(자유 양식)와 함께 대화창에 붙여넣는다. <em class="hl">로즈레드로 표시된 부분</em>만 본인 정보로 채워서 사용한다. 이 프롬프트는 <strong>미리보기 → 수정 → 최종본 요청</strong>까지 전체 흐름을 AI에게 미리 지시해두는 내용이다.</p>
 
           <div class="prompt-wrap">
             <div class="prompt-header">
