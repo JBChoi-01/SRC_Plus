@@ -404,7 +404,7 @@
 
     <div class="prose">
 
-      <details class="accordion" open>
+      <details class="accordion">
         <summary>
           <div>
             <span class="acc-num">01-1</span>
@@ -666,7 +666,7 @@ author ID: <span class="ph">[본인 author ID — 예: jbchoi, jhahn, sjahn]</sp
       </table>
 
       <h2 id="sec-cardnews-content">콘텐츠 구성</h2>
-      <p>카드뉴스는 PPT 파일에서 참여자가 직접 작업하므로, AI 활용 범위를 자유롭게 설정하면 된다. 아래의 프롬프트를 입력해 페이지 기획부터 AI의 도움을 받아도 되고, 페이지 기획 및 이미지 생성까지 먼저 마친 뒤 이미지에 어울리는 카드뉴스 글을 추천받아도 된다. 다만 어느 쪽을 선택하든, 최종 내용 검수 및 기존 SRC Plus 카드뉴스(인스타그램 참고)와 서술톤을 맞추는 작업은 참여자가 수행한다.</p>
+      <p>카드뉴스는 PPT 파일에서 참여자가 직접 작업하므로, AI 활용 범위를 자유롭게 설정하면 된다.<br>아래의 프롬프트를 입력해 페이지 기획부터 AI의 도움을 받아도 되고, 페이지 기획 및 이미지 생성까지 먼저 마친 뒤 이미지에 어울리는 카드뉴스 글을 추천받아도 된다.<br>다만 어느 쪽을 선택하든, 최종 내용 검수 및 기존 SRC Plus 카드뉴스(인스타그램 참고)와 서술톤을 맞추는 작업은 참여자가 수행한다.</p>
       <div class="prompt-wrap">
         <div class="prompt-header">
           <div class="prompt-label">Prompt — 콘텐츠 구성 요청</div>
@@ -704,8 +704,32 @@ author ID: <span class="ph">[본인 author ID — 예: jbchoi, jhahn, sjahn]</sp
       <ol class="step-list">
         <li>PowerPoint에서 <strong>파일 → 내보내기 → 이미지로 저장</strong> (PNG 권장)</li>
         <li>인스타그램 게시물 작성 시 슬라이드 이미지를 순서대로 첨부</li>
-        <li>게시물 본문 또는 댓글에 리포트 전체 링크를 추가</li>
+        <li>게시물 본문에 간단한 카드뉴스 소개 본문 및 HTML 리포트 링크 추가</li>
       </ol>
+
+      <div class="prompt-wrap">
+        <div class="prompt-header">
+          <div class="prompt-label">예시 — 게시물 본문</div>
+          <button class="copy-btn" id="copyBtnCaption" onclick="copyPromptCaption()">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/></svg>
+            <span id="copyLabelCaption">복사</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="promptBodyCaption">📍 공공의 바다를 누군가의 땅으로 — 공유수면매립사업의 법적 절차와 사업성
+
+✔️ 2025년 12월, 17년 전 발급된 창원 진해구 안골만 매립사업에 대한 매립면허 효력상실이 고시되었다. 매립사업은 왜 장기간 지연되고, 또 왜 빈번하게 좌초되는가.
+
+✔️ 공유수면 매립사업은 단순히 바다를 메워 토지를 조성하는 사업이 아니다. 어업권 보상, 문화재 발굴, 환경영향 검토, 인허가권자와의 협의 등 복수의 이해관계와 행정절차가 중첩되는 고난도 개발사업이다.
+
+✔️ 또한 매립이 완료되더라도 사업시행자가 조성된 토지를 전부 취득하는 것은 아니다. 시행자가 취득할 수 있는 토지는 총사업비에 상당하는 범위로 제한되며, 이를 초과하는 잔여매립지는 국가로부터 별도로 매수해야 한다.
+
+✔️ 이 때문에 민간사업자는 매립 자체에서 발생하는 토지취득 효과만으로 사업성을 확보하기 어렵다. 실무상으로는 항만배후단지, 택지지구, 산업단지 등 후속 개발사업의 개발권을 결합해 사업성을 보완하는 구조가 활용된다.
+
+✔️ 결국 공유수면매립사업의 핵심은 바다를 토지로 바꾸는 기술적 문제가 아니라, 이를 둘러싼 권리관계와 사업성 구조를 어떻게 조정할 것인가에 있다.
+
+공유수면매립사업의 법적 절차와 사업성에 대한 자세한 내용은 SRC_Plus 리포트에서 확인하실 수 있습니다.
+🔗 <span class="ph">[업로드 완료된 HTML 리포트 주소]</span></div>
+      </div>
     </div>
   </section>
 
@@ -973,6 +997,30 @@ author ID: [본인 author ID — 예: jbchoi, jhahn, sjahn]
     navigator.clipboard.writeText(PROMPT_AGENT_RAW).then(() => {
       const btn = document.getElementById('copyBtnAgent');
       const label = document.getElementById('copyLabelAgent');
+      btn.classList.add('copied'); label.textContent = '복사됨';
+      setTimeout(() => { btn.classList.remove('copied'); label.textContent = '복사'; }, 2000);
+    });
+  }
+
+  const PROMPT_CAPTION_RAW = `📍 공공의 바다를 누군가의 땅으로 — 공유수면매립사업의 법적 절차와 사업성
+
+✔️ 2025년 12월, 17년 전 발급된 창원 진해구 안골만 매립사업에 대한 매립면허 효력상실이 고시되었다. 매립사업은 왜 장기간 지연되고, 또 왜 빈번하게 좌초되는가.
+
+✔️ 공유수면 매립사업은 단순히 바다를 메워 토지를 조성하는 사업이 아니다. 어업권 보상, 문화재 발굴, 환경영향 검토, 인허가권자와의 협의 등 복수의 이해관계와 행정절차가 중첩되는 고난도 개발사업이다.
+
+✔️ 또한 매립이 완료되더라도 사업시행자가 조성된 토지를 전부 취득하는 것은 아니다. 시행자가 취득할 수 있는 토지는 총사업비에 상당하는 범위로 제한되며, 이를 초과하는 잔여매립지는 국가로부터 별도로 매수해야 한다.
+
+✔️ 이 때문에 민간사업자는 매립 자체에서 발생하는 토지취득 효과만으로 사업성을 확보하기 어렵다. 실무상으로는 항만배후단지, 택지지구, 산업단지 등 후속 개발사업의 개발권을 결합해 사업성을 보완하는 구조가 활용된다.
+
+✔️ 결국 공유수면매립사업의 핵심은 바다를 토지로 바꾸는 기술적 문제가 아니라, 이를 둘러싼 권리관계와 사업성 구조를 어떻게 조정할 것인가에 있다.
+
+공유수면매립사업의 법적 절차와 사업성에 대한 자세한 내용은 SRC_Plus 리포트에서 확인하실 수 있습니다.
+🔗 [업로드 완료된 HTML 리포트 주소]`;
+
+  function copyPromptCaption() {
+    navigator.clipboard.writeText(PROMPT_CAPTION_RAW).then(() => {
+      const btn = document.getElementById('copyBtnCaption');
+      const label = document.getElementById('copyLabelCaption');
       btn.classList.add('copied'); label.textContent = '복사됨';
       setTimeout(() => { btn.classList.remove('copied'); label.textContent = '복사'; }, 2000);
     });
