@@ -526,10 +526,6 @@ a-meta에는 날짜만 표시하고, author(작성자)는 화면에 표시하지
             <li>더블클릭해서 브라우저로 연다</li>
             <li>인터넷에 연결되어 있으면 실제 서비스와 동일한 디자인으로 보인다</li>
           </ol>
-          <div class="callout">
-            <div class="callout-label">폴더 구조 신경 쓸 필요 없음</div>
-            <p>이 파일은 스타일을 실제 배포된 사이트에서 실시간으로 불러오기 때문에, zip을 다운받아 압축을 풀고 정확한 폴더에 넣는 과정이 필요 없다. 파일 하나만 다운로드해서 열면 된다.</p>
-          </div>
           <div class="callout warn">
             <div class="callout-label">이 파일은 업로드 금지</div>
             <p><code>_PREVIEW</code>가 붙은 파일, 또는 링크에 <code>srcplus.vercel.app</code>이 하드코딩된 파일은 절대 GitHub에 올리지 않는다. 실수로 올라간 걸 발견하면 내용을 고칠 필요 없이 그 파일만 삭제하면 된다 (파일명에 PREVIEW가 그대로 보이니 식별이 쉽다).</p>
@@ -710,6 +706,11 @@ a-meta에는 날짜만 표시하고, author(작성자)는 화면에 표시하지
       <div class="callout warn">
         <div class="callout-label">주의</div>
         <p>GitHub 웹 UI 업로드만 사용한다. index.html은 직접 편집하지 않는다 — build.py가 자동으로 덮어쓴다.</p>
+      </div>
+
+      <div class="callout good">
+        <div class="callout-label">덮어써도 안전합니다</div>
+        <p>기존 리포트를 수정해서 같은 파일명으로 재업로드해도 예전 내용이 사라지지 않는다. GitHub이 모든 이전 버전을 자동으로 보관하기 때문이다. 해당 파일 페이지 상단의 <strong>History</strong> 버튼을 누르면 지금까지의 모든 수정 이력과 예전 내용을 언제든 확인할 수 있다.</p>
       </div>
 
       <h2 id="sec-folder">저장소 파일 구조</h2>
