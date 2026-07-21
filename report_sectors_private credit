@@ -3,21 +3,26 @@
 {
   "title": "은행이 줄인 자리, 부동산 사모대출이 채우는 이유",
   "cat": "insights",
-  "date": "260706",
+  "date": "260721",
   "author": "jhahn",
   "published": false,
-  "topic": "부동산 사모대출의 구조와 투자 기회"
+  "topic": "부동산 사모대출의 구조와 APAC·한국 시장의 투자 기회"
 }
 </script>
+
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>은행이 줄인 자리, 부동산 사모대출이 채우는 이유</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="assets_report.css">
+
 <style>
   .toc-label {
     font-family: var(--font-sans);
@@ -28,7 +33,11 @@
     color: var(--ink);
     margin-bottom: 0.7rem;
   }
-  .toc a::before { content: none; }
+
+  .toc a::before {
+    content: none;
+  }
+
   .callout-label {
     font-family: var(--font-sans);
     font-size: 0.78rem;
@@ -38,32 +47,44 @@
     color: var(--accent);
     margin-bottom: 0.6rem;
   }
-  .formula { background: #2c2e30; }
+
+  .formula {
+    background: #2c2e30;
+  }
+
   .formula .eq {
     font-family: var(--font-sans);
     font-weight: 700;
-    font-size: 1.0rem;
+    font-size: 1rem;
     letter-spacing: 0.01em;
     line-height: 1.9;
   }
-  .formula .eq b { color: var(--accent-bright); font-weight: 700; }
+
+  .formula .eq b {
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+
   .formula .eq-note {
-    color: rgba(237,237,236,0.75);
+    color: rgba(237, 237, 236, 0.75);
     font-family: var(--font-sans);
     font-size: 0.72rem;
     letter-spacing: 0.03em;
   }
+
   .mini-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
     margin: 2rem 0;
   }
+
   .mini-card {
-    border: 1px solid rgba(0,0,0,0.12);
-    background: rgba(255,255,255,0.62);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.62);
     padding: 1.15rem 1.2rem;
   }
+
   .mini-card .kicker {
     font-family: var(--font-mono);
     font-size: 0.72rem;
@@ -71,343 +92,1754 @@
     letter-spacing: 0.05em;
     margin-bottom: 0.5rem;
   }
-  .mini-card strong { display: block; margin-bottom: 0.35rem; }
-  .mini-card p { margin: 0; font-size: 0.92rem; }
+
+  .mini-card strong {
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .mini-card p {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
   .source-note {
     font-size: 0.82rem;
-    color: rgba(0,0,0,0.62);
-    border-top: 1px solid rgba(0,0,0,0.12);
+    color: rgba(0, 0, 0, 0.62);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
     padding-top: 1rem;
     margin-top: 2rem;
   }
+
+  .table-caption {
+    margin-top: 0.7rem;
+    font-size: 0.78rem;
+    color: rgba(0, 0, 0, 0.58);
+    line-height: 1.6;
+  }
+
+  .section-intro {
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
   @media (max-width: 760px) {
-    .mini-grid { grid-template-columns: 1fr; }
+    .mini-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
+
 <body>
 
 <header class="topbar">
   <div class="topbar-inner">
     <a class="brand" href="index.html">
       <span class="brand-arrow">←</span>
-      <span><span class="brand-mark">RE &amp; Infra</span> Report Archive</span>
+      <span>
+        <span class="brand-mark">RE &amp; Infra</span>
+        Report Archive
+      </span>
     </a>
+
     <div class="crumb">
       <span class="dot"></span>
       <span>Insights</span>
       <span class="crumb-hide">— 개념·구조 해설</span>
     </div>
   </div>
+
   <div class="progress"></div>
 </header>
 
+
 <article class="article">
+
   <header class="article-head">
+
     <div class="a-eyebrow">
       <span>Insights</span>
       <span class="idx">No. 02</span>
       <span class="bar"></span>
     </div>
-    <p class="a-topic">부동산 사모대출의 구조와 투자 기회</p>
-    <h1 class="a-title">은행이 줄인 자리, 부동산 사모대출이 채우는 이유</h1>
-    <p class="a-standfirst">부동산 사모대출은 단순히 은행 대출보다 비싼 돈이 아니다. 규제, 금리, 리파이낸싱, 자기자본 요구가 만든 신용 공백을 담보와 구조로 가격화하는 투자 전략이다.</p>
+
+    <p class="a-topic">
+      부동산 사모대출의 구조와 APAC·한국 시장의 투자 기회
+    </p>
+
+    <h1 class="a-title">
+      은행이 줄인 자리,<br>
+      부동산 사모대출이 채우는 이유
+    </h1>
+
+    <p class="a-standfirst">
+      부동산 사모대출은 단순히 은행 대출보다 비싼 돈이 아니다.
+      규제, 금리, 리파이낸싱, 자기자본 요구가 만든 신용 공백을
+      담보와 구조로 가격화하는 투자 전략이다.
+    </p>
+
     <div class="a-meta">
       <span>2026 · 07</span>
     </div>
+
   </header>
+
 
   <div class="prose">
 
-    <p class="lead">부동산 시장에서 대출은 항상 존재했다. 다만 누가 돈을 빌려주느냐는 시대마다 달라진다. 과거에는 은행과 증권사가 개발사업과 상업용 부동산의 핵심 자금 공급자였다. 지금은 규제, 자본비율, 부동산 익스포저 관리, PF 부실 정리로 인해 전통 금융기관의 대출 여력이 예전 같지 않다. 그 빈자리에 사모대출펀드, 보험사, 연기금, 글로벌 운용사 같은 비은행 자본이 들어오고 있다.</p>
+    <p class="lead">
+      부동산 시장에서 대출은 항상 존재했다. 다만 누가 돈을 빌려주느냐는
+      시대마다 달라진다. 과거에는 은행과 증권사가 개발사업과 상업용 부동산의
+      핵심 자금 공급자였다. 지금은 규제, 자본비율, 부동산 익스포저 관리,
+      PF 부실 정리로 인해 전통 금융기관의 대출 여력이 예전 같지 않다.
+      그 빈자리에 사모대출펀드, 보험사, 연기금, 글로벌 운용사 같은
+      비은행 자본이 들어오고 있다.
+    </p>
+
 
     <div class="callout">
       <div class="callout-label">핵심 요약</div>
-      <p><strong>부동산 사모대출은 은행이 회피하거나 줄인 대출 영역을 사모펀드가 담보, LTV, 선순위·후순위 구조, covenant로 통제하면서 이자수익을 얻는 전략이다.</strong></p>
-      <p>성장의 배경은 세 가지다. 첫째, Basel III 등 은행 규제로 위험자산 대출의 자본비용이 높아졌다. 둘째, 상업용 부동산과 PF 시장에는 만기연장·리파이낸싱 수요가 남아 있다. 셋째, 연기금과 보험사는 변동금리, 담보, 상대적으로 높은 스프레드를 제공하는 대체 인컴 자산을 찾고 있다.</p>
+
+      <p>
+        <strong>
+          부동산 사모대출은 은행이 회피하거나 줄인 대출 영역을
+          사모펀드가 담보, LTV, 선순위·후순위 구조, covenant로 통제하면서
+          이자수익을 얻는 전략이다.
+        </strong>
+      </p>
+
+      <p>
+        성장은 단기적인 고금리 현상만으로 설명되지 않는다.
+        은행 규제로 인한 신용공급 축소, 기존 저금리 대출의 만기 도래,
+        부동산 개발사업의 자기자본 요구 강화, 기관투자자의 인컴 자산 수요가
+        함께 작용하고 있다.
+      </p>
+
+      <p>
+        APAC은 세계 최대 수준의 신용시장을 보유하고 있지만
+        부동산 금융에서 사모대출의 비중은 미국과 유럽보다 낮다.
+        한국 역시 PF와 CRE 리파이낸싱 시장을 중심으로
+        비은행 자본이 진입할 수 있는 영역이 확대되고 있다.
+      </p>
     </div>
+
 
     <figure class="table-wrap">
       <table>
         <thead>
-          <tr><th>구분</th><th>한 줄 정의</th><th>부동산 사모대출에서의 의미</th></tr>
+          <tr>
+            <th>구분</th>
+            <th>한 줄 정의</th>
+            <th>부동산 사모대출에서의 의미</th>
+          </tr>
         </thead>
+
         <tbody>
-          <tr><td>Private Debt</td><td>비공개 시장에서 펀드가 제공하는 대출 중심 전략</td><td>이자수익과 원금상환이 핵심 수익원</td></tr>
-          <tr><td>Private Credit</td><td>직접대출, 자산기반금융, 구조화대출까지 포함하는 더 넓은 개념</td><td>부동산, 인프라, 장비, 매출채권 등 자산 기반 전략 포함</td></tr>
-          <tr><td>Real Estate Debt</td><td>부동산 또는 부동산 개발사업을 담보로 제공하는 대출 투자</td><td>담보가치, 현금흐름, 인허가, 분양·임대 가능성이 핵심</td></tr>
-          <tr><td>Infrastructure Debt</td><td>인프라 자산의 장기 계약·사용료 현금흐름에 기반한 대출</td><td>도로, 데이터센터, 에너지, 물류 등 장기 자산에 적용</td></tr>
-          <tr><td>Asset-based Finance</td><td>차주 자체보다 자산의 가치와 회수 가능성에 초점을 둔 금융</td><td>부동산 사모대출은 대표적인 ABF 전략으로 확장 가능</td></tr>
+          <tr>
+            <td>Private Debt</td>
+            <td>비공개 시장에서 펀드가 제공하는 대출 중심 전략</td>
+            <td>이자수익과 원금상환이 핵심 수익원</td>
+          </tr>
+
+          <tr>
+            <td>Private Credit</td>
+            <td>직접대출, 자산기반금융, 구조화대출까지 포함하는 더 넓은 개념</td>
+            <td>부동산, 인프라, 장비, 매출채권 등 다양한 자산 기반 전략 포함</td>
+          </tr>
+
+          <tr>
+            <td>Real Estate Debt</td>
+            <td>부동산 또는 부동산 개발사업을 담보로 제공하는 대출 투자</td>
+            <td>담보가치, 현금흐름, 인허가, 분양·임대 가능성이 핵심</td>
+          </tr>
+
+          <tr>
+            <td>Infrastructure Debt</td>
+            <td>인프라 자산의 장기 계약·사용료 현금흐름에 기반한 대출</td>
+            <td>도로, 데이터센터, 에너지, 물류 등 장기 자산에 적용</td>
+          </tr>
+
+          <tr>
+            <td>Asset-based Finance</td>
+            <td>차주 자체보다 담보자산의 가치와 회수 가능성에 초점을 둔 금융</td>
+            <td>부동산 사모대출이 속하는 대표적인 자산기반 신용 전략</td>
+          </tr>
         </tbody>
       </table>
     </figure>
+
 
     <nav class="toc" aria-label="목차">
       <div class="toc-label">목차</div>
+
       <ol>
-        <li><a href="#sec-definition">사모대출의 정의 — Private Credit과 Private Debt</a></li>
-        <li><a href="#sec-reinfra">부동산·인프라 사모대출 — 담보와 현금흐름을 대출로 바꾸는 구조</a></li>
-        <li><a href="#sec-participants">투자자와 참여자 — LP, GP, 차주, 증권사</a></li>
-        <li><a href="#sec-bank">사모대출 vs 은행 대출 — 자금 조달 방식과 규제의 차이</a></li>
-        <li><a href="#sec-history">전통 사모대출과 부동산 사모대출의 등장</a></li>
-        <li><a href="#sec-korea">한국 시장 — PF, CRE, 증권사, PEF</a></li>
-        <li><a href="#sec-strategy">전략 유형 — Core부터 Distressed까지</a></li>
-        <li><a href="#sec-examples">딜 구조 사례 — Senior, Mezzanine, C-loan, NPL</a></li>
-        <li><a href="#sec-outlook">수익률, 리스크, 향후 전망</a></li>
-        <li><a href="#sec-glossary">핵심 용어와 FAQ</a></li>
+        <li>
+          <a href="#sec-definition">
+            사모대출의 정의 — Private Credit과 Private Debt
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-reinfra">
+            부동산·인프라 사모대출 — 담보와 현금흐름을 대출로 바꾸는 구조
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-participants">
+            투자자와 참여자 — LP, GP, 차주, 증권사
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-bank">
+            사모대출 vs 은행 대출 — 자금조달 방식과 규제의 차이
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-history">
+            전통 사모대출과 부동산 사모대출의 등장
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-apac">
+            APAC 시장 — 크지만 사모대출 침투율은 낮다
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-country">
+            호주·한국·싱가포르 — 같은 APAC, 다른 대출시장
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-korea">
+            한국 시장 — PF, CRE, 증권사, PEF
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-strategy">
+            전략 유형 — Core부터 Distressed까지
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-examples">
+            딜 구조 사례 — Senior, Mezzanine, C-loan, NPL
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-outlook">
+            수익률, 리스크, 향후 전망
+          </a>
+        </li>
+
+        <li>
+          <a href="#sec-glossary">
+            핵심 용어와 FAQ
+          </a>
+        </li>
       </ol>
     </nav>
 
-    <h2 id="sec-definition">사모대출의 정의 — Private Credit과 Private Debt</h2>
 
-    <p>사모대출은 공개시장에서 거래되는 채권을 사는 것이 아니라, 비공개 협상으로 차주에게 직접 자금을 빌려주고 이자와 수수료를 받는 투자 전략이다. 영어권에서는 Private Debt와 Private Credit이 혼용되지만, 엄밀하게는 Private Credit이 더 넓다. Private Debt가 대출 중심 전략이라면, Private Credit은 직접대출, 메자닌, 부실채권, 자산기반금융, 구조화신용까지 포괄한다.</p>
+    <h2 id="sec-definition">
+      사모대출의 정의 — Private Credit과 Private Debt
+    </h2>
+
+    <p>
+      사모대출은 공개시장에서 거래되는 채권을 매입하는 것이 아니라,
+      비공개 협상을 통해 차주에게 직접 자금을 빌려주고
+      이자와 수수료를 받는 투자 전략이다.
+    </p>
+
+    <p>
+      영어권에서는 Private Debt와 Private Credit이 혼용되지만,
+      엄밀하게는 Private Credit이 더 넓은 개념으로 사용되는 경우가 많다.
+      Private Debt가 대출 중심 전략을 의미한다면,
+      Private Credit은 직접대출, 메자닌, 부실채권,
+      자산기반금융, 구조화신용까지 포괄한다.
+    </p>
+
 
     <figure class="table-wrap">
       <table>
         <thead>
-          <tr><th>전략</th><th>주요 대상</th><th>위험·수익 성격</th></tr>
+          <tr>
+            <th>전략</th>
+            <th>주요 대상</th>
+            <th>위험·수익 성격</th>
+          </tr>
         </thead>
+
         <tbody>
-          <tr><td>Direct Lending</td><td>중견기업, 사모펀드 보유기업, 비상장 차주</td><td>선순위 또는 유니트랜치 중심, 현금흐름과 covenant 중요</td></tr>
-          <tr><td>Mezzanine</td><td>선순위 대출만으로 자금이 부족한 차주</td><td>후순위 위험을 부담하는 대신 높은 금리와 지분 옵션 가능</td></tr>
-          <tr><td>Distressed Debt</td><td>채무불이행 또는 구조조정이 필요한 차주</td><td>회수율과 구조조정 성과에 따라 수익률 편차 큼</td></tr>
-          <tr><td>Special Situations</td><td>M&amp;A, 리파이낸싱, 위기관리, 자산 매각 등 특수상황</td><td>시간 제약과 복잡성이 수익률의 원천</td></tr>
-          <tr><td>Asset-based Finance</td><td>부동산, 인프라, 장비, 대출채권, 매출채권</td><td>담보, 현금흐름, 회수 가능성을 중심으로 구조화</td></tr>
+          <tr>
+            <td>Direct Lending</td>
+            <td>중견기업, 사모펀드 보유기업, 비상장 차주</td>
+            <td>선순위 또는 유니트랜치 중심, 현금흐름과 covenant 중요</td>
+          </tr>
+
+          <tr>
+            <td>Mezzanine</td>
+            <td>선순위 대출만으로 자금이 부족한 차주</td>
+            <td>후순위 위험을 부담하는 대신 높은 금리와 지분 옵션 가능</td>
+          </tr>
+
+          <tr>
+            <td>Distressed Debt</td>
+            <td>채무불이행 또는 구조조정이 필요한 차주</td>
+            <td>회수율과 구조조정 성과에 따라 수익률 편차가 큼</td>
+          </tr>
+
+          <tr>
+            <td>Special Situations</td>
+            <td>M&amp;A, 리파이낸싱, 위기관리, 자산 매각 등 특수상황</td>
+            <td>시간 제약, 복잡성, 자금공급의 희소성이 수익률의 원천</td>
+          </tr>
+
+          <tr>
+            <td>Asset-based Finance</td>
+            <td>부동산, 인프라, 장비, 대출채권, 매출채권</td>
+            <td>담보, 현금흐름, 회수 가능성을 중심으로 구조화</td>
+          </tr>
         </tbody>
       </table>
     </figure>
 
-    <p>부동산 사모대출은 이 중에서도 Asset-based Finance의 성격이 강하다. 차주의 신용등급보다 담보 부동산의 가치, 사업 단계, 임대 또는 분양 가능성, 선순위·후순위 구조가 더 중요해진다.</p>
 
-    <h2 id="sec-reinfra">부동산·인프라 사모대출 — 담보와 현금흐름을 대출로 바꾸는 구조</h2>
+    <p>
+      부동산 사모대출은 이 중에서도 Asset-based Finance의 성격이 강하다.
+      차주의 신용등급만 보는 것이 아니라 담보 부동산의 가치,
+      사업 단계, 임대 또는 분양 가능성, 선순위·후순위 구조를
+      함께 분석한다.
+    </p>
 
-    <p>부동산 사모대출은 오피스, 물류센터, 호텔, 리테일, 주거 개발사업, 데이터센터 같은 실물자산을 담보로 하는 대출 투자다. 대출자는 건물을 직접 소유하지 않는다. 대신 담보권, 계좌 통제, LTV 제한, 이자유보금, 공사비 관리, 임대차 조건, 분양률 조건 등을 통해 downside protection을 만든다.</p>
 
-    <p>인프라 사모대출도 구조는 유사하지만 현금흐름의 성격이 다르다. 도로, 항만, 에너지, 데이터센터, 전력망은 장기 계약이나 사용료 기반 수익이 존재하는 경우가 많다. 그래서 담보가치뿐 아니라 운영계약, 이용률, 정부 규제, 장기 수요가 중요하다.</p>
+    <h2 id="sec-reinfra">
+      부동산·인프라 사모대출 — 담보와 현금흐름을 대출로 바꾸는 구조
+    </h2>
+
+    <p>
+      부동산 사모대출은 오피스, 물류센터, 호텔, 리테일,
+      주거 개발사업, 데이터센터 같은 실물자산을 담보로 하는 대출 투자다.
+      대출자는 건물을 직접 소유하지 않는다.
+      대신 담보권, 계좌 통제, LTV 제한, 이자유보금,
+      공사비 관리, 임대차 조건, 분양률 조건 등을 통해
+      원금 손실 가능성을 낮춘다.
+    </p>
+
+    <p>
+      인프라 사모대출도 기본 구조는 유사하지만 현금흐름의 성격이 다르다.
+      도로, 항만, 에너지, 데이터센터, 전력망은
+      장기 계약이나 사용료 기반 수익이 존재하는 경우가 많다.
+      따라서 담보가치뿐 아니라 운영계약, 이용률, 정부 규제,
+      장기 수요의 안정성이 중요하다.
+    </p>
+
 
     <div class="mini-grid">
+
       <div class="mini-card">
         <div class="kicker">SENIOR</div>
         <strong>선순위 담보대출</strong>
-        <p>가장 먼저 상환받는 구조다. LTV가 낮고 금리는 상대적으로 낮지만, 회수 안정성이 높다.</p>
+        <p>
+          가장 먼저 상환받는 구조다.
+          LTV가 낮고 금리는 상대적으로 낮지만 회수 안정성이 높다.
+        </p>
       </div>
+
       <div class="mini-card">
         <div class="kicker">MEZZANINE</div>
         <strong>중·후순위 대출</strong>
-        <p>선순위 뒤에서 손실을 부담한다. 대신 더 높은 스프레드와 수수료를 요구한다.</p>
+        <p>
+          선순위 뒤에서 손실을 부담한다.
+          대신 더 높은 스프레드와 수수료를 요구한다.
+        </p>
       </div>
+
       <div class="mini-card">
         <div class="kicker">WHOLE LOAN</div>
         <strong>통합 대출</strong>
-        <p>하나의 대출자가 선순위와 후순위 위험을 함께 보유한 뒤 필요에 따라 분할 매각한다.</p>
+        <p>
+          하나의 대주가 선순위와 후순위 위험을 함께 인수한 뒤
+          필요에 따라 위험을 분할하거나 매각한다.
+        </p>
+      </div>
+
+    </div>
+
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구조</th>
+            <th>상환 순위</th>
+            <th>주요 보호장치</th>
+            <th>투자자 관점</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Senior Loan</td>
+            <td>1순위</td>
+            <td>낮은 LTV, 1순위 담보권, DSCR, 임대료 계좌 통제</td>
+            <td>낮은 수익률, 높은 원금보전력</td>
+          </tr>
+
+          <tr>
+            <td>Mezzanine Loan</td>
+            <td>선순위 이후</td>
+            <td>후순위 담보, 주식질권, 스폰서 보증, cash sweep</td>
+            <td>높은 수익률, 담보가치 하락에 민감</td>
+          </tr>
+
+          <tr>
+            <td>C-loan / PF 후순위</td>
+            <td>사업비 내 후순위</td>
+            <td>분양률, 인허가, 책임준공, 자금관리 계좌</td>
+            <td>개발사업 성과와 회수 시점이 핵심</td>
+          </tr>
+
+          <tr>
+            <td>NPL</td>
+            <td>부실화 이후 매입</td>
+            <td>할인 매입, 담보처분, 구조조정 권리</td>
+            <td>회수율과 회수기간이 수익률 결정</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+
+    <h2 id="sec-participants">
+      투자자와 참여자 — LP, GP, 차주, 증권사
+    </h2>
+
+    <p>
+      부동산 사모대출의 참여자는 단순하지 않다.
+      돈을 대는 LP, 운용 의사결정을 하는 GP,
+      실제 자금을 사용하는 차주, 딜을 중개하거나 자기자본을 투입하는 증권사,
+      은행, 신탁사, 감정평가사, 법무법인, 시공사 등이 함께 참여한다.
+    </p>
+
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>참여자</th>
+            <th>역할</th>
+            <th>주요 관심사</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>LP</td>
+            <td>연기금, 보험사, 공제회, 패밀리오피스 등 출자자</td>
+            <td>목표수익률, 유동성, 손실 방어, 운용사 트랙레코드</td>
+          </tr>
+
+          <tr>
+            <td>GP</td>
+            <td>펀드를 설계하고 대출을 실행·관리하는 운용사</td>
+            <td>딜 소싱, 신용심사, covenant 설계, 회수관리</td>
+          </tr>
+
+          <tr>
+            <td>차주</td>
+            <td>디벨로퍼, 부동산 보유회사, 리츠, 인프라 사업자</td>
+            <td>실행 속도, LTV, 만기, 금리, 유연한 조건</td>
+          </tr>
+
+          <tr>
+            <td>증권사</td>
+            <td>PF 주관, 딜 소싱, 브릿지론, PEF Co-GP, PI 투자</td>
+            <td>부동산 익스포저 축소와 신규 수익원 확보의 균형</td>
+          </tr>
+
+          <tr>
+            <td>은행</td>
+            <td>선순위 대출, 계좌은행, 일부 공동대주 역할</td>
+            <td>규제자본, 위험가중자산, LTV, 연체율 관리</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+
+    <h2 id="sec-bank">
+      사모대출 vs 은행 대출 — 자금조달 방식과 규제의 차이
+    </h2>
+
+    <p>
+      은행 대출과 사모대출은 겉으로는 모두 대출이지만
+      자금의 성격과 의사결정 구조가 다르다.
+      은행은 예금과 은행채 등을 기반으로 대출을 실행하고,
+      자기자본비율과 위험가중자산 규제를 받는다.
+    </p>
+
+    <p>
+      반면 사모대출펀드는 LP의 약정자본을 기반으로 운용된다.
+      은행보다 높은 목표수익률을 요구하지만
+      만기, 상환 방식, 담보, covenant를 더 유연하게 설계할 수 있다.
+    </p>
+
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>은행 대출</th>
+            <th>사모대출</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>자금 원천</td>
+            <td>예금, 은행채, 단기 조달</td>
+            <td>LP 약정자본, 펀드, 보험사·연기금 자금</td>
+          </tr>
+
+          <tr>
+            <td>규제</td>
+            <td>Basel III, LTV·DSR·DTI, 위험가중자산, 건전성 규제</td>
+            <td>펀드 규약, 투자자 제한, 운용사 내부 리스크 관리</td>
+          </tr>
+
+          <tr>
+            <td>금리</td>
+            <td>상대적으로 낮음</td>
+            <td>은행보다 높은 spread와 수수료 요구</td>
+          </tr>
+
+          <tr>
+            <td>LTV</td>
+            <td>규제와 내부 한도의 영향이 큼</td>
+            <td>위험에 따라 유연하게 설계되지만 금리가 높아짐</td>
+          </tr>
+
+          <tr>
+            <td>Covenant</td>
+            <td>표준화된 조건이 많음</td>
+            <td>DSCR, LTV, cash sweep, step-up 등 맞춤형 설계</td>
+          </tr>
+
+          <tr>
+            <td>실행 속도</td>
+            <td>심사와 규제 절차가 길어질 수 있음</td>
+            <td>복잡한 상황에서 상대적으로 빠른 의사결정 가능</td>
+          </tr>
+
+          <tr>
+            <td>수익 구조</td>
+            <td>낮은 금리, 낮은 위험</td>
+            <td>높은 금리, 구조화된 downside protection</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+
+    <div class="formula">
+      <div class="eq">
+        <b>사모대출 기대수익률</b>
+        =
+        기준금리
+        +
+        <b>신용 스프레드</b>
+        +
+        비유동성 프리미엄
+        +
+        구조화 수수료
+        −
+        예상손실
+      </div>
+
+      <div class="eq-note">
+        표면금리가 높아도 부도확률, 손실률, 회수기간, 펀드비용을 반영하면
+        실제 순수익률은 크게 달라질 수 있다.
       </div>
     </div>
 
+
+    <p>
+      사모대출이 성장하는 이유는 은행 대출보다 항상 우월해서가 아니다.
+      은행이 규제자본 문제로 줄이는 영역,
+      표준화된 심사로 처리하기 어려운 영역,
+      만기와 구조를 새로 설계해야 하는 영역에서
+      사모대출의 유연성이 가치가 생기기 때문이다.
+    </p>
+
+
+    <h2 id="sec-history">
+      전통 사모대출과 부동산 사모대출의 등장
+    </h2>
+
+    <p>
+      전통적인 사모대출의 성장은 글로벌 금융위기 이후
+      은행 규제가 강화되면서 본격화됐다.
+      Basel III와 Dodd-Frank 등은 은행의 자기자본 요건과
+      유동성 규제를 강화했고,
+      은행은 중소·중견기업과 위험자산 대출을 축소했다.
+    </p>
+
+    <p>
+      초기 사모대출은 부실채권, 구조조정, 특수상황처럼
+      은행이 취급하기 어려운 영역에서 발전했다.
+      이후 direct lending, unitranche, performing credit로 확장되면서
+      전통 금융기관이 담당하던 정상기업 대출 영역까지 진입했다.
+    </p>
+
+    <p>
+      부동산 사모대출은 같은 논리가 실물자산 시장으로 확장된 결과다.
+      상업용 부동산은 만기가 돌아오면 리파이낸싱이 필요하고,
+      개발사업은 토지매입, 인허가, 착공, 분양, 준공 단계마다
+      새로운 자금이 필요하다.
+    </p>
+
+    <p>
+      은행이 낮은 LTV와 엄격한 자기자본 기준을 적용하면
+      기존 자산가치와 필요한 대출금 사이에 funding gap이 발생한다.
+      사모대출은 이 공백을 채우되,
+      더 높은 금리와 강한 담보·covenant를 요구한다.
+    </p>
+
+
+    <h2 id="sec-apac">
+      APAC 시장 — 크지만 사모대출 침투율은 낮다
+    </h2>
+
+    <p class="section-intro">
+      APAC 부동산 사모대출의 투자 논리는
+      단순히 “고금리라 대출 금리가 높다”는 데 있지 않다.
+      거대한 은행 중심 신용시장이 비은행 자본시장으로
+      이동하기 시작했다는 데 핵심이 있다.
+    </p>
+
+    <p>
+      CapitaLand Investment는 APAC 전체 신용시장을
+      약 63조달러로 추정한다.
+      이는 북미와 유럽을 합친 규모와 유사하지만,
+      지역 전체 신용의 약 80%가 여전히
+      전통 은행을 통해 공급되는 구조다.
+    </p>
+
+    <p>
+      은행 중심 구조에서는 규제 변화가 곧 신용공급 변화로 이어진다.
+      Basel III와 Basel III Endgame,
+      부동산 익스포저 관리,
+      건설금융 심사 강화가 적용되면
+      은행이 줄인 대출을 대체할 비은행 자본의 역할이 커진다.
+    </p>
+
+
     <figure class="table-wrap">
       <table>
         <thead>
-          <tr><th>구조</th><th>상환 순위</th><th>주요 보호장치</th><th>투자자 관점</th></tr>
+          <tr>
+            <th>APAC 사모대출 시장 지표</th>
+            <th>수치</th>
+            <th>해석</th>
+          </tr>
         </thead>
+
         <tbody>
-          <tr><td>Senior Loan</td><td>1순위</td><td>낮은 LTV, 담보권, DSCR, 임대료 계좌 통제</td><td>낮은 수익률, 높은 원금보전력</td></tr>
-          <tr><td>Mezzanine Loan</td><td>선순위 이후</td><td>후순위 담보, 주식질권, 스폰서 보증, cash sweep</td><td>높은 수익률, 담보가치 하락에 민감</td></tr>
-          <tr><td>C-loan / PF 후순위</td><td>사업비 내 후순위</td><td>분양률, 인허가, 책임준공, 자금관리 계좌</td><td>개발사업 성과와 회수 시점이 핵심</td></tr>
-          <tr><td>NPL</td><td>부실화 이후 매입</td><td>할인 매입, 담보처분, 구조조정 권리</td><td>회수율과 시간가치가 수익률 결정</td></tr>
+          <tr>
+            <td>APAC 전체 신용시장</td>
+            <td class="num">약 63조달러</td>
+            <td>북미와 유럽을 합친 규모와 유사한 거대 시장</td>
+          </tr>
+
+          <tr>
+            <td>은행을 통한 신용공급 비중</td>
+            <td class="num">약 80%</td>
+            <td>비은행 대출시장으로 이동할 수 있는 잠재 영역이 큼</td>
+          </tr>
+
+          <tr>
+            <td>글로벌 GDP 성장에 대한 APAC 기여도</td>
+            <td class="num">약 60%</td>
+            <td>경제성장과 도시화에 따라 장기 자금수요 증가 가능</td>
+          </tr>
+
+          <tr>
+            <td>글로벌 private credit AUM 중 APAC 비중</td>
+            <td class="num">약 6.6%</td>
+            <td>경제 규모에 비해 사모대출 자본의 침투율이 낮음</td>
+          </tr>
+
+          <tr>
+            <td>APAC private credit dry powder</td>
+            <td class="num">약 210억달러</td>
+            <td>전체 신용시장 대비 약 0.03% 수준으로 제시</td>
+          </tr>
         </tbody>
       </table>
+
+      <figcaption class="table-caption">
+        자료: CapitaLand Investment, Preqin, PEI, JLL.
+        기관별 추정 기준과 포함 범위에 따라 수치는 달라질 수 있다.
+      </figcaption>
     </figure>
 
-    <h2 id="sec-participants">투자자와 참여자 — LP, GP, 차주, 증권사</h2>
 
-    <p>부동산 사모대출의 참여자는 단순하지 않다. 돈을 대는 LP, 운용 의사결정을 하는 GP, 실제 자금을 쓰는 차주, 딜을 중개하거나 자기자본을 일부 투입하는 증권사, 감정평가사와 법무법인, 신탁사, 시공사까지 얽힌다.</p>
+    <div class="callout">
+      <div class="callout-label">침투율의 차이</div>
 
-    <figure class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>참여자</th><th>역할</th><th>관심사</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>LP</td><td>연기금, 보험사, 공제회, 패밀리오피스 등 출자자</td><td>목표수익률, 유동성, 손실 방어, 운용사 트랙레코드</td></tr>
-          <tr><td>GP</td><td>펀드를 설계하고 대출을 실행·관리하는 운용사</td><td>딜 소싱, 신용심사, covenant 설계, 회수관리</td></tr>
-          <tr><td>차주</td><td>디벨로퍼, 부동산 보유회사, 리츠, 인프라 사업자</td><td>실행 속도, LTV, 만기, 금리, 유연한 조건</td></tr>
-          <tr><td>증권사</td><td>PF 주관, 딜 소싱, 브릿지론, PEF Co-GP, PI 투자</td><td>부동산 익스포저 축소와 신규 수익원 확보의 균형</td></tr>
-          <tr><td>은행</td><td>선순위 대출 또는 계좌은행 역할</td><td>규제자본, 위험가중자산, LTV, 연체율 관리</td></tr>
-        </tbody>
-      </table>
-    </figure>
+      <p>
+        2024년 중반 기준 부동산 금융에서 사모대출이 차지하는 비중은
+        미국 약 41%, 유럽 약 21%인 반면
+        APAC은 약 6%로 제시된다.
+      </p>
 
-    <h2 id="sec-bank">사모대출 vs 은행 대출 — 자금 조달 방식과 규제의 차이</h2>
-
-    <p>은행 대출과 사모대출은 겉으로는 모두 대출이다. 하지만 돈의 성격이 다르다. 은행은 예금과 시장성 조달을 기반으로 대출을 실행하고, 자기자본비율과 위험가중자산 규제를 받는다. 반면 사모대출펀드는 LP의 약정자본을 기반으로 운용되며, 은행보다 더 높은 수익률을 요구하는 대신 구조 설계에서 더 유연하다.</p>
-
-    <figure class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>구분</th><th>은행 대출</th><th>사모대출</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>자금 원천</td><td>예금, 은행채, 단기 조달</td><td>LP 약정자본, 펀드, 보험사·연기금 자금</td></tr>
-          <tr><td>규제</td><td>Basel III, LTV·DSR·DTI, 위험가중자산, 건전성 규제</td><td>펀드 규약과 투자자 제한, 운용사 내부 리스크 관리</td></tr>
-          <tr><td>금리</td><td>상대적으로 낮음</td><td>은행보다 높은 spread와 arrangement fee 요구</td></tr>
-          <tr><td>LTV</td><td>규제와 내부 한도 영향 큼</td><td>위험에 맞춰 유연하나 가격이 높아짐</td></tr>
-          <tr><td>Covenant</td><td>표준화된 조건 많음</td><td>DSCR, LTV, cash sweep, step-up, 만기연장 조건 등 맞춤형</td></tr>
-          <tr><td>실행 속도</td><td>심사와 규제 절차가 길 수 있음</td><td>복잡한 상황에서 빠른 의사결정 가능</td></tr>
-          <tr><td>수익 구조</td><td>낮은 금리, 낮은 리스크</td><td>높은 금리, 구조화된 downside protection</td></tr>
-        </tbody>
-      </table>
-    </figure>
-
-    <div class="formula">
-      <div class="eq"><b>사모대출 수익률</b> = 기준금리 + <b>신용 스프레드</b> + 비유동성 프리미엄 + 구조화 수수료 − 예상손실</div>
-      <div class="eq-note">대출 금리가 높아도 손실률, 회수기간, 비용을 반영하면 순수익률은 크게 달라진다.</div>
+      <p>
+        APAC의 기회는 이미 사모대출이 시장을 지배하고 있다는 데 있지 않다.
+        은행 중심의 금융구조가 비은행 자본시장으로 이동하는
+        초기 단계라는 데 있다.
+      </p>
     </div>
 
-    <p>사모대출이 성장하는 이유는 은행 대출보다 항상 우월해서가 아니다. 은행이 자본규제 때문에 줄이는 영역, 표준화된 심사로 처리하기 어려운 영역, 만기와 구조를 새로 짜야 하는 영역에서 사모대출의 유연성이 가치가 생기기 때문이다.</p>
-
-    <h2 id="sec-history">전통 사모대출과 부동산 사모대출의 등장</h2>
-
-    <p>전통적인 사모대출의 성장은 글로벌 금융위기 이후 은행 규제가 강화되면서 본격화됐다. Basel III와 Dodd-Frank 등은 은행의 자기자본 요건과 유동성 규제를 강화했고, 은행은 중소·중견기업과 위험자산 대출을 줄였다. 이 과정에서 direct lending, mezzanine, special situations 중심의 사모대출 시장이 성장했다.</p>
-
-    <p>부동산 사모대출은 같은 논리가 실물자산 시장으로 확장된 결과다. 상업용 부동산은 만기가 돌아오면 리파이낸싱이 필요하고, 개발사업은 인허가·토지매입·착공·분양·준공 단계마다 자금이 필요하다. 은행이 낮은 LTV와 엄격한 자본규제를 적용하면 funding gap이 생긴다. 사모대출은 이 공백을 메우되, 담보와 구조로 위험을 가격화한다.</p>
-
-    <h2 id="sec-korea">한국 시장 — PF, CRE, 증권사, PEF</h2>
-
-    <p>한국은 미국처럼 자본시장 기반의 대출 생태계가 오래 발달한 시장은 아니다. 은행과 증권사 중심의 간접금융 의존도가 높고, 부동산 PF는 외부 차입과 보증 구조에 크게 의존해 왔다. 그래서 PF 부실, 증권사 익스포저 축소, 자기자본비율 규제는 곧 비은행 대체자본의 기회로 이어진다.</p>
-
-    <p>첨부 자료는 국내 CRE 대출시장이 2023년 이후 디레버리징과 선별적 유동성 공급 국면에 진입했고, 금융기관의 대출 여력 위축으로 신용공급 공백이 발생하고 있다고 설명한다. 또한 국내 부동산 펀드와 리츠의 자산규모, PF 신규 취급액, 리파이낸싱 수요를 기반으로 CRE 대출펀드의 addressable market을 연간 약 31조~45조원으로 제시한다.</p>
 
     <figure class="table-wrap">
       <table>
         <thead>
-          <tr><th>기회 영역</th><th>추정 규모</th><th>의미</th></tr>
+          <tr>
+            <th>지역</th>
+            <th>부동산 금융 내 사모대출 비중</th>
+            <th>시장 단계</th>
+          </tr>
         </thead>
+
         <tbody>
-          <tr><td>기존 CRE 실물 담보 대출</td><td class="num">연간 약 10조~21조원</td><td>기존 부동산 담보대출의 리파이낸싱과 중·후순위 대출 기회</td></tr>
-          <tr><td>CRE 신규 대출</td><td class="num">연간 약 2.2조~4.3조원</td><td>신규 거래와 신규 펀드·리츠 자산 편입 과정의 대출 수요</td></tr>
-          <tr><td>PF 신규 대출 중 상업용 부동산</td><td class="num">연간 약 19.5조원</td><td>주거 PF 외 상업용 개발사업의 대체금융 수요</td></tr>
-          <tr><td>합계</td><td class="num">연간 약 31조~45조원</td><td>은행권 공급 제약과 리파이낸싱 수요가 만든 잠재 시장</td></tr>
+          <tr>
+            <td>미국</td>
+            <td class="num">약 41%</td>
+            <td>사모대출이 자본구조의 주요 공급자로 정착</td>
+          </tr>
+
+          <tr>
+            <td>유럽</td>
+            <td class="num">약 21%</td>
+            <td>은행 디레버리징 이후 비은행 대출시장이 성장</td>
+          </tr>
+
+          <tr>
+            <td>APAC</td>
+            <td class="num">약 6%</td>
+            <td>은행 중심 구조가 유지되는 초기 성장 단계</td>
+          </tr>
         </tbody>
       </table>
     </figure>
 
-    <p>증권사의 역할도 바뀌고 있다. 과거 증권사는 PF 브릿지론, 채무보증, 단기 유동화로 수익을 냈다. 하지만 부동산 익스포저 규제와 NCR 위험값 개선이 강화되면 직접 보유와 보증의 자본효율성이 낮아진다. 대신 PEF Co-GP, 딜 소싱, LP 네트워크 제공, 운용사와의 협업 구조가 중요해질 수 있다.</p>
 
-    <h2 id="sec-strategy">전략 유형 — Core부터 Distressed까지</h2>
+    <p>
+      APAC 사모대출 시장의 출발점도 미국과 다르다.
+      아시아에서는 1990년대 후반 외환위기 이후
+      distressed debt와 special situations 중심으로 시장이 발전했다.
+      2010년부터 2019년 사이 APAC private credit 펀드레이징의 절반 이상이
+      특수상황과 부실채권 전략에 집중됐다는 분석도 있다.
+    </p>
 
-    <p>부동산 사모대출은 하나의 상품이 아니라 위험 스펙트럼이다. 안정적인 오피스 담보 선순위 대출과 착공 전 브릿지론 후순위 대출은 같은 부동산 대출이라도 완전히 다른 자산이다.</p>
+    <p>
+      최근에는 이러한 시장이 정상기업과 정상자산을 대상으로 하는
+      performing credit로 확대되고 있다.
+      은행이 빠른 실행이나 복잡한 구조를 제공하기 어려운 상황에서
+      사모대출은 core-plus, value-add, transitional 자산에
+      맞춤형 리파이낸싱을 제공한다.
+    </p>
+
+
+    <h3>펀드레이징도 실제로 증가하고 있다</h3>
+
+    <p>
+      2020년부터 2024년까지 APAC 부동산 사모대출 전략이 모집한 자금은
+      약 112억달러로 제시된다.
+      이는 2015년부터 2019년까지의 모집액보다 약 42% 증가한 규모다.
+      2022년 이후 평균 펀드 규모도 1억달러를 넘어섰다.
+    </p>
+
 
     <figure class="table-wrap">
       <table>
         <thead>
-          <tr><th>전략</th><th>대상 자산</th><th>주요 수익원</th><th>핵심 리스크</th></tr>
+          <tr>
+            <th>지역</th>
+            <th>2020년 이후 APAC RE Credit 모집액 비중</th>
+            <th>모집액</th>
+          </tr>
         </thead>
+
         <tbody>
-          <tr><td>Core Debt</td><td>안정화된 오피스, 물류, 임대주택</td><td>선순위 이자, 낮은 손실률</td><td>금리 상승, 임대료 하락, cap rate 확대</td></tr>
-          <tr><td>Core+ Debt</td><td>우량하지만 일부 공실 또는 리파이낸싱 필요 자산</td><td>스프레드, 수수료, 구조화 프리미엄</td><td>임대차 갱신, 가치 재평가</td></tr>
-          <tr><td>Value-add / Transitional</td><td>리모델링, 용도전환, 임대 안정화 전 자산</td><td>높은 금리, step-up, exit fee</td><td>공사비 초과, 임대 지연, 매각 지연</td></tr>
-          <tr><td>Development / PF</td><td>토지, 착공, 분양, 준공 전 사업</td><td>브릿지론, 본PF, C-loan, 후순위 이자</td><td>인허가, 분양률, 책임준공, 시공사 신용</td></tr>
-          <tr><td>Distressed / Special Situations</td><td>NPL, 만기연장 실패, 구조조정 자산</td><td>할인 매입, 담보회수, 구조조정 이익</td><td>소송, 처분기간, 회수율 불확실성</td></tr>
+          <tr>
+            <td>호주</td>
+            <td class="num">41%</td>
+            <td class="num">약 46억달러</td>
+          </tr>
+
+          <tr>
+            <td>인도</td>
+            <td class="num">36%</td>
+            <td class="num">약 41억달러</td>
+          </tr>
+
+          <tr>
+            <td>한국</td>
+            <td class="num">10%</td>
+            <td class="num">약 12억달러</td>
+          </tr>
+
+          <tr>
+            <td>일본</td>
+            <td class="num">5%</td>
+            <td class="num">약 6억달러</td>
+          </tr>
+
+          <tr>
+            <td>기타</td>
+            <td class="num">8%</td>
+            <td class="num">약 9억달러</td>
+          </tr>
         </tbody>
       </table>
+
+      <figcaption class="table-caption">
+        자료: Preqin, CapitaLand Investment.
+        펀드의 지역별 투자초점에 따른 분류다.
+      </figcaption>
     </figure>
 
-    <p>상장 리츠 회사채와 비교하면 차이도 뚜렷하다. 리츠 회사채는 발행사의 전체 신용에 투자하는 성격이 강하고, 거래 가능한 공모채라 유동성이 높다. 반면 사모 부동산 대출은 특정 자산과 특정 구조에 투자하므로 유동성은 낮지만, 담보·계좌·covenant를 더 세밀하게 설계할 수 있다.</p>
 
-    <h2 id="sec-examples">딜 구조 사례 — Senior, Mezzanine, C-loan, NPL</h2>
+    <h3>리파이낸싱이 가장 직접적인 수요다</h3>
 
-    <h3>1) 개발사업 PF의 C-loan</h3>
-    <p>토지비, 공사비, 금융비를 모두 선순위 PF로 조달하기 어려운 경우 후순위 또는 C-loan이 들어간다. 투자자는 높은 금리와 수수료를 받지만, 분양률과 준공 리스크에 노출된다. 따라서 자금관리 계좌, 분양수입 waterfall, 책임준공, 시공사 교체권, LTV·LTC 제한이 중요하다.</p>
+    <p>
+      2022년 이전에 낮은 금리로 실행된 대출이 만기에 도달하면서
+      차주들은 더 높은 금리로 리파이낸싱해야 한다.
+      그러나 은행은 담보가치, 자산군, 차주 신용,
+      자본구조와 사전임대·사전분양 조건을 더 엄격하게 본다.
+    </p>
 
-    <h3>2) 브릿지론과 리파이낸싱</h3>
-    <p>브릿지론은 본PF 이전 단계의 단기 자금이다. 인허가, 토지확보, 본PF 전환 가능성이 핵심이다. 만기가 도래했지만 은행이 연장을 꺼리는 자산은 사모대출펀드가 더 높은 금리로 리파이낸싱을 제공할 수 있다. 이때 중요한 것은 “왜 은행이 빠졌는가”와 “exit가 실제로 가능한가”다.</p>
+    <p>
+      CapitaLand 자료가 인용한 CBRE 추정에 따르면
+      2024년부터 2026년 사이 APAC 부동산 시장의
+      debt funding gap은 약 84억달러로 제시된다.
+      이는 모든 시장의 총 대출기회를 의미하는 것이 아니라,
+      기존 대출과 조달 가능한 은행자금 사이의 부족분을 추정한 수치다.
+    </p>
 
-    <h3>3) Mezzanine 투자 구조</h3>
-    <p>선순위 대출과 에쿼티 사이에 들어가는 구조다. 전체 LTV가 높아지는 만큼 손실 흡수 순위가 불리하지만, 투자자는 더 높은 쿠폰과 exit fee를 요구한다. 담보가치가 조금만 하락해도 메자닌이 먼저 손실을 볼 수 있기 때문에 보수적 감정가와 exit cap rate 가정이 필요하다.</p>
+    <p>
+      사모대출은 이 공백에서 대출금리만 높이는 것이 아니라,
+      이자지급 유예, 만기 조정, cash sweep,
+      추가 담보, 단계별 drawdown 등을 활용해
+      부동산의 실제 운영현금흐름과 상환구조를 맞춘다.
+    </p>
 
-    <h3>4) NPL과 Special Situations</h3>
-    <p>NPL은 이미 부실화된 채권을 할인 매입하는 전략이다. 수익률은 쿠폰보다 회수율과 회수기간에서 나온다. 담보 처분, 채무재조정, 사업 정상화, 신규 자금 투입 여부가 중요하며, 법적 절차와 이해관계자 협상이 핵심 역량이 된다.</p>
 
-    <h2 id="sec-outlook">수익률, 리스크, 향후 전망</h2>
+    <h2 id="sec-country">
+      호주·한국·싱가포르 — 같은 APAC, 다른 대출시장
+    </h2>
 
-    <p>부동산 사모대출의 기대수익률은 선순위와 후순위에 따라 크게 다르다. 안정화된 우량자산 선순위 대출은 은행 대출보다 높은 정도의 spread를 추구한다. 반면 PF 후순위, 메자닌, NPL은 두 자릿수 IRR을 목표로 할 수 있지만, 손실 가능성과 회수기간이 함께 커진다.</p>
+    <p>
+      APAC은 하나의 통합된 신용시장이 아니다.
+      국가마다 은행 의존도, 법률체계, 담보권 실행 방식,
+      이자율 규제, 세금, 외국자본의 접근성이 다르다.
+    </p>
+
+    <p>
+      상대적으로 제도와 법률체계가 투명한 호주, 한국, 싱가포르는
+      APAC 부동산 사모대출의 주요 선진시장으로 분류된다.
+      하지만 실제 투자기회와 대출구조는 서로 다르다.
+    </p>
+
 
     <figure class="table-wrap">
       <table>
         <thead>
-          <tr><th>구분</th><th>일반적 목표수익률 방향</th><th>Downside protection</th><th>주의할 점</th></tr>
+          <tr>
+            <th>구분</th>
+            <th>호주</th>
+            <th>한국</th>
+            <th>싱가포르</th>
+          </tr>
         </thead>
+
         <tbody>
-          <tr><td>우량 선순위 담보대출</td><td>낮음~중간</td><td>낮은 LTV, 1순위 담보, 임대료 계좌</td><td>금리와 담보가치 재평가</td></tr>
-          <tr><td>중·후순위 대출</td><td>중간~높음</td><td>담보 후순위, 주식질권, cash sweep</td><td>담보가치 하락 시 손실 흡수</td></tr>
-          <tr><td>개발 PF / C-loan</td><td>높음</td><td>분양수입 waterfall, 책임준공, 자금관리</td><td>인허가, 공사비, 분양률, 시공사 리스크</td></tr>
-          <tr><td>NPL / Distressed</td><td>높음~매우 높음</td><td>할인 매입, 담보 처분권, 구조조정 권리</td><td>회수기간과 법적 절차 불확실성</td></tr>
+          <tr>
+            <td>일반적 직접대출 만기</td>
+            <td class="num">2~4년</td>
+            <td class="num">2~4년</td>
+            <td class="num">2~4년</td>
+          </tr>
+
+          <tr>
+            <td>일반적 LTV</td>
+            <td class="num">약 60%</td>
+            <td class="num">약 65%</td>
+            <td class="num">약 65%</td>
+          </tr>
+
+          <tr>
+            <td>주요 자산</td>
+            <td>물류, 주거, 리테일, 데이터센터, 학생주택, 오피스, 호텔</td>
+            <td>오피스, 물류, 호텔, 데이터센터, 코리빙</td>
+            <td>오피스, 물류, 코리빙</td>
+          </tr>
+
+          <tr>
+            <td>참고 수익률</td>
+            <td>1순위 모기지 순 IRR 약 8~10%</td>
+            <td>1순위 모기지 순 IRR 약 8~10%</td>
+            <td>은행 1순위 금리 3~5%, 사모대출은 메자닌 중심</td>
+          </tr>
+
+          <tr>
+            <td>주요 기회</td>
+            <td>건설금융, 주거개발, one-stop financing</td>
+            <td>PF, 리파이낸싱, recapitalisation, 가치개선</td>
+            <td>메자닌, 지주회사 대출, 이벤트 드리븐 거래</td>
+          </tr>
+
+          <tr>
+            <td>시장 특징</td>
+            <td>APAC에서 가장 성숙한 사모 부동산 대출시장</td>
+            <td>높은 PF 의존도와 은행 대출축소가 기회 창출</td>
+            <td>현지 은행이 CRE 선순위 대출을 지배</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <figcaption class="table-caption">
+        자료: CapitaLand Investment.
+        수익률은 일반적인 시장 참고치이며,
+        실제 딜의 통화, 헤지비용, 레버리지, 펀드비용에 따라 달라진다.
+      </figcaption>
+    </figure>
+
+
+    <h3>호주</h3>
+
+    <p>
+      호주는 APAC에서 부동산 사모대출이 가장 제도화된 시장으로 평가된다.
+      은행의 건설금융 익스포저가 축소되면서
+      개발사와 중견 차주는 사모대출을 통해
+      더 높은 LTC와 빠른 실행을 확보한다.
+    </p>
+
+    <p>
+      은행이 단순한 재무구조와 안정적인 현금흐름을 선호하는 반면,
+      사모대출은 건설단계, 임대안정화 전 자산,
+      리포지셔닝 사업에 맞춤형 자금을 제공한다.
+    </p>
+
+
+    <h3>한국</h3>
+
+    <p>
+      한국은 개발사업과 부동산 PF 의존도가 높고,
+      은행·보험·증권사 등 전통 금융기관의 정책과 규제가
+      신용공급에 직접적인 영향을 미친다.
+    </p>
+
+    <p>
+      최근에는 PF 대출 축소,
+      부동산 사업성 재평가,
+      증권사 익스포저 관리,
+      자기자본 요구 강화가 동시에 진행되면서
+      리파이낸싱과 자본구조 재편 수요가 확대되고 있다.
+    </p>
+
+
+    <h3>싱가포르</h3>
+
+    <p>
+      싱가포르는 현지 대형은행이 상업용 부동산 선순위 대출을 지배한다.
+      따라서 사모대출은 은행과 직접 경쟁하기보다는
+      메자닌, 지주회사 대출, M&amp;A, 주주구조 재편,
+      가치개선 프로젝트처럼 은행이 전체 자본구조를 지원하기 어려운
+      영역에 집중한다.
+    </p>
+
+
+    <h2 id="sec-korea">
+      한국 시장 — PF, CRE, 증권사, PEF
+    </h2>
+
+    <p>
+      한국은 미국처럼 자본시장 기반 대출 생태계가 오래 발달한 시장은 아니다.
+      은행과 증권사 중심의 간접금융 의존도가 높고,
+      부동산 PF는 외부 차입과 보증구조에 크게 의존해 왔다.
+    </p>
+
+    <p>
+      따라서 PF 부실, 은행·증권사의 익스포저 축소,
+      자기자본 규제 강화는 곧 비은행 대체자본의 기회로 이어질 수 있다.
+      다만 대출공급이 줄었다는 사실만으로 좋은 투자기회가 되는 것은 아니다.
+      사업성이 약한 프로젝트는 사모대출로 대주만 교체한다고 해결되지 않는다.
+    </p>
+
+
+    <h3>국내 CRE 시장의 디레버리징</h3>
+
+    <p>
+      IGIS 자료는 국내 CRE 대출시장이 2023년 이후
+      디레버리징과 선별적 유동성 공급 국면에 진입했다고 설명한다.
+      금융기관은 신규 대출을 줄이고,
+      기존 PF의 정리와 재구조화를 진행하면서
+      부동산 대출 여력을 보수적으로 관리하고 있다.
+    </p>
+
+    <p>
+      동시에 국내 부동산 펀드와 리츠의 자산규모,
+      기존 대출의 만기,
+      PF 신규 취급액을 고려하면
+      리파이낸싱과 중·후순위 자금 수요는 계속 존재한다.
+    </p>
+
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>국내 CRE 대출펀드 기회 영역</th>
+            <th>연간 추정 규모</th>
+            <th>의미</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>기존 CRE 실물 담보 대출</td>
+            <td class="num">약 10조~21조원</td>
+            <td>기존 부동산 대출의 리파이낸싱과 중·후순위 대출</td>
+          </tr>
+
+          <tr>
+            <td>CRE 신규 대출</td>
+            <td class="num">약 2.2조~4.3조원</td>
+            <td>신규 거래와 부동산 펀드·리츠 자산 편입 과정의 자금수요</td>
+          </tr>
+
+          <tr>
+            <td>PF 신규 대출 중 상업용 부동산</td>
+            <td class="num">약 19.5조원</td>
+            <td>주거 PF 외 상업용 개발사업의 대체금융 수요</td>
+          </tr>
+
+          <tr>
+            <td>합계</td>
+            <td class="num">약 31조~45조원</td>
+            <td>은행권 공급 제약과 리파이낸싱 수요가 만든 잠재 시장</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <figcaption class="table-caption">
+        자료: IGIS Asset Management.
+        전체 시장에서 중·후순위 또는 대체금융이 접근할 수 있는
+        잠재 영역을 가정한 추정치다.
+      </figcaption>
+    </figure>
+
+
+    <h3>PF 자기자본 요구 강화</h3>
+
+    <p>
+      국내 PF 제도는 개발사업의 자기자본 투입을 확대하는 방향으로 변화하고 있다.
+      자기자본비율이 높아지면 사업의 안정성은 개선될 수 있지만,
+      개발사 입장에서는 기존보다 더 많은 equity 또는 후순위 자금이 필요하다.
+    </p>
+
+    <p>
+      IGIS 자료는 2030년까지 PF 자기자본비율 20% 기준을 충족하는 과정에서
+      누적 약 11조원의 자본 공백이 발생할 수 있다고 추정한다.
+      이 공백은 단순한 대출수요라기보다
+      equity, preferred equity, mezzanine, 후순위 대출이
+      결합되는 자본구조 재편 수요에 가깝다.
+    </p>
+
+
+    <h3>증권사의 역할 변화</h3>
+
+    <p>
+      과거 증권사는 PF 브릿지론, 채무보증,
+      유동화증권 인수로 부동산 금융 수익을 확대했다.
+      그러나 PF 손실과 건전성 규제 강화 이후
+      직접 익스포저를 확대하는 방식의 자본효율성이 낮아지고 있다.
+    </p>
+
+    <p>
+      증권업 부동산 투자금액 한도와
+      사업단계·LTV별 NCR 위험값이 강화되면
+      브릿지론과 고LTV 대출의 자본부담은 더 커질 수 있다.
+    </p>
+
+    <p>
+      대신 증권사는 딜 소싱, 기관 LP 네트워크,
+      자기자본 일부 투자, Co-GP 참여를 통해
+      부동산 대출펀드 시장에 간접적으로 참여할 수 있다.
+      운용사는 라이선스, 실물자산 관리역량,
+      신용심사와 트랙레코드를 제공한다.
+    </p>
+
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>참여 방식</th>
+            <th>증권사의 역할</th>
+            <th>운용사의 역할</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Co-GP</td>
+            <td>딜 소싱, 기관 영업, PI 투자</td>
+            <td>펀드 운용, 신용심사, 자산관리</td>
+          </tr>
+
+          <tr>
+            <td>프로젝트형 펀드</td>
+            <td>특정 딜 발굴과 투자자 모집</td>
+            <td>펀드 설계와 대출 실행</td>
+          </tr>
+
+          <tr>
+            <td>글로벌 LP 연계</td>
+            <td>국내 딜과 차주 네트워크 제공</td>
+            <td>해외자본 유치, 위험관리, 보고</td>
+          </tr>
+
+          <tr>
+            <td>PI + 펀드</td>
+            <td>초기 자기자본 투자와 신뢰 제공</td>
+            <td>외부 LP 자금과 결합해 규모 확대</td>
+          </tr>
         </tbody>
       </table>
     </figure>
 
-    <p>향후 전망은 금리와 규제의 조합에 달려 있다. 금리가 높게 유지되면 기존 차주의 이자 부담이 커지고 리파이낸싱 수요가 증가한다. 동시에 은행과 증권사가 부동산 익스포저를 줄이면 사모대출펀드의 협상력이 높아진다. 반대로 금리가 빠르게 하락하고 은행 대출 여력이 회복되면 사모대출의 spread는 좁아질 수 있다.</p>
+
+    <h2 id="sec-strategy">
+      전략 유형 — Core부터 Distressed까지
+    </h2>
+
+    <p>
+      부동산 사모대출은 하나의 상품이 아니라 위험 스펙트럼이다.
+      안정화된 오피스 담보 선순위 대출과
+      착공 전 개발사업의 후순위 대출은
+      같은 부동산 대출이어도 전혀 다른 자산이다.
+    </p>
+
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>전략</th>
+            <th>대상 자산</th>
+            <th>주요 수익원</th>
+            <th>핵심 리스크</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Core Debt</td>
+            <td>안정화된 오피스, 물류, 임대주택</td>
+            <td>선순위 이자, 낮은 손실률</td>
+            <td>금리 상승, 임대료 하락, cap rate 확대</td>
+          </tr>
+
+          <tr>
+            <td>Core+ Debt</td>
+            <td>우량하지만 일부 공실 또는 리파이낸싱이 필요한 자산</td>
+            <td>스프레드, 수수료, 구조화 프리미엄</td>
+            <td>임대차 갱신, 가치 재평가</td>
+          </tr>
+
+          <tr>
+            <td>Value-add / Transitional</td>
+            <td>리모델링, 용도전환, 임대 안정화 전 자산</td>
+            <td>높은 금리, step-up, exit fee</td>
+            <td>공사비 초과, 임대 지연, 매각 지연</td>
+          </tr>
+
+          <tr>
+            <td>Development / PF</td>
+            <td>토지, 착공, 분양, 준공 전 사업</td>
+            <td>브릿지론, 본PF, C-loan, 후순위 이자</td>
+            <td>인허가, 분양률, 책임준공, 시공사 신용</td>
+          </tr>
+
+          <tr>
+            <td>Distressed / Special Situations</td>
+            <td>NPL, 만기연장 실패, 구조조정 자산</td>
+            <td>할인 매입, 담보회수, 구조조정 이익</td>
+            <td>소송, 처분기간, 회수율 불확실성</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+
+    <h3>APAC 전략별 시장 참고 수익률</h3>
+
+    <p>
+      CapitaLand 자료는 APAC 부동산 사모대출을
+      Core / Stabilised, Core-plus / Value-add,
+      Distressed / Special Situations로 구분하고
+      각 전략의 일반적인 순 IRR 범위를 제시한다.
+    </p>
+
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>APAC RE Credit 전략</th>
+            <th>시장 참고 순 IRR</th>
+            <th>일반적 상품</th>
+            <th>특징</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Core / Stabilised</td>
+            <td class="num">약 6~8%</td>
+            <td>1순위 모기지, 신디케이트론, 채권</td>
+            <td>안정화 자산, 낮은 변동성, 가장 큰 기관수요</td>
+          </tr>
+
+          <tr>
+            <td>Core-plus / Value-add</td>
+            <td class="num">약 8~15%</td>
+            <td>선순위 모기지, 메자닌, 건설금융</td>
+            <td>비순환적 구조도 가능하며 담보 하방 보호 추구</td>
+          </tr>
+
+          <tr>
+            <td>Distressed / Special Situations</td>
+            <td class="num">약 18~20%</td>
+            <td>부실채권, equity upside가 포함된 대출</td>
+            <td>경기민감도가 높고 담보권 실행을 전제로 하는 경우가 많음</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <figcaption class="table-caption">
+        운용사 자료가 제시한 APAC 시장의 일반적인 범위다.
+        실제 펀드 순수익률은 국가, 통화, 환헤지,
+        대출 레버리지, 운용보수와 손실률에 따라 달라질 수 있다.
+      </figcaption>
+    </figure>
+
+
+    <p>
+      상장 리츠 회사채와 비교하면 차이도 뚜렷하다.
+      리츠 회사채는 발행사의 전체 신용에 투자하는 성격이 강하고,
+      공개시장에서 거래되기 때문에 유동성이 상대적으로 높다.
+    </p>
+
+    <p>
+      반면 사모 부동산 대출은 특정 자산과 특정 구조에 투자한다.
+      유동성은 낮지만 담보권, 계좌 통제, cash sweep,
+      추가차입 제한, 조기상환 수수료 등
+      더 세밀한 조건을 설계할 수 있다.
+    </p>
+
+
+    <h2 id="sec-examples">
+      딜 구조 사례 — Senior, Mezzanine, C-loan, NPL
+    </h2>
+
+
+    <h3>1. 안정화된 오피스 선순위 리파이낸싱</h3>
+
+    <p>
+      임대가 안정된 오피스의 기존 은행대출 만기가 도래했지만,
+      자산가치 재평가로 은행이 기존 대출금 전액을 연장하지 않는 상황을 가정할 수 있다.
+    </p>
+
+    <p>
+      사모대출펀드는 낮은 LTV의 선순위 대출을 제공하되,
+      임대료 계좌 통제, 최소 DSCR,
+      추가차입 제한, 매각대금 우선상환 조건을 설정할 수 있다.
+    </p>
+
+
+    <h3>2. 개발사업 PF의 C-loan</h3>
+
+    <p>
+      토지비, 공사비, 금융비를 모두 선순위 PF로 조달하기 어려운 경우
+      후순위 또는 C-loan이 들어간다.
+      투자자는 높은 금리와 수수료를 받지만
+      분양률과 준공 리스크에 직접 노출된다.
+    </p>
+
+    <p>
+      따라서 자금관리 계좌, 분양수입 waterfall,
+      책임준공, 시공사 교체권, LTV·LTC 제한,
+      대주단의 사업관리 권한이 중요하다.
+    </p>
+
+
+    <h3>3. 브릿지론과 본PF 전환</h3>
+
+    <p>
+      브릿지론은 토지매입과 인허가 단계에서
+      본PF 실행 전까지 필요한 단기 자금이다.
+      핵심은 본PF 전환 가능성이다.
+    </p>
+
+    <p>
+      토지확보율, 인허가 진행률, 시공사,
+      분양가, 예상 사업이익,
+      본PF 대주단의 참여 가능성을 검토해야 한다.
+      단순히 담보가 있다는 이유만으로 안전한 대출이 되지는 않는다.
+    </p>
+
+
+    <h3>4. Mezzanine 투자</h3>
+
+    <p>
+      메자닌은 선순위 대출과 에쿼티 사이에 위치한다.
+      전체 LTV가 높아질수록 손실을 먼저 흡수하지만,
+      투자자는 높은 쿠폰, arrangement fee,
+      exit fee 또는 지분 옵션을 요구할 수 있다.
+    </p>
+
+    <p>
+      담보가치가 조금만 하락해도
+      메자닌의 실질 회수가능 금액이 빠르게 줄어들 수 있으므로
+      보수적인 감정가와 exit cap rate 가정이 중요하다.
+    </p>
+
+
+    <h3>5. NPL과 Special Situations</h3>
+
+    <p>
+      NPL은 이미 연체되거나 부실화된 채권을 할인 매입하는 전략이다.
+      수익률은 쿠폰보다 매입가격, 회수율, 회수기간에서 나온다.
+    </p>
+
+    <p>
+      담보 처분, 채무재조정, 신규 자금 투입,
+      사업 정상화, 법적 절차와 이해관계자 협상이
+      핵심 역량이 된다.
+    </p>
+
+
+    <h2 id="sec-outlook">
+      수익률, 리스크, 향후 전망
+    </h2>
+
+    <p>
+      부동산 사모대출의 기대수익률은
+      선순위와 후순위에 따라 크게 다르다.
+      안정화된 우량자산 선순위 대출은
+      은행 대출보다 높은 수준의 스프레드를 추구한다.
+    </p>
+
+    <p>
+      반면 PF 후순위, 메자닌, NPL은
+      두 자릿수 IRR을 목표로 할 수 있지만
+      손실 가능성과 회수기간도 함께 커진다.
+    </p>
+
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>목표수익률 방향</th>
+            <th>Downside protection</th>
+            <th>주의할 점</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>우량 선순위 담보대출</td>
+            <td>낮음~중간</td>
+            <td>낮은 LTV, 1순위 담보, 임대료 계좌</td>
+            <td>금리와 담보가치 재평가</td>
+          </tr>
+
+          <tr>
+            <td>중·후순위 대출</td>
+            <td>중간~높음</td>
+            <td>주식질권, cash sweep, 추가담보</td>
+            <td>담보가치 하락 시 손실 흡수</td>
+          </tr>
+
+          <tr>
+            <td>개발 PF / C-loan</td>
+            <td>높음</td>
+            <td>분양수입 waterfall, 책임준공, 자금관리</td>
+            <td>인허가, 공사비, 분양률, 시공사 리스크</td>
+          </tr>
+
+          <tr>
+            <td>NPL / Distressed</td>
+            <td>높음~매우 높음</td>
+            <td>할인 매입, 담보 처분권, 구조조정 권리</td>
+            <td>회수기간과 법적 절차 불확실성</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+
+    <h3>금리가 하락하면 사모대출의 기회는 사라질까</h3>
+
+    <p>
+      금리가 하락하면 신규 대출의 기준금리와 전체 쿠폰은 낮아질 수 있다.
+      은행의 대출 여력이 회복되면 우량 선순위 대출의 스프레드도 좁아질 수 있다.
+    </p>
+
+    <p>
+      그러나 부동산 사모대출의 장기 성장 논리는
+      금리 수준만으로 결정되지 않는다.
+      은행의 자본규제, 개발사업의 자기자본 요구,
+      비표준적인 자금구조,
+      자산의 리포지셔닝과 리파이낸싱 수요는
+      금리 사이클 이후에도 남을 수 있다.
+    </p>
+
+
+    <h3>Performing Credit의 확대</h3>
+
+    <p>
+      APAC 사모대출 시장은 과거 distressed와 special situations 중심에서
+      정상자산을 대상으로 하는 performing credit로 확대되고 있다.
+    </p>
+
+    <p>
+      장기적으로는 부실자산을 싸게 매입하는 전략뿐 아니라
+      우량자산의 선순위 대출,
+      value-add 자산의 리파이낸싱,
+      데이터센터·물류·에너지 관련 자산기반금융이
+      더 큰 시장을 형성할 가능성이 있다.
+    </p>
+
+
+    <h3>기관투자자의 자금 유입</h3>
+
+    <p>
+      연기금과 보험사는 장기적인 현금흐름과
+      채권보다 높은 스프레드를 제공하는 자산을 찾는다.
+      사모대출은 변동금리 구조와 담보를 통해
+      전통 채권과 다른 인컴 특성을 제공할 수 있다.
+    </p>
+
+    <p>
+      다만 사모대출은 유동성이 낮고
+      운용사의 평가와 회수역량에 대한 의존도가 높다.
+      펀드의 수익률이 안정적으로 보이는 이유 중 일부는
+      시장가격이 매일 형성되지 않기 때문일 수도 있다.
+    </p>
+
+
+    <h3>시장 성장의 조건</h3>
+
+    <p>
+      부동산 사모대출 시장이 지속적으로 성장하려면
+      단순히 대출금리를 높게 받는 것만으로는 부족하다.
+      반복 가능한 딜 소싱,
+      신용심사 체계,
+      담보권 실행 능력,
+      리파이낸싱과 구조조정 경험,
+      자산관리 역량이 함께 필요하다.
+    </p>
+
+    <p>
+      특히 APAC은 국가마다 법률과 규제가 다르기 때문에
+      미국이나 유럽의 표준화된 대출조건을 그대로 적용하기 어렵다.
+      현지 운용역량과 법률·세무·담보권 구조에 대한 이해가
+      수익률을 좌우한다.
+    </p>
+
 
     <div class="callout">
       <div class="callout-label">투자 판단의 핵심</div>
-      <p>부동산 사모대출에서 가장 중요한 질문은 “금리가 몇 퍼센트인가”가 아니다. <strong>담보가치가 틀렸을 때, exit가 늦어졌을 때, 선순위가 먼저 회수했을 때도 원금이 얼마나 보호되는가</strong>가 핵심이다.</p>
-      <p>좋은 사모대출은 높은 쿠폰이 아니라, 나쁜 시나리오에서도 회수 가능한 구조를 먼저 설계한다.</p>
+
+      <p>
+        부동산 사모대출에서 가장 중요한 질문은
+        “금리가 몇 퍼센트인가”가 아니다.
+      </p>
+
+      <p>
+        <strong>
+          담보가치가 예상보다 낮아졌을 때,
+          exit가 늦어졌을 때,
+          선순위 대출이 먼저 회수했을 때도
+          투자원금이 얼마나 보호되는가가 핵심이다.
+        </strong>
+      </p>
+
+      <p>
+        좋은 사모대출은 높은 쿠폰보다
+        나쁜 시나리오에서도 회수 가능한 구조를 먼저 설계한다.
+      </p>
     </div>
 
-    <h2 id="sec-glossary">핵심 용어</h2>
+
+    <h2 id="sec-glossary">
+      핵심 용어
+    </h2>
+
 
     <h3>LTV</h3>
-    <p>Loan-to-Value의 약자다. 담보가치 대비 대출금 비율이다. LTV가 낮을수록 담보가치 하락에 대한 완충력이 크다.</p>
+
+    <p>
+      Loan-to-Value의 약자다.
+      담보가치 대비 대출금 비율이다.
+      LTV가 낮을수록 담보가치 하락에 대한 완충력이 크다.
+    </p>
+
 
     <h3>LTC</h3>
-    <p>Loan-to-Cost의 약자다. 총 사업비 대비 대출금 비율이다. 개발사업에서는 LTV만큼이나 중요하다.</p>
+
+    <p>
+      Loan-to-Cost의 약자다.
+      총 사업비 대비 대출금 비율이다.
+      개발사업에서는 현재 담보가치보다
+      총 사업비와 자기자본 투입 수준이 중요할 수 있다.
+    </p>
+
 
     <h3>DSCR</h3>
-    <p>Debt Service Coverage Ratio의 약자다. 영업현금흐름이 이자와 원리금 상환액을 얼마나 커버하는지 보여준다.</p>
+
+    <p>
+      Debt Service Coverage Ratio의 약자다.
+      영업현금흐름이 이자와 원리금 상환액을
+      얼마나 커버하는지 보여준다.
+    </p>
+
 
     <h3>Covenant</h3>
-    <p>차주가 지켜야 하는 약정이다. LTV 유지, 최소 DSCR, 추가 차입 제한, 배당 제한, 자산 매각 제한 등이 포함된다.</p>
+
+    <p>
+      차주가 지켜야 하는 약정이다.
+      LTV 유지, 최소 DSCR, 추가차입 제한,
+      배당 제한, 자산 매각 제한 등이 포함될 수 있다.
+    </p>
+
 
     <h3>Cash Sweep</h3>
-    <p>초과 현금흐름을 차주가 마음대로 쓰지 못하고 대출 상환에 우선 사용하도록 하는 장치다.</p>
+
+    <p>
+      초과 현금흐름을 차주가 임의로 사용하지 못하고
+      대출 상환에 우선 사용하도록 하는 장치다.
+    </p>
+
 
     <h3>Waterfall</h3>
-    <p>분양수입, 임대료, 매각대금이 어떤 순서로 배분되는지 정한 구조다. 선순위, 후순위, 에쿼티의 회수 순위를 결정한다.</p>
+
+    <p>
+      분양수입, 임대료, 매각대금이
+      어떤 순서로 배분되는지 정한 구조다.
+      선순위, 후순위, 에쿼티의 회수순위를 결정한다.
+    </p>
+
+
+    <h3>Unitranche</h3>
+
+    <p>
+      선순위와 후순위 대출을 하나의 대출계약으로 통합한 구조다.
+      차주는 하나의 대주와 협상할 수 있고,
+      대주는 내부적으로 위험을 분할할 수 있다.
+    </p>
+
 
     <h3>NPL</h3>
-    <p>Non-Performing Loan, 즉 부실채권이다. 연체 또는 채무불이행 상태의 대출채권을 할인 매입해 회수 또는 정상화를 통해 수익을 추구한다.</p>
+
+    <p>
+      Non-Performing Loan, 즉 부실채권이다.
+      연체 또는 채무불이행 상태의 대출채권을 할인 매입해
+      회수 또는 정상화를 통해 수익을 추구한다.
+    </p>
+
+
+    <h3>Funding Gap</h3>
+
+    <p>
+      차주가 필요로 하는 자금과
+      은행 등 기존 금융기관이 공급할 수 있는 자금 사이의 차이다.
+      담보가치 하락, LTV 축소, 금리 상승,
+      규제강화로 인해 확대될 수 있다.
+    </p>
+
 
     <hr>
 
-    <h2 id="sec-faq">FAQ</h2>
+
+    <h2 id="sec-faq">
+      FAQ
+    </h2>
+
 
     <h3>Q. 부동산 사모대출은 부동산 투자와 같은가?</h3>
-    <p>아니다. 부동산 에쿼티 투자는 자산가치 상승과 임대수익의 잔여 이익을 가져간다. 부동산 사모대출은 원칙적으로 정해진 이자와 수수료를 받는 채권형 투자다. 대신 담보와 구조를 통해 손실을 제한하려 한다.</p>
 
-    <h3>Q. 은행 대출보다 금리가 높으면 무조건 좋은 투자 아닌가?</h3>
-    <p>그렇지 않다. 높은 금리는 높은 위험의 가격일 수 있다. 중요한 것은 금리 수준이 아니라 LTV, 담보 우선순위, exit 가능성, covenant, 차주의 자기자본, 시공사와 임차인의 신용도다.</p>
+    <p>
+      아니다.
+      부동산 에쿼티 투자는 자산가치 상승과 임대수익의
+      잔여 이익을 가져간다.
+      부동산 사모대출은 원칙적으로 정해진 이자와 수수료를 받는
+      채권형 투자다.
+    </p>
+
+    <p>
+      에쿼티보다 상승이익은 제한되지만,
+      담보와 상환우선순위를 통해 손실을 낮추려 한다.
+    </p>
+
+
+    <h3>Q. 은행 대출보다 금리가 높으면 무조건 좋은 투자인가?</h3>
+
+    <p>
+      그렇지 않다.
+      높은 금리는 높은 위험의 가격일 수 있다.
+      중요한 것은 금리 수준뿐 아니라
+      LTV, 담보 우선순위, exit 가능성,
+      covenant, 차주의 자기자본,
+      시공사와 임차인의 신용도다.
+    </p>
+
+
+    <h3>Q. APAC 시장이 미국보다 작은가?</h3>
+
+    <p>
+      전체 신용시장 자체는 매우 크다.
+      다만 부동산 금융에서 사모대출이 차지하는 비중은
+      미국과 유럽보다 낮다.
+    </p>
+
+    <p>
+      따라서 APAC의 투자논리는 시장 규모가 작다는 것이 아니라,
+      은행 중심 금융구조에서 비은행 대출시장으로 이동할
+      여지가 크다는 데 있다.
+    </p>
+
 
     <h3>Q. 한국에서 왜 PF가 중요한가?</h3>
-    <p>국내 부동산 개발은 PF 의존도가 높고, 브릿지론에서 본PF로 넘어가는 과정에서 금융기관의 신용공급이 중요하다. 규제와 부실 정리로 은행·증권사의 공급이 줄면 대체자본이 들어갈 여지가 커진다.</p>
 
-    <h3>Q. 사모대출펀드의 가장 큰 리스크는 무엇인가?</h3>
-    <p>유동성 부족, 담보가치 하락, 리파이낸싱 실패, 공사비 상승, 분양 또는 임대 지연, covenant 위반, 법적 회수기간 장기화다. 특히 후순위 대출은 담보가치 하락에 훨씬 민감하다.</p>
+    <p>
+      국내 부동산 개발은 PF 의존도가 높고,
+      브릿지론에서 본PF로 넘어가는 과정에서
+      금융기관의 신용공급이 중요하다.
+    </p>
 
-    <h3>Q. 향후 가장 유망한 영역은 어디인가?</h3>
-    <p>단기적으로는 리파이낸싱, NPL, special situations, 우량자산 선순위 대출이 중요하다. 중장기적으로는 물류, 데이터센터, 에너지 전환, 인프라성 부동산처럼 현금흐름의 구조가 명확한 자산 기반 신용 전략으로 확장될 가능성이 크다.</p>
+    <p>
+      규제와 부실 정리로 은행·증권사의 공급이 줄면
+      대체자본이 들어갈 여지가 커진다.
+      다만 사업성이 없는 PF까지 사모대출이 해결해 주는 것은 아니다.
+    </p>
 
-    <p class="source-note">자료: IGIS Asset Management, “사모대출시장의 성장과 부동산 대출펀드의 투자 기회”, 2026.06; Preqin Global Report: Private Debt 2025; Knight Frank Horizon, “The Rise of Real Estate Credit in Asia-Pacific”; CBRE, “The Debt Funding Gap for Asia Pacific Real Estate”. 수치는 자료별 기준일과 추정 방법에 따라 달라질 수 있다.</p>
+
+    <h3>Q. 부동산 사모대출의 가장 큰 리스크는 무엇인가?</h3>
+
+    <p>
+      유동성 부족, 담보가치 하락, 리파이낸싱 실패,
+      공사비 상승, 분양 또는 임대 지연,
+      covenant 위반, 법적 회수기간 장기화다.
+    </p>
+
+    <p>
+      특히 후순위 대출은 담보가치가 소폭만 하락해도
+      손실 가능성이 빠르게 높아질 수 있다.
+    </p>
+
+
+    <h3>Q. 앞으로 가장 유망한 영역은 어디인가?</h3>
+
+    <p>
+      단기적으로는 리파이낸싱,
+      NPL, special situations,
+      우량자산 선순위 대출이 중요하다.
+    </p>
+
+    <p>
+      중장기적으로는 물류, 데이터센터,
+      에너지 전환, 인프라성 부동산처럼
+      현금흐름의 구조가 명확한
+      자산기반 신용 전략으로 확장될 가능성이 크다.
+    </p>
+
+
+    <h3>Q. 수익률이 높아도 평가손실이 잘 보이지 않을 수 있나?</h3>
+
+    <p>
+      그렇다.
+      사모대출은 공개시장에서 매일 거래되지 않기 때문에
+      시장가격 변동이 즉시 나타나지 않을 수 있다.
+    </p>
+
+    <p>
+      보고되는 변동성이 낮더라도
+      실제 신용위험과 담보가치 변동이 낮다는 뜻은 아니다.
+      연체, covenant 위반, 감정가 조정,
+      만기연장 여부를 함께 확인해야 한다.
+    </p>
+
+
+    <p class="source-note">
+      주요 자료:
+      IGIS Asset Management,
+      「사모대출시장의 성장과 부동산 대출펀드의 투자 기회」,
+      2026년 6월;
+      CapitaLand Investment,
+      「The Rising Tide of Asia Pacific Real Estate Private Credit」,
+      2025년 8월.
+      각 자료가 인용한 Preqin, JLL, CBRE, PwC, Oxford Economics 등의
+      시장 자료를 함께 참고했다.
+      시장규모, 수익률, LTV와 펀드레이징 수치는
+      자료별 산정범위와 기준일에 따라 달라질 수 있으며,
+      특정 투자상품의 미래수익률을 보장하지 않는다.
+    </p>
 
   </div>
 </article>
 
+
 <footer class="article-foot">
-  <a class="foot-back" href="index.html">← 아카이브로 돌아가기</a>
+
+  <a class="foot-back" href="index.html">
+    ← 아카이브로 돌아가기
+  </a>
+
   <nav class="pager" aria-label="이전/다음 글">
-    <a class="prev disabled" href="#"><span class="pg-dir">← 이전</span><span class="pg-title">—</span></a>
-    <a class="next disabled" href="#"><span class="pg-dir">다음 →</span><span class="pg-title">—</span></a>
+
+    <a class="prev disabled" href="#">
+      <span class="pg-dir">← 이전</span>
+      <span class="pg-title">—</span>
+    </a>
+
+    <a class="next disabled" href="#">
+      <span class="pg-dir">다음 →</span>
+      <span class="pg-title">—</span>
+    </a>
+
   </nav>
+
 </footer>
 
 <script src="assets_report.js"></script>
+
 </body>
 </html>
