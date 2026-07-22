@@ -32,9 +32,9 @@
   }
   .toc a::before { content: none; }
 
-  /* ── 표 안 불릿 리스트: 여백·폰트 크기 정리 (다른 열과 맞춤) ── */
+  /* ── 표 안 불릿 리스트: 여백·폰트 크기·줄간격 정리 (다른 열과 맞춤) ── */
   .prose td ul { margin-bottom: 0; }
-  .prose td li { font-size: 0.86rem; }
+  .prose td li { font-size: 0.86rem; line-height: 1.6; }
   .prose td li:last-child { margin-bottom: 0; }
 
   /* ── callout 라벨 강조 ── */
@@ -129,6 +129,11 @@
 
     <figure class="table-wrap">
       <table>
+        <colgroup>
+          <col style="width:15%">
+          <col style="width:18%">
+          <col>
+        </colgroup>
         <thead>
           <tr><th>사업모델</th><th>주요 투자주체</th><th>목적과 수익구조</th></tr>
         </thead>
