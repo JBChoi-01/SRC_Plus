@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<script type="application/json" id="report-meta">
+{
+  "title": "PF 규제는 위험을 줄였나, 부담의 순서를 바꿨나",
+  "topic": "부동산 PF 규제 변화의 세 층위",
+  "cat": "insights",
+  "date": "260913",
+  "author": "jbchoi",
+  "published": true
+}
+</script>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://srcplus.vercel.app/assets_report.css">
+<style>
+  /* ── PREVIEW 배너 (최종본에서는 제거) ── */
+  .preview-banner {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: #b3261e;
+    color: #fff;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.55rem 1rem;
+  }
+
+  /* ── 목차 라벨 강조 ── */
+  .toc-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+  .toc a::before { content: none; }
+
+  /* ── callout 라벨 강조 ── */
+  .callout-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── 표 보조 설명 ── */
+  .table-caption {
+    margin-top: 0.7rem;
+    font-size: 0.78rem;
+    color: rgba(0, 0, 0, 0.58);
+    line-height: 1.6;
+  }
+
+  /* ── 자료 출처 ── */
+  .source-note {
+    font-size: 0.82rem;
+    color: rgba(0, 0, 0, 0.62);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    line-height: 1.8;
+  }
+
+  /* ── 표 안 줄바꿈 허용 (첫 열이 긴 경우) ── */
+  .prose table.src td:first-child { white-space: normal; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW — 업로드 금지</div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-arrow">←</span>
+      <span><span class="brand-mark">RE &amp; Infra</span> Report Archive</span>
+    </a>
+    <div class="crumb">
+      <span class="dot"></span>
+      <span>Insights</span>
+      <span class="crumb-hide">— 개념·구조 해설</span>
+    </div>
+  </div>
+  <div class="progress"></div>
+</header>
+
+<article class="article">
+  <header class="article-head">
+    <div class="a-eyebrow">
+      <span>Insights</span>
+      <span class="idx">No. 03</span>
+      <span class="bar"></span>
+    </div>
+    <p class="a-topic"></p>
+    <h1 class="a-title"></h1>
+    <p class="a-standfirst"></p>
+    <div class="a-meta">
+      <span>2026 · 09</span>
+    </div>
+  </header>
+
+  <div class="prose">
+
+    <p class="lead">최근 부동산 PF 제도 변화는 ‘PF를 줄이는 규제’로만 읽기 어렵다. 사업성이 낮은 사업장을 선별하고, 금융회사의 익스포저에는 자본·한도·충당금 부담을 높이는 한편, 시공사 책임준공은 사업의 자기자본 수준과 연동해 다시 조정하고 있기 때문이다. 규제의 초점이 대출의 총량에서 위험을 누가 어떤 순서로 부담하는가로 옮겨간 것에 가깝다.</p>
+
+    <div class="callout">
+      <div class="callout-label">핵심 요약</div>
+      <p><strong>최근 변화는 사업장·금융회사·계약이라는 세 층위에서 동시에 진행된다. 각 층위는 위험을 없애는 장치가 아니라, 위험이 인식되는 시점과 그 부담이 귀속되는 주체를 바꾸는 장치에 가깝다.</strong></p>
+      <p>사업장 층위에서는 사업성평가가 담보와 보증 대신 사업의 계속 가능성을 먼저 묻는다. 금융회사 층위에서는 대출·보증·신탁으로 나뉘어 있던 부동산 익스포저가 한도와 자본 규율 안으로 함께 들어온다. 계약 층위에서는 책임준공의 부담 수준이 사업의 자기자본비율과 연동된다.</p>
+      <p>세 층위를 함께 놓고 보면, 규제의 방향은 PF의 중단이 아니라 저자본·고보증 구조의 비용을 올리는 쪽이다. 다만 위험이 실제로 축소됐는지, 다른 주체로 이전됐을 뿐인지는 아직 확정하기 어렵다.</p>
+    </div>
+
+    <nav class="toc" aria-label="목차">
+      <div class="toc-label">목차</div>
+      <ol>
+        <li><a href="#sec-bg">배경 — 대출·보증 중심 규율에서 사업성·자본·계약의 규율로</a></li>
+        <li><a href="#sec-eval">사업성 평가·사후관리 — 사업장 단위의 선별</a></li>
+        <li><a href="#sec-prudential">금융회사 건전성 규제 — 한도·NCR·충당금</a></li>
+        <li><a href="#sec-structure">사업구조·책임준공 개선 — 자기자본과 신용보강의 재조정</a></li>
+        <li><a href="#sec-implication">부동산 개발금융에서의 함의와 판단 유보</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="sec-bg">배경 — 대출·보증 중심 규율에서 사업성·자본·계약의 규율로</h2>
+
+    <p>2020년 전후 PF 규율은 증권사·여전사가 보유한 대출과 채무보증의 규모와 형식을 제한하는 방식이 중심이었다. 여신전문금융업감독규정은 여전사의 PF 대출과 채무보증을 합산한 한도와 충당금 기준을 도입했고, 금융투자업규정은 증권사의 부동산 채무보증 한도를 설정하면서 순자본비율(NCR) 산정의 특례를 축소했다. 규율의 대상은 개별 사업의 내용이 아니라 금융회사가 보유한 익스포저의 총량과 계약 형식이었다.</p>
+
+    <p>2022년 이후 위기가 현실화하자 초기 대응도 유동성 안정에 집중됐다. PF-ABCP 차환 지원, 보증, 정상화 펀드, 대주단협약을 통한 만기연장이 대표적이다. 이 조치들은 단기 자금경색의 확산을 막는 데 초점이 있었고, 개별 사업장이 계속될 수 있는지를 판정하는 기능은 갖고 있지 않았다.</p>
+
+    <p>그러나 만기연장이 반복되고 브릿지론·토지담보대출·책임준공 약정에 숨어 있던 위험이 드러나면서, 2024년부터 규제의 초점은 사업성 평가, 금융회사 건전성, 저자본·고보증 사업구조의 정비로 옮겨갔다. 세 층위는 서로 다른 시점에 도입됐지만, 위험의 인식과 부담 방식을 바꾼다는 점에서는 하나의 흐름으로 볼 수 있다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>층위</th>
+            <th>규율 대상</th>
+            <th>주요 수단</th>
+            <th>부담이 귀속되는 곳</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>사업장</td>
+            <td>개별 PF 사업장, 개발 목적 토지담보대출, 채무보증</td>
+            <td>사업성평가 등급, 재구조화·매각·경공매 등 사후관리</td>
+            <td>사업장의 존속 여부와 정리 시점</td>
+          </tr>
+          <tr>
+            <td>금융회사</td>
+            <td>업권별 부동산 익스포저</td>
+            <td>투자·보증 한도, NCR 위험값, 충당금</td>
+            <td>금융회사의 자본과 손익</td>
+          </tr>
+          <tr>
+            <td>계약</td>
+            <td>책임준공 등 신용보강 약정</td>
+            <td>모범규준, 자기자본비율 연동 채무인수 조정</td>
+            <td>시행사·시공사·대주단 간 분담 비율</td>
+          </tr>
+        </tbody>
+      </table>
+      <figcaption class="table-caption">각 층위는 독립적으로 작동하지 않는다. 사업성평가 결과가 충당금과 한도에 반영되고, 책임준공 조건의 변화는 다시 대주단의 요구 금리와 담보 조건에 영향을 준다.</figcaption>
+    </figure>
+
+    <h2 id="sec-eval">사업성 평가·사후관리 — 사업장 단위의 선별</h2>
+
+    <p>최근 변화의 출발점은 금융회사가 ‘누가 보증했는가’보다 ‘이 사업장이 계속될 수 있는가’를 먼저 보게 한 데 있다. 평가 범위는 PF 대출뿐 아니라 개발 목적의 토지담보대출과 채무보증까지 넓어졌고, 브릿지론과 본PF도 다른 기준으로 평가하게 됐다. 토지 확보와 인허가 단계의 브릿지론은 본PF 전환 가능성이, 착공 이후의 본PF는 공정과 분양 실적이 핵심 변수가 된다.</p>
+
+    <p>이 단계가 약하면 대주단은 공정·인허가·분양의 실질 진척보다 담보와 시공사 보증에 기대어 만기를 연장할 수 있다. 사업성 없는 사업장이 장기간 남아 있을수록 손실은 사라지기보다 금융회사·시공사·신탁사 사이에 이연될 가능성이 커진다. 사업성평가를 사후관리와 연결한 것은 이 이연을 제한하기 위한 장치로 볼 수 있다.</p>
+
+    <div class="callout">
+      <div class="callout-label">금융위원회·금융감독원 및 금융업권 · 2024년 6월부터 적용</div>
+      <p><strong>부동산 PF 사업성평가 기준 개편</strong></p>
+      <p>평가등급을 양호·보통·유의·부실우려의 4단계로 세분화하고, 새마을금고를 포함해 평가 대상기관을 넓혔다. 유의·부실우려 사업장은 재구조화, 자율매각, 상각·경공매 등 사후관리와 연결된다.</p>
+    </div>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>평가등급</th>
+            <th>사업장의 성격</th>
+            <th>연결되는 조치</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>양호</td>
+            <td>사업 진행에 특별한 제약이 확인되지 않는 사업장</td>
+            <td>정상 취급, 본PF 전환 등 통상적 자금공급</td>
+          </tr>
+          <tr>
+            <td>보통</td>
+            <td>일부 지연이나 변수가 있으나 계속 추진이 가능한 사업장</td>
+            <td>정상 취급 범위에서 진행 상황 점검</td>
+          </tr>
+          <tr>
+            <td>유의</td>
+            <td>사업성 저하로 자체 정상화가 불확실한 사업장</td>
+            <td>재구조화 또는 자율매각 추진</td>
+          </tr>
+          <tr>
+            <td>부실우려</td>
+            <td>사업 진행이 어렵다고 판단되는 사업장</td>
+            <td>상각, 경공매 등 정리 절차</td>
+          </tr>
+        </tbody>
+      </table>
+      <figcaption class="table-caption">등급별 성격은 평가 취지에 따른 정리이며, 실제 판정 기준과 조치의 구체적 범위는 업권별 시행 방식에 따라 달라진다.</figcaption>
+    </figure>
+
+    <p>사업성평가 강화가 곧 PF 공급 축소를 뜻하는 것은 아니다. 정상 사업장을 더 빨리 본PF로 전환하고, 추가 자금이 필요한 사업장과 정리해야 할 사업장을 구분하기 위한 기준이기도 하다. 다만 평가 결과가 충당금 적립과 연결되는 구조에서는, 등급 하향이 금융회사의 손익에 직접 반영된다는 점에서 평가 자체가 자금공급의 유인에 영향을 준다.</p>
+
+    <h2 id="sec-prudential">금융회사 건전성 규제 — 한도·NCR·충당금</h2>
+
+    <p>사업장이 선별된 뒤의 질문은 해당 위험을 누가 장부에 남길 수 있는가다. 최근 규제는 보증·대출·신탁처럼 서로 다른 계약 형식 아래 있던 부동산 익스포저를 금융회사별 자본·한도·충당금 규율 안에서 더 직접적으로 보게 만든다.</p>
+
+    <p>이 규율이 충분하지 않으면 금융회사는 실질 위험보다 규제상 유리한 계약 형식으로 익스포저를 쌓을 수 있다. 대출보다 보증의 자본 부담이 낮거나, 신탁 유형에 따라 책임준공 위험이 빠지는 경우가 대표적이다. 동일한 사업의 동일한 위험이 계약 형식에 따라 다르게 계산되면, 규제는 위험의 축소가 아니라 위험의 이동만 유도한다.</p>
+
+    <div class="callout">
+      <div class="callout-label">금융위원회 · 2025.07.01. 시행</div>
+      <p><strong>부동산신탁사 토지신탁 건전성 규제 개선</strong></p>
+      <p>관리형·차입형을 구분하지 않고 신탁사가 책임준공 의무를 부담하면 NCR 위험액에 반영하도록 했다. 토지신탁 총 예상위험액도 자기자본 대비 한도 안에서 단계적으로 제한한다.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">금융위원회 · 2026.07.08.</div>
+      <p><strong>금융투자업규정 개정</strong></p>
+      <p>기존 부동산 채무보증 한도를 대출·펀드까지 포괄하는 총 부동산 투자금액 한도로 바꾸고, PF 충당금 기준과 NCR 위험값을 정비했다.</p>
+    </div>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>시점</th>
+            <th>대상</th>
+            <th>규율 방식의 변화</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2020.09.</td>
+            <td>여전사</td>
+            <td>PF 대출과 채무보증을 합산한 한도 및 충당금 기준 도입</td>
+          </tr>
+          <tr>
+            <td>2020.11.</td>
+            <td>증권사</td>
+            <td>부동산 채무보증 한도 설정, NCR 산정 특례 축소</td>
+          </tr>
+          <tr>
+            <td>2025.07.</td>
+            <td>부동산신탁사</td>
+            <td>신탁 유형과 무관하게 책임준공 의무를 NCR 위험액에 반영, 토지신탁 총 예상위험액 한도화</td>
+          </tr>
+          <tr>
+            <td>2026.07.</td>
+            <td>증권사</td>
+            <td>채무보증 한도를 대출·펀드 포함 총 부동산 투자금액 한도로 확대, PF 충당금·NCR 위험값 정비</td>
+          </tr>
+        </tbody>
+      </table>
+      <figcaption class="table-caption">규율의 단위가 ‘보증’에서 ‘부동산 익스포저 전체’로, 적용 대상이 증권·여전에서 신탁까지 넓어지는 흐름이 확인된다.</figcaption>
+    </figure>
+
+    <p>상호금융·저축은행·여전사에도 별도의 PF 쏠림과 충당금 규율이 적용된다. 다만 업권별 기준과 시행 시점이 다른 만큼, 이를 하나의 ‘중소금융 규제 강화’로 뭉뚱그리기보다 비은행권 PF 위험의 가격이 다시 매겨지고 있다는 수준으로 읽는 편이 정확하다. 같은 사업장이라도 어느 업권이 어떤 형식으로 참여하는지에 따라 요구되는 자본과 충당금이 달라지고, 그 차이가 결국 사업의 조달금리에 반영된다.</p>
+
+    <h2 id="sec-structure">사업구조·책임준공 개선 — 자기자본과 신용보강의 재조정</h2>
+
+    <p>책임준공은 시공사가 준공기한을 지키지 못할 경우 시행사의 PF 대출채무를 인수할 수 있도록 설계된 신용보강 장치다. 낮은 시행사 자기자본 아래에서는 시공사의 신용이 사업성 심사를 대신하는 안전판처럼 쓰여 왔다. 대주단이 시행사의 자기자본이나 사업 자체의 현금흐름보다 시공사의 신용등급을 먼저 보는 구조가 만들어진 것이다.</p>
+
+    <p>이 구조가 과도하면 사업의 하방위험은 시공사에 집중되고, 한 사업장의 지연이 공사중단·채무인수·신규 시공사 투입 문제로 번질 수 있다. 반대로 책임준공을 기계적으로 완화하면 대주단은 더 높은 금리나 추가 담보를 요구할 수 있다. 최근 조치의 핵심은 보증을 없애는 데 있지 않고, 누가 어떤 조건에서 보증을 부담할지를 다시 정하는 데 있다.</p>
+
+    <div class="callout">
+      <div class="callout-label">금융투자협회 · 2025.05.30. 시행</div>
+      <p><strong>책임준공확약 PF대출 관련 업무처리 모범규준</strong></p>
+      <p>시공사 책임이 아닌 지연에는 책임준공기한 연장을 허용하고, 하루 지연 시 대출원리금 전액을 인수하던 관행을 지연일수에 따른 비례적 채무인수 방식으로 조정했다. 사업 자기자본비율이 20% 이상이면 부담 완화를 협의할 수 있고, 40% 이상이면 원칙적으로 채무인수를 면제할 수 있다.</p>
+    </div>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>사업 자기자본비율</th>
+            <th>책임준공 채무인수 부담</th>
+            <th>구조적 의미</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>20% 미만</td>
+            <td>모범규준상 기본 구조가 그대로 적용</td>
+            <td>시공사 신용보강에 대한 의존이 유지됨</td>
+          </tr>
+          <tr>
+            <td>20% 이상</td>
+            <td>부담 완화를 협의할 수 있음</td>
+            <td>자기자본 투입이 시공사 부담의 감면 요인이 됨</td>
+          </tr>
+          <tr>
+            <td>40% 이상</td>
+            <td>원칙적으로 채무인수를 면제할 수 있음</td>
+            <td>사업 자체의 자본이 신용보강을 대체하는 구간</td>
+          </tr>
+        </tbody>
+      </table>
+      <figcaption class="table-caption">완화 여부는 대주단과의 협의를 전제로 하며, 자기자본비율 기준을 충족한다고 해서 자동으로 적용되는 것은 아니다.</figcaption>
+    </figure>
+
+    <p>지연일수 비례 채무인수로의 전환도 부담의 성격을 바꾼다. 종전에는 하루의 지연이 전액 채무인수라는 불연속적 결과로 이어졌기 때문에, 시공사는 실제 손실 규모와 무관한 위험을 지고 대주단은 협상에서 우위를 가졌다. 지연일수에 비례하는 구조에서는 부담이 연속적으로 늘어나고, 시공사 귀책이 아닌 지연은 기한 연장으로 흡수된다.</p>
+
+    <p>이는 시행사에 법정 자기자본 최소비율을 부과한 규제는 아니다. 다만 낮은 자기자본 구조가 금융조건과 책임준공에서 더 큰 비용을 지게 만드는 방향으로 움직였다는 점에서, 시행사·시공사·대주단 사이의 위험분담을 다시 설계한 변화로 볼 수 있다.</p>
+
+    <h2 id="sec-implication">부동산 개발금융에서의 함의와 판단 유보</h2>
+
+    <p>상업용 부동산 개발금융에서 중요한 것은 PF 대출 총량만이 아니다. 사업성 평가와 금융회사 건전성 규제가 강화될수록, 자본력이 낮은 시행사·브릿지론 의존 사업·책임준공 의존도가 높은 사업장은 조달금리, 요구 자기자본, 신용보강 조건에서 먼저 차별화될 가능성이 크다.</p>
+
+    <p>실무적으로는 세 가지가 함께 확인돼야 한다. 첫째, 해당 사업장이 어떤 등급으로 평가되고 그 평가가 대주단의 만기연장 판단에 어떻게 반영되는지다. 둘째, 참여 금융회사가 속한 업권의 한도와 위험값이 해당 계약 형식에 어떻게 적용되는지다. 셋째, 사업의 자기자본비율이 책임준공 조건의 어느 구간에 해당하는지다. 세 가지는 각각 사업의 존속, 조달 가능성, 위험분담 구조에 대응한다.</p>
+
+    <div class="callout">
+      <div class="callout-label">판단 유보가 필요한 지점</div>
+      <p>규제 강화가 확인된 것은 위험의 <strong>인식 시점과 부담 주체</strong>이지, 위험의 총량이 아니다. 사업성평가로 손실이 더 일찍 드러나고, 건전성 규제로 그 손실이 금융회사 자본에 더 직접 반영되며, 책임준공 조정으로 시공사 집중이 완화된 것까지가 현재 확인 가능한 범위다.</p>
+      <p>완화된 시공사 부담이 대주단의 금리·담보 요구로 옮겨갔는지, 비은행권에서 빠진 익스포저가 은행·보험·보증기관으로 이동했는지는 별도의 데이터로 확인해야 한다.</p>
+    </div>
+
+    <p>다만 최근 규제가 위험을 완전히 제거했거나, 위험이 은행·보험·보증기관 등 다른 주체로 이전됐다고 단정할 근거는 아직 부족하다. 이 변화는 PF를 멈추게 하는 규제라기보다, 사업성 없는 저자본·고보증 구조를 이전보다 더 비싸고 더 어려운 방식으로 만들려는 규율에 가깝다. 실제 효과는 향후 시행사 자기자본, 업권별 신규 PF·보증, 충당금과 부실채권의 변화를 함께 확인해야 판단할 수 있다.</p>
+
+    <hr>
+
+    <h2 id="sec-source">참고 자료</h2>
+
+    <figure class="table-wrap">
+      <table class="src">
+        <thead>
+          <tr>
+            <th>출처</th>
+            <th>확인 내용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a class="link" href="https://www.fsc.go.kr/po040200/27205" target="_blank" rel="noopener">금융위원회, 「여신전문금융업감독규정 일부개정규정 고시」, 2020.09.25</a></td>
+            <td>여전사 PF 대출·채무보증 합산한도 및 충당금 기준</td>
+          </tr>
+          <tr>
+            <td><a class="link" href="https://www.fsc.go.kr/po040200/27229?curPage=2&amp;srchCtgry=1" target="_blank" rel="noopener">금융위원회, 「금융투자업규정 일부개정규정 고시」, 2020.11.02</a></td>
+            <td>증권사 부동산 채무보증 한도와 NCR 특례 축소</td>
+          </tr>
+          <tr>
+            <td><a class="link" href="https://www.fsc.go.kr/po010101/82272" target="_blank" rel="noopener">금융위원회, 「부동산 PF의 질서있는 연착륙을 위한 향후 정책 방향」, 2024.05.13</a></td>
+            <td>사업성평가 대상·등급·사후관리 개편 방향, 대주단협약 및 유동성 지원의 위치</td>
+          </tr>
+          <tr>
+            <td><a class="link" href="https://law.kofia.or.kr/service/law/lawFullScreenContent.do?historySeq=1723&amp;seq=376" target="_blank" rel="noopener">금융투자협회, 「책임준공확약 PF대출 관련 업무처리 모범규준」, 2025.05.30 시행</a></td>
+            <td>책임준공 연장사유, 비례적 채무인수, 자기자본비율 20%·40% 기준</td>
+          </tr>
+          <tr>
+            <td><a class="link" href="https://www.fsc.go.kr/po010101/84807" target="_blank" rel="noopener">금융위원회, 「부동산신탁사의 내실있는 토지신탁 운영을 위해 건전성 규제를 개선합니다」, 2025.06.25</a></td>
+            <td>신탁사 NCR 위험액 반영 확대 및 토지신탁 위험한도, 2025.07.01 시행</td>
+          </tr>
+          <tr>
+            <td><a class="link" href="https://www.fsc.go.kr/po040200/87292?srchCtgry=2" target="_blank" rel="noopener">금융위원회, 「금융투자업규정 일부개정고시」, 2026.07.08</a></td>
+            <td>증권사 총 부동산 투자금액 한도, PF 충당금 및 NCR 위험값 정비</td>
+          </tr>
+          <tr>
+            <td><a class="link" href="https://www.kdi.re.kr/research/reportView?pub_no=19189" target="_blank" rel="noopener">KDI, 「부동산 PF 구조개선 방안에 관한 연구」, 2025.12.31</a></td>
+            <td>저자본·고보증 구조라는 해석 틀 및 그 한계</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <p class="source-note">각 제도의 적용 범위와 시행 시점은 업권과 개별 규정에 따라 달라질 수 있다. 본문은 공개된 보도자료와 규정 개정 내용을 기준으로 정리한 것이며, 개별 사업장에 대한 적용 여부를 판단한 것은 아니다.</p>
+
+  </div>
+</article>
+
+<footer class="article-foot">
+  <a class="foot-back" href="index.html">← 아카이브로 돌아가기</a>
+  <nav class="pager" aria-label="이전/다음 글">
+    <a class="prev" href="index.html"><span class="pg-dir">← Insights 목록</span><span class="pg-title">아카이브로</span></a>
+    <a class="next disabled" href="#"><span class="pg-dir">다음 →</span><span class="pg-title">—</span></a>
+  </nav>
+</footer>
+
+<script src="https://srcplus.vercel.app/assets_report.js"></script>
+</body>
+</html>
