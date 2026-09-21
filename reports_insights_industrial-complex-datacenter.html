@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<script type="application/json" id="report-meta">
+{
+  "title": "데이터센터는 왜 산업단지로 가는가 — 구조고도화사업과 임대구조의 법적 관문",
+  "topic": "산업단지 구조고도화사업을 통한 데이터센터 개발 구조와 쟁점",
+  "cat": "insights",
+  "date": "260915",
+  "author": "yhlee",
+  "published": true
+}
+</script>
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>데이터센터는 왜 산업단지로 가는가 — 구조고도화사업과 임대구조의 법적 관문</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets_report.css">
+
+<style>
+  .toc-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+
+  .toc a::before { content: none; }
+
+  .callout-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .formula { background: #2c2e30; }
+  .formula .eq {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    line-height: 1.9;
+  }
+  .formula .eq b { color: var(--accent-bright); font-weight: 700; }
+  .formula .eq-note {
+    color: rgba(237, 237, 236, 0.75);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+  }
+
+  .source-note {
+    font-size: 0.82rem;
+    color: rgba(0, 0, 0, 0.62);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    padding-top: 1rem;
+    margin-top: 2rem;
+  }
+  .source-note a.link { color: var(--accent); }
+
+  .table-caption {
+    margin-top: 0.7rem;
+    font-size: 0.78rem;
+    color: rgba(0, 0, 0, 0.58);
+    line-height: 1.6;
+  }
+
+  /* 절차 흐름도 */
+  .flow { margin: 1.9rem 0; }
+  .flow-steps { list-style: none; margin: 0; padding: 0; }
+  .flow-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+  }
+  .flow-step:last-child { padding-bottom: 0; }
+  .flow-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 1.1rem;
+    transform: translateX(-50%);
+    top: 2.4rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--rule);
+  }
+  .flow-num {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: var(--bg-left);
+    color: var(--accent-bright);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .flow-body { padding-top: 0.2rem; }
+  .flow-title { font-weight: 700; font-size: 1rem; color: var(--ink); margin-bottom: 0.35rem; }
+  .flow-desc { font-size: 0.9rem; color: var(--ink-light); line-height: 1.7; margin: 0; }
+  .flow-desc a.link { color: var(--accent); }
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-arrow">←</span>
+      <span>
+        <span class="brand-mark">RE &amp; Infra</span>
+        Report Archive
+      </span>
+    </a>
+
+    <div class="crumb">
+      <span class="dot"></span>
+      <span>Insights</span>
+      <span class="crumb-hide">— 개념·구조 해설</span>
+    </div>
+  </div>
+
+  <div class="progress"></div>
+</header>
+
+
+<article class="article">
+
+  <header class="article-head">
+
+    <div class="a-eyebrow">
+      <span>Insights</span>
+      <span class="idx">No. —</span>
+      <span class="bar"></span>
+    </div>
+
+    <p class="a-topic"></p>
+
+    <h1 class="a-title"></h1>
+
+    <p class="a-standfirst"></p>
+
+    <div class="a-meta">
+      <span>2026 · 09</span>
+    </div>
+
+  </header>
+
+
+  <div class="prose">
+
+    <p class="lead">
+      데이터센터는 대규모 전력과 넓은 부지를 동시에 요구하는 시설이다.
+      이 두 조건을 갖춘 땅을 새로 조성하는 대신 이미 마련된 곳에서 찾으려는 흐름이
+      산업단지로 향하고 있다. 산업단지는 제조업의 전력 수요를 전제로
+      변전소와 송배전망이 설계된 지역이며, 대규모 획지가 계획적으로 구획돼 있어
+      단일 대형 시설을 앉히기에 유리하다. 다만 산업단지는 입주 업종과 용도, 처분,
+      임대에 이르기까지 산업집적법의 규율을 받는 공간이다. 데이터센터를 이 땅에
+      들이려는 시도는 결국 두 개의 벽에 부딪힌다. 임대사업을 규율하는 제38조의2와,
+      그 벽을 우회하기 위해 동원되는 구조고도화사업이다.
+    </p>
+
+
+    <div class="callout">
+      <div class="callout-label">핵심 요약</div>
+
+      <p>
+        <strong>
+          산업단지는 전력 인프라와 대규모 부지라는 데이터센터의 핵심 조건을
+          이미 충족한 경우가 많다. 그러나 그 땅에서 소유·임대 분리 구조를 세우는 것은
+          산업집적법 제38조의2가 정면으로 제약한다.
+        </strong>
+      </p>
+
+      <p>
+        법제처의 두 법령해석은 그 제약을 두 개의 관문으로 확정했다.
+        하나는 임대업이 관리기본계획상 입주대상업종에 포함되어야 한다는 업종의 관문이고
+        (23-1030), 다른 하나는 임대사업입주계약을 맺기 전에 임대가 아닌 고유사업을
+        먼저 실제로 수행한 상태여야 한다는 순서·실질의 관문이다(23-0076).
+      </p>
+
+      <p>
+        임대만을 목적으로 하는 투자기구(PFV)는 두 관문을 모두 넘기 어렵다.
+        그래서 실무는 구조고도화사업으로 산업시설구역을 지원시설구역으로 전환하는
+        경로로 귀결되며, 그 과정에서 용도구역 변경, 개발이익 재투자, 기부라는
+        또 다른 관문을 통과해야 한다.
+      </p>
+    </div>
+
+
+    <nav class="toc" aria-label="목차">
+      <div class="toc-label">목차</div>
+
+      <ol>
+        <li><a href="#sec-why">산업단지가 데이터센터 입지로 검토되는 이유</a></li>
+        <li><a href="#sec-zone">산업단지의 용도별 구역</a></li>
+        <li><a href="#sec-def">산업단지 구조고도화사업과 데이터센터</a></li>
+        <li><a href="#sec-actor">추진 주체와 절차</a></li>
+        <li><a href="#sec-38">산업단지 임대사업의 문턱 — 제38조의2</a></li>
+        <li><a href="#sec-gate">두 개의 관문을 확정한 법제처 해석</a></li>
+        <li><a href="#sec-zonechange">구조고도화를 통한 용도구역 변경과 처분제한</a></li>
+        <li><a href="#sec-profit">개발이익 재투자와 기부</a></li>
+        <li><a href="#sec-issue">쟁점 — 코람코 가산 IDC와 사후 변경승인</a></li>
+      </ol>
+    </nav>
+
+
+    <h2 id="sec-why">산업단지가 데이터센터 입지로 검토되는 이유</h2>
+
+    <p>
+      데이터센터 개발에서 가장 큰 제약은 전력 확보다. 신규 부지에 대용량 전력을
+      인입하려면 변전소 신설과 송배전망 연결에 상당한 시간과 비용이 든다.
+      산업단지는 제조업의 대규모 전력 수요를 전제로 설계된 곳이므로, 인근에
+      변전소가 다수 배치되어 있고 송배전망이 이미 깔려 있는 경우가 많다.
+      신규로 인입하는 경우보다 수전 여건이 유리하다.
+    </p>
+
+    <p>
+      부지 측면에서도 이점이 있다. 산업단지는 대규모 획지가 계획적으로
+      구획되어 있어 단일 대형 시설을 짓거나 단계적으로 확장하는 데 적합하다.
+      도로와 용수 등 기반 시설이 이미 조성된 경우가 많고, 도심 대비 지가가
+      낮아 사업비를 절감할 수 있다. 전력과 부지라는 데이터센터의 두 핵심 조건이
+      한 곳에서 충족되는 셈이다.
+    </p>
+
+
+    <h2 id="sec-zone">산업단지의 용도별 구역</h2>
+
+    <p>
+      산업단지의 산업용지는 관리기본계획에서 용도별 구역으로 구분되어 관리된다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제33조" target="_blank" rel="noopener">산업집적법 제33조제7항제3호·제8항</a>).
+      데이터센터의 개발 가능 여부는 부지가 어느 구역에 속하는지에 따라 갈리며,
+      이 구분이 뒤에서 다룰 용도구역 변경 문제의 출발점이 된다.
+    </p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구역</th>
+            <th>내용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>산업시설구역</td>
+            <td>산업의 합리적 배치와 공장의 원활한 설립을 통해 기업의 생산활동을 지원하는 구역 (용도별로 세분 가능)</td>
+          </tr>
+          <tr>
+            <td>지원시설구역</td>
+            <td>산업단지에 입주한 업체와 근로자를 지원하는 구역</td>
+          </tr>
+          <tr>
+            <td>공공시설구역</td>
+            <td>입주업체의 원활한 생산활동을 지원하기 위해 공공목적으로 설치된 시설 구역</td>
+          </tr>
+          <tr>
+            <td>녹지구역</td>
+            <td>환경오염 최소화와 근로자의 휴식·운동 등 여가공간 확보를 위해 설치한 구역</td>
+          </tr>
+          <tr>
+            <td>복합구역</td>
+            <td>기업·연구소·대학·기업지원시설 등을 하나의 구역에 집적하는 구역 (입주기업체 건축물 연면적이 구역 내 전체 연면적의 50% 이상이어야 함)</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+
+    <h2 id="sec-def">산업단지 구조고도화사업과 데이터센터</h2>
+
+    <p>
+      구조고도화사업은 산업단지 입주업종의 고부가가치화, 기업지원서비스 강화,
+      산업집적기반시설·산업기반시설 및 공공시설의 유지·보수·개량·확충 등을 통해
+      기업체 유치를 촉진하고 입주기업체의 경쟁력을 높이기 위한 사업이다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제2조" target="_blank" rel="noopener">산업집적법 제2조제11호</a>).
+    </p>
+
+    <p>
+      법은 다음 세 가지 경우에 사업을 인정한다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제45조의2" target="_blank" rel="noopener">산업집적법 제45조의2제1항</a>).
+    </p>
+
+    <ol>
+      <li>
+        산업 여건의 변화나 주변 지역의 도시화 등으로 산업단지의 업종
+        고부가가치화 및 산업재배치가 필요한 경우
+      </li>
+      <li>
+        입주기업체의 경영활동을 지원하기 위해 산업기반시설·산업집적기반시설·
+        공공시설 등의 유지·보수·개량·확충이 필요한 경우
+      </li>
+      <li>
+        그 밖에 입주기업체 지원과 산업단지 경쟁력 강화를 위해 관리권자가
+        필요하다고 인정하는 경우
+      </li>
+    </ol>
+
+    <h3>데이터센터를 가능하게 하는 근거 — 제1호</h3>
+
+    <p>
+      데이터센터 개발은 이 가운데 제1호에 주로 근거한다. 노후한 제조기반을
+      고부가가치 디지털 인프라로 대체하는 것은 '업종의 고부가가치화 및 산업재배치'에
+      해당하기 때문이다. 한국산업단지공단도 데이터센터·지식산업센터 공급을
+      '입주업종 고도화·디지털 전환' 지원 사업으로 분류한다. 특정 사업의 인정 범위를
+      보충적으로 넓힐 때는 관리권자의 인정 사유인 제3호가 함께 활용된다. 제2호는
+      기존 기반시설의 유지·보수·확충에 관한 것이어서 신규 데이터센터 도입의 직접
+      근거로는 제1호가 중심이 된다.
+    </p>
+
+    <h3>2009년 이후 실적과 데이터센터 활용</h3>
+
+    <p>
+      구조고도화사업은 2009년 반월시화·구미·남동·익산 4개 단지의 시범사업으로
+      출발했다. 한국산업단지공단 집계 기준 2024년에는 전국 131개 산업단지에서
+      342개 사업이 진행 중이었고 이 가운데 77개가 완료됐다. 스마트공장 도입과
+      산업단지 디지털 전환 수요가 커진 2019년 이후에는 데이터센터가 새로운 활용
+      유형으로 등장했으며, 같은 집계 기준 데이터센터 12개(단독형 10개, 복합시설형
+      2개)가 선정되어 건립이 진행됐다.
+    </p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>내용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>데이터센터 선정 규모</td>
+            <td>2019년 이후 12개 (단독형 10개 · 복합시설형 2개)</td>
+          </tr>
+          <tr>
+            <td>대표 사례 ①</td>
+            <td>코람코 가산 IDC — 서울디지털국가산업단지(가산)</td>
+          </tr>
+          <tr>
+            <td>대표 사례 ②</td>
+            <td>안산 성곡동 데이터센터 — 시화국가산업단지 고도화의 일환</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="table-caption">
+        한국산업단지공단 집계(2024년) 기준. 데이터센터 12건의 공식 개별 명단은
+        공개되어 있지 않으며, 위 대표 사례는 공개 자료로 확인되는 것을 정리한 것이다.
+      </p>
+    </figure>
+
+
+    <h2 id="sec-actor">추진 주체와 절차</h2>
+
+    <p>
+      사업시행자는 국가·지방자치단체, 관리기관, 그리고 이들과 민간기업이 함께
+      출자해 설립한 법인 등이 될 수 있다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제45조의3" target="_blank" rel="noopener">산업집적법 제45조의3</a>).
+      민간이 참여하는 법인의 경우 국가·지자체 및 관리기관의 출자비율이 20% 이상이어야
+      한다. 사업시행자는 사업의 일부를 대행사업자에게 맡길 수 있으며, 해당 산업단지의
+      토지소유자나 요건을 갖춘 민간 출자 법인이 대행사업자가 된다.
+    </p>
+
+    <h3>데이터센터 개발은 왜 민간 출자 법인이 시행하는가</h3>
+
+    <p>
+      데이터센터 구조고도화사업은 국가·지자체나 관리기관이 직접 시행하기보다
+      민간이 출자한 법인 또는 민간 대행사업자가 맡는 경우가 대부분이다. 이유는
+      크게 두 가지다.
+    </p>
+
+    <p>
+      첫째, 재원의 문제다. 국가 예산만으로 노후 산업단지 전체를 현대화하기는
+      어렵다. 정부는 토지 용도규제 완화 등 제도적 지원으로 민간의 자발적 투자를
+      유도하는 방향을 택했고, 초기 구조고도화사업 단계에서부터 상당수 사업이
+      순수 민간자본으로 추진됐다.
+    </p>
+
+    <p>
+      둘째, 데이터센터는 대규모 자본과 전문 운영 역량을 요구하는 수익형 자산이다.
+      자산운용사가 조성한 펀드가 SPC·PFV 같은 사업시행법인에 투자하고, 그 법인이
+      개발과 소유를 맡는 구조가 자연스럽게 형성된다. 공공이 직접 데이터센터를
+      건설·운영할 유인과 역량은 크지 않다.
+    </p>
+
+    <h3>관리권자</h3>
+
+    <p>
+      관리권자는 산업단지 종류에 따라 나뉜다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제30조" target="_blank" rel="noopener">산업집적법 제30조제1항</a>).
+    </p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>산업단지 종류</th>
+            <th>관리권자</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>국가산업단지</td>
+            <td>산업통상부장관</td>
+          </tr>
+          <tr>
+            <td>일반산업단지 · 도시첨단산업단지</td>
+            <td>시 · 도지사 (시·군·구청장이 지정한 경우 해당 시장·군수·구청장)</td>
+          </tr>
+          <tr>
+            <td>농공단지</td>
+            <td>시장 · 군수 또는 구청장</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="table-caption">
+        관리기관은 관리권자 본인 또는 관리권자로부터 관리업무를 위임·위탁받은
+        지방자치단체의 장, 공단·산업단지관리공단, 입주기업체협의회 등이다
+        (산업집적법 제30조제2항).
+      </p>
+    </figure>
+
+    <h3>사업 절차</h3>
+
+    <p>
+      구조고도화사업은 공모에서 준공 인가까지 단계적으로 진행된다. 각 단계의
+      내용은 다음과 같다.
+    </p>
+
+    <figure class="flow">
+      <ol class="flow-steps">
+        <li class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-body">
+            <div class="flow-title">공모</div>
+            <p class="flow-desc">
+              관리기관(산업단지관리공단)이 구조고도화 대행사업자를 공모한다.
+              대상 부지, 사업 유형, 참가 자격 등이 공고된다.
+            </p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-body">
+            <div class="flow-title">심의 · 사업자 선정</div>
+            <p class="flow-desc">
+              대행사업계획 심의위원회가 제출된 사업계획을 심의하고 대행사업자를
+              선정한다. 사업 목적·계획의 타당성과 개발 방향이 검토된다.
+            </p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-body">
+            <div class="flow-title">대행 계약 체결</div>
+            <p class="flow-desc">
+              선정된 대행사업자가 산업단지관리공단과 구조고도화 대행 계약을
+              체결한다. 사업 범위와 역할, 정산 원칙이 확정된다.
+            </p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-body">
+            <div class="flow-title">사업계획 승인 · 고시</div>
+            <p class="flow-desc">
+              관리권자가 구조고도화사업계획을 승인하고 고시한다. 용도별 구역
+              변경이 따르면 관리기본계획의 변경 사항이 되며, 준공인가를 받은
+              산업단지의 경우 산업단지지정권자 및 관계 행정기관과 협의한다
+              (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제33조" target="_blank" rel="noopener">산업집적법 제33조제3항</a>).
+              이 단계에서 추정 개발이익을 산정한다.
+            </p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-num">5</div>
+          <div class="flow-body">
+            <div class="flow-title">사업 시행</div>
+            <p class="flow-desc">
+              승인된 계획에 따라 시설을 설치·건설한다. 데이터센터의 경우 이
+              단계에서 전력·냉방 등 설비를 갖춘 건축이 이루어진다.
+            </p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-num">6</div>
+          <div class="flow-body">
+            <div class="flow-title">준공 인가 · 개발이익 정산</div>
+            <p class="flow-desc">
+              준공인가를 신청하고 개발이익을 정산한다. 민간이 대행하는 경우
+              개발이익의 25%(수도권 밖 12.5%) 이상을 재투자하고, 용도구역 변경으로
+              발생한 지가상승분은 기부하거나 재투자로 갈음한다.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </figure>
+
+
+    <h2 id="sec-38">산업단지 임대사업의 문턱 — 제38조의2</h2>
+
+    <p>
+      데이터센터를 산업단지에서 운영하려면 소유와 운영을 분리하는 구조가
+      문제가 된다. 산업시설구역등에서 산업용지 및 공장등의 임대사업을 하려는 자는
+      공장설립등의 완료신고 또는 사업개시의 신고를 한 후에 관리기관과 입주계약을
+      체결해야 한다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제38조의2" target="_blank" rel="noopener">산업집적법 제38조의2제1항 본문</a>).
+      즉 임대는 신고 이후에야 가능한 후행 절차로 설계되어 있다.
+    </p>
+
+    <p>
+      이 순서에는 입법 취지가 있다. 제38조의2는 원래 분양가격이 높아 산업단지를
+      분양받기 어려운 영세중소기업이 저렴하게 산업용지·공장을 확보하도록
+      실수요자 중심 공급의 예외로 임대사업을 허용한 규정이다. 그 대신 투기 목적의
+      임대 수요가 실수요자 공급을 잠식하지 못하도록, 임대를 하려면 먼저
+      완료신고 또는 사업개시 신고라는 '사업수행 요건'을 갖추도록 강화했다.
+    </p>
+
+    <p>
+      본문의 예외(단서)는 매우 좁다. 부분가동 공장에 태양에너지 발전사업자에게
+      임대하는 경우, 그리고 한국자산관리공사가 입주기업체의 재무구조 개선을 위해
+      취득한 산업용지·공장을 임대하는 경우 두 가지뿐이다. 임대만을 목적으로 들어오는
+      데이터센터 투자기구는 어느 예외에도 해당하지 않는다.
+    </p>
+
+    <p>
+      데이터센터는 공장이 아니므로 입주계약 → 준공 → 사업개시의 순서를 따른다.
+      사업개시 신고는 단순 수리가 아니라 시설 설치가 사업계획서 내용과 맞는지
+      확인하는 실질 심사다. 문제는 입주계약상 업종이 호스팅업인데 실제 운영이
+      PFV(소유)와 운영사(운영)로 나뉜 임대 구조인 경우다. 이때 관리기관은 PFV가
+      하는 일을 호스팅업이 아니라 임대로 볼 여지가 크고, 그 순간 제38조의2의
+      선행요건이 작동해 사업개시 신고가 막힌다.
+    </p>
+
+
+    <h2 id="sec-gate">두 개의 관문을 확정한 법제처 해석</h2>
+
+    <p>
+      제38조의2가 데이터센터 임대구조를 어떻게 막는지는 추상적 해석이 아니라
+      법제처의 두 법령해석으로 구체화되어 있다. 두 해석은 서로 다른 관문을 각각
+      확정한다.
+    </p>
+
+    <h3>관문 1 — 업종 (법제처 법령해석 23-1030, 2023. 12. 15.)</h3>
+
+    <p>
+      부동산임대업이 관리기본계획상 입주대상업종에 포함되지 않은 산업단지에서,
+      지식산업센터를 공장 용도로 분양받아 고유사업으로 입주계약을 맺고 사업개시
+      신고까지 한 자가 그 사업장을 제3자에게 임대하기 위해 '부동산임대업'으로
+      다시 입주계약을 체결할 수 있는지가 쟁점이었다. 법제처는 체결할 수 없다고
+      회신했다. 임대업으로 입주계약을 맺으려면 부동산임대업이 해당 산업단지의
+      관리기본계획상 입주대상업종에 포함되어 있어야 하기 때문이다.
+    </p>
+
+    <h3>관문 2 — 순서·실질 (법제처 법령해석 23-0076, 2023. 7. 2.)</h3>
+
+    <p>
+      산업시설구역등에서 기존 입주기업체가 아닌 자가 공장등을 양수해 임대사업을
+      하려는 경우, 임대사업입주계약을 체결하기 전에 임대업이 아닌 고유사업에 관한
+      사전입주계약이 이루어진 상태여야 하는지가 쟁점이었다. 법제처는 그래야 한다고
+      회신했다. 제38조의2제1항 본문의 '완료신고 또는 사업개시 신고'는 임대업이
+      아닌 고유사업을 수행하기 위한 신고를 의미하고, 같은 항의 '입주계약'은
+      <a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률시행령/제48조의3" target="_blank" rel="noopener">산업집적법 시행령 제48조의3</a>의
+      임대사업입주계약을 의미한다는 것이다. 이 선행요건은 임대만을 목적으로
+      공장등을 분양받거나 매수하는 것을 방지하기 위한 장치다.
+    </p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>관문 1 — 업종</th>
+            <th>관문 2 — 순서·실질</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>해석례</td>
+            <td>법제처 23-1030 (2023. 12. 15.)</td>
+            <td>법제처 23-0076 (2023. 7. 2.)</td>
+          </tr>
+          <tr>
+            <td>요건</td>
+            <td>부동산임대업이 관리기본계획상 입주대상업종에 포함될 것</td>
+            <td>임대사업입주계약 전에 임대가 아닌 고유사업으로 입주계약·사업개시 신고를 실제로 수행할 것</td>
+          </tr>
+          <tr>
+            <td>근거</td>
+            <td>산업집적법 제33조제7항제2호 · 제38조</td>
+            <td>산업집적법 제38조의2제1항 · 제39조제6항</td>
+          </tr>
+          <tr>
+            <td>PFV 저촉</td>
+            <td>임대업이 입주업종에 없으면 임대 입주계약 자체가 불가</td>
+            <td>임대만 목적이면 고유사업 선행수행 요건을 충족 불가</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <div class="callout">
+      <div class="callout-label">PFV 데이터센터에 적용하면</div>
+      <p>
+        PFV는 명목회사이므로 자기 고유사업을 직접 수행하기 어렵고, 애초에 임대를
+        목적으로 들어온다. 임대업이 입주업종에 있어 관문 1을 통과하더라도, 관문 2가
+        요구하는 '임대 이전에 고유사업을 실제로 수행한 상태'를 만들 수 없다.
+        특히 23-0076은 기존 건물·공장을 매수하는 양수형에 직접 적용된다.
+        <a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제39조" target="_blank" rel="noopener">산업집적법 제39조제6항</a>은
+        임대사업자로부터 임대받거나 다른 입주기업체로부터 양도받으려는 자가 기존
+        입주기업체가 아닌 경우 미리 제38조제1항·제3항의 입주계약을 체결하도록 요구하기
+        때문에, 매입형 데이터센터 개발은 이 선행요건 충족 방안을 설계 단계에서부터
+        반영해야 한다.
+      </p>
+    </div>
+
+
+    <h2 id="sec-zonechange">구조고도화를 통한 용도구역 변경과 처분제한</h2>
+
+    <p>
+      두 관문을 정면으로 통과하기 어렵기 때문에, 실무는 부지의 용도별 구역 자체를
+      바꾸는 경로로 이동한다. 구조고도화계획의 승인·고시를 통해 관리기본계획이
+      변경되고, 산업시설구역을 지원시설구역으로 전환하면 산업시설구역에만 적용되는
+      제38조의2의 임대 규율에서 벗어나 소유·임대 분리 구조를 담을 여지가 생긴다.
+      용도별 구역의 변경은 관리기본계획의 변경 사항이며, 준공인가를 받은 산업단지의
+      경우 관리기관 또는 관리권자가 이를 변경하거나 변경승인하려면 산업단지지정권자
+      및 관계 행정기관의 장과 협의해야 한다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제33조" target="_blank" rel="noopener">산업집적법 제33조제3항</a>).
+    </p>
+
+    <p>
+      처분에도 제약이 있다. 산업시설구역등의 산업용지·공장등을 소유한 입주기업체는
+      완료신고·사업개시 신고 전 또는 신고 후 대통령령으로 정하는 기간(법은 10년
+      이내의 범위에서 위임한다) 이내에 처분하려면 관리기관에 양도해야 한다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제39조" target="_blank" rel="noopener">산업집적법 제39조제1항</a>).
+      관리기관이 직접 매수할 수 없는 경우에는 매수신청을 받아 선정한 다른 기업체나
+      유관기관에 양도한다 (산업집적법 제39조제2항). 데이터센터를 매입형으로
+      개발하려는 경우 이 처분·양도 구조가 자산 이전 설계의 전제가 된다.
+    </p>
+
+
+    <h2 id="sec-profit">개발이익 재투자와 기부</h2>
+
+    <p>
+      용도구역 변경을 동반하는 구조고도화사업에는 개발이익 환수 장치가 따라붙는다.
+      사업시행자와 대행사업자는 구조고도화사업으로 발생한 개발이익의 일부를
+      재투자해야 한다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제45조의6" target="_blank" rel="noopener">산업집적법 제45조의6</a>).
+      다만 국가·지자체 또는 관리기관이 대행 없이 직접 시행하는 경우에는 적용되지
+      않는다. 재투자 비율은 개발이익의 25% 이상이며, 수도권 밖 산업단지에서
+      시행하는 경우에는 12.5% 이상이다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률시행령/제58조의5" target="_blank" rel="noopener">산업집적법 시행령 제58조의5제4항</a>).
+    </p>
+
+    <p>
+      개발이익의 산정방법은 산업집적법 시행령 별표 5로 정해져 있고, 그 구조는
+      다음과 같다.
+    </p>
+
+    <div class="formula">
+      <div class="eq">
+        <b>개발이익</b> = 준공기준지가 − ( 수립기준지가 + 정상지가상승분 + 지출비용 )
+      </div>
+      <div class="eq-note">
+        구조고도화사업계획 승인 시 추정이익 기준으로 산정 · 준공인가 신청 시 정산
+      </div>
+    </div>
+
+    <p>
+      재투자 의무가 걸리는 개발이익은 용도별 구역의 변경 또는 도시·군계획시설의
+      결정으로 발생한 이익으로 한정된다 (산업집적법 시행령 제58조의5제2항).
+      데이터센터 개발이 기대는 산업시설구역 → 지원시설구역 전환이 바로 이 개발이익을
+      발생시키는 사유다. 재투자 대상은 산업기반시설과 공공시설의 유지·보수·개량·확충,
+      산업용지 및 시설의 분양가격 인하, 입주기업체 지원사업 등이다. 재투자는 준공인가일
+      전까지 완료하는 것이 원칙이나, 재투자금이 1천만원을 초과하고 준공인가일 전까지
+      보증서 등을 제출하는 등 요건을 갖추면 준공인가일부터 3년 범위에서 기한을
+      연기하거나 5년 범위에서 분할해 재투자할 수 있다.
+    </p>
+
+    <p>
+      기부는 재투자와 짝을 이루는 또 다른 갈래다. 관리권자는 관리기본계획 변경으로
+      산업용지의 용도별 구역을 변경하는 경우 그 소유자로부터 구역변경에 따른
+      지가상승분을 기부받아 산업단지 기반시설 확충 등 입주기업체 지원용도로 사용할
+      수 있다
+      (<a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률/제33조" target="_blank" rel="noopener">산업집적법 제33조제10항</a>).
+      다만 산업집적법 제45조의6에 따라 개발이익을 재투자하는 경우에는 기부 대상에서
+      제외된다. 즉 지가상승분을 재투자로 돌리면 별도의 기부 의무가 발생하지 않는다.
+      재투자와 기부는 용도구역 변경으로 생긴 이익을 환수하는 두 경로이며, 하나를
+      택하면 다른 하나가 면제되는 관계다.
+    </p>
+
+
+    <h2 id="sec-issue">쟁점 — 코람코 가산 IDC와 사후 변경승인</h2>
+
+    <p>
+      코람코 가산 IDC는 이 구조가 실제로 부딪힌 지점을 보여준다. 최초에는
+      산업시설구역 상태로 승인·진행됐는데, 이후 소유·임대 분리 구조를 합법화하려면
+      부지를 지원시설구역으로 바꾸는 등 계획 내용을 변경해야 했다. 이 과정에서
+      구조고도화사업계획 변경승인 절차가 생략됐고, 사후에 변경승인이 가능한지를
+      둘러싼 형평성 논란이 남았다. 준공인가를 받은 산업단지의 관리기본계획 변경·
+      변경승인은 지정권자 및 관계기관 협의를 거치도록 되어 있어
+      (산업집적법 제33조제3항), 사후 변경의 절차적 적법성이 쟁점으로 부각된다.
+    </p>
+
+    <p>
+      결국 산업단지 내 데이터센터 개발은 입지의 이점과 규제의 제약이 동시에
+      작동하는 영역이다. 전력과 부지라는 물리적 조건은 유리하지만, 임대사업의 두
+      관문, 용도구역 변경, 처분 제한, 개발이익 정산이라는 제도적 관문을 어떻게
+      설계하고 통과하느냐가 사업의 실현 가능성을 결정한다. 법제처의 두 해석은
+      산업시설구역에서 PFV의 순수 임대 구조가 왜 구조적으로 어려운지를 확정했고,
+      실무의 해법이 고유사업 직접수행 구조로의 재설계, 또는 구조고도화를 통한
+      지원시설구역 전환으로 귀결되는 이유도 여기에 있다.
+    </p>
+
+
+    <p class="source-note">
+      근거 법령:
+      <a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률" target="_blank" rel="noopener">산업집적활성화 및 공장설립에 관한 법률</a>
+      제2조제11호(구조고도화사업 정의)·제30조(관리권자·관리기관)·제33조제7항·제8항·제10항(용도별
+      구역·기부)·제38조의2(임대사업)·제39조(처분제한)·제45조의2·제45조의3·제45조의6(구조고도화사업·
+      사업시행자·개발이익 재투자) 및
+      <a class="link" href="https://www.law.go.kr/법령/산업집적활성화및공장설립에관한법률시행령" target="_blank" rel="noopener">동법 시행령</a>
+      제48조의3(임대사업입주계약)·제58조의5(개발이익 재투자, 산정방법 별표 5).
+      법령해석: 법제처 23-0076(2023. 7. 2.)·23-1030(2023. 12. 15.).
+      실적·데이터센터 통계 및 사례: 한국산업단지공단 공개 자료 및 언론 보도.
+      코람코 가산 IDC 관련 서술은 공개된 사례 정리를 바탕으로 재구성했으며, 개별
+      사업의 적용 여부는 대상 산업단지의 관리기본계획과 관리권자의 판단에 따라
+      달라질 수 있다.
+    </p>
+
+  </div>
+</article>
+
+
+<footer class="article-foot">
+
+  <a class="foot-back" href="index.html">
+    ← 아카이브로 돌아가기
+  </a>
+
+  <nav class="pager" aria-label="이전/다음 글">
+
+    <a class="prev disabled" href="#">
+      <span class="pg-dir">← 이전</span>
+      <span class="pg-title">—</span>
+    </a>
+
+    <a class="next disabled" href="#">
+      <span class="pg-dir">다음 →</span>
+      <span class="pg-title">—</span>
+    </a>
+
+  </nav>
+
+</footer>
+
+<script src="assets_report.js"></script>
+
+</body>
+</html>
