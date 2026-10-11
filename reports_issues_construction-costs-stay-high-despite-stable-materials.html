@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<script type="application/json" id="report-meta">
+{
+  "title": "자재값은 안정됐다는데, 왜 공사비는 안 떨어질까",
+  "topic": "건설공사비",
+  "cat": "issues",
+  "date": "261009",
+  "author": "tmdqor4",
+  "published": true
+}
+</script>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets_report.css">
+<style>
+.toc-label { font-family:var(--font-sans); font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:none; color:var(--ink); margin-bottom:.7rem; }
+.toc a::before { content:none; }
+.keybox { background:#e8ebed; border-left:4px solid #667b90; padding:1rem 1.2rem; margin:1.5rem 0; }
+.keybox h3 { margin:0 0 .65rem; font-size:1.05rem; color:#18191a; }
+.keybox p:last-child, .keybox ul:last-child { margin-bottom:0; }
+.callout-label { font-family:var(--font-sans); font-size:.78rem; font-weight:700; letter-spacing:.04em; text-transform:none; color:var(--accent); margin-bottom:.6rem; }
+.article { background:#f1f2f2 !important; }
+.article .prose, .article .prose p, .article .prose li, .article .prose td, .article .prose th, .article .prose h2, .article .prose h3 { color:#18191a !important; }
+.article .prose .formula, .article .prose .formula * { color:#ededec !important; }
+.article .prose .formula b { color:#9fb0c2 !important; }
+
+.data-figure { margin:1.5rem 0 1.8rem; }
+.chart-head { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin:.2rem 0 .65rem; color:#18191a; }
+.chart-head strong { font-weight:700; }
+.chart-head span, .data-figure figcaption { color:#66686b; font-size:.86rem; }
+.index-svg { display:block; width:100%; height:auto; overflow:visible; }
+.index-svg.mobile-index-svg { display:none; }
+.index-svg .gridline { stroke:#d8d9d8; stroke-width:1; }
+.index-svg .index-line { fill:none; stroke:#667b90; stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+.index-svg .axis-label, .index-svg .axis-title, .index-svg .endpoint-label, .index-svg .endpoint-start { font-family:'Noto Sans KR',sans-serif; fill:#66686b; font-size:12px; }
+.index-svg .axis-title { fill:#18191a; }
+.index-svg .year-tick { stroke:#a9abad; stroke-width:1; }
+.index-svg .index-point { fill:#667b90; }
+.index-svg .endpoint-label { fill:#18191a; font-weight:700; }
+.index-svg .endpoint-start { font-size:11px; }
+.material-figure table { width:100%; border-collapse:collapse; }
+.material-figure th, .material-figure td { padding:.62rem .72rem; text-align:left; border-bottom:1px solid #d8d9d8; }
+.material-figure th { color:#66686b; font-weight:700; }
+.material-figure td.up { color:#38556e; font-weight:700; font-variant-numeric:tabular-nums; }
+.material-figure td.down { color:#8b4940; font-weight:700; font-variant-numeric:tabular-nums; }
+.ratebar { display:block; height:5px; margin-top:.25rem; background:#e4e6e6; }
+.ratebar i { display:block; height:100%; background:#667b90; }
+td.down .ratebar i { background:#a7645b; }
+.data-figure figcaption { margin-top:.6rem; line-height:1.55; }
+@media(max-width:520px) { .chart-head { display:block; } .chart-head span { display:block; } .material-figure th,.material-figure td { padding:.5rem .38rem; } .index-svg .axis-label { font-size:13px; } .index-svg.desktop-index-svg { display:none; } .index-svg.mobile-index-svg { display:block; } }
+
+.cost-chain { display:flex; align-items:stretch; gap:.55rem; margin:1.4rem 0 2rem; padding:1rem; background:#e8ebed; border:1px solid #d8d9d8; }
+.cost-step { flex:1; min-width:0; padding:.65rem .75rem; background:#f6f6f5; border-top:3px solid #667b90; }
+.cost-step span { display:block; color:#667b90; font:500 .7rem/1.4 'IBM Plex Mono',monospace; }
+.cost-step strong { display:block; margin:.22rem 0; font-size:.92rem; color:#18191a; }
+.cost-step small { display:block; color:#66686b; font-size:.78rem; line-height:1.45; }
+.cost-arrow { align-self:center; color:#667b90; font-size:1.1rem; }
+.zeb-table { width:100%; border-collapse:collapse; }
+.zeb-table th,.zeb-table td { padding:.62rem .7rem; border-bottom:1px solid #d8d9d8; text-align:left; vertical-align:top; }
+.zeb-table th { color:#66686b; font-size:.82rem; }
+.zeb-note { margin-top:.65rem; padding:.75rem .9rem; background:#f1f2f2; border-left:3px solid #667b90; font-size:.9rem; }
+@media(max-width:560px) { .cost-chain { gap:.3rem; padding:.65rem; } .cost-step { padding:.55rem .42rem; } .cost-step strong { font-size:.8rem; } .cost-step small { font-size:.7rem; } .cost-arrow { font-size:.85rem; } }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-arrow">←</span><span><span class="brand-mark">RE &amp; Infra</span> Report Archive</span></a>
+    <div class="crumb"><span class="dot"></span><span>Issues</span><span class="crumb-hide">— 시장·정책·딜 이슈</span></div>
+  </div>
+  <div class="progress"></div>
+</header>
+<article class="article">
+  <header class="article-head">
+    <div class="a-eyebrow"><span>Issues</span><span class="idx">01</span><span class="bar"></span></div>
+    <p class="a-topic"></p>
+    <h1 class="a-title"></h1>
+    <p class="a-standfirst"></p>
+    <div class="a-meta"><span>2026 · 10</span></div>
+  </header>
+  <div class="prose">
+    <p class="lead">“자재값이 올라서 공사비가 비싸졌다”는 설명은 출발점으로는 맞지만, 지금의 상황을 모두 설명하지는 못한다. 코로나19 이후 공급망 교란과 에너지 가격 급등이 자재비를 끌어올렸고, 전쟁발 충격도 더해졌다. 그러나 일부 자재 가격이 안정되거나 내려온 뒤에도 공사비 지수는 상승을 이어간다. 급등 이후에는 임금·노무량·안전관리·공기와 설계 조건이 비용을 밀어 올린다.</p>
+    <nav class="toc" aria-label="목차">
+      <div class="toc-label">목차</div>
+      <ol>
+        <li><a href="#cost-structure">먼저, 공사비는 무엇을 더한 값인가</a></li>
+        <li><a href="#materials">자재값은 안정됐지만, 오른 가격이 되돌아간 것은 아니다</a></li>
+        <li><a href="#labor">노임단가와 노무량이 함께 인건비를 만든다</a></li>
+        <li><a href="#safety">안전은 법정 계상비와 현장 운영비로 잡힌다</a></li>
+        <li><a href="#other">설계 변경과 공기 지연은 비용을 증폭한다</a></li>
+        <li><a href="#policy">정부 안정화 대책은 공급 병목과 공공조달을 겨냥했다</a></li>
+        <li><a href="#market">상업용 부동산 개발 사업과 정비사업에 미치는 영향</a></li>
+        <li><a href="#outlook">하락보다 상승률 둔화가 현실적인 전망이다</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="cost-structure">먼저, 공사비는 무엇을 더한 값인가</h2>
+    <p>도급 공사비는 자재·인건비 외에 현장 운영비와 계약·세금 항목을 더한 값이다. 표기 방식은 계약마다 다르지만 보통 다음처럼 나눈다.</p>
+    <figure class="table-wrap">
+      <table>
+        <thead><tr><th>구성 항목</th><th>포함되는 비용</th><th>변동 요인</th></tr></thead>
+        <tbody>
+          <tr><td>재료비</td><td>철근·시멘트·레미콘 등 자재와 반입</td><td>원자재·에너지·운송·수급</td></tr>
+          <tr><td>노무비</td><td>시공에 투입된 인력의 임금</td><td>노임단가와 투입 인원·시간</td></tr>
+          <tr><td>경비</td><td>장비·가설·운반·현장 운영 비용</td><td>공기, 장비 대기, 현장 조건</td></tr>
+          <tr><td>간접비·기타</td><td>현장·본사 관리, 이윤·세금 등</td><td>공사 기간, 계약 방식, 산정 기준</td></tr>
+        </tbody>
+      </table>
+    </figure>
+    <h2 id="materials">자재값은 안정됐지만, 오른 가격이 되돌아간 것은 아니다</h2>
+    <p>자재 가격은 품목별로 다르다. 유연탄은 2022년 3월 톤당 246.02달러에서 2024년 7월 90.02달러로 내렸지만, 시멘트 가격은 2020년 7월 7만5천 원에서 2024년 7월 11만2천 원으로 올랐다. 연료 원료 하락이 생산·운송·전력·임금과 공급계약을 반영하는 완제품 가격에 같은 폭으로 전해지지는 않는다.</p>
+    <p>2026년 5월 원자료가 제시한 품목별 전년동월비는 PVC관 +49.7%, 아스콘 +28.8%, 철근 +6.1%, 시멘트 -1.0%, 레미콘 -0.1%다. 자재값은 한 방향으로 움직이지 않았다. 한국건설기술연구원의 2026년 7월 종합지수는 138.59(2020년=100)로 전월보다 0.18%, 전년 동월보다 5.78% 상승했다.</p>
+
+    <figure class="table-wrap data-figure material-figure">
+      <div class="chart-head"><strong>품목별 가격 변동은 엇갈렸다</strong><span>막대는 5월 전년동월비 절대값, 최대 49.7%</span></div>
+      <table>
+        <thead><tr><th>품목</th><th>2026년 5월 전년동월비</th><th>2026년 7월 전월비</th></tr></thead>
+        <tbody>
+          <tr><td>PVC관</td><td class="up"><strong>+49.7%</strong><span class="ratebar"><i style="width:100%"></i></span></td><td>—</td></tr>
+          <tr><td>아스콘</td><td class="up"><strong>+28.8%</strong><span class="ratebar"><i style="width:57.9%"></i></span></td><td class="down">아스팔트 -14.5%</td></tr>
+          <tr><td>철근</td><td class="up"><strong>+6.1%</strong><span class="ratebar"><i style="width:12.3%"></i></span></td><td>—</td></tr>
+          <tr><td>시멘트</td><td class="down"><strong>-1.0%</strong><span class="ratebar"><i style="width:2.0%"></i></span></td><td>—</td></tr>
+          <tr><td>레미콘</td><td class="down"><strong>-0.1%</strong><span class="ratebar"><i style="width:0.2%"></i></span></td><td>—</td></tr>
+          <tr><td>PVC수지</td><td>—</td><td class="down">-2.9%</td></tr>
+        </tbody>
+      </table>
+      <figcaption>5월 품목별 수치는 제공 원문에 기재된 전년동월비다. 7월 값은 한국건설기술연구원 상세 품목의 전월비이며, 아스콘과 아스팔트·PVC관과 PVC수지는 품목 정의도 다르다. 기간과 품목이 다른 수치를 직접 이어 붙여 추세로 읽어서는 안 된다. 출처: 제공 원문(2026년 5월 품목별 수치); 한국건설기술연구원, 「2026년 7월 건설공사비지수 동향」, pp. 1–2.</figcaption>
+    </figure>
+    <p>자재가격은 한 방향으로 움직이지 않았다. 7월 전월비로 아스팔트는 14.5%, PVC수지는 2.9% 하락했고, 5월 전년동월비 시멘트·레미콘도 1.0%, 0.1% 내렸다. 반면 5월 자료에서 PVC관과 아스콘은 각각 49.7%, 28.8% 올랐다. 시점·기준·계열이 달라 직접 비교는 어렵지만 일부 자재는 내리고 다른 품목은 올랐다. 공사비 상승이 모든 자재의 동반 상승 때문은 아니다. 자재값이 내린 품목도 있지만, 공사비 전체가 함께 내려간 것은 아니다.</p>
+
+
+    <h2 id="labor">노임단가와 노무량이 함께 인건비를 만든다</h2>
+    <p>인건비는 노임단가만으로 정해지지 않는다. 같은 공사를 끝내기 위해 투입한 사람 수와 시간이 늘면 노임단가 상승률이 더디더라도 총노무비는 커진다. 개념적으로 총노무비는 노임단가와 투입 노무량의 곱이다.</p>
+    <div class="formula"><div class="eq">총노무비 = <b>노임단가 × 투입 노무량</b></div><div class="eq-note">단가가 완만하게 올라가도 작업시간과 인력 투입이 늘면 총액은 증가한다.</div></div>
+    <p>한국부동산연구원의 건축비 분석은 이 차이를 보여준다. 2016~2024년 전체로 보면 여러 대표 건물 유형에서 재료비 상승률이 인건비보다 컸다. 하지만 급등기인 2020~2024년으로 범위를 좁히면 일부 자재 가격이 2022년 하반기 이후 안정된 반면 임금은 계속 올라, 여러 구조에서 인건비 상승률이 재료비 상승률을 웃돌았다. 단독주택 벽돌조의 한 분석 사례에서는 직접비 증가 중 인건비 기여도가 35.2%, 재료비 기여도가 21.7%로 추산됐다. 특정 구조·기간의 사례여서 업계 평균은 아니다. 다만 해당 유형의 직접비 증가에서 노무비가 차지한 몫이 적지 않았음을 보여주는 참고값이다.</p>
+    <div class="keybox"><h3>같은 물량에 더 많은 인력·시간이 드는 조건</h3><ul>
+      <li><strong>주 52시간제:</strong> 제도 자체보다 교대·공정계획이 맞지 않을 때 인계·대기와 추가 인력이 생긴다.</li>
+      <li><strong>고령화·숙련공 감소:</strong> 인력 수급과 신규 인력의 교육·적응에 시간이 들고, 숙련도 차이는 재작업을 부를 수 있다.</li>
+      <li><strong>외국인 근로자와 성능 요구:</strong> 국적이 아니라 숙련 배치·언어·안전교육이 관건이다. 단열·창호·내진·소방·ZEB 기준은 설치·시험 품을 늘린다.</li>
+    </ul></div>
+    <p>한국생산성본부 시간당 노동생산성 지수는 2017~2022년 27.6% 하락했다(2020년=100). 현장별 편차는 있지만 단가와 함께 노무량을 봐야 한다. 주 52시간제에 맞춘 교대, 고령화·숙련공 부족에 따른 교육과 인계, 신규 인력의 현장 적응, 공정 간섭과 재작업은 작업시간을 늘릴 수 있다. 외국인 근로자 증가 자체가 원인은 아니며, 숙련도·배치·언어와 안전교육 여건이 중요하다. 단열·창호·내진·소방 및 ZEB 설비도 설치·시험·검측 품을 늘린다. 인건비 상승의 핵심은 노임단가뿐 아니라 생산성 저하로 커진 노무량이다.</p>
+    <div class="keybox zeb-box"><h3>성능 기준 의무화는 공사비의 하한을 높인다</h3>
+      <p>단열·창호·내진·소방·ZEB 기준은 설비와 검측 품을 늘려 비용의 하한을 높인다. 상업용 자산에는 LEED 인증이나 투자자·대주단의 ESG 요구도 설계조건이 될 수 있다. LEED는 건물·프로젝트 인증이고, GRESB는 부동산 회사·펀드의 ESG 성과를 비교하는 투자자 벤치마크다. 법정 의무는 아니지만, 목표 등급에 따라 에너지·자재 기준, 시운전·자료 검증이 설계·공사·운영비에 더해진다.</p>
+      <div class="cost-chain zeb-chain" aria-label="성능 기준 강화에서 건설 원가까지">
+        <div class="cost-step"><span>기준 상향</span><strong>에너지·안전 성능</strong></div><div class="cost-arrow" aria-hidden="true">→</div>
+        <div class="cost-step"><span>현장 반영</span><strong>외피·설비·검측</strong></div><div class="cost-arrow" aria-hidden="true">→</div>
+        <div class="cost-step cost-step-last"><span>비용 효과</span><strong>자재·노무량 증가</strong></div>
+      </div>
+      <figure class="table-wrap"><table class="zeb-table"><thead><tr><th>적용 시점</th><th>대상</th><th>적용 기준</th></tr></thead><tbody>
+        <tr><td>2025.6.30</td><td>민간 30세대 이상 공동주택</td><td>친환경주택 건설기준에 따른 ZEB 5등급 수준 에너지성능</td></tr>
+        <tr><td>2025.12.31</td><td>민간 일반건축물 1,000㎡ 이상</td><td>에너지절약설계기준을 통해 ZEB 5등급 수준 에너지성능 적용</td></tr>
+      </tbody></table><figcaption>두 일정 모두 ZEB 5등급 수준의 에너지성능 기준 적용이다. ZEB 인증서 의무 취득 일정과는 구분된다.</figcaption></figure>
+      <p class="zeb-note"><strong>구분:</strong> 2025년 민간 적용은 ZEB 인증서를 일괄 의무화한 것이 아니라, 관련 법정 설계기준을 강화해 ZEB 5등급 수준의 에너지성능을 요구하는 조치다. 공동주택과 일반건축물은 각각 다른 기준에 따라 적용된다. LEED·GRESB는 별도의 자발적 인증·평가 체계다.</p>
+    </div>
+
+    <h2 id="safety">안전은 법정 계상비와 현장 운영비로 잡힌다</h2>
+    <div class="keybox law-box"><h3>중대재해처벌법은 무엇을 요구하나</h3><ul><li><strong>시행:</strong> 2022년 1월 27일 50인 이상 사업장과 공사금액 50억 원 이상 건설공사부터 적용했고, 2024년 1월 27일부터 5~49인 사업장으로 확대됐다. 상시근로자 5명 미만 사업장은 중대산업재해 조항의 적용 대상에서 제외된다.</li><li><strong>의무:</strong> 사업주·경영책임자 등은 안전보건 목표와 전담 조직·인력·예산을 마련하고, 유해·위험요인을 확인·개선하는 절차가 작동하는지 점검해야 한다. 사고가 났다는 사실만으로 자동 처벌되는 것이 아니라 법정 의무 위반 등 구성요건을 따진다.</li></ul></div><p>이 법이 공사비에 정액을 더하는 것은 아니다. 다만 위험성 평가·작업허가·점검·교육·기록, 협력업체 관리, 전담인력과 스마트 장비 투입이 반복적인 현장 운영비가 된다. 현장 기간 내내 필요한 인력·장비는 준고정비처럼 작동하며, 소규모 사업장은 비용을 분산하기 어려워 부담률이 커질 수 있다.</p>
+    <p>산업안전보건관리비는 안전비 일부를 법정 산식으로 견적에 반영하는 항목이다. 고용노동부는 2025년 건설업 계상 요율을 평균 19% 올리고, 2천만 원 이상 연간 단가계약 공사도 계상 대상에 포함했다. 스마트 안전장비 사용 인정액은 2025년 70%에서 2026년 100%로, 총액 내 한도는 10%에서 20%로 확대됐다. 같은 공사 종류·대상액이면 산식상 반영액이 늘지만 실제 현장 안전비가 모두 19% 오른 것은 아니다. 이 법정 계상비와 중대재해처벌법상 관리체계 의무는 구분해야 한다.</p>
+    <p>사고 뒤에는 조사·작업중지 외에도 유사 공정 점검, 안전교육, 협력업체 대기와 장비 유휴가 생길 수 있다. 신안산선 사고 뒤 타 철도 현장까지 점검과 작업중지가 확대된 사례처럼, 여파가 번지면 공기 지연 비용이 계약상 간접비·대기비·금융비용으로 이어질 수 있다.</p>
+
+    <h2 id="other">설계 변경과 공기 지연은 비용을 증폭한다</h2>
+    <p>설계 변경, 인허가 조정, 지장물 발견, 자재 지연과 공정 간섭은 물량·작업순서를 바꾼다. 공기가 늘면 관리인력·가설·장비와 금융비용도 더 오래 든다. 증액을 검토할 때 단가, 물량, 기간과 변경 책임을 나눠야 한다.</p>
+
+    <h2 id="policy">정부 안정화 대책은 공급 병목과 공공조달을 겨냥했다</h2>
+    <p>정부는 2024년 10월 ‘건설공사비 안정화 방안’을 발표했다. 가격을 일괄 인하하기보다 공급 병목과 인력·조달 제도를 손보는 접근이다.</p>
+    <div class="keybox policy-box"><h3>건설공사비 안정화 방안 핵심</h3>
+      <p><strong>목표:</strong> 2026년까지 연간 공사비 상승률 2% 안팎 관리, 장기적으로 연 4% 내외 추세 복귀.</p>
+      <ul>
+        <li><strong>자재:</strong> 해외 시멘트 수입 지원, 골재 공급원 확대, 불공정행위 점검.</li>
+        <li><strong>인력·생산방식:</strong> 숙련기능인 양성·우대, 외국인력 활용 개선, 모듈러·스마트건설과 장비 활용 확대.</li>
+        <li><strong>공공조달:</strong> 관급자재 납기·품질 개선, 일반관리비·물가 반영·낙찰률 등 공사비 산정 기준 보완.</li>
+      </ul>
+    </div>
+    <p>업계는 공급처 확대와 조달 개선에 시간이 걸리고 수급 협의가 가격 조율로 변질될 수 있다고 우려했다. 공공 원가 기준도 민간 개발·정비사업 계약에 직접 적용되지 않는다.</p>
+    <figure class="data-figure index-figure">
+      <div class="chart-head"><strong>대책 발표 뒤 상승률은 한때 낮아졌지만, 정책 효과는 분리하기 어렵다</strong><span>2020.1–2026.7 · 월별 · 2020=100</span></div>
+      <svg class="index-svg desktop-index-svg" viewBox="0 0 760 300" role="img" aria-labelledby="index-chart-title index-chart-desc"><title id="index-chart-title">건설공사비지수 월별 추이</title><desc id="index-chart-desc">한국건설기술연구원 통계의 월별 건설공사비지수. 2020년 1월 99.86에서 2026년 7월 잠정치 138.59로 38.8퍼센트 상승했다.</desc><line class="gridline" x1="64" y1="202.3" x2="735" y2="202.3"/><text class="axis-label" x="55" y="206.3" text-anchor="end">100</text><line class="gridline" x1="64" y1="163.0" x2="735" y2="163.0"/><text class="axis-label" x="55" y="167.0" text-anchor="end">110</text><line class="gridline" x1="64" y1="123.7" x2="735" y2="123.7"/><text class="axis-label" x="55" y="127.7" text-anchor="end">120</text><line class="gridline" x1="64" y1="84.3" x2="735" y2="84.3"/><text class="axis-label" x="55" y="88.3" text-anchor="end">130</text><line class="gridline" x1="64" y1="45.0" x2="735" y2="45.0"/><text class="axis-label" x="55" y="49.0" text-anchor="end">140</text><text class="axis-title" transform="translate(17 142) rotate(-90)" text-anchor="middle">지수 (2020=100)</text><path class="index-line" d="M64.0,202.9 L72.6,203.1 L81.2,204.2 L89.8,205.2 L98.4,205.3 L107.0,204.9 L115.6,205.0 L124.2,204.9 L132.8,199.8 L141.4,199.9 L150.0,198.5 L158.6,194.3 L167.2,186.3 L175.8,183.7 L184.4,179.2 L193.0,170.2 L201.6,162.6 L210.2,157.8 L218.8,153.1 L227.4,146.8 L236.1,141.3 L244.7,136.3 L253.3,134.7 L261.9,134.0 L270.5,124.6 L279.1,123.1 L287.7,117.9 L296.3,110.8 L304.9,105.6 L313.5,104.3 L322.1,104.0 L330.7,106.6 L339.3,102.0 L347.9,101.6 L356.5,101.2 L365.1,102.7 L373.7,95.7 L382.3,95.5 L390.9,94.8 L399.5,94.4 L408.1,94.6 L416.7,94.5 L425.3,94.8 L433.9,94.6 L442.5,86.9 L451.1,87.8 L459.7,88.5 L468.3,89.1 L476.9,85.2 L485.5,84.1 L494.1,84.1 L502.7,84.0 L511.3,83.5 L519.9,83.9 L528.5,84.5 L537.1,85.4 L545.7,82.8 L554.3,83.2 L562.9,83.5 L571.6,83.9 L580.2,80.3 L588.8,80.3 L597.4,80.0 L606.0,80.2 L614.6,80.3 L623.2,80.2 L631.8,80.3 L640.4,80.8 L649.0,77.8 L657.6,76.6 L666.2,74.7 L674.8,73.7 L683.4,70.5 L692.0,69.5 L700.6,66.5 L709.2,56.3 L717.8,53.7 L726.4,51.5 L735.0,50.5"/><line class="year-tick" x1="64.0" y1="222" x2="64.0" y2="227"/><text class="axis-label year-label" x="64.0" y="245" text-anchor="middle">2020</text><line class="year-tick" x1="167.2" y1="222" x2="167.2" y2="227"/><text class="axis-label year-label" x="167.2" y="245" text-anchor="middle">2021</text><line class="year-tick" x1="270.5" y1="222" x2="270.5" y2="227"/><text class="axis-label year-label" x="270.5" y="245" text-anchor="middle">2022</text><line class="year-tick" x1="373.7" y1="222" x2="373.7" y2="227"/><text class="axis-label year-label" x="373.7" y="245" text-anchor="middle">2023</text><line x1="554.3" y1="45" x2="554.3" y2="222" stroke="#a7645b" stroke-width="1.5" stroke-dasharray="4 4"/><text class="axis-label" x="550.3" y="32" text-anchor="end" fill="#8b4940">대책 발표 · 2024.10</text><line class="year-tick" x1="476.9" y1="222" x2="476.9" y2="227"/><text class="axis-label year-label" x="476.9" y="245" text-anchor="middle">2024</text><line class="year-tick" x1="580.2" y1="222" x2="580.2" y2="227"/><text class="axis-label year-label" x="580.2" y="245" text-anchor="middle">2025</text><line class="year-tick" x1="683.4" y1="222" x2="683.4" y2="227"/><text class="axis-label year-label" x="683.4" y="245" text-anchor="middle">2026</text><circle class="index-point" cx="735.0" cy="50.5" r="4"/><text class="endpoint-label" x="729.0" y="39.5" text-anchor="end">138.59</text><text class="endpoint-start" x="68" y="214">2020.1 · 99.86</text><text class="axis-label" x="735" y="268" text-anchor="end">2026.7(p)</text></svg>
+      <svg class="index-svg mobile-index-svg" viewBox="0 0 360 300" role="img" aria-labelledby="index-chart-mobile-title index-chart-mobile-desc"><title id="index-chart-mobile-title">건설공사비지수 월별 추이</title><desc id="index-chart-mobile-desc">2020년 1월 99.86에서 2026년 7월 잠정치 138.59로 38.8퍼센트 상승했다.</desc><line class="gridline" x1="52" y1="200.6" x2="342" y2="200.6"/><text class="axis-label" x="45" y="204.6" text-anchor="end">100</text><line class="gridline" x1="52" y1="122.8" x2="342" y2="122.8"/><text class="axis-label" x="45" y="126.8" text-anchor="end">120</text><line class="gridline" x1="52" y1="45.0" x2="342" y2="45.0"/><text class="axis-label" x="45" y="49.0" text-anchor="end">140</text><text class="axis-title" transform="translate(15 135) rotate(-90)" text-anchor="middle">지수</text><path class="index-line" d="M52.0,201.1 L55.7,201.3 L59.4,202.4 L63.2,203.4 L66.9,203.5 L70.6,203.1 L74.3,203.2 L78.0,203.1 L81.7,198.1 L85.5,198.1 L89.2,196.8 L92.9,192.6 L96.6,184.7 L100.3,182.1 L104.1,177.7 L107.8,168.8 L111.5,161.2 L115.2,156.5 L118.9,151.9 L122.6,145.6 L126.4,140.2 L130.1,135.3 L133.8,133.7 L137.5,133.0 L141.2,123.7 L144.9,122.2 L148.7,117.1 L152.4,110.1 L156.1,104.9 L159.8,103.6 L163.5,103.3 L167.3,105.9 L171.0,101.3 L174.7,101.0 L178.4,100.6 L182.1,102.1 L185.8,95.2 L189.6,94.9 L193.3,94.2 L197.0,93.8 L200.7,94.0 L204.4,93.9 L208.2,94.3 L211.9,94.0 L215.6,86.5 L219.3,87.3 L223.0,88.0 L226.7,88.6 L230.5,84.8 L234.2,83.7 L237.9,83.7 L241.6,83.6 L245.3,83.1 L249.1,83.5 L252.8,84.0 L256.5,85.0 L260.2,82.4 L263.9,82.8 L267.6,83.0 L271.4,83.4 L275.1,79.9 L278.8,79.9 L282.5,79.6 L286.2,79.8 L289.9,79.9 L293.7,79.8 L297.4,79.9 L301.1,80.4 L304.8,77.4 L308.5,76.2 L312.3,74.4 L316.0,73.4 L319.7,70.2 L323.4,69.3 L327.1,66.3 L330.8,56.2 L334.6,53.6 L338.3,51.5 L342.0,50.5"/><line class="year-tick" x1="52.0" y1="220" x2="52.0" y2="225"/><text class="axis-label year-label" x="52.0" y="243" text-anchor="middle">2020</text><line class="year-tick" x1="141.2" y1="220" x2="141.2" y2="225"/><text class="axis-label year-label" x="141.2" y="243" text-anchor="middle">2022</text><line x1="264.0" y1="45" x2="264.0" y2="220" stroke="#a7645b" stroke-width="1.5" stroke-dasharray="4 4"/><text class="axis-label" x="260.0" y="33" text-anchor="end" fill="#8b4940">대책 발표 24.10</text><line class="year-tick" x1="230.5" y1="220" x2="230.5" y2="225"/><text class="axis-label year-label" x="230.5" y="243" text-anchor="middle">2024</text><line class="year-tick" x1="319.7" y1="220" x2="319.7" y2="225"/><text class="axis-label year-label" x="319.7" y="243" text-anchor="middle">2026</text><circle class="index-point" cx="342.0" cy="50.5" r="4"/><text class="endpoint-label" x="339.0" y="39.5" text-anchor="end">138.59</text><text class="axis-label" x="342" y="268" text-anchor="end">2026.7(p)</text></svg>
+      <figcaption>점선은 2024년 10월 2일 대책 발표일이다. 지수는 당시 130.29, 2025년 10월 131.97(전년비 +1.3%), 2026년 7월 138.59(전년비 +5.78%)였다. 7월은 잠정치이며 지수는 개별 계약금액이 아닌 투입비용 변동을 나타낸다. 출처: 한국건설기술연구원, 「2026년 7월 건설공사비지수 통계표」(제공 통계표), 2020년 1월–2026년 7월.</figcaption>
+    </figure>
+    <p>발표 전후 지수는 정책의 결과와 한계를 함께 보여준다. 2025년 10월에는 전년 동월비 상승률이 1.3%로 둔화했지만, 경기 위축과 신규 착공 감소도 가격 압력을 낮췄을 수 있다. 대책이 없었을 때와 비교하는 반사실이 없어 정책만의 효과로 볼 수 없다. 이후 2026년 7월 전년 동월비는 5.78%로 높아져, 2026년 연간 상승률 2% 안팎 목표가 이 시점까지 달성됐다고 평가하기 어렵다. 연말 확정치가 필요하고 이 수치만으로 정책 전체의 실패를 단정할 수도 없다. 대책은 공급·조달 병목에 초점을 두어 노무량·안전·설계변경과 민간 계약 갈등을 직접 낮추는 수단은 제한적이다. 자재 납기, 공공 입찰 유찰, 공기와 노무비를 함께 추적해야 효과를 가를 수 있다.</p>
+
+    <h2 id="market">상업용 부동산 개발 사업과 정비사업에 미치는 영향</h2>
+    <p>공사비가 오르면 상업용 부동산 개발 사업의 총사업비가 계획보다 커지고 시행사 이익은 줄어든다. 임대료나 매각가를 공사비 상승분만큼 바로 올리기 어려워 늘어난 비용을 수익에 반영하기도 쉽지 않다. 필요한 PF 자금은 늘어나지만, 금융권의 보수적인 심사와 맞물리면 추가 조달이 어려워질 수 있다. 사업자는 설계·규모를 조정하거나 착공을 미루고, 사업성이 확보되지 않으면 계약을 취소하기도 한다. 지연·취소가 이어지면 신규 공급이 줄고, 이런 공급 위축은 중장기적으로 기존 자산의 가치평가에도 영향을 줄 수 있다.</p>
+    <p>정비사업에서는 상승분이 시공사 도급액 증액과 조합원 분담금으로 이어진다. 사업 진행 단계와 계약의 물가조정 조항, 추가 물량·공기 변경 사유에 따라 부담 주체와 증액 규모가 달라져 조합과 시공사 사이의 협의·분쟁으로 나타난다. 공사비지수는 참고 지표일 뿐 계약 증액률을 자동으로 정하지 않는다.</p>
+    <p>정비사업의 증액 협의에서는 계약서상 물가조정 조항과 설계·물량·공기 변경 사유를 근거별로 확인해야 한다. 증액 규모와 책임을 둘러싼 협의가 길어지면 공기 지연과 금융비용이 더해질 수 있다.</p>
+
+    <h2 id="outlook">하락보다 상승률 둔화가 현실적인 전망이다</h2>
+    <p>자재비는 국제 정세·에너지·운송비에 따라 다시 오를 수 있다. 임금과 안전관리비는 쉽게 낮아지기 어렵다. 생산성과 공기가 개선되지 않으면 자재 가격 안정만으로 총공사비를 끌어내리기 어렵고, 정부 대책도 누적 가격과 민간 계약의 사업성까지 되돌리지는 못한다. 지수는 2020년 초보다 약 38.8% 높다. 상승률 둔화는 누적된 가격수준을 되돌리는 것과 다르다.</p>
+    <p>‘안정’은 과거 가격 복귀보다 상승 속도 둔화에 가깝다. 상업용 개발은 임대수익·금융조건을 반영한 원가 시나리오가, 정비사업은 증액 산식과 변경 책임의 사전 합의가 필요하다. 공사비는 공급 일정과 조합원 부담을 좌우한다.</p>
+    <div class="callout"><p>자재비와 인건비는 여전히 핵심 원인이다. 다만 자재는 품목별 가격과 공급망을, 인건비는 단가와 노무량·생산성을 나눠 봐야 한다. 여기에 안전관리와 공기·설계 변경이 더해지면서, 자재값 안정만으로 총공사비가 낮아지지 않는 구조가 만들어진다.</p></div>
+    <hr>
+    <div class="footnotes">
+      <div class="footnotes-label">출처 및 주</div>
+      <ol>
+        <li>한국건설기술연구원, <a class="link" href="https://cost.kict.re.kr/">「2026년 7월 건설공사비지수 설명자료 및 통계표」</a>, pp. 1–2. 월별 지수(2020=100), 변동률 및 상세 품목. 2026년 7월은 잠정치.</li>
+        <li>2026년 5월 품목별 증감률은 사용자 제공 원문 「자재값은 안정됐다는데, 왜 공사비는 안 떨어질까」 기재값이다. 원문에는 품목별 기초 통계표의 기관·계열명이 없어 KICT 7월 전월비와 구분했다.</li>
+        <li>권현진, 「건설공사의 건축비 상승 실태 및 원인분석」, 한국부동산연구원 정책현안 2024-02, 2024.12, pp. 8–13, 20–21, 43–49. 사용자가 제공한 논문 파일. 건물 유형별 비용, 노무량·생산성·안전관리비·ZEB·ESG 관련 분석.</li>
+        <li>권현진, <a class="link" href="https://journal.kci.go.kr/krer/archive/articleView?artiId=ART003187131">「건축공사비 급등 현상의 구조적 차별성 분석」</a>, 『부동산연구』 35권 1호, 2025, pp. 93–104, DOI 10.35136/krer.35.1.6. 사용자가 제공한 논문 파일. 건물 유형·구조별 단가와 인건비·제도 요인.</li>
+        <li>이경은, <a class="link" href="https://www.auric.or.kr/User/Rdoc/DocRdoc.aspx?dn=4186&amp;returnVal=RD_T">「공공건설공사의 공사비 상승요인의 우선순위에 관한 연구」</a>, 동아대학교 대학원 공학석사학위논문, 2011.12. 사용자가 제공한 논문 파일. 설계·발주·시공 단계의 비용 상승요인.</li>
+        <li>관계부처 합동, <a class="link" href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156653229">「건설공사비 안정화 방안」</a>, 2024.10.2. 사용자 제공 별첨 포함. 정책 목표와 과제의 근거이며 시행 후 효과평가 보고서는 아니다.</li>
+        <li>한국건설산업연구원, <a class="link" href="https://www.cerik.re.kr/report/briefing/2791">「건설동향브리핑」 제934호</a>, 2023.12.1. 한국생산성본부 시간당 노동생산성 지수의 2017~2022년 변화.</li>
+        <li>산업안전보건법 제72조 및 「건설업 산업안전보건관리비 계상 및 사용기준」; 고용노동부, <a class="link" href="https://www.moel.go.kr/local/gyeonggi/info/dataroom/view.do?bbs_seq=20260100444">2025년 산업안전보건관리비 제도 변경 안내</a>. 법정 계상 대상과 요율 개정.</li>
+        <li><a class="link" href="https://law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1016999891">「중대재해 처벌 등에 관한 법률」</a>, 시행령 및 고용노동부, 「산업재해 예방을 위한 안전보건관리체계 가이드북」(사용자 제공본). 법 적용·의무 및 현장 관리체계. 가이드북은 참고자료이며 법적 효력은 법령 원문에 있다.</li>
+        <li><a class="link" href="https://www.pcccr.go.kr/base/board/read?boardManagementNo=43&amp;boardNo=6490&amp;menuLevel=2&amp;menuNo=16&amp;page=37&amp;searchCategory=&amp;searchType=&amp;searchWord=">국가탄소중립녹색성장위원회</a>, 2025.8.12.; <a class="link" href="https://www.korea.kr/news/policyNewsView.do?newsId=148947439">대한민국 정책브리핑·국토교통부</a>, 2025.8.12.; 「건축물의 에너지절약설계기준」 국토교통부고시 제2025-738호(2025.12.31 시행). 민간 ZEB 성능 적용 기준.</li>
+        <li><a class="link" href="https://www.usgbc.org/leed">U.S. Green Building Council, LEED rating system</a>; <a class="link" href="https://documents.gresb.com/generated_files/real_estate/2024/real_estate/reference_guide/complete.html">GRESB, Real Estate Assessment Reference Guide</a>. LEED 건물 인증과 GRESB 부동산 투자자 ESG 벤치마크의 구분.</li>
+        <li>뉴스핌, <a class="link" href="https://search.newspim.com/news/view/20241002000450">2024.10.2. 안정화 방안 관련 업계 반응</a>. 대책 발표 직후의 기대와 실효성·시장 경쟁 관련 우려.</li>
+        <li>지수의 전후 비교는 비용변동의 관찰치다. 개별 프로젝트 계약금액을 직접 나타내지 않으며, 대책 효과를 인과적으로 판정하려면 반사실과 정책별 이행자료가 필요하다.</li>
+      </ol>
+    </div>
+  </div>
+</article>
+<footer class="article-foot">
+  <a class="foot-back" href="index.html">← 아카이브로 돌아가기</a>
+  <nav class="pager" aria-label="이전/다음 글">
+    <a class="prev disabled" href="#"><span class="pg-dir">← Issues</span><span class="pg-title">—</span></a>
+    <a class="next disabled" href="#"><span class="pg-dir">다음 →</span><span class="pg-title">—</span></a>
+  </nav>
+</footer>
+<script src="assets_report.js"></script>
+</body>
+</html>
