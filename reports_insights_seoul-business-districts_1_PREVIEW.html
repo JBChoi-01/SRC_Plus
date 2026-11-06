@@ -30,8 +30,11 @@
     font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    padding: 0.55rem 1rem;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 1rem;
   }
+  .topbar { top: 38px; }
   .toc-label {
     font-family: var(--font-sans);
     font-size: 0.78rem;
@@ -52,6 +55,63 @@
     margin-bottom: 0.6rem;
   }
   .prose h3 { margin-top: 2.4rem; }
+  /* 상세자료 접기/펼치기 */
+  .detail {
+    margin: 1.6rem 0;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--ink-faint);
+  }
+  .detail[open] { border-left-color: var(--accent); }
+  .detail summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    user-select: none;
+  }
+  .detail summary::-webkit-details-marker { display: none; }
+  .detail summary::after {
+    content: '+';
+    margin-left: auto;
+    font-family: var(--font-mono);
+    color: var(--accent);
+  }
+  .detail[open] summary::after { content: '−'; }
+  .detail summary:hover { color: var(--ink); }
+  .detail .d-id {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .detail .d-title { font-weight: 500; }
+  .detail .d-body { padding: 0 1.1rem 1.1rem; }
+  .detail .fig-ph { margin-bottom: 1rem; }
+  .prose .detail li { font-size: 0.9rem; margin-bottom: 0.35rem; }
+  .prose .detail ul { margin-bottom: 0.8rem; }
+  .prose .detail .d-pref { font-size: 0.82rem; color: var(--ink-light); margin: 0; }
+  .detail-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1.2rem 0 0;
+  }
+  .detail-toggle button {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    background: none;
+    border: 1px solid var(--rule);
+    padding: 0.45rem 0.8rem;
+    cursor: pointer;
+  }
+  .detail-toggle button:hover { color: var(--accent); border-color: var(--accent); }
 </style>
 </head>
 <body>
@@ -106,6 +166,8 @@
       </ol>
     </nav>
 
+    <div class="detail-toggle"><button type="button" id="detail-toggle-all">상세자료 모두 펼치기</button></div>
+
     <!-- ═══════════ 1. 강남 신시가지의 형성 ═══════════ -->
     <h2 id="sec-origin">강남 신시가지의 형성 — 농경지에서 계획도시로</h2>
 
@@ -113,10 +175,18 @@
 
     <p>1960년대까지 현재의 강남 일대는 농경지와 자연취락이 분포하던 서울 외곽지역이었다. 산업화와 인구 집중으로 기존 시가지의 과밀 문제가 심화되자 서울시는 한강 이남으로 도시를 확장하기 시작했다. 1963년 행정구역 확대를 통해 영동 일대를 서울에 편입하고, 1966년에는 남서울 개발구상을 제시했다.</p>
 
-    <figure class="fig">
-      <div class="fig-ph"><span>상세자료 1-A · 개발 전후 항공사진 비교</span></div>
-      <figcaption><b>1-A</b>1960~70년대 영동 일대 항공사진, 1963년 행정구역 확장 전후 지도, 초기 남서울 개발구상도</figcaption>
-    </figure>
+    <details class="detail">
+      <summary><span class="d-id">상세자료 1-A</span><span class="d-title">강남 개발 이전과 초기 개발구상</span></summary>
+      <div class="d-body">
+        <div class="fig-ph"><span>자료 준비 중 · 개발 전후 항공사진 비교</span></div>
+        <ul>
+          <li>1960~70년대 영동 일대 항공사진과 시가지 변화</li>
+          <li>1963년 서울 행정구역 확장 전후 지도</li>
+          <li>초기 남서울 개발구상 및 도시계획도</li>
+        </ul>
+        <p class="d-pref">선호 자료 — 개발 전후 항공사진 비교</p>
+      </div>
+    </details>
 
     <h3>교통망과 토지구획정리 — 가로·필지체계의 기반</h3>
 
@@ -124,10 +194,18 @@
 
     <p>1968년부터 추진된 영동지구 토지구획정리사업은 기존 농경지를 재구획하면서 넓은 격자형 간선도로와 도시블록을 만들었다. 블록 내부에는 소규모 필지와 이면도로가 형성되었다. 대로와 대블록, 그 안의 작은 필지라는 이 이중 구조는 이후 강남의 건축물 배치와 개발 규모를 결정하는 기반이 되었다. 테헤란로 대로변의 대형 오피스와 이면부의 소형 건축물이 공존하는 현재의 경관도 이 시기의 구획에서 비롯된다.</p>
 
-    <figure class="fig">
-      <div class="fig-ph"><span>상세자료 1-B · 구획정리도와 현재 필지 구조 비교</span></div>
-      <figcaption><b>1-B</b>영동 제1·2지구 토지구획정리사업도, 대블록·소블록·필지 관계, CBD·YBD·GBD 블록 구조 비교</figcaption>
-    </figure>
+    <details class="detail">
+      <summary><span class="d-id">상세자료 1-B</span><span class="d-title">토지구획정리와 가로·필지 구조</span></summary>
+      <div class="d-body">
+        <div class="fig-ph"><span>자료 준비 중 · 당시 구획정리도와 현재 필지 구조의 비교</span></div>
+        <ul>
+          <li>영동 제1·2지구 토지구획정리사업도와 간선도로망</li>
+          <li>대블록·소블록·필지의 관계를 보여주는 도면</li>
+          <li>CBD·YBD·GBD의 도시블록 및 필지 구조 비교</li>
+        </ul>
+        <p class="d-pref">선호 자료 — 당시 구획정리도와 현재 필지 구조의 비교</p>
+      </div>
+    </details>
 
     <h3>인구 분산정책과 주거지 개발</h3>
 
@@ -137,10 +215,18 @@
 
     <p>강남은 주거기능만을 위한 신시가지로 계획된 것은 아니었다. 초기 도시계획부터 기존 도심에 집중된 행정·업무기능을 분산하려는 구상이 있었으며, 주요 간선도로변에는 상업지역이 배치되었다. 1970년대 후반에는 서울의 다핵적 도시구조를 지향하는 계획이 제시되었고, 1984년 지하철 2호선 순환선 개통은 강남과 기존 업무거점의 연결성을 높였다.</p>
 
-    <figure class="fig">
-      <div class="fig-ph"><span>상세자료 1-C · 시가지 확장과 상업·업무기능 배치</span></div>
-      <figcaption><b>1-C</b>1970~80년대 아파트단지 개발·시가지 확장 지도, 개발촉진책과 시설 이전 사례, 다핵도시 구상과 상업지역 배치도</figcaption>
-    </figure>
+    <details class="detail">
+      <summary><span class="d-id">상세자료 1-C</span><span class="d-title">주거 신시가지에서 복합적인 도시 중심지로</span></summary>
+      <div class="d-body">
+        <div class="fig-ph"><span>자료 준비 중 · 시가지 확장 지도와 상업·업무기능의 계획적 배치</span></div>
+        <ul>
+          <li>1970~80년대 아파트단지 개발과 시가지 확장 지도</li>
+          <li>주요 개발촉진책 및 학교·공공시설 이전의 실제 사례</li>
+          <li>서울 다핵도시 구상과 강남의 상업지역 배치도</li>
+        </ul>
+        <p class="d-pref">선호 자료 — 시가지 확장 지도와 상업·업무기능의 계획적 배치</p>
+      </div>
+    </details>
 
     <p>주거지 조성과 함께 교통·상업·업무기능이 축적되면서 강남은 점차 독립적인 도시 중심지로 성장했다. 특히 상업지역과 지하철역이 연속적으로 배치된 테헤란로를 따라 업무시설이 집중되면서 강남의 대표 업무축이 형성되기 시작했다.</p>
 
@@ -174,46 +260,90 @@
 
     <p>1984년 「테헤란로 도시설계」는 소규모 필지의 공동개발과 건축물 규모·용도 관리를 통해 고층 업무시설 건립을 유도했다. 구획정리로 만들어진 작은 필지를 묶어야 대형 오피스를 지을 수 있었기 때문이다. 이 과정에서 대로변에는 대형 오피스가 집중되고, 이면부에는 상대적으로 작은 건축물이 남는 도시구조가 형성되었다.</p>
 
-    <figure class="fig">
-      <div class="fig-ph"><span>상세자료 2-A · 1984년 도시설계도와 실제 개발 결과</span></div>
-      <figcaption><b>2-A</b>「테헤란로 도시설계」 지침·구역도, 공동개발 필지 통합, 1980년대 개발 전후 사진</figcaption>
-    </figure>
+    <details class="detail">
+      <summary><span class="d-id">상세자료 2-A</span><span class="d-title">테헤란로의 고층 업무축 형성</span></summary>
+      <div class="d-body">
+        <div class="fig-ph"><span>자료 준비 중 · 1984년 도시설계도와 실제 개발 결과 비교</span></div>
+        <ul>
+          <li>1984년 「테헤란로 도시설계」의 주요 지침과 구역도</li>
+          <li>공동개발을 통한 필지 통합과 건축물 규모 변화</li>
+          <li>1980년대 테헤란로 개발 전후 사진 및 초기 오피스 사례</li>
+        </ul>
+        <p class="d-pref">선호 자료 — 1984년 도시설계도와 실제 개발 결과 비교</p>
+      </div>
+    </details>
 
     <h3>1988~1990년대 — 무역센터 거점과 대기업 사옥</h3>
 
     <p>1988년 한국종합무역센터 개관은 테헤란로 동쪽에 무역·전시·업무·숙박 기능이 결합된 새로운 거점을 형성했다. 르네상스호텔과 그랜드인터컨티넨탈호텔 등의 건립도 이어졌다. 1990년대에는 금융기관과 대기업의 업무시설이 테헤란로 전반으로 확대되었고, 포스코센터(1995년)와 LG강남타워(현 GS타워, 1999년) 등 대규모 사옥이 들어섰다. 테헤란로는 이 시기를 거치며 강남의 핵심 경제·업무 중심지로 성장했다.</p>
 
-    <figure class="fig">
-      <div class="fig-ph"><span>상세자료 2-B · 무역센터 거점개발과 대기업 사옥 사례</span></div>
-      <figcaption><b>2-B</b>한국종합무역센터 개발·개관, 포스코센터 부지 확보·준공, LG강남타워 등 1990년대 사옥, 1988년 언론 보도</figcaption>
-    </figure>
+    <details class="detail">
+      <summary><span class="d-id">상세자료 2-B</span><span class="d-title">대형 업무시설과 기업 사옥의 집적</span></summary>
+      <div class="d-body">
+        <div class="fig-ph"><span>자료 준비 중 · 무역센터의 거점개발과 대기업 사옥 개발 사례 비교</span></div>
+        <ul>
+          <li>한국종합무역센터의 개발·개관 과정과 삼성동 거점 형성</li>
+          <li>포스코센터의 부지 확보·개발 및 준공</li>
+          <li>LG강남타워 등 1990년대 대기업 사옥 개발</li>
+          <li>1988년 당시 언론이 소개한 신흥 오피스타운의 모습</li>
+        </ul>
+        <p class="d-pref">선호 자료 — 무역센터의 거점개발과 대기업 사옥 개발 사례 비교</p>
+      </div>
+    </details>
 
     <h3>1990년대 후반 — 테헤란밸리</h3>
 
     <p>같은 시기 정보통신·소프트웨어 기업들도 테헤란로에 집적하기 시작했다. 1990년대 중반부터 형성된 산업 집적은 '테헤란밸리'라는 이름으로 알려졌다. 1997년 외환위기 이후에는 기업 구조조정으로 발생한 오피스 공실과 정부의 벤처기업 육성정책이 맞물리면서 관련 기업의 입주가 확대되었다. 기존 금융·대기업 업무기능 위에 정보통신산업의 성장이 더해진 것이다.</p>
 
-    <figure class="fig">
-      <div class="fig-ph"><span>상세자료 2-C · 당시 현장기사와 ICT기업 집적도</span></div>
-      <figcaption><b>2-C</b>1998년 《전자신문》 테헤란밸리 취재기사, 1992·1996·1998·2001년 ICT기업 집적도, 벤처지원기관 입지</figcaption>
-    </figure>
+    <details class="detail">
+      <summary><span class="d-id">상세자료 2-C</span><span class="d-title">테헤란밸리와 외환위기 전후의 변화</span></summary>
+      <div class="d-body">
+        <div class="fig-ph"><span>자료 준비 중 · 당시 현장기사와 기업 집적도 비교</span></div>
+        <ul>
+          <li>1998년 《전자신문》 테헤란밸리 현장 취재기사</li>
+          <li>1992·1996·1998·2001년 ICT기업 집적도 비교</li>
+          <li>외환위기 이후 오피스 공실과 벤처기업의 입주 과정</li>
+          <li>당시 주요 ICT기업과 벤처지원기관의 입지 사례</li>
+        </ul>
+        <p class="d-pref">선호 자료 — 당시 현장기사와 기업 집적도 비교</p>
+      </div>
+    </details>
 
     <h3>2000년대 — 오피스의 투자자산화</h3>
 
     <p>2000년대에는 대형 오피스의 공급과 투자자산화가 함께 진행되었다. 2001년 준공된 스타타워(현 강남파이낸스센터)는 개발 과정에서 론스타에 매각되었고, 2004년에는 싱가포르투자청(GIC)이 인수했다. 이 사례는 강남의 대형 오피스가 해외 기관투자자의 투자대상으로 편입되는 과정을 보여준다. 닷컴버블 붕괴 이후에는 일부 IT기업이 구조조정과 이전을 겪었으며, 대형 오피스의 임차인 구성도 금융·보험·전문서비스업 등을 중심으로 변화했다.</p>
 
-    <figure class="fig">
-      <div class="fig-ph"><span>상세자료 2-D · GFC 거래 연혁과 동시기 시장자료</span></div>
-      <figcaption><b>2-D</b>GFC 개발·매각·재매각과 임차인 변화, 외환위기 후 해외 투자자 취득 사례, 공실률·임대료·거래가격 추이</figcaption>
-    </figure>
+    <details class="detail">
+      <summary><span class="d-id">상세자료 2-D</span><span class="d-title">오피스의 투자자산화와 임차인 변화</span></summary>
+      <div class="d-body">
+        <div class="fig-ph"><span>자료 준비 중 · GFC의 거래 연혁을 중심으로 동시기 다른 거래와 시장자료 보완</span></div>
+        <ul>
+          <li>GFC의 개발·매각·재매각 및 주요 임차인 변화</li>
+          <li>외환위기 이후 해외 투자자의 국내 오피스 취득 사례</li>
+          <li>기업 자가사용 사옥과 임대용 오피스의 소유·운용 방식 비교</li>
+          <li>당시 오피스 공실률·임대료·거래가격 추이</li>
+        </ul>
+        <p class="d-pref">선호 자료 — GFC의 거래 연혁을 중심으로 동시기 다른 거래와 시장자료 보완</p>
+      </div>
+    </details>
 
     <h3>2008~2010년대 — 금융위기와 업무권역 다변화</h3>
 
     <p>2000년대 후반에는 서초 삼성타운(2008년) 등 대기업 업무거점의 개발이 이어졌으나, 글로벌 금융위기 이후 GBD 역시 공실 증가와 임대시장 조정을 겪었다. 2010년대에는 판교 등 신흥 업무권역의 성장으로 기업의 입지 선택지가 확대되었다. 강남에서도 신규 공급보다 기존 건축물의 경쟁력과 임차인 구성이 주요 변화 요인으로 부상했다.</p>
 
-    <figure class="fig">
-      <div class="fig-ph"><span>상세자료 2-E · 2009~2016년 GBD 오피스 시장 통계</span></div>
-      <figcaption><b>2-E</b>서초 삼성타운과 계열사 입지 변화, 공실률·임대료·신규 공급 추이, 판교테크노밸리와 기업 이전</figcaption>
-    </figure>
+    <details class="detail">
+      <summary><span class="d-id">상세자료 2-E</span><span class="d-title">2008~2010년대 GBD 오피스 시장의 재편</span></summary>
+      <div class="d-body">
+        <div class="fig-ph"><span>자료 준비 중 · 오피스 시장 통계를 중심으로 대표 기업·자산 사례 연결</span></div>
+        <ul>
+          <li>2008년 서초 삼성타운 개발과 계열사 입지 변화</li>
+          <li>2009~2016년 GBD 공실률·임대료 및 신규 공급 추이</li>
+          <li>당시 기업의 이전·신규 입주를 다룬 기사</li>
+          <li>판교테크노밸리 성장과 관련된 기업 입지 변화</li>
+        </ul>
+        <p class="d-pref">선호 자료 — 오피스 시장 통계를 중심으로 대표 기업·자산 사례 연결</p>
+      </div>
+    </details>
 
     <h3>2010년대 이후 — 기존 업무자산의 재개발과 운용</h3>
 
@@ -235,10 +365,19 @@
       </table>
     </figure>
 
-    <figure class="fig">
-      <div class="fig-ph"><span>상세자료 2-F · 센터필드 재개발과 아크플레이스 소유 변화</span></div>
-      <figcaption><b>2-F</b>르네상스호텔 부지 매각·철거·개발, 아크플레이스 거래 이력, 최근 주요 오피스 거래가격</figcaption>
-    </figure>
+    <details class="detail">
+      <summary><span class="d-id">상세자료 2-F</span><span class="d-title">기존 업무자산의 재개발과 소유구조 변화</span></summary>
+      <div class="d-body">
+        <div class="fig-ph"><span>자료 준비 중 · 센터필드의 물리적 재개발과 아크플레이스의 소유·운용 변화 비교</span></div>
+        <ul>
+          <li>르네상스호텔 부지의 매각·철거·센터필드 개발</li>
+          <li>옛 한솔빌딩(아크플레이스)의 소유·거래 이력</li>
+          <li>기존 사옥·호텔의 재개발과 임대용 오피스 전환 사례</li>
+          <li>최근 주요 오피스 거래가격과 자산운용 관련 자료</li>
+        </ul>
+        <p class="d-pref">선호 자료 — 센터필드의 물리적 재개발과 아크플레이스의 소유·운용 변화 비교</p>
+      </div>
+    </details>
 
     <!-- ═══════════ 3. GBD가 마주한 변화 ═══════════ -->
     <h2 id="sec-now">GBD가 마주한 변화 — 갱신, 확장, 경쟁</h2>
@@ -300,5 +439,22 @@
 </footer>
 
 <script src="https://srcplus.vercel.app/assets_report.js"></script>
+<script>
+  (function () {
+    var btn = document.getElementById('detail-toggle-all');
+    var items = Array.prototype.slice.call(document.querySelectorAll('details.detail'));
+    if (!btn || !items.length) return;
+    function sync() {
+      var allOpen = items.every(function (d) { return d.open; });
+      btn.textContent = allOpen ? '상세자료 모두 접기' : '상세자료 모두 펼치기';
+    }
+    btn.addEventListener('click', function () {
+      var open = !items.every(function (d) { return d.open; });
+      items.forEach(function (d) { d.open = open; });
+      sync();
+    });
+    items.forEach(function (d) { d.addEventListener('toggle', sync); });
+  })();
+</script>
 </body>
 </html>
