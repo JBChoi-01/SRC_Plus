@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<script type="application/json" id="report-meta">
+{
+  "title": "농경지에서 업무중심지로, 강남은 어떻게 GBD가 되었나",
+  "topic": "서울 3대 업무권역 (1) GBD",
+  "cat": "insights",
+  "date": "261106",
+  "author": "jbchoi",
+  "published": true
+}
+</script>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://srcplus.vercel.app/assets_report.css">
+<style>
+  .preview-banner {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #c62828;
+    color: #fff;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.55rem 1rem;
+  }
+  .toc-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+  .toc a::before { content: none; }
+  .callout-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .prose h3 { margin-top: 2.4rem; }
+</style>
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW — 업로드 금지</div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-arrow">←</span>
+      <span><span class="brand-mark">RE &amp; Infra</span> Report Archive</span>
+    </a>
+    <div class="crumb">
+      <span class="dot"></span>
+      <span>Insights</span>
+      <span class="crumb-hide">— 개념·구조 해설</span>
+    </div>
+  </div>
+  <div class="progress"></div>
+</header>
+
+<article class="article">
+  <header class="article-head">
+    <div class="a-eyebrow">
+      <span>Insights</span>
+      <span class="idx">Series 01</span>
+      <span class="bar"></span>
+    </div>
+    <p class="a-topic"></p>
+    <h1 class="a-title"></h1>
+    <div class="a-meta">
+      <span>2026 · 11</span>
+    </div>
+  </header>
+
+  <div class="prose">
+
+    <p class="lead">서울의 업무기능은 CBD(도심), YBD(여의도), GBD(강남)의 세 권역에 나뉘어 있다. 세 권역은 형성 시기와 개발 방식, 입주 산업이 서로 다르다. 시리즈의 첫 번째 글은 GBD를 다룬다. 1960년대까지 농경지였던 강남이 토지구획정리와 교통망 건설, 테헤란로 도시설계를 거쳐 서울의 핵심 업무권역으로 자리 잡은 과정을 정리하고, 현재 GBD가 마주한 갱신·확장·경쟁의 과제를 살펴본다.</p>
+
+    <div class="callout">
+      <div class="callout-label">핵심 요약</div>
+      <p><strong>강남은 주거 신시가지로 출발했지만, 초기 계획부터 업무기능 분산 구상이 포함되어 있었다.</strong> 간선도로변 상업지역과 지하철 2호선이 겹친 테헤란로가 GBD의 업무축이 되었다.</p>
+      <p>GBD는 대기업 사옥 집적(1980~90년대), 테헤란밸리(1990년대 후반), 오피스 투자자산화(2000년대), 기존 자산 재개발·운용(2010년대 이후)의 단계를 거쳤다. 현재의 과제는 <strong>노후 자산의 갱신, 삼성동 동부 거점의 확장, 판교 등 신흥 권역과의 관계 설정</strong>이다.</p>
+    </div>
+
+    <nav class="toc" aria-label="목차">
+      <div class="toc-label">목차</div>
+      <ol>
+        <li><a href="#sec-origin">강남 신시가지의 형성 — 농경지에서 계획도시로</a></li>
+        <li><a href="#sec-teheran">테헤란로를 중심으로 본 GBD의 발전사</a></li>
+        <li><a href="#sec-now">GBD가 마주한 변화 — 갱신, 확장, 경쟁</a></li>
+      </ol>
+    </nav>
+
+    <!-- ═══════════ 1. 강남 신시가지의 형성 ═══════════ -->
+    <h2 id="sec-origin">강남 신시가지의 형성 — 농경지에서 계획도시로</h2>
+
+    <h3>개발 이전과 초기 구상</h3>
+
+    <p>1960년대까지 현재의 강남 일대는 농경지와 자연취락이 분포하던 서울 외곽지역이었다. 산업화와 인구 집중으로 기존 시가지의 과밀 문제가 심화되자 서울시는 한강 이남으로 도시를 확장하기 시작했다. 1963년 행정구역 확대를 통해 영동 일대를 서울에 편입하고, 1966년에는 남서울 개발구상을 제시했다.</p>
+
+    <figure class="fig">
+      <div class="fig-ph"><span>상세자료 1-A · 개발 전후 항공사진 비교</span></div>
+      <figcaption><b>1-A</b>1960~70년대 영동 일대 항공사진, 1963년 행정구역 확장 전후 지도, 초기 남서울 개발구상도</figcaption>
+    </figure>
+
+    <h3>교통망과 토지구획정리 — 가로·필지체계의 기반</h3>
+
+    <p>강남 개발의 물리적 기반은 교통망 건설과 토지구획정리사업을 통해 마련되었다. 1969년 한남대교 개통과 1970년 경부고속도로 완공으로 강북 도심 및 전국 간선교통망과의 연결성이 개선되었다.</p>
+
+    <p>1968년부터 추진된 영동지구 토지구획정리사업은 기존 농경지를 재구획하면서 넓은 격자형 간선도로와 도시블록을 만들었다. 블록 내부에는 소규모 필지와 이면도로가 형성되었다. 대로와 대블록, 그 안의 작은 필지라는 이 이중 구조는 이후 강남의 건축물 배치와 개발 규모를 결정하는 기반이 되었다. 테헤란로 대로변의 대형 오피스와 이면부의 소형 건축물이 공존하는 현재의 경관도 이 시기의 구획에서 비롯된다.</p>
+
+    <figure class="fig">
+      <div class="fig-ph"><span>상세자료 1-B · 구획정리도와 현재 필지 구조 비교</span></div>
+      <figcaption><b>1-B</b>영동 제1·2지구 토지구획정리사업도, 대블록·소블록·필지 관계, CBD·YBD·GBD 블록 구조 비교</figcaption>
+    </figure>
+
+    <h3>인구 분산정책과 주거지 개발</h3>
+
+    <p>1970년대에는 정부와 서울시의 인구 분산정책 아래 대규모 주거지 개발이 본격화되었다. 강북의 개발을 억제하는 한편, 영동지구 개발촉진책과 아파트지구 지정, 학교 및 공공시설 이전 등을 통해 강남의 정주 여건을 확충했다. 초기 단독주택지 개발에 이어 대규모 아파트단지가 들어섰으며, 개발 범위도 영동·잠실 일대에서 개포·양재 등으로 확대되었다. 이 과정에서 강남은 서울의 주요 주거지역으로 성장했고, 1975년에는 강남구가 신설되었다.</p>
+
+    <h3>주거지 너머의 계획 — 다핵도시 구상</h3>
+
+    <p>강남은 주거기능만을 위한 신시가지로 계획된 것은 아니었다. 초기 도시계획부터 기존 도심에 집중된 행정·업무기능을 분산하려는 구상이 있었으며, 주요 간선도로변에는 상업지역이 배치되었다. 1970년대 후반에는 서울의 다핵적 도시구조를 지향하는 계획이 제시되었고, 1984년 지하철 2호선 순환선 개통은 강남과 기존 업무거점의 연결성을 높였다.</p>
+
+    <figure class="fig">
+      <div class="fig-ph"><span>상세자료 1-C · 시가지 확장과 상업·업무기능 배치</span></div>
+      <figcaption><b>1-C</b>1970~80년대 아파트단지 개발·시가지 확장 지도, 개발촉진책과 시설 이전 사례, 다핵도시 구상과 상업지역 배치도</figcaption>
+    </figure>
+
+    <p>주거지 조성과 함께 교통·상업·업무기능이 축적되면서 강남은 점차 독립적인 도시 중심지로 성장했다. 특히 상업지역과 지하철역이 연속적으로 배치된 테헤란로를 따라 업무시설이 집중되면서 강남의 대표 업무축이 형성되기 시작했다.</p>
+
+    <div class="callout">
+      <div class="callout-label">정리</div>
+      <p>강남의 업무기능은 자연발생적 집적이 아니라 <strong>도로·필지·용도지역·지하철이라는 계획 요소가 겹친 결과</strong>다. 간선도로변 상업지역 지정과 2호선 개통이 테헤란로를 업무축으로 만든 조건이었다.</p>
+    </div>
+
+    <!-- ═══════════ 2. 테헤란로 발전사 ═══════════ -->
+    <h2 id="sec-teheran">테헤란로를 중심으로 본 GBD의 발전사</h2>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>시기</th><th>단계</th><th>주요 사건</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1980년대</td><td>고층 업무축 형성</td><td>지하철 2호선 개통, 「테헤란로 도시설계」(1984), 한국종합무역센터 개관(1988)</td></tr>
+          <tr><td>1990년대</td><td>대기업 사옥 집적</td><td>포스코센터(1995), LG강남타워(1999), 금융기관·대기업 업무시설 확대</td></tr>
+          <tr><td>1990년대 후반</td><td>테헤란밸리</td><td>정보통신·소프트웨어 기업 집적, 외환위기 이후 벤처기업 입주 확대</td></tr>
+          <tr><td>2000년대</td><td>투자자산화</td><td>스타타워(현 강남파이낸스센터) 준공(2001)·론스타 매각·GIC 인수(2004)</td></tr>
+          <tr><td>2008~2010년대</td><td>시장 재편</td><td>서초 삼성타운(2008), 금융위기 후 공실 증가, 판교 등 신흥 권역 성장</td></tr>
+          <tr><td>2010년대 이후</td><td>갱신과 운용</td><td>르네상스호텔 → 센터필드(2021), 옛 한솔빌딩(아크플레이스) 소유구조 변화</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <h3>1980년대 — 테헤란로 도시설계와 고층 업무축</h3>
+
+    <p>영동지구 개발 당시부터 상업지역으로 지정되었던 테헤란로는 초기에는 개발이 더디게 진행되었다. 1980년대 들어 지하철 2호선이 개통되고 국제행사를 앞둔 도시 정비가 추진되면서 대규모 업무시설 개발이 본격화되었다.</p>
+
+    <p>1984년 「테헤란로 도시설계」는 소규모 필지의 공동개발과 건축물 규모·용도 관리를 통해 고층 업무시설 건립을 유도했다. 구획정리로 만들어진 작은 필지를 묶어야 대형 오피스를 지을 수 있었기 때문이다. 이 과정에서 대로변에는 대형 오피스가 집중되고, 이면부에는 상대적으로 작은 건축물이 남는 도시구조가 형성되었다.</p>
+
+    <figure class="fig">
+      <div class="fig-ph"><span>상세자료 2-A · 1984년 도시설계도와 실제 개발 결과</span></div>
+      <figcaption><b>2-A</b>「테헤란로 도시설계」 지침·구역도, 공동개발 필지 통합, 1980년대 개발 전후 사진</figcaption>
+    </figure>
+
+    <h3>1988~1990년대 — 무역센터 거점과 대기업 사옥</h3>
+
+    <p>1988년 한국종합무역센터 개관은 테헤란로 동쪽에 무역·전시·업무·숙박 기능이 결합된 새로운 거점을 형성했다. 르네상스호텔과 그랜드인터컨티넨탈호텔 등의 건립도 이어졌다. 1990년대에는 금융기관과 대기업의 업무시설이 테헤란로 전반으로 확대되었고, 포스코센터(1995년)와 LG강남타워(현 GS타워, 1999년) 등 대규모 사옥이 들어섰다. 테헤란로는 이 시기를 거치며 강남의 핵심 경제·업무 중심지로 성장했다.</p>
+
+    <figure class="fig">
+      <div class="fig-ph"><span>상세자료 2-B · 무역센터 거점개발과 대기업 사옥 사례</span></div>
+      <figcaption><b>2-B</b>한국종합무역센터 개발·개관, 포스코센터 부지 확보·준공, LG강남타워 등 1990년대 사옥, 1988년 언론 보도</figcaption>
+    </figure>
+
+    <h3>1990년대 후반 — 테헤란밸리</h3>
+
+    <p>같은 시기 정보통신·소프트웨어 기업들도 테헤란로에 집적하기 시작했다. 1990년대 중반부터 형성된 산업 집적은 '테헤란밸리'라는 이름으로 알려졌다. 1997년 외환위기 이후에는 기업 구조조정으로 발생한 오피스 공실과 정부의 벤처기업 육성정책이 맞물리면서 관련 기업의 입주가 확대되었다. 기존 금융·대기업 업무기능 위에 정보통신산업의 성장이 더해진 것이다.</p>
+
+    <figure class="fig">
+      <div class="fig-ph"><span>상세자료 2-C · 당시 현장기사와 ICT기업 집적도</span></div>
+      <figcaption><b>2-C</b>1998년 《전자신문》 테헤란밸리 취재기사, 1992·1996·1998·2001년 ICT기업 집적도, 벤처지원기관 입지</figcaption>
+    </figure>
+
+    <h3>2000년대 — 오피스의 투자자산화</h3>
+
+    <p>2000년대에는 대형 오피스의 공급과 투자자산화가 함께 진행되었다. 2001년 준공된 스타타워(현 강남파이낸스센터)는 개발 과정에서 론스타에 매각되었고, 2004년에는 싱가포르투자청(GIC)이 인수했다. 이 사례는 강남의 대형 오피스가 해외 기관투자자의 투자대상으로 편입되는 과정을 보여준다. 닷컴버블 붕괴 이후에는 일부 IT기업이 구조조정과 이전을 겪었으며, 대형 오피스의 임차인 구성도 금융·보험·전문서비스업 등을 중심으로 변화했다.</p>
+
+    <figure class="fig">
+      <div class="fig-ph"><span>상세자료 2-D · GFC 거래 연혁과 동시기 시장자료</span></div>
+      <figcaption><b>2-D</b>GFC 개발·매각·재매각과 임차인 변화, 외환위기 후 해외 투자자 취득 사례, 공실률·임대료·거래가격 추이</figcaption>
+    </figure>
+
+    <h3>2008~2010년대 — 금융위기와 업무권역 다변화</h3>
+
+    <p>2000년대 후반에는 서초 삼성타운(2008년) 등 대기업 업무거점의 개발이 이어졌으나, 글로벌 금융위기 이후 GBD 역시 공실 증가와 임대시장 조정을 겪었다. 2010년대에는 판교 등 신흥 업무권역의 성장으로 기업의 입지 선택지가 확대되었다. 강남에서도 신규 공급보다 기존 건축물의 경쟁력과 임차인 구성이 주요 변화 요인으로 부상했다.</p>
+
+    <figure class="fig">
+      <div class="fig-ph"><span>상세자료 2-E · 2009~2016년 GBD 오피스 시장 통계</span></div>
+      <figcaption><b>2-E</b>서초 삼성타운과 계열사 입지 변화, 공실률·임대료·신규 공급 추이, 판교테크노밸리와 기업 이전</figcaption>
+    </figure>
+
+    <h3>2010년대 이후 — 기존 업무자산의 재개발과 운용</h3>
+
+    <p>동시에 기존 부지를 재개발하거나 오피스를 투자·운용하는 방식도 발전했다. 1988년 개관한 르네상스호텔은 철거 후 대규모 복합업무시설인 센터필드(2021년)로 재탄생했다. 1998년 준공된 옛 한솔빌딩(현 아크플레이스)은 기업 사옥에서 글로벌 투자자가 보유하는 임대용 오피스로 소유·운용 형태가 변화했다.</p>
+
+    <p>기존 건물의 재개발과 거래, 임차기업의 교체가 누적되면서 GBD는 새로운 건물을 계속 공급하는 단계를 넘어 기존 업무자산을 갱신하고 운용하는 시장으로 발전했다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>구분</th><th>센터필드</th><th>아크플레이스</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>이전 용도</td><td>르네상스호텔(1988년 개관)</td><td>옛 한솔빌딩(1998년 준공), 기업 사옥</td></tr>
+          <tr><td>변화 방식</td><td>철거 후 재개발</td><td>소유·운용 주체 변경</td></tr>
+          <tr><td>결과</td><td>대규모 복합업무시설(2021년)</td><td>글로벌 투자자 보유 임대용 오피스</td></tr>
+          <tr><td>의미</td><td>물리적 갱신</td><td>소유구조·운용 방식의 갱신</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <figure class="fig">
+      <div class="fig-ph"><span>상세자료 2-F · 센터필드 재개발과 아크플레이스 소유 변화</span></div>
+      <figcaption><b>2-F</b>르네상스호텔 부지 매각·철거·개발, 아크플레이스 거래 이력, 최근 주요 오피스 거래가격</figcaption>
+    </figure>
+
+    <!-- ═══════════ 3. GBD가 마주한 변화 ═══════════ -->
+    <h2 id="sec-now">GBD가 마주한 변화 — 갱신, 확장, 경쟁</h2>
+
+    <p>GBD는 서울의 3대 업무권역 가운데 상대적으로 제한적인 신규 공급과 견조한 임차수요를 바탕으로 높은 임대수준을 유지하고 있다. 2026년 2분기 알스퀘어 조사에서 GBD의 공실률은 4.32%로 CBD(7.28%)보다 낮고 YBD(2.40%)보다 높았다. 평당 월 실질점유비용(NOC)은 세 권역이 28~31만 원 사이에서 근접한 수준을 보였다.</p>
+
+    <figure class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>권역</th><th>공실률</th><th>평당 월 NOC</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>GBD (강남)</td><td class="num">4.32%</td><td class="num">약 30.3만 원</td></tr>
+          <tr><td>CBD (도심)</td><td class="num">7.28%</td><td class="num">약 30.7만 원</td></tr>
+          <tr><td>YBD (여의도)</td><td class="num">2.40%</td><td class="num">약 28.8만 원</td></tr>
+        </tbody>
+      </table>
+      <figcaption><b>자료</b>알스퀘어, 2026년 2분기 조사</figcaption>
+    </figure>
+
+    <p>GBD에서는 대형·프라임 오피스의 낮은 공실률이 지속되고 있다. 따라서 기존 자산의 경쟁력 개선과 새로운 업무공간 확보가 중요한 과제로 부상하고 있다. 이 과제는 세 방향에서 나타난다.</p>
+
+    <h3>기존 업무축의 갱신 — 테헤란로 리모델링 활성화구역</h3>
+
+    <p>1990년대 집중적으로 건립된 테헤란로의 오피스들은 노후화와 업무공간 성능 개선이라는 과제를 마주하고 있다. 강남구는 2026년 2월 강남역 사거리부터 포스코 사거리까지 약 95만 9천㎡를 리모델링 활성화구역으로 지정했다. 사용승인 후 15년 이상 경과한 건축물은 심의를 거쳐 기존 연면적의 최대 30%까지 증축할 수 있으며, 구조·에너지 성능 및 가로환경 개선에 따른 인센티브도 적용된다.</p>
+
+    <p>이는 신규 개발부지가 제한적인 기존 업무축에서 신축 외에 리모델링을 통한 공간 확충과 경쟁력 개선을 유도하는 정책이다. 실제 사업 확대 여부는 개별 건물의 구조적 조건과 공사비, 임대수익 증가에 따른 사업성에 달려 있다.</p>
+
+    <h3>동부 업무거점의 확장 — 삼성동 국제교류복합지구</h3>
+
+    <p>테헤란로 동쪽에서는 현대자동차그룹의 글로벌비즈니스콤플렉스(GBC)와 영동대로 지하공간 복합개발이 추진되고 있다. 옛 한국전력 부지의 GBC는 당초 105층 단일 초고층 건물에서 49층 타워 3개 동으로 계획이 변경되어 2026년 9월 건축위원회 심의를 통과했다. 업무·숙박·전시·공연시설을 결합한 복합단지로 조성될 예정이다.</p>
+
+    <p>인접한 영동대로 복합개발은 GTX와 기존 지하철·버스를 연결하는 광역환승 기능을 확보하는 사업이다. 이들 사업은 1988년 무역센터를 중심으로 성장한 삼성동 일대의 업무·국제교류 기능을 확대할 것으로 기대된다. 다만 실제 공급 시점과 교통개선 효과는 후속 공사 및 운영 일정에 영향을 받는다.</p>
+
+    <h3>업무권역 간 경쟁과 연계 — 판교 등 남부 신흥 거점</h3>
+
+    <p>판교테크노밸리와 분당 일대의 성장은 과거 테헤란로에 집중되었던 정보통신·기술기업들에 새로운 입지를 제공했다. 일부 기업은 판교로 이전하거나 연구개발 조직을 별도로 배치했으며, GBD는 금융·투자·전문서비스업과 기술기업 등이 함께 입주하는 업무권역으로 기능하고 있다.</p>
+
+    <p>최근에는 GBD와 판교 모두 대형 임차인의 이전·확장 및 비용 효율화에 따라 기업 구성이 변화하고 있다. 두 권역의 관계를 단순한 대체나 경쟁으로 설명하기는 어렵다. 향후 GBD의 경쟁력은 기업들이 본사·영업·투자·연구개발 기능을 어느 권역에 배치하는지, 그리고 그에 맞는 업무공간을 얼마나 확보할 수 있는지에 영향을 받을 것이다.</p>
+
+    <div class="callout">
+      <div class="callout-label">GBD를 볼 때의 체크포인트</div>
+      <p><strong>갱신</strong> — 리모델링 활성화구역이 노후 오피스의 증축·성능 개선으로 실제 이어지는가.</p>
+      <p><strong>확장</strong> — GBC와 영동대로 복합개발의 공급 시점과 광역환승 효과가 계획대로 실현되는가.</p>
+      <p><strong>연계</strong> — 기업이 본사·영업·연구개발 기능을 GBD와 판교 사이에 어떻게 배치하는가.</p>
+    </div>
+
+    <p>시리즈의 다음 글에서는 CBD의 형성과 변화를 다룬다.</p>
+
+  </div>
+</article>
+
+<footer class="article-foot">
+  <a class="foot-back" href="index.html">← 아카이브로 돌아가기</a>
+  <nav class="pager" aria-label="이전/다음 글">
+    <a class="prev disabled" href="#"><span class="pg-dir">← 이전</span><span class="pg-title">—</span></a>
+    <a class="next disabled" href="#"><span class="pg-dir">다음 →</span><span class="pg-title">—</span></a>
+  </nav>
+</footer>
+
+<script src="https://srcplus.vercel.app/assets_report.js"></script>
+</body>
+</html>
