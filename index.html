@@ -3,630 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SRC Plus</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
-
+<title>SRC Plus — 부동산·인프라 금융 리서치 아카이브</title>
+<meta name="description" content="부동산·인프라 금융의 이슈, 구조, 자산군을 정리한 SRC Plus 리서치 아카이브.">
+<meta name="theme-color" content="#f6f7f7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SRC Plus — 부동산·인프라 금융 리서치 아카이브">
+<meta property="og:description" content="부동산·인프라 금융의 이슈, 구조, 자산군을 정리한 리서치 아카이브.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3557'/%3E%3Cpath d='M9 21h14M9 16h14M9 11h8' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* ── 토큰: SRC 본 홈페이지 톤이 확정되면 여기만 교체 ── */
   :root {
-    /* ── 흑백 뉴트럴 (살짝 쿨톤) ── */
-    --bg: #f1f2f2;
-    --bg-card: #f6f6f5;
-    --bg-left: #161718;
-    --ink: #18191a;
-    --ink-light: #66686b;
-    --ink-faint: #a9abad;
-    --rule: #d8d9d8;
-    --rule-soft: #e4e4e3;
-    /* ── 포인트 컬러 1개 (절제된 슬레이트 블루) ── */
-    --accent: oklch(0.56 0.05 248);
-    --accent-bright: oklch(0.64 0.07 248);
-    --accent-soft: oklch(0.56 0.05 248 / 0.10);
-    /* ── 다크 패널 위 텍스트 ── */
-    --on-dark: #ededec;
-    --on-dark-dim: rgba(237,237,236,0.52);
-    --on-dark-faint: rgba(237,237,236,0.30);
-    --left-w: 40%;
-    /* ── 타입: 산세리프 / 고딕 (간결하게) ── */
-    --font-sans: 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+    --bg: #f6f7f7;
+    --surface: #ffffff;
+    --ink: #14181f;
+    --ink-2: #444b58;
+    --ink-3: #667085;
+    --rule: #dde1e6;
+    --rule-soft: #e9ecef;
+    --accent: #1d3557;
+    --accent-soft: rgba(29,53,87,0.08);
+    --font-sans: 'Pretendard Variable', Pretendard, 'Noto Sans KR', -apple-system, 'Helvetica Neue', Arial, sans-serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-    /* ── 타입: 브랜드 타이틀·태그라인 전용 세리프 ── */
-    --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --wrap: 62rem;
+    --pad: 1.5rem;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { font-size: 15px; scroll-behavior: smooth; }
-
+  html { font-size: 16px; scroll-behavior: smooth; }
   body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-sans);
-    font-weight: 400;
-    min-height: 100vh;
-    word-break: keep-all;
-    overflow-wrap: break-word;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    background: var(--bg); color: var(--ink);
+    font-family: var(--font-sans); line-height: 1.6;
+    word-break: keep-all; overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
-
   ::selection { background: var(--accent); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--pad); }
+  .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
-  /* ── LAYOUT ── */
-  .site-wrap { display: flex; min-height: 100vh; }
+  /* ── HEADER ── */
+  .site-header { border-bottom: 1px solid var(--rule); background: var(--surface); }
+  .site-header .wrap { height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: baseline; gap: 0.7rem; }
+  .logo b { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+  .logo b i { font-style: normal; color: var(--accent); }
+  .logo span { font-size: 0.8125rem; color: var(--ink-3); }
+  .header-note { font-size: 0.8125rem; color: var(--ink-3); }
 
-  /* ── LEFT PANEL ── */
-  .left-panel {
-    position: sticky;
-    top: 0;
-    width: var(--left-w);
-    height: 100vh;
-    background: var(--bg-left);
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    overflow: hidden;
+  /* ── INTRO ── */
+  .intro { padding: 4rem 0 2.6rem; }
+  .intro h1 {
+    font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 700;
+    line-height: 1.3; letter-spacing: -0.03em; max-width: 30rem; text-wrap: balance;
   }
+  .intro p { margin-top: 1rem; max-width: 34rem; font-size: 1rem; line-height: 1.8; color: var(--ink-2); }
+  .facts { margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; font-size: 0.8125rem; color: var(--ink-3); }
+  .facts b { color: var(--ink); font-weight: 600; margin-left: 0.25rem; }
 
-  .left-top {
-    flex: 0 0 auto;
-    padding: 3.2rem 3rem 2.4rem;
-    position: relative;
-    z-index: 2;
+  /* ── LATEST ── */
+  .latest {
+    display: block; background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 4px; padding: 1.8rem 2rem 1.7rem; margin-bottom: 3rem;
+    transition: border-color 0.15s;
   }
+  .latest:hover { border-color: var(--accent); }
+  .latest:hover .l-title { color: var(--accent); }
+  .l-kicker { display: flex; gap: 0.8rem; align-items: center; font-size: 0.8125rem; color: var(--ink-3); margin-bottom: 0.9rem; }
+  .l-kicker .flag { color: var(--accent); font-weight: 600; }
+  .l-title { font-size: clamp(1.3rem, 2.6vw, 1.7rem); font-weight: 650; line-height: 1.4; letter-spacing: -0.02em; text-wrap: balance; transition: color 0.15s; }
+  .l-topic { margin-top: 0.7rem; font-size: 0.9375rem; color: var(--ink-2); }
+  .l-more { margin-top: 1.3rem; font-size: 0.875rem; font-weight: 500; color: var(--accent); }
 
-  .left-top::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg, transparent, transparent 39px,
-      rgba(255,255,255,0.022) 39px, rgba(255,255,255,0.022) 40px);
-    pointer-events: none;
+  /* ── CONTROLS ── */
+  .controls { display: flex; flex-wrap: wrap; gap: 0.8rem 1rem; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ink); padding-bottom: 0.9rem; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+  .tab {
+    font: inherit; font-size: 0.9375rem; font-weight: 500; color: var(--ink-3);
+    background: none; border: 0; padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer;
+    transition: color 0.15s, background 0.15s;
   }
+  .tab .c { font-family: var(--font-mono); font-size: 0.75rem; margin-left: 0.3rem; opacity: 0.8; }
+  .tab:hover { color: var(--ink); background: var(--accent-soft); }
+  .tab[aria-pressed="true"] { color: #fff; background: var(--accent); }
+  .tools { display: flex; gap: 0.5rem; align-items: center; }
+  .search {
+    font: inherit; font-size: 0.875rem; width: 15rem; max-width: 100%;
+    padding: 0.5rem 0.8rem; border: 1px solid var(--rule); border-radius: 4px;
+    background: var(--surface); color: var(--ink);
+  }
+  .search::placeholder { color: var(--ink-3); }
+  .search:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+  .sort {
+    font: inherit; font-size: 0.875rem; padding: 0.5rem 0.7rem; border: 1px solid var(--rule);
+    border-radius: 4px; background: var(--surface); color: var(--ink-2); cursor: pointer;
+  }
+  .cat-desc { margin-top: 0.9rem; font-size: 0.875rem; color: var(--ink-3); min-height: 1.4em; }
 
-  .site-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.26em;
-    color: var(--accent-bright);
-    text-transform: uppercase;
-    margin-bottom: 2.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
+  /* ── LIST ── */
+  .list { list-style: none; margin-top: 0.4rem; }
+  .row {
+    display: grid; grid-template-columns: 5.2rem 1fr 6.5rem; gap: 0 1.4rem; align-items: baseline;
+    padding: 1.3rem 0.8rem; margin: 0 -0.8rem; border-bottom: 1px solid var(--rule-soft);
+    border-radius: 4px; transition: background 0.15s;
   }
-  .site-eyebrow::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, var(--on-dark-faint), transparent);
-  }
+  .row:hover { background: var(--surface); }
+  .row:hover .r-title { color: var(--accent); }
+  .r-date { font-size: 0.8125rem; color: var(--ink-3); }
+  .r-title { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0.015em; transition: color 0.15s; text-wrap: pretty; }
+  .r-topic { margin-top: 0.25rem; font-size: 0.875rem; color: var(--ink-3); }
+  .r-cat { justify-self: end; font-size: 0.8125rem; color: var(--ink-2); display: inline-flex; align-items: center; gap: 0.45rem; }
+  .r-cat::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: var(--dot, 1); }
+  .r-cat[data-cat="issues"]  { --dot: 0.6; }
+  .r-cat[data-cat="sectors"] { --dot: 0.3; }
+  .empty { padding: 3.5rem 0; text-align: center; color: var(--ink-3); font-size: 0.9375rem; }
 
-  .site-title {
-    font-family: var(--font-display);
-    font-size: 2.35rem;
-    font-weight: 700;
-    line-height: 1.28;
-    color: var(--on-dark);
-    letter-spacing: -0.01em;
-  }
-
-  .site-rule {
-    width: 2.4rem;
-    height: 1px;
-    background: var(--on-dark-dim);
-    margin: 1.7rem 0;
-  }
-
-  .site-tagline {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 1.02rem;
-    line-height: 1.5;
-    color: var(--on-dark-dim);
-    letter-spacing: 0.005em;
-    margin-bottom: 1.5rem;
-  }
-
-  .site-desc {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 400;
-    line-height: 1.95;
-    color: var(--on-dark-dim);
-    max-width: 21rem;
-    word-break: keep-all;
-  }
-
-  /* 하단 이미지 — 영역 확대 */
-  .left-image {
-    flex: 1 1 auto;
-    position: relative;
-    min-height: 0;
-  }
-  .left-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 55%;
-    display: block;
-    filter: saturate(1.04) brightness(0.92);
-  }
-  .left-image::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 140px;
-    background: linear-gradient(to bottom, var(--bg-left) 0%, transparent 100%);
-    z-index: 1;
-    pointer-events: none;
-  }
-  /* 이미지 위 캡션(크레딧/장소) */
-  .left-image-cap {
-    position: absolute;
-    left: 3rem;
-    bottom: 1.6rem;
-    z-index: 2;
-    font-family: var(--font-mono);
-    font-size: 0.55rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--on-dark-faint);
-  }
-
-  /* ── RIGHT PANEL ── */
-  .right-panel {
-    flex: 1;
-    padding: 3.2rem 3.6rem 5rem 3.6rem;
-    min-width: 0;
-    max-width: 760px;
-  }
-
-  /* ── MASTHEAD STATS ── */
-  .masthead {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    gap: 1.5rem;
-    padding-bottom: 1.1rem;
-    margin-bottom: 1.8rem;
-    border-bottom: 1px solid var(--ink);
-    flex-wrap: wrap;
-  }
-  .stat-group { display: flex; align-items: baseline; gap: 1.7rem; }
-  .stat { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.42rem; }
-  .stat-num {
-    font-family: var(--font-sans);
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 1;
-    color: var(--ink);
-    font-feature-settings: "tnum";
-    letter-spacing: -0.01em;
-  }
-  .stat-num em { font-style: normal; color: var(--accent); }
-  .stat-label {
-    font-family: var(--font-sans);
-    font-size: 0.55rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-  }
-  .stat-div { width: 1px; align-self: stretch; background: var(--rule); margin: 0.1rem 0; }
-  .masthead-meta {
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    text-align: right;
-    line-height: 1.7;
-  }
-
-  /* ── TOOLBAR ── */
-  .toolbar {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    margin-bottom: 2.6rem;
-    flex-wrap: wrap;
-  }
-  .search-wrap { flex: 1 1 200px; min-width: 170px; position: relative; }
-  .search-icon {
-    position: absolute; left: 0.85rem; top: 50%;
-    transform: translateY(-50%);
-    width: 13px; height: 13px; opacity: 0.4;
-    pointer-events: none;
-  }
-  .search-input {
-    width: 100%;
-    padding: 0.62rem 0.9rem 0.62rem 2.25rem;
-    border: 1px solid var(--rule);
-    background: var(--bg-card);
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    color: var(--ink);
-    outline: none;
-    transition: border-color 0.18s, box-shadow 0.18s;
-    border-radius: 0;
-  }
-  .search-input::placeholder { color: var(--ink-faint); }
-  .search-input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
-  }
-
-  .filter-btns { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-  .filter-btn {
-    padding: 0.5rem 0.85rem;
-    border: 1px solid var(--rule);
-    background: transparent;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    cursor: pointer;
-    transition: all 0.16s;
-    border-radius: 0;
-    white-space: nowrap;
-  }
-  .filter-btn:hover { border-color: var(--ink-light); color: var(--ink); }
-  .filter-btn.active {
-    background: var(--ink);
-    color: var(--bg);
-    border-color: var(--ink);
-  }
-
-  /* 정렬 토글 */
-  .sort-btn {
-    display: flex; align-items: center; gap: 0.45rem;
-    padding: 0.5rem 0.7rem;
-    border: 1px solid var(--rule);
-    background: transparent;
-    font-family: var(--font-sans);
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    cursor: pointer;
-    transition: all 0.16s;
-    white-space: nowrap;
-  }
-  .sort-btn:hover { border-color: var(--ink-light); color: var(--ink); }
-  .sort-btn svg { width: 11px; height: 11px; transition: transform 0.2s; }
-  .sort-btn.oldest svg { transform: rotate(180deg); }
-
-  /* ── SECTION HEADERS ── */
-  .section-block { margin-bottom: 2.8rem; }
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    gap: 0.9rem;
-    margin-bottom: 0.3rem;
-    padding-bottom: 0.55rem;
-    border-bottom: 1px solid var(--rule);
-  }
-  .section-index {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-  }
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    font-weight: 500;
-  }
-  .section-sub {
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    color: var(--ink-faint);
-  }
-  .section-count {
-    margin-left: auto;
-    font-family: var(--font-sans);
-    font-size: 0.58rem;
-    color: var(--ink-faint);
-    letter-spacing: 0.05em;
-  }
-
-  /* ── REPORT ITEM ── */
-  .report-list { display: flex; flex-direction: column; }
-  .report-item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0 1.2rem;
-    align-items: start;
-    padding: 1.05rem 0.4rem;
-    margin: 0 -0.4rem;
-    border-bottom: 1px solid var(--rule-soft);
-    text-decoration: none;
-    color: inherit;
-    transition: background 0.16s, padding 0.16s;
-    position: relative;
-  }
-  .report-item::before {
-    content: '';
-    position: absolute;
-    left: 0; top: -1px; bottom: -1px;
-    width: 2px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.2s ease;
-  }
-  .report-item:hover {
-    background: var(--bg-card);
-    padding-left: 0.9rem;
-  }
-  .report-item:hover::before { transform: scaleY(1); }
-  .report-item:hover .report-arrow { opacity: 1; transform: translateX(2px); }
-  .report-item:hover .report-title { color: var(--accent); }
-
-  .report-num {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    color: var(--ink-faint);
-    padding-top: 0.3rem;
-    letter-spacing: 0.05em;
-  }
-  .report-topic {
-    font-family: var(--font-sans);
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--ink-light);
-    margin-bottom: 0.3rem;
-    text-transform: uppercase;
-  }
-  .report-title {
-    font-family: var(--font-sans);
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.5;
-    color: var(--ink);
-    margin-bottom: 0.32rem;
-    transition: color 0.16s;
-    text-wrap: pretty;
-  }
-  .report-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-top: 0.5rem;
-    flex-wrap: wrap;
-  }
-  .report-date {
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    color: var(--ink-faint);
-    letter-spacing: 0.05em;
-  }
-  .tag {
-    font-family: var(--font-mono);
-    font-size: 0.54rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.16rem 0.5rem;
-    border: 1px solid var(--rule);
-    color: var(--ink-light);
-    border-radius: 0;
-  }
-  .report-arrow {
-    font-size: 0.8rem;
-    color: var(--accent);
-    opacity: 0;
-    transition: opacity 0.16s, transform 0.16s;
-    align-self: center;
-  }
-
-  /* ── ALL 뷰: 카테고리별 고정 높이 + 내부 스크롤 ── */
-  .list-window { position: relative; }
-  .report-list.capped {
-    max-height: 19rem;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 0 0.6rem;
-    margin: 0 -0.6rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--rule) transparent;
-    overscroll-behavior: contain;
-  }
-  .report-list.capped::-webkit-scrollbar { width: 6px; }
-  .report-list.capped::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
-  .report-list.capped::-webkit-scrollbar-thumb:hover { background: var(--ink-faint); }
-  .report-list.capped::-webkit-scrollbar-track { background: transparent; }
-  .list-window.capped-win::before,
-  .list-window.capped-win::after {
-    content: '';
-    position: absolute; left: 0; right: 0;
-    height: 1.8rem; pointer-events: none;
-    opacity: 0; transition: opacity 0.2s; z-index: 2;
-  }
-  .list-window.capped-win::before { top: 0; background: linear-gradient(var(--bg), transparent); }
-  .list-window.capped-win::after  { bottom: 0; background: linear-gradient(transparent, var(--bg)); }
-  .list-window.can-up::before { opacity: 1; }
-  .list-window.can-down::after { opacity: 1; }
-
-  /* ── UPCOMING ── */
-  .upcoming-wrap { margin-top: 0.7rem; }
-  .upcoming-label {
-    font-family: var(--font-sans);
-    font-size: 0.54rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 0.3rem;
-  }
-  .upcoming-item {
-    padding: 0.7rem 0.4rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0 1.2rem;
-    align-items: baseline;
-  }
-  .upcoming-num {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--ink-faint);
-  }
-  .upcoming-title {
-    font-size: 0.84rem;
-    color: var(--ink-faint);
-    font-family: var(--font-sans);
-    line-height: 1.5;
-  }
-  .upcoming-badge {
-    font-family: var(--font-mono);
-    font-size: 0.5rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    border: 1px dashed var(--rule);
-    padding: 0.1rem 0.4rem;
-    align-self: center;
-    white-space: nowrap;
-  }
-
-  /* ── EMPTY ── */
-  .empty-state {
-    padding: 3rem 0;
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
-    color: var(--ink-faint);
-    letter-spacing: 0.06em;
-    text-align: center;
-  }
-  .empty-state span { display: block; margin-top: 0.6rem; font-size: 0.62rem; opacity: 0.7; }
+  .upcoming { margin-top: 2.6rem; }
+  .upcoming h2 { font-size: 0.8125rem; font-weight: 600; color: var(--ink-3); margin-bottom: 0.4rem; }
+  .upcoming li { list-style: none; display: flex; justify-content: space-between; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px dashed var(--rule); font-size: 0.9375rem; color: var(--ink-3); }
 
   /* ── FOOTER ── */
-  .archive-foot {
-    margin-top: 3.5rem;
-    padding-top: 1.4rem;
-    border-top: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    font-family: var(--font-mono);
-    font-size: 0.56rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
+  .site-footer { margin-top: 5rem; border-top: 1px solid var(--rule); background: var(--surface); }
+  .site-footer .wrap { padding-top: 2rem; padding-bottom: 2.4rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem 3rem; font-size: 0.8125rem; color: var(--ink-3); line-height: 1.7; }
+  .site-footer strong { color: var(--ink); font-weight: 600; }
+  .foot-note { max-width: 36rem; }
+  .foot-meta { text-align: right; }
 
-  /* ── MOBILE ── */
-  @media (max-width: 820px) {
-    .site-wrap { flex-direction: column; }
-    .left-panel { position: static; width: 100%; height: auto; }
-    .left-top { padding: 2.4rem 1.7rem 1.8rem; }
-    .left-image { height: 240px; }
-    .left-image-cap { left: 1.7rem; }
-    .site-title { font-size: 2.1rem; }
-    .right-panel { padding: 2.1rem 1.5rem 3.5rem; max-width: none; }
-    .masthead { flex-direction: column; align-items: flex-end; }
-    .masthead-meta { text-align: left; }
-    .stat-group { gap: 1.3rem; }
-    .report-item, .upcoming-item { grid-template-columns: 1fr auto; }
+  @media (max-width: 720px) {
+    :root { --pad: 1.2rem; }
+    .header-note { display: none; }
+    .intro { padding: 2.6rem 0 2rem; }
+    .latest { padding: 1.4rem 1.3rem; margin-bottom: 2.2rem; }
+    .tools { width: 100%; } .search { flex: 1; width: auto; }
+    .row { grid-template-columns: 1fr; gap: 0.35rem; padding: 1.1rem 0.8rem; }
+    .r-date { order: 2; } .r-main { order: 1; } .r-cat { order: 3; justify-self: start; }
+    .row { display: flex; flex-direction: column; }
+    .site-footer .wrap { grid-template-columns: 1fr; }
+    .foot-meta { text-align: left; }
   }
-  @media (max-width: 460px) {
-    .stat-group { flex-wrap: wrap; gap: 0.9rem 1.3rem; }
-    .stat-div { display: none; }
-  }
-
-  /* ── ENTRANCE (인쇄·캡처·reduced-motion 에서는 그냥 보이도록) ── */
   @media (prefers-reduced-motion: no-preference) {
-    .anim-in { opacity: 0; animation: fadeUp 0.45s cubic-bezier(0.2,0.7,0.2,1) both; }
+    .anim { animation: up 0.35s cubic-bezier(0.2,0.7,0.2,1) both; }
   }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(9px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 </style>
 </head>
 
 <body>
-<div class="site-wrap">
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./" aria-label="SRC Plus 홈">
+      <b>SRC <i>Plus</i></b>
+      <span>RE &amp; Infra Report Archive</span>
+    </a>
+    <span class="header-note">Beyond Land, Behold Life</span>
+  </div>
+</header>
 
-  <!-- ═══════════════ LEFT PANEL ═══════════════ -->
-  <aside class="left-panel">
-    <div class="left-top">
-      <div class="site-eyebrow">RE &amp; Infra Report Archive</div>
-      <h1 class="site-title">SRC Plus</h1>
-      <div class="site-rule"></div>
-      <p class="site-tagline">Beyond Land, Behold Life</p>
-      <p class="site-desc">
-        부동산·인프라 금융 관련 이슈를 정리한 아카이브입니다.
-        인프라, 개발사업, 도시공간, 미래기술 등 다양한 분야의
-        리포트를 꾸준히 쌓아가는 것이 목표입니다.
-      </p>
-    </div>
+<main class="wrap">
+  <section class="intro">
+    <h1>부동산·인프라 금융의 이슈를 구조부터 정리합니다</h1>
+    <p>인프라, 개발사업, 도시공간, 미래기술 등 부동산·인프라 금융 관련 주제를 개념·이슈·자산군 단위로 정리해 꾸준히 쌓는 리서치 아카이브입니다.</p>
+    <div class="facts" id="facts"></div>
+  </section>
 
-    <div class="left-image">
-      <img
-        src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1000&q=80&auto=format&fit=crop"
-        alt="City skyline"
-        loading="lazy">
-      <div class="left-image-cap">Fig. 01 — Urban Density</div>
-    </div>
-  </aside>
+  <a class="latest" id="latest" hidden></a>
 
-  <!-- ═══════════════ RIGHT PANEL ═══════════════ -->
-  <main class="right-panel">
-
-    <!-- Masthead stats -->
-    <div class="masthead">
-      <div class="stat-group" id="stat-group"></div>
-    </div>
-
-    <!-- Toolbar -->
-    <div class="toolbar">
-      <div class="search-wrap">
-        <svg class="search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="6.5" cy="6.5" r="4.5"/>
-          <line x1="10.5" y1="10.5" x2="14" y2="14"/>
-        </svg>
-        <input class="search-input" type="text" placeholder="제목, 키워드 검색…" id="searchInput" oninput="renderAll()">
-      </div>
-      <button class="sort-btn" id="sortBtn" onclick="toggleSort()" title="정렬 전환">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-          <line x1="8" y1="3" x2="8" y2="13"/><polyline points="4.5,9.5 8,13 11.5,9.5"/>
-        </svg>
-        <span id="sortLabel">최신순</span>
-      </button>
-      <div class="filter-btns">
-        <button class="filter-btn active" onclick="setFilter('all')" data-cat="all">All</button>
-        <button class="filter-btn" onclick="setFilter('insights')" data-cat="insights">Insights</button>
-        <button class="filter-btn" onclick="setFilter('issues')" data-cat="issues">Issues</button>
-        <button class="filter-btn" onclick="setFilter('sectors')" data-cat="sectors">Sectors</button>
+  <section aria-label="리포트 목록">
+    <div class="controls">
+      <div class="tabs" id="tabs" role="group" aria-label="카테고리"></div>
+      <div class="tools">
+        <input class="search" id="q" type="search" placeholder="제목·주제 검색  ( / )" aria-label="리포트 검색" autocomplete="off">
+        <select class="sort" id="sort" aria-label="정렬">
+          <option value="newest">최신순</option>
+          <option value="oldest">오래된순</option>
+        </select>
       </div>
     </div>
+    <p class="cat-desc" id="catDesc"></p>
+    <ul class="list" id="list" aria-live="polite"></ul>
+    <div class="upcoming" id="upcoming" hidden></div>
+  </section>
+</main>
 
-    <!-- Dynamic list -->
-    <div id="archive-root"></div>
-
-    <!-- Footer -->
-    <div class="archive-foot">
-      <span id="foot-count"></span>
-      <span>Updated 2025.06 — Seoul</span>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-note">
+      <strong>SRC Plus</strong><br>
+      SRC 스터디 참여자가 조사·작성한 리서치 자료입니다. 공개 자료를 바탕으로 구조와 쟁점을 정리한 것이며, 특정 자산에 대한 투자 권유가 아닙니다.
     </div>
-
-  </main>
-</div>
+    <div class="foot-meta" id="foot-meta"></div>
+  </div>
+</footer>
 
 <script>
 /* ══════════════════════════════════════
-   DATA — 리포트 목록
-   href: 개별 html 파일 경로  ·  upcoming: 작성 예정
+   DATA — 리포트 목록 (build.py가 자동 갱신 · 형식 변경 금지)
 ══════════════════════════════════════ */
 const REPORTS = [
   // ── INSIGHTS ──
@@ -652,145 +225,87 @@ const CAT_META = {
   sectors:  { label: 'Sectors',  sub: '자산군·산업군 정리' },
 };
 const CAT_ORDER = ['insights', 'issues', 'sectors'];
+const $ = id => document.getElementById(id);
+const esc = s => (s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pub = REPORTS.filter(r => r.published);
+const cmpNew = (a, b) => (b.date || '').localeCompare(a.date || '') || (b.n - a.n);
 
-let currentFilter = 'all';
-let sortOrder = 'newest'; // 'newest' | 'oldest'
+const params = new URLSearchParams(location.search);
+const state = {
+  cat: CAT_ORDER.includes(params.get('cat')) ? params.get('cat') : 'all',
+  q: params.get('q') || '',
+  sort: params.get('sort') === 'oldest' ? 'oldest' : 'newest',
+};
 
-function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-
-/* ── Masthead 통계 (필터/검색과 무관한 전체 통계) ── */
-function renderStats() {
-  const pub = REPORTS.filter(r => r.published);
-  const total = pub.length;
-  const byCat = CAT_ORDER.map(c => ({ c, n: pub.filter(r => r.cat === c).length }));
-  const upcoming = REPORTS.filter(r => r.upcoming).length;
-
-  let html = `
-    <div class="stat">
-      <span class="stat-num"><em>${String(total).padStart(2,'0')}</em></span>
-      <span class="stat-label">게시된 글</span>
-    </div>
-    <div class="stat-div"></div>`;
-  byCat.forEach(({c, n}) => {
-    html += `
-    <div class="stat">
-      <span class="stat-num">${String(n).padStart(2,'0')}</span>
-      <span class="stat-label">${CAT_META[c].label}</span>
-    </div>`;
-  });
-  document.getElementById('stat-group').innerHTML = html;
+function syncUrl() {
+  const p = new URLSearchParams();
+  if (state.cat !== 'all') p.set('cat', state.cat);
+  if (state.q) p.set('q', state.q);
+  if (state.sort !== 'newest') p.set('sort', state.sort);
+  const s = p.toString();
+  try { history.replaceState(null, '', s ? '?' + s : location.pathname); } catch (e) {}
 }
 
-function setFilter(cat) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-  renderAll();
-}
+function renderStatic() {
+  const newest = [...pub].sort(cmpNew)[0];
+  $('facts').innerHTML =
+    `<span>게시된 리포트<b class="num">${pub.length}</b></span>` +
+    CAT_ORDER.map(c => `<span>${CAT_META[c].label}<b class="num">${pub.filter(r => r.cat === c).length}</b></span>`).join('') +
+    (newest ? `<span>최근 업데이트<b class="num">${esc(newest.date.replace(/ /g, ''))}</b></span>` : '');
+  $('foot-meta').innerHTML = newest ? `Last updated <span class="num">${esc(newest.date.replace(/ /g, ''))}</span><br>Beyond Land, Behold Life` : 'Beyond Land, Behold Life';
 
-function toggleSort() {
-  sortOrder = sortOrder === 'newest' ? 'oldest' : 'newest';
-  const btn = document.getElementById('sortBtn');
-  btn.classList.toggle('oldest', sortOrder === 'oldest');
-  document.getElementById('sortLabel').textContent = sortOrder === 'newest' ? '최신순' : '오래된순';
-  renderAll();
-}
-
-function initCapped() {
-  document.querySelectorAll('.report-list.capped').forEach(list => {
-    const win = list.closest('.list-window');
-    const update = () => {
-      const over = list.scrollHeight - list.clientHeight;
-      win.classList.toggle('can-up', list.scrollTop > 2);
-      win.classList.toggle('can-down', over > 2 && list.scrollTop < over - 2);
-    };
-    list.addEventListener('scroll', update, { passive: true });
-    update();
-  });
-}
-
-function renderAll() {
-  const query = document.getElementById('searchInput').value.trim().toLowerCase();
-  const root  = document.getElementById('archive-root');
-  const cats  = currentFilter === 'all' ? CAT_ORDER : [currentFilter];
-  const capped = currentFilter === 'all' && !query;
-
-  const sortFn = (a, b) => {
-    const cmp = (a.date || '').localeCompare(b.date || '');
-    return sortOrder === 'newest' ? -cmp || (b.n - a.n) : cmp || (a.n - b.n);
-  };
-
-  let html = '';
-  let anyVisible = false;
-  let shownCount = 0;
-  let secIdx = 0;
-
-  cats.forEach(cat => {
-    const published = REPORTS.filter(r =>
-      r.cat === cat && r.published &&
-      (!query || r.title.toLowerCase().includes(query) || (r.topic || '').toLowerCase().includes(query))
-    ).sort(sortFn);
-    const upcoming = REPORTS.filter(r =>
-      r.cat === cat && r.upcoming &&
-      (!query || r.title.toLowerCase().includes(query) || (r.topic || '').toLowerCase().includes(query))
-    );
-
-    if (published.length === 0 && upcoming.length === 0) return;
-    anyVisible = true;
-    shownCount += published.length;
-    secIdx++;
-
-    html += `
-      <section class="section-block">
-        <div class="section-head">
-          <span class="section-label">${CAT_META[cat].label}</span>
-          <span class="section-sub">${CAT_META[cat].sub}</span>
-          <span class="section-count">${published.length}편</span>
-        </div>
-        <div class="list-window${capped ? ' capped-win' : ''}">
-        <div class="report-list${capped ? ' capped' : ''}">`;
-
-    published.forEach((r, idx) => {
-      html += `
-        <a class="report-item anim-in" href="${esc(r.href)}" style="animation-delay:${idx * 0.04}s">
-          <div class="report-body">
-            ${r.topic ? `<div class="report-topic">${esc(r.topic)}</div>` : ''}
-            <div class="report-title">${esc(r.title)}</div>
-            <div class="report-meta">
-              <span class="report-date">${esc(r.date)}</span>
-              <span class="tag">${CAT_META[cat].label}</span>
-            </div>
-          </div>
-          <div class="report-arrow">→</div>
-        </a>`;
-    });
-    html += `</div></div>`;
-
-    if (upcoming.length > 0 && !query) {
-      html += `<div class="upcoming-wrap"><div class="upcoming-label">작성 예정</div>`;
-      upcoming.forEach(r => {
-        html += `
-          <div class="upcoming-item">
-            <div class="upcoming-title">${esc(r.title)}</div>
-            <div class="upcoming-badge">Soon</div>
-          </div>`;
-      });
-      html += `</div>`;
-    }
-    html += `</section>`;
-  });
-
-  if (!anyVisible) {
-    html = `<div class="empty-state">검색 결과가 없습니다<span>"${esc(query)}" 와 일치하는 글이 없어요</span></div>`;
+  if (newest) {
+    const el = $('latest');
+    el.hidden = false; el.href = newest.href;
+    el.innerHTML = `
+      <div class="l-kicker"><span class="flag">최신 리포트</span><span>${CAT_META[newest.cat].label}</span><span class="num">${esc(newest.date)}</span></div>
+      <div class="l-title">${esc(newest.title)}</div>
+      ${newest.topic ? `<div class="l-topic">${esc(newest.topic)}</div>` : ''}
+      <div class="l-more">읽어보기 →</div>`;
   }
 
-  root.innerHTML = html;
-  initCapped();
-  document.getElementById('foot-count').textContent =
-    query ? `${shownCount} results for "${query}"` : `Showing ${shownCount} of ${REPORTS.filter(r=>r.published).length}`;
+  $('tabs').innerHTML = ['all', ...CAT_ORDER].map(c => {
+    const n = c === 'all' ? pub.length : pub.filter(r => r.cat === c).length;
+    return `<button class="tab" type="button" data-cat="${c}">${c === 'all' ? '전체' : CAT_META[c].label}<span class="c">${n}</span></button>`;
+  }).join('');
+  $('tabs').addEventListener('click', e => {
+    const b = e.target.closest('.tab'); if (!b) return;
+    state.cat = b.dataset.cat; render();
+  });
 }
 
-renderStats();
-renderAll();
+function render() {
+  const q = state.q.trim().toLowerCase();
+  document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cat === state.cat)));
+  $('catDesc').textContent = state.cat === 'all' ? '모든 카테고리의 리포트를 시간순으로 보여줍니다.' : CAT_META[state.cat].sub;
+  const match = r => (state.cat === 'all' || r.cat === state.cat) &&
+    (!q || r.title.toLowerCase().includes(q) || (r.topic || '').toLowerCase().includes(q));
+
+  const items = pub.filter(match).sort(cmpNew);
+  if (state.sort === 'oldest') items.reverse();
+
+  $('list').innerHTML = items.length ? items.map((r, i) => `
+    <li><a class="row anim" href="${esc(r.href)}" style="animation-delay:${Math.min(i, 8) * 0.03}s">
+      <span class="r-date num">${esc(r.date)}</span>
+      <span class="r-main"><div class="r-title">${esc(r.title)}</div>${r.topic ? `<div class="r-topic">${esc(r.topic)}</div>` : ''}</span>
+      <span class="r-cat" data-cat="${r.cat}">${CAT_META[r.cat].label}</span>
+    </a></li>`).join('')
+    : `<li class="empty">${q ? `"${esc(state.q)}"와 일치하는 리포트가 없습니다.` : '아직 게시된 리포트가 없습니다.'}</li>`;
+
+  const up = REPORTS.filter(r => r.upcoming && match(r));
+  const upEl = $('upcoming');
+  upEl.hidden = !(up.length && !q);
+  if (!upEl.hidden) upEl.innerHTML = `<h2>작성 예정</h2><ul>${up.map(r => `<li><span>${esc(r.title)}</span><span>Soon</span></li>`).join('')}</ul>`;
+  syncUrl();
+}
+
+$('q').value = state.q; $('sort').value = state.sort;
+$('q').addEventListener('input', e => { state.q = e.target.value; render(); });
+$('sort').addEventListener('change', e => { state.sort = e.target.value; render(); });
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); $('q').focus(); }
+});
+renderStatic(); render();
 </script>
 </body>
 </html>

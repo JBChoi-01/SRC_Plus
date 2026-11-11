@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
 /* ════════════════════════════════════════════════
    REPORT — 공용 본문 스타일
    랜딩(index.html)과 동일한 토큰·타입을 사용해
@@ -5,21 +6,21 @@
 ════════════════════════════════════════════════ */
 
 :root {
-  --bg: #f1f2f2;
-  --bg-card: #f6f6f5;
+  --bg: #f6f7f7;
+  --bg-card: #ffffff;
   --bg-left: #161718;
   --ink: #18191a;
-  --ink-light: #66686b;
-  --ink-faint: #a9abad;
+  --ink-light: #4a5160;
+  --ink-faint: #667085;
   --rule: #d8d9d8;
   --rule-soft: #e4e4e3;
-  --accent: oklch(0.56 0.05 248);
-  --accent-bright: oklch(0.64 0.07 248);
-  --accent-soft: oklch(0.56 0.05 248 / 0.10);
+  --accent: #1d3557;
+  --accent-bright: #8fb0d9;
+  --accent-soft: rgba(29,53,87,0.08);
   --on-dark: #ededec;
   --on-dark-dim: rgba(237,237,236,0.55);
   --on-dark-faint: rgba(237,237,236,0.32);
-  --font-sans: 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --measure: 39rem;
   --pad: 2rem;
