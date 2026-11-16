@@ -496,7 +496,7 @@ function buildCard(s) {
     card.append(h("div", { class: "reply-form" }, inp, h("button", { class: "btn", onclick: () => sendReply(s.id, inp) }, "등록")));
   }
   card.append(h("div", { class: "acts" },
-    h("button", { onclick: () => store.patch(s.id, { resolved: !s.resolved }) }, s.resolved ? "다시 열기" : "해결됨"),
+    h("button", { onclick: () => { if (!s.resolved && state.active === s.id) state.active = null; store.patch(s.id, { resolved: !s.resolved }); } }, s.resolved ? "다시 열기" : "해결됨"),
     own ? h("button", { class: "del", onclick: () => { if (confirm("이 제안을 삭제할까요?")) store.remove(s.id); } }, "삭제") : null));
   return card;
 }
@@ -535,7 +535,7 @@ function paintHighlights() {
   const open = [], done = [], act = [];
   for (const s of visible()) {
     const r = rangeCache.get(s.id); if (!r) continue;
-    if (state.active === s.id) act.push(r); else (s.resolved ? done : open).push(r);
+    if (s.resolved) done.push(r); else if (state.active === s.id) act.push(r); else open.push(r);
   }
   reg.set("src-open", new H(...open)); reg.set("src-done", new H(...done)); reg.set("src-active", new H(...act));
   reg.set("src-draft", new H(...(state.draft ? [state.draft.range] : [])));
