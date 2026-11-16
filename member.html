@@ -468,6 +468,32 @@
 #view-review .rail{ padding: 0.8rem 1rem 1.4rem; display: grid; gap: 0.6rem; }
 #view-review .rail .card{ position: static; }
 #view-review .rail .empty{ position: static; }}
+
+/* ═══ 의견 확장: 글 전체 / 단락 사이 / 링크 ═══ */
+#view-review .stage { padding-top: 3.4rem; }
+#view-review .stage-hint { position: absolute; top: 1.05rem; left: 0; font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.06em; color: var(--ink-faint); }
+#view-review .rail-tools { height: 2.4rem; display: flex; align-items: center; }
+#view-review .rail-tools .btn { font-size: 0.72rem; padding: 0.34rem 0.75rem; border-radius: 999px; }
+#view-review .gapmarks { position: absolute; left: 0; right: 0; height: 0; pointer-events: none; }
+#view-review .gapmark { position: absolute; height: 0; border-top: 2px dashed #f0c24d; transform: translateY(-1px); pointer-events: none; }
+#view-review .gapmark.on { border-top-color: #ff9f1c; border-top-style: solid; }
+#view-review .gapmark.done { border-top-color: #b8bec4; }
+#view-review .gapmark.done.on { border-top-color: #8b939b; border-top-style: solid; }
+#view-review .gapmark.draft { border-top-color: #6ea0ff; }
+#view-review .gapmark.hov { display: none; border-top-color: #6ea0ff; z-index: 15; }
+#view-review .gapmark.hov.show { display: block; }
+#view-review .gap-btn { position: absolute; z-index: 20; display: none; transform: translate(-50%, -50%); background: #fff; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; font-size: 0.7rem; padding: 0.22rem 0.7rem; box-shadow: 0 2px 8px rgba(0,0,0,0.12); white-space: nowrap; }
+#view-review .gap-btn.show { display: block; }
+@media (pointer: coarse) { #view-review .gap-btn { font-size: 0.8rem; padding: 0.4rem 1rem; } }
+#view-review .tag { display: inline-block; font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.08em; color: var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 0.1rem 0.45rem; margin-bottom: 0.4rem; }
+#view-review .quote.soft { border-left-color: var(--rule); }
+#view-review .hint { font-size: 0.66rem; color: var(--ink-faint); margin-top: 0.35rem; }
+#view-review .card .body a, #view-review .reply .body a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+@media (max-width: 1179px) {
+  #view-review .stage { padding-top: 1rem; }
+  #view-review .stage-hint { display: none; }
+  #view-review .rail-tools { height: auto; padding: 0.7rem 1rem 0; }
+}
 </style>
 </head>
 <body data-tab="guide">
@@ -482,7 +508,7 @@
   </div>
   <div class="top-actions">
     <button class="chip nav-only" id="btnList">리포트</button>
-    <button class="chip nav-only" id="btnRail">제안 <span id="railCount">0</span></button>
+    <button class="chip nav-only" id="btnRail">의견 <span id="railCount">0</span></button>
     <button class="chip" id="btnResolved" title="해결된 제안 표시"><span class="long">해결됨 보기</span><span class="short">해결</span></button>
     <button class="chip" id="btnName" title="표시 이름 변경">이름</button>
   </div>
@@ -1092,13 +1118,18 @@ author ID: <span class="ph">[본인 author ID — 예: jbchoi, jhahn, sjahn]</sp
   <nav class="list" id="list" aria-label="리포트 목록"></nav>
 
   <main class="stage" id="stage">
+    <div class="stage-hint">문장을 드래그하거나, 단락 사이 빈 곳에 마우스를 올려 의견을 남겨요</div>
     <div class="loading" id="loading">LOADING…</div>
     <iframe id="frame" title="리포트 본문"></iframe>
-    <button class="sel-btn" id="selBtn" type="button">＋ 이 부분에 제안</button>
+    <div class="gapmarks" id="gapMarks"></div>
+    <div class="gapmark hov" id="gapLine"></div>
+    <button class="gap-btn" id="gapBtn" type="button">＋ 여기에 의견</button>
+    <button class="sel-btn" id="selBtn" type="button">＋ 이 부분에 의견</button>
   </main>
 
   <aside class="rail-wrap" id="railWrap">
-    <div class="rail-head"><span>수정 제안</span><button class="chip" id="btnRailClose">닫기</button></div>
+    <div class="rail-head"><span>의견</span><button class="chip" id="btnRailClose">닫기</button></div>
+    <div class="rail-tools"><button class="btn" id="btnDoc" type="button">＋ 글 전체에 의견</button></div>
     <div class="rail" id="rail"></div>
   </aside>
 </div>
@@ -1392,7 +1423,10 @@ const CAT = { insights: "Insights", issues: "Issues", sectors: "Sectors" };
 const frame = $("frame"), rail = $("rail"), selBtn = $("selBtn");
 const wide = window.matchMedia("(min-width: 1180px)");
 let idoc = null, iwin = null, textIndex = null;
-const rangeCache = new Map();   // 제안 id → Range | null
+const rangeCache = new Map();   // 의견 id → Range (문장 의견만)
+const topCache = new Map();     // 의견 id → 본문 y좌표 | -1(글 전체) | null(위치 못 찾음)
+const gapCache = new Map();     // 의견 id → 단락 사이 기하 정보
+let composerEl = null, composerFor = null;
 const cardEls = new Map();      // 제안 id → 카드 엘리먼트 (+ 서명)
 const replyDrafts = new Map();
 let pendingSel = null;
@@ -1422,7 +1456,7 @@ function selectReport(href, push = true) {
   state.cur = href; state.active = null; state.draft = null; hideSelBtn();
   if (push) if (curTab) history.replaceState(null, "", urlFor());
   $("loading").style.display = "";
-  idoc = null; rangeCache.clear(); clearCards(); renderList();
+  idoc = null; rangeCache.clear(); topCache.clear(); gapCache.clear(); hideGap(0); clearCards(); renderList();
   frame.src = href;
 }
 frame.addEventListener("load", () => {
@@ -1444,6 +1478,10 @@ frame.addEventListener("load", () => {
   idoc.addEventListener("mouseup", onSelection);
   idoc.addEventListener("touchend", () => setTimeout(onSelection, 50));
   idoc.addEventListener("click", onFrameClick, true);
+  if (window.matchMedia("(hover: hover)").matches) {
+    idoc.addEventListener("mousemove", onFrameMove);
+    idoc.documentElement.addEventListener("mouseleave", () => hideGap(300));
+  }
   rebuild();
 });
 function fitFrame() {
@@ -1468,6 +1506,8 @@ function onFrameClick(e) {
       if (e.clientX >= q.left && e.clientX <= q.right && e.clientY >= q.top && e.clientY <= q.bottom) { setActive(id, true); return; }
     }
   }
+  const g = state.draft ? null : gapAt(e.clientY);
+  if (g) { showGap(g); hideGap(6000); } else hideGap(0);
 }
 
 /* ═══ 텍스트 인덱스 & 앵커 ═══ */
@@ -1515,6 +1555,108 @@ function occurrenceOf(range, quote) {
 }
 const topOf = (r) => { const b = r.getBoundingClientRect(); return b.top + (iwin.scrollY || 0); };
 
+/* ═══ 링크 자동 변환 ═══ */
+const URL_RE = /(?:https?:\/\/|www\.)[^\s<>"'“”‘’]+/gi;
+function linkify(text) {
+  const frag = document.createDocumentFragment(); let last = 0;
+  for (const m of text.matchAll(URL_RE)) {
+    let u = m[0], trail = "";
+    const tm = u.match(/[.,;:!?)\]}>」』]+$/);
+    if (tm) { trail = tm[0]; u = u.slice(0, -trail.length); }
+    let href;
+    try { const url = new URL(/^https?:/i.test(u) ? u : "https://" + u); if (!/^https?:$/.test(url.protocol)) continue; href = url.href; } catch { continue; }
+    frag.append(text.slice(last, m.index));
+    frag.append(h("a", { href, target: "_blank", rel: "noopener noreferrer nofollow", title: href }, u.length > 46 ? u.slice(0, 43) + "…" : u));
+    if (trail) frag.append(trail);
+    last = m.index + m[0].length;
+  }
+  frag.append(text.slice(last));
+  return frag;
+}
+
+/* ═══ 단락 사이 앵커 ═══ */
+function blocksOf() {
+  const root = idoc.querySelector(".prose") || idoc.querySelector(".article") || idoc.body;
+  return [...root.children].filter((el) => !/^(SCRIPT|STYLE|LINK)$/.test(el.tagName) && el.getBoundingClientRect().height > 0);
+}
+const bText = (el) => norm(el.textContent || "").slice(0, 80);
+function gapGeometry() {
+  const bl = blocksOf(); if (!bl.length) return null;
+  const sy = iwin.scrollY || 0;
+  return { bl, R: bl.map((el) => { const b = el.getBoundingClientRect(); return { top: b.top + sy, bottom: b.bottom + sy, left: b.left, right: b.right }; }) };
+}
+function gapMid(R, k) {   // k = k번째 블록 뒤 (-1: 맨 앞)
+  if (k < 0) return R[0].top - 14;
+  if (k >= R.length - 1) return R[R.length - 1].bottom + 14;
+  return (R[k].bottom + R[k + 1].top) / 2;
+}
+function gapAt(clientY) {
+  const g = gapGeometry(); if (!g) return null;
+  const { bl, R } = g, y = clientY + (iwin.scrollY || 0);
+  let best = null;
+  for (let k = -1; k < R.length; k++) {
+    const lo = k < 0 ? R[0].top - 34 : R[k].bottom - 6;
+    const hi = k >= R.length - 1 ? R[R.length - 1].bottom + 34 : R[k + 1].top + 6;
+    if (y >= lo && y <= hi) { const d = Math.abs(y - gapMid(R, k)); if (!best || d < best.d) best = { k, d }; }
+  }
+  if (!best) return null;
+  const k = best.k, quote = k >= 0 ? bText(bl[k]) : "";
+  const occ = k >= 0 ? bl.slice(0, k).filter((el) => bText(el) === quote).length : 0;
+  return { kind: "gap", bi: k, quote, occ, y: gapMid(R, k), left: R[0].left, right: R[0].right };
+}
+function gapSpec(s) {
+  const g = gapGeometry(); if (!g) return null;
+  const { bl, R } = g; let k;
+  if (s.bi === -1 && !s.quote) k = -1;
+  else {
+    const hit = bl.map((el, i) => (bText(el) === s.quote ? i : -1)).filter((i) => i >= 0);
+    if (!hit.length) return null;
+    k = hit[Math.min(s.occ || 0, hit.length - 1)];
+  }
+  return { y: gapMid(R, k), left: R[0].left, right: R[0].right };
+}
+function anchorFor(s) {
+  if (s.kind === "doc") return { top: -1 };
+  if (s.kind === "gap") { const g = gapSpec(s); return g ? { top: g.y, gap: g } : { top: null }; }
+  const r = rangeFor(s); return { top: r ? topOf(r) : null, range: r };
+}
+function draftTop() {
+  const d = state.draft;
+  if (!d) return Infinity;
+  return d.kind === "doc" ? -1 : d.kind === "gap" ? d.y : topOf(d.range);
+}
+
+/* 단락 사이 호버/탭 버튼 */
+let gapTimer = null, gapCur = null, gapRaf = 0;
+function showGap(g) {
+  clearTimeout(gapTimer); gapCur = g;
+  const top = frame.offsetTop + g.y + "px";
+  const b = $("gapBtn"), ln = $("gapLine");
+  b.style.top = top; b.style.left = (g.left + g.right) / 2 + "px"; b.classList.add("show");
+  ln.style.top = top; ln.style.left = g.left + "px"; ln.style.width = g.right - g.left + "px"; ln.classList.add("show");
+}
+function hideGap(delay) {
+  clearTimeout(gapTimer);
+  gapTimer = setTimeout(() => { $("gapBtn").classList.remove("show"); $("gapLine").classList.remove("show"); gapCur = null; }, delay);
+}
+function onFrameMove(e) {
+  if (gapRaf) return;
+  gapRaf = requestAnimationFrame(() => {
+    gapRaf = 0; if (!idoc) return;
+    const sel = iwin.getSelection();
+    if ((sel && !sel.isCollapsed) || state.draft) return hideGap(0);
+    const g = gapAt(e.clientY);
+    if (g) showGap(g); else hideGap(250);
+  });
+}
+$("gapBtn").addEventListener("mouseenter", () => clearTimeout(gapTimer));
+$("gapBtn").addEventListener("mouseleave", () => hideGap(300));
+$("gapBtn").addEventListener("click", () => {
+  if (!gapCur) return;
+  state.draft = { ...gapCur }; hideGap(0); openRailDrawer(); rebuild(true);
+});
+$("btnDoc").addEventListener("click", () => { state.draft = { kind: "doc" }; hideSelBtn(); openRailDrawer(); rebuild(true); });
+
 /* ═══ 선택 → 제안 버튼 ═══ */
 function hideSelBtn() { selBtn.classList.remove("show"); pendingSel = null; }
 function onSelection() {
@@ -1524,7 +1666,8 @@ function onSelection() {
   const r = sel.getRangeAt(0);
   const quote = norm(sel.toString()).slice(0, 400).trim();
   if (quote.length < 2 || !idoc.body.contains(r.commonAncestorContainer)) return hideSelBtn();
-  pendingSel = { range: r.cloneRange(), quote, occ: occurrenceOf(r, quote) };
+  pendingSel = { kind: "text", range: r.cloneRange(), quote, occ: occurrenceOf(r, quote) };
+  hideGap(0);
   const rects = r.getClientRects(); const last = rects[rects.length - 1] || r.getBoundingClientRect();
   const stage = $("stage"), fr = frame.getBoundingClientRect(), st = stage.getBoundingClientRect();
   const left = Math.min(fr.left - st.left + last.right - 20, st.width - 140);
@@ -1543,20 +1686,28 @@ selBtn.addEventListener("click", () => {
 const visible = () => state.all.filter((s) => s.report === state.cur && (state.showResolved || !s.resolved)).sort((a, b) => a.createdAt - b.createdAt);
 function clearCards() { rail.replaceChildren(); cardEls.clear(); }
 
-function sign(s) { return JSON.stringify([s.text, s.resolved, s.replies || [], state.active === s.id, rangeCache.get(s.id) ? 1 : 0]); }
+function sign(s) { return JSON.stringify([s.text, s.resolved, s.replies || [], state.active === s.id, topCache.get(s.id) === null ? 0 : 1]); }
 
+function anchorLabel(s, lost) {
+  if (s.kind === "doc") return h("div", { class: "tag" }, "글 전체");
+  if (s.kind === "gap") {
+    return h("div", {}, h("div", { class: "tag" }, "단락 사이"),
+      h("div", { class: "quote soft" + (lost ? " lost" : "") }, s.quote ? "‘" + s.quote + (s.quote.length >= 80 ? "…" : "") + "’ 뒤" : "글 맨 앞"));
+  }
+  return h("div", { class: "quote" + (lost ? " lost" : "") }, s.quote);
+}
 function buildCard(s) {
-  const lost = !rangeCache.get(s.id);
+  const lost = topCache.get(s.id) === null;
   const own = s.cid === CID;
   const card = h("div", { class: "card" + (s.resolved ? " done" : "") + (state.active === s.id ? " active" : ""), "data-id": s.id,
-    onclick: (e) => { if (!e.target.closest("button,input,textarea")) setActive(s.id, false); } });
+    onclick: (e) => { if (!e.target.closest("button,input,textarea,a")) setActive(s.id, false); } });
   if (lost) card.append(h("div", { class: "lost-note" }, "원문 위치를 찾지 못함 (본문이 수정됐을 수 있어요)"));
-  card.append(h("div", { class: "quote" + (lost ? " lost" : "") }, s.quote));
-  card.append(h("div", { class: "body" }, s.text));
+  card.append(anchorLabel(s, lost));
+  card.append(h("div", { class: "body" }, linkify(s.text)));
   card.append(h("div", { class: "meta" }, h("b", {}, s.name), ago(s.createdAt), s.resolved ? "· 해결됨" : null));
   if (s.replies?.length) {
     card.append(h("div", { class: "replies" }, s.replies.map((r) =>
-      h("div", { class: "reply" }, h("div", { class: "body" }, r.text), h("div", { class: "meta" }, h("b", {}, r.name), ago(r.at))))));
+      h("div", { class: "reply" }, h("div", { class: "body" }, linkify(r.text)), h("div", { class: "meta" }, h("b", {}, r.name), ago(r.at))))));
   }
   if (state.active === s.id) {
     const inp = h("input", { type: "text", placeholder: "답글 달기…", value: replyDrafts.get(s.id) || "",
@@ -1566,7 +1717,7 @@ function buildCard(s) {
   }
   card.append(h("div", { class: "acts" },
     h("button", { onclick: () => { if (!s.resolved && state.active === s.id) state.active = null; store.patch(s.id, { resolved: !s.resolved }); } }, s.resolved ? "다시 열기" : "해결됨"),
-    own ? h("button", { class: "del", onclick: () => { if (confirm("이 제안을 삭제할까요?")) store.remove(s.id); } }, "삭제") : null));
+    own ? h("button", { class: "del", onclick: () => { if (confirm("이 의견을 삭제할까요?")) store.remove(s.id); } }, "삭제") : null));
   return card;
 }
 async function sendReply(id, input) {
@@ -1578,7 +1729,7 @@ async function sendReply(id, input) {
 
 function buildComposer() {
   const d = state.draft;
-  const ta = h("textarea", { placeholder: "수정 제안을 입력하세요 (예: 이 수치는 2025년 기준으로 바꿔야 할 것 같아요)", maxlength: "2000" });
+  const ta = h("textarea", { placeholder: "의견·질문·참고할 자료 주소(URL)를 자유롭게 남겨주세요", maxlength: "2000" });
   const name = h("input", { type: "text", placeholder: "이름", value: LS.get("src-review-name", ""), maxlength: "20" });
   const ok = h("button", { class: "btn pri", onclick: async () => {
     const text = ta.value.trim(), nm = name.value.trim();
@@ -1586,12 +1737,21 @@ function buildComposer() {
     if (!nm) return name.focus();
     LS.set("src-review-name", nm);
     ok.disabled = true;
-    state.draft = null;
-    await store.add({ report: state.cur, quote: d.quote, occ: d.occ, text: text.slice(0, 2000), name: nm, cid: CID, createdAt: Date.now(), resolved: false, replies: [] });
-    rebuild();
-  } }, "제안 등록");
-  const el = h("div", { class: "card active composer" },
-    h("div", { class: "quote" }, d.quote), ta,
+    const data = { report: state.cur, quote: d.kind === "doc" ? "" : d.quote, occ: d.occ || 0, text: text.slice(0, 2000), name: nm, cid: CID, createdAt: Date.now(), resolved: false, replies: [] };
+    if (d.kind !== "text") { data.kind = d.kind; if (d.kind === "gap") data.bi = d.bi; }
+    try {
+      await store.add(data);
+      if (state.draft === d) { state.draft = null; rebuild(); }
+    } catch (err) {
+      console.error(err); ok.disabled = false;
+      alert("저장하지 못했어요. 글 전체/단락 사이 의견은 Firestore 규칙(firestore.rules) 업데이트가 필요할 수 있어요.\n\n" + (err?.code || err?.message || ""));
+    }
+  } }, "의견 등록");
+  const head = d.kind === "doc" ? h("div", { class: "tag" }, "글 전체에 대한 의견")
+    : d.kind === "gap" ? h("div", {}, h("div", { class: "tag" }, "단락 사이"), h("div", { class: "quote soft" }, d.quote ? "‘" + d.quote + (d.quote.length >= 80 ? "…" : "") + "’ 뒤" : "글 맨 앞"))
+    : h("div", { class: "quote" }, d.quote);
+  const el = h("div", { class: "card active composer" }, head, ta,
+    h("div", { class: "hint" }, "참고 자료 URL을 붙여넣으면 자동으로 링크가 걸려요."),
     h("div", { class: "row" }, name, h("button", { class: "btn", onclick: () => { state.draft = null; rebuild(); } }, "취소"), ok));
   setTimeout(() => ta.focus({ preventScroll: true }), 30);
   return el;
@@ -1608,14 +1768,14 @@ function paintHighlights() {
     if (s.resolved) (on ? doneAct : done).push(r); else (on ? act : open).push(r);
   }
   reg.set("src-open", new H(...open)); reg.set("src-done", new H(...done)); reg.set("src-active", new H(...act)); reg.set("src-done-active", new H(...doneAct));
-  reg.set("src-draft", new H(...(state.draft ? [state.draft.range] : [])));
+  reg.set("src-draft", new H(...(state.draft?.range ? [state.draft.range] : [])));
 }
 
 function rebuild(focusDraft) {
   if (!idoc) return;
   const list = visible();
-  rangeCache.clear();
-  for (const s of list) rangeCache.set(s.id, rangeFor(s));
+  rangeCache.clear(); topCache.clear(); gapCache.clear();
+  for (const s of list) { const a = anchorFor(s); topCache.set(s.id, a.top); if (a.range) rangeCache.set(s.id, a.range); if (a.gap) gapCache.set(s.id, a.gap); }
 
   // 레일 동기화 (바뀐 카드만 교체)
   const keep = new Set(list.map((s) => s.id));
@@ -1629,23 +1789,34 @@ function rebuild(focusDraft) {
     cardEls.set(s.id, { el, sg });
     if (typing && typing.tagName === "INPUT" && el.contains(el.querySelector(".reply-form input")) && state.active === s.id) el.querySelector(".reply-form input").focus();
   }
-  rail.querySelector(".composer")?.remove();
-  if (state.draft) rail.append(Object.assign(buildComposer(), { }));
+  if (!state.draft) { composerEl?.remove(); composerEl = null; composerFor = null; }
+  else if (composerFor !== state.draft) { composerEl?.remove(); composerEl = buildComposer(); composerFor = state.draft; rail.prepend(composerEl); }
   rail.querySelector(".empty")?.remove();
-  if (!list.length && !state.draft) rail.append(h("div", { class: "empty" }, "본문에서 고치고 싶은 문장을 드래그(모바일은 길게 눌러 선택)하면 ‘이 부분에 제안’ 버튼이 나타나요."));
+  if (!list.length && !state.draft) rail.append(h("div", { class: "empty" }, "문장을 드래그(모바일은 길게 눌러 선택)하거나, 단락 사이 빈 곳(PC는 마우스 올리기, 모바일은 탭)·‘글 전체에 의견’으로 자유롭게 의견을 남겨보세요."));
 
   $("railCount").textContent = state.all.filter((s) => s.report === state.cur && !s.resolved).length;
   paintHighlights(); relayout(); renderList();
-  if (focusDraft && wide.matches && state.draft) window.scrollTo({ top: Math.max(0, frame.getBoundingClientRect().top + window.scrollY + topOf(state.draft.range) - 140), behavior: "smooth" });
+  if (focusDraft && wide.matches && state.draft) window.scrollTo({ top: Math.max(0, frame.getBoundingClientRect().top + window.scrollY + Math.max(draftTop(), 0) - 140), behavior: "smooth" });
+}
+
+function drawMarks() {
+  const box = $("gapMarks"); box.style.top = frame.offsetTop + "px"; box.replaceChildren();
+  const add = (g, cls) => box.append(h("div", { class: "gapmark " + cls, style: `top:${g.y}px;left:${g.left}px;width:${g.right - g.left}px` }));
+  for (const s of visible()) {
+    if (s.kind !== "gap") continue;
+    const g = gapCache.get(s.id); if (!g) continue;
+    add(g, (s.resolved ? "done" : "") + (state.active === s.id ? " on" : ""));
+  }
+  if (state.draft?.kind === "gap") add(state.draft, "draft");
 }
 
 function relayout() {
   if (!idoc) return;
+  drawMarks();
   if (!wide.matches) { rail.style.minHeight = ""; for (const e of rail.children) e.style.top = ""; return; }
   const items = [];
-  for (const [id, e] of cardEls) { const r = rangeCache.get(id); items.push({ el: e.el, top: r ? topOf(r) : Infinity, t: state.all.find((s) => s.id === id)?.createdAt || 0 }); }
-  const comp = rail.querySelector(".composer");
-  if (comp && state.draft) items.push({ el: comp, top: topOf(state.draft.range), t: 0 });
+  for (const [id, e] of cardEls) { const t = topCache.get(id); items.push({ el: e.el, top: t == null ? Infinity : t, t: state.all.find((s) => s.id === id)?.createdAt || 0 }); }
+  if (composerEl && state.draft) items.push({ el: composerEl, top: draftTop(), t: 0 });
   items.sort((a, b) => a.top - b.top || a.t - b.t);
   let y = 0;
   for (const it of items) {
@@ -1661,10 +1832,10 @@ function setActive(id, fromText) {
   state.active = off ? null : id;
   rebuild();
   if (off) return;
-  const r = rangeCache.get(id);
+  const ty = topCache.get(id);
   if (!wide.matches) { openRailDrawer(); rail.querySelector(`[data-id="${id}"]`)?.scrollIntoView({ block: "nearest" }); }
-  else if (!fromText && r) {
-    const y = frame.getBoundingClientRect().top + window.scrollY + topOf(r) - 160;
+  else if (!fromText && ty != null && ty >= 0) {
+    const y = frame.getBoundingClientRect().top + window.scrollY + ty - 160;
     if (Math.abs(window.scrollY - y) > 400) window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
   }
 }
@@ -1706,7 +1877,7 @@ function showTab(t, push = true) {
   $("view-review").hidden = t !== "review";
   document.querySelectorAll(".mtab").forEach((b) => b.classList.toggle("active", b.dataset.tab === t));
   document.title = t === "guide" ? "SRC Plus 멤버 · 가이드" : "SRC Plus 멤버 · 리뷰";
-  hideSelBtn(); closeDrawers();
+  hideSelBtn(); hideGap(0); closeDrawers();
   if (push) history.replaceState(null, "", urlFor());
   window.scrollTo({ top: scrollMem[t] || 0, behavior: "instant" });
   if (t === "review") { fitFrame(); rebuild(); }

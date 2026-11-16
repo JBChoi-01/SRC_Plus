@@ -6,10 +6,12 @@ service cloud.firestore {
     match /suggestions/{id} {
       allow read: if true;
       allow create: if request.resource.data.keys().hasOnly(
-          ['report','quote','occ','text','name','cid','createdAt','resolved','replies'])
+          ['report','quote','occ','text','name','cid','createdAt','resolved','replies','kind','bi'])
         && request.resource.data.text is string && request.resource.data.text.size() <= 2000
         && request.resource.data.quote is string && request.resource.data.quote.size() <= 400
-        && request.resource.data.name is string && request.resource.data.name.size() <= 20;
+        && request.resource.data.name is string && request.resource.data.name.size() <= 20
+        && (!('kind' in request.resource.data) || request.resource.data.kind in ['doc','gap'])
+        && (!('bi' in request.resource.data) || request.resource.data.bi is int);
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['resolved','replies']);
       allow delete: if true;
     }
