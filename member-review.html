@@ -116,6 +116,7 @@
   }
   .card.active { border-color: var(--accent); box-shadow: 0 3px 14px rgba(40,60,90,0.12); z-index: 5; }
   .card.done { opacity: 0.62; }
+  .card.done.active { opacity: 1; background: #ecedec; border-color: var(--ink-faint); }
   .card .quote {
     font-size: 0.72rem; color: var(--ink-light); border-left: 2px solid #f0c24d;
     padding-left: 0.5rem; margin-bottom: 0.45rem;
@@ -365,6 +366,7 @@ frame.addEventListener("load", () => {
     .topbar, .progress { display: none !important; }
     ::highlight(src-open) { background: rgba(255,207,92,.5); }
     ::highlight(src-done) { background: rgba(160,170,180,.28); }
+    ::highlight(src-done-active) { background: rgba(120,130,142,.5); }
     ::highlight(src-active) { background: rgba(255,160,40,.75); }
     ::highlight(src-draft) { background: rgba(110,160,255,.4); }`;
   idoc.head.append(st);
@@ -532,12 +534,13 @@ function buildComposer() {
 function paintHighlights() {
   if (!iwin?.CSS?.highlights) return;
   const H = iwin.Highlight, reg = iwin.CSS.highlights;
-  const open = [], done = [], act = [];
+  const open = [], done = [], act = [], doneAct = [];
   for (const s of visible()) {
     const r = rangeCache.get(s.id); if (!r) continue;
-    if (s.resolved) done.push(r); else if (state.active === s.id) act.push(r); else open.push(r);
+    const on = state.active === s.id;
+    if (s.resolved) (on ? doneAct : done).push(r); else (on ? act : open).push(r);
   }
-  reg.set("src-open", new H(...open)); reg.set("src-done", new H(...done)); reg.set("src-active", new H(...act));
+  reg.set("src-open", new H(...open)); reg.set("src-done", new H(...done)); reg.set("src-active", new H(...act)); reg.set("src-done-active", new H(...doneAct));
   reg.set("src-draft", new H(...(state.draft ? [state.draft.range] : [])));
 }
 
