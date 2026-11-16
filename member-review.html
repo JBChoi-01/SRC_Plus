@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>SRC Plus 리포트 리뷰</title>
+<title>SRC Plus 멤버 페이지</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
+
   :root {
     --bg: #f1f2f2;
     --bg-card: #f8f8f7;
@@ -35,18 +36,31 @@
   button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
   a { color: inherit; }
 
-  /* ── 상단 바 ── */
-  .topbar {
+  
+  :root { --top: 52px; }
+  html { scroll-behavior: smooth; }
+  ::selection { background: var(--accent); color: #fff; }
+  .mtop {
     position: sticky; top: 0; z-index: 100; height: var(--top);
     background: color-mix(in srgb, var(--bg) 88%, transparent);
     -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--rule);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 1.2rem; gap: 1rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 1.2rem;
   }
-  .brand { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+  .mtop-l { display: flex; align-items: center; gap: 1.4rem; min-width: 0; }
+  .brand { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
   .brand span { color: var(--accent); }
+  .mtabs { display: flex; height: var(--top); }
+  .mtab {
+    padding: 0 1rem; font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-faint); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .15s, border-color .15s;
+  }
+  .mtab:hover { color: var(--ink-light); }
+  .mtab.active { color: var(--ink); border-bottom-color: var(--accent); }
+  .progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 0%; background: var(--accent); transition: width 0.08s linear; }
+  body[data-tab="review"] .progress { display: none; }
   .top-actions { display: flex; align-items: center; gap: 0.4rem; }
+  body[data-tab="guide"] .top-actions { display: none; }
   .chip {
     font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--ink-light); border: 1px solid var(--rule); border-radius: 999px;
@@ -54,147 +68,1024 @@
   }
   .chip:hover { color: var(--ink); border-color: var(--ink-faint); }
   .chip.on { color: var(--accent); border-color: var(--accent); }
-  .chip.nav-only { display: none; }
 
-  .banner {
+  .chip.nav-only { display: none; }
+  .chip .short { display: none; }
+  @media (max-width: 1179px) { .chip.nav-only { display: inline-block; } }
+  @media (max-width: 640px) {
+    .mtop { padding: 0 0.6rem; gap: 0.4rem; }
+    .brand { display: none; }
+    .mtab { padding: 0 0.7rem; font-size: 0.6rem; letter-spacing: 0.08em; }
+    .chip { padding: 0.35rem 0.55rem; font-size: 0.54rem; letter-spacing: 0.04em; }
+    .chip .long { display: none; } .chip .short { display: inline; }
+    .top-actions { gap: 0.25rem; }
+  }
+
+/* ═══ 가이드 (scoped) ═══ */
+#view-guide{
+    --bg: #f1f2f2;
+    --bg-card: #f6f6f5;
+    --bg-dark: #161718;
+    --ink: #18191a;
+    --ink-light: #66686b;
+    --ink-faint: #a9abad;
+    --rule: #d8d9d8;
+    --rule-soft: #e4e4e3;
+    --accent: oklch(0.56 0.05 248);
+    --accent-bright: oklch(0.64 0.07 248);
+    --accent-soft: oklch(0.56 0.05 248 / 0.10);
+    --hl: oklch(0.59 0.17 15);
+    --on-dark: #ededec;
+    --on-dark-dim: rgba(237,237,236,0.55);
+    --on-dark-faint: rgba(237,237,236,0.32);
+    --font-sans: 'Noto Sans KR', 'Dotum', '돋움', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --measure: 40rem;
+    --pad: 2rem;
+  }
+#view-guide{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.6;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+#view-guide .topbar{
+    position: sticky; top: 0; z-index: 100;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+#view-guide .topbar-inner{
+    max-width: calc(var(--measure) + var(--pad) * 2);
+    margin: 0 auto; padding: 0 var(--pad);
+    height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+#view-guide .brand{
+    font-family: var(--font-mono); font-size: 0.62rem;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink);
+  }
+#view-guide .brand span{ color: var(--accent); }
+#view-guide .crumb{
+    font-family: var(--font-mono); font-size: 0.58rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light);
+  }
+#view-guide .progress{
+    position: absolute; left: 0; bottom: -1px;
+    height: 2px; width: 0%; background: var(--accent);
+    transition: width 0.08s linear;
+  }
+#view-guide .tab-nav{
+    position: sticky; top: 52px; z-index: 90;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+#view-guide .tab-nav-inner{
+    max-width: calc(var(--measure) + var(--pad) * 2);
+    margin: 0 auto; padding: 0 var(--pad);
+    display: flex; gap: 0;
+  }
+#view-guide .tab-btn{
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.1rem;
+    border: none; background: transparent;
+    font-family: var(--font-mono); font-size: 0.6rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+#view-guide .tab-btn:hover{ color: var(--ink-light); }
+#view-guide .tab-btn.active{ color: var(--ink); border-bottom-color: var(--accent); }
+#view-guide .tab-num{ font-size: 0.52rem; color: var(--accent); opacity: 0.7; }
+#view-guide .tab-btn.active .tab-num{ opacity: 1; }
+#view-guide .page-wrap{
+    max-width: calc(var(--measure) + var(--pad) * 2);
+    margin: 0 auto; padding: var(--pad);
+  }
+#view-guide .chapter{ padding-top: 2.8rem; scroll-margin-top: 110px; }
+#view-guide .chapter + .chapter{ margin-top: 0; padding-top: 3.6rem; }
+#view-guide .chapter-divider{
+    margin: 0 calc(-1 * var(--pad));
+    padding: 2rem var(--pad) 1.4rem;
+    background: var(--bg);
+    display: flex; align-items: center; gap: 1rem;
+    border-top: 3px solid var(--ink);
+  }
+#view-guide .chapter-divider .div-num{
+    font-family: var(--font-mono); font-size: 0.62rem;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent);
+  }
+#view-guide .chapter-divider .div-title{
+    font-family: var(--font-sans); font-size: 1.5rem;
+    letter-spacing: -0.02em; color: var(--ink); font-weight: 600;
+  }
+#view-guide .chapter-divider .div-line{ display: none; }
+#view-guide .ch-desc{
+    font-size: 0.95rem; color: var(--ink-light);
+    line-height: 1.75; margin-bottom: 2rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+#view-guide .prose{ counter-reset: h2; }
+#view-guide .prose p{ font-size: 0.97rem; line-height: 1.95; color: var(--ink); margin: 0 0 1.3rem; }
+#view-guide .prose h2{
+    counter-increment: h2;
+    font-size: 1.22rem; font-weight: 600;
+    line-height: 1.4; color: var(--ink);
+    margin: 2.6rem 0 1rem;
+    padding-top: 1.3rem;
+    border-top: 1px solid var(--rule);
+    scroll-margin-top: 110px;
+  }
+#view-guide .prose h2::before{
+    content: var(--chnum, '00') '-' counter(h2);
+    display: block;
+    font-family: var(--font-mono); font-size: 0.6rem;
+    font-weight: 400; letter-spacing: 0.1em; color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+#view-guide .prose h3{ font-size: 1rem; font-weight: 600; color: var(--ink); margin: 1.8rem 0 0.6rem; }
+#view-guide .prose strong{ font-weight: 600; }
+#view-guide .prose em{ font-style: normal; color: var(--accent); font-weight: 500; }
+#view-guide .prose em.hl{ color: var(--hl); }
+#view-guide .prose code{
+    font-family: var(--font-mono); font-size: 0.82em;
+    background: var(--bg-card); border: 1px solid var(--rule);
+    padding: 0.1em 0.38em; color: var(--ink);
+  }
+#view-guide .prose ul{ margin: 0 0 1.3rem; padding-left: 0; list-style: none; }
+#view-guide .prose li{ position: relative; padding-left: 1.3rem; margin-bottom: 0.55rem; font-size: 0.97rem; line-height: 1.85; color: var(--ink); }
+#view-guide .prose ul li::before{ content: ''; position: absolute; left: 0; top: 0.78em; width: 5px; height: 5px; background: var(--accent); }
+#view-guide .accordion{ border-top: 1px solid var(--rule); margin: 2.6rem 0 0; }
+#view-guide .accordion + .accordion{ margin-top: 0; }
+#view-guide .accordion > summary{
+    cursor: pointer; list-style: none;
+    padding: 1.3rem 0 1.3rem;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+  }
+#view-guide .accordion > summary::-webkit-details-marker{ display: none; }
+#view-guide .acc-num{
+    display: block;
+    font-family: var(--font-mono); font-size: 0.6rem;
+    font-weight: 400; letter-spacing: 0.1em; color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+#view-guide .acc-title{ font-size: 1.22rem; font-weight: 600; color: var(--ink); line-height: 1.4; }
+#view-guide .acc-toggle{
+    flex-shrink: 0;
+    font-family: var(--font-mono); font-size: 0.56rem;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
+    border: 1px solid var(--rule); padding: 0.32rem 0.7rem;
+  }
+#view-guide .acc-toggle::before{ content: '펼치기 +'; }
+#view-guide .accordion[open] .acc-toggle{ color: var(--accent); border-color: var(--accent); }
+#view-guide .accordion[open] .acc-toggle::before{ content: '접기 −'; }
+#view-guide .acc-body{ padding: 0 0 2rem; }
+#view-guide .acc-body h3:first-child{ margin-top: 0; }
+#view-guide .wip-bar{
+    margin: 1.6rem 0 0.4rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px dashed var(--rule);
+    text-align: center;
+    font-family: var(--font-mono); font-size: 0.62rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
+  }
+#view-guide .flow{ margin: 1.4rem 0; display: flex; flex-direction: column; gap: 0; }
+#view-guide .flow-step{ display: grid; grid-template-columns: 2.4rem 1fr; gap: 0 1rem; position: relative; }
+#view-guide .flow-step + .flow-step .flow-left::before{
+    content: ''; position: absolute; top: 0; left: 1.1rem; width: 1px; height: 1.6rem;
+    background: var(--rule); transform: translateY(-1.6rem);
+  }
+#view-guide .flow-left{ display: flex; flex-direction: column; align-items: center; padding-top: 1rem; position: relative; }
+#view-guide .flow-dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; z-index: 1; }
+#view-guide .flow-line{ flex: 1; width: 1px; background: var(--rule); margin-top: 4px; min-height: 1.4rem; }
+#view-guide .flow-body{ padding: 0.85rem 0 1.2rem; border-bottom: 1px solid var(--rule-soft); }
+#view-guide .flow-step:last-child .flow-body{ border-bottom: none; }
+#view-guide .flow-label{ font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+#view-guide .flow-title{ font-size: 0.97rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+#view-guide .flow-desc{ font-size: 0.88rem; color: var(--ink-light); line-height: 1.7; }
+#view-guide .folder-tree{
+    margin: 1.2rem 0; padding: 1.3rem 1.4rem;
+    background: var(--bg-dark);
+    font-family: var(--font-mono); font-size: 0.8rem;
+    line-height: 2; color: var(--on-dark-dim);
+  }
+#view-guide .folder-tree .dir{ color: var(--on-dark); }
+#view-guide .folder-tree .accent{ color: var(--accent-bright); }
+#view-guide .folder-tree .faint{ color: var(--on-dark-faint); }
+#view-guide .file-list{ margin: 0 0 1.3rem; border: 1px solid var(--rule); background: var(--bg-card); }
+#view-guide .file-item{
+    display: grid; grid-template-columns: 13rem 1fr; gap: 0 1.2rem; align-items: baseline;
+    padding: 0.75rem 1.1rem; border-bottom: 1px solid var(--rule-soft); font-size: 0.9rem;
+  }
+#view-guide .file-item:last-child{ border-bottom: none; }
+#view-guide .file-name{ font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink); }
+#view-guide .file-desc{ color: var(--ink-light); font-size: 0.86rem; }
+#view-guide .callout{
+    margin: 1.5rem 0; padding: 1rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--rule); border-left: 2px solid var(--accent);
+  }
+#view-guide .callout-label{
+    font-family: var(--font-mono); font-size: 0.54rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem;
+  }
+#view-guide .callout p{ font-size: 0.88rem; line-height: 1.8; margin: 0; color: var(--ink-light); }
+#view-guide .callout p + p{ margin-top: 0.55rem; }
+#view-guide .callout.warn{ border-left-color: #b03a2e; }
+#view-guide .callout.warn .callout-label{ color: #b03a2e; }
+#view-guide .callout.good{ border-left-color: #2e7d5b; }
+#view-guide .callout.good .callout-label{ color: #2e7d5b; }
+#view-guide .step-list{ margin: 0 0 1.3rem; list-style: none; counter-reset: step; }
+#view-guide .step-list li{
+    counter-increment: step; position: relative;
+    padding: 0.75rem 1rem 0.75rem 2.8rem;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 0.93rem; line-height: 1.7; color: var(--ink);
+  }
+#view-guide .step-list li:first-child{ border-top: 1px solid var(--rule-soft); }
+#view-guide .step-list li::before{
+    content: counter(step);
+    position: absolute; left: 0.85rem; top: 0.8rem;
+    font-family: var(--font-mono); font-size: 0.66rem;
+    color: var(--accent); font-weight: 500; line-height: 1.6;
+  }
+#view-guide .data-table{ width: 100%; border-collapse: collapse; margin: 1rem 0 1.3rem; font-size: 0.86rem; }
+#view-guide .data-table th{
+    text-align: left; font-family: var(--font-mono); font-size: 0.54rem;
+    font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-light); padding: 0 0.9rem 0.55rem;
+    border-bottom: 1px solid var(--ink);
+  }
+#view-guide .data-table td{ padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--rule-soft); vertical-align: top; line-height: 1.55; }
+#view-guide .data-table tr:last-child td{ border-bottom: 1px solid var(--rule); }
+#view-guide .data-table td:first-child{ font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); white-space: nowrap; }
+#view-guide .data-table td:nth-child(2){ color: var(--ink-light); }
+#view-guide .prompt-wrap{ margin: 1.3rem 0; border: 1px solid var(--rule); background: var(--bg-dark); }
+#view-guide .prompt-header{ display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+#view-guide .prompt-label{ font-family: var(--font-mono); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-dark-faint); }
+#view-guide .copy-btn{
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.35rem 0.8rem;
+    background: transparent; border: 1px solid rgba(255,255,255,0.14);
+    font-family: var(--font-mono); font-size: 0.56rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--on-dark-dim); cursor: pointer; transition: all 0.16s;
+  }
+#view-guide .copy-btn:hover,#view-guide .copy-btn.copied{ border-color: var(--accent-bright); color: var(--accent-bright); }
+#view-guide .copy-btn svg{ width: 11px; height: 11px; }
+#view-guide .prompt-body{
+    padding: 1.2rem 1.1rem;
+    font-family: var(--font-mono); font-size: 0.76rem;
+    line-height: 1.9; color: #e8e9e8;
+    white-space: pre-wrap; word-break: keep-all;
+  }
+#view-guide .prompt-body .ph{ color: var(--hl); background: oklch(0.59 0.17 15 / 0.13); padding: 0 0.2em; }
+#view-guide .page-foot{
+    margin-top: 4rem; padding: 1.4rem 0 5rem;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 0.54rem;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+  }
+@media (max-width: 640px){#view-guide{ --pad: 1.3rem; }
+#view-guide .file-item{ grid-template-columns: 1fr; gap: 0.2rem; }
+#view-guide .tab-btn{ padding: 0.75rem 0.7rem; font-size: 0.54rem; }
+#view-guide .page-foot{ flex-direction: column; gap: 0.5rem; }}
+@media (prefers-reduced-motion: no-preference){#view-guide .chapter{ animation: aUp 0.4s cubic-bezier(0.2,0.7,0.2,1) both; }}
+@keyframes aUp{ from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+/* ═══ 리뷰 (scoped) ═══ */
+#view-review .banner{
     background: #fff4d6; color: #6b5200; font-size: 0.74rem; text-align: center;
     padding: 0.45rem 1rem; border-bottom: 1px solid #ecd9a0;
   }
-  .banner[hidden] { display: none; }
-
-  /* ── 3열 레이아웃 ── */
-  .shell {
+#view-review .banner[hidden]{ display: none; }
+#view-review .shell{
     display: grid; align-items: start; justify-content: center;
     grid-template-columns: 14.5rem minmax(0, 44rem) 21rem; gap: 1.5rem;
     padding: 0 1rem;
   }
-
-  /* 좌: 리포트 목록 */
-  .list {
+#view-review .list{
     position: sticky; top: var(--top); align-self: start;
     max-height: calc(100vh - var(--top)); overflow-y: auto;
     padding: 1.6rem 0 2rem;
   }
-  .list-title { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 0.9rem 0.2rem; }
-  .cat { margin-bottom: 1.3rem; }
-  .cat-h { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin: 0 0 0.3rem 0.2rem; }
-  .item {
+#view-review .list-title{ font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 0.9rem 0.2rem; }
+#view-review .cat{ margin-bottom: 1.3rem; }
+#view-review .cat-h{ font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin: 0 0 0.3rem 0.2rem; }
+#view-review .item{
     display: block; width: 100%; text-align: left;
     padding: 0.55rem 0.6rem; border-radius: 6px; border-left: 2px solid transparent;
     font-size: 0.8rem; line-height: 1.4; color: var(--ink-light);
   }
-  .item:hover { background: var(--accent-soft); color: var(--ink); }
-  .item.active { background: var(--accent-soft); color: var(--ink); border-left-color: var(--accent); font-weight: 500; }
-  .item .row { display: flex; gap: 0.4rem; align-items: baseline; justify-content: space-between; }
-  .item small { display: block; font-family: var(--font-mono); font-size: 0.54rem; letter-spacing: 0.06em; color: var(--ink-faint); margin-top: 0.15rem; }
-  .badge { font-family: var(--font-mono); font-size: 0.56rem; background: var(--hl); color: #fff; border-radius: 999px; padding: 0.05rem 0.42rem; flex: none; }
-  .draft-tag { color: var(--hl); }
-
-  /* 중: 리포트 */
-  .stage { position: relative; padding-top: 1rem; }
-  .stage iframe { display: block; width: 100%; height: 80vh; border: 0; background: var(--bg); }
-  .loading { position: absolute; inset: 3rem 0 auto; text-align: center; font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-faint); letter-spacing: 0.14em; }
-  .sel-btn {
+#view-review .item:hover{ background: var(--accent-soft); color: var(--ink); }
+#view-review .item.active{ background: var(--accent-soft); color: var(--ink); border-left-color: var(--accent); font-weight: 500; }
+#view-review .item .row{ display: flex; gap: 0.4rem; align-items: baseline; justify-content: space-between; }
+#view-review .item small{ display: block; font-family: var(--font-mono); font-size: 0.54rem; letter-spacing: 0.06em; color: var(--ink-faint); margin-top: 0.15rem; }
+#view-review .badge{ font-family: var(--font-mono); font-size: 0.56rem; background: var(--hl); color: #fff; border-radius: 999px; padding: 0.05rem 0.42rem; flex: none; }
+#view-review .draft-tag{ color: var(--hl); }
+#view-review .stage{ position: relative; padding-top: 1rem; }
+#view-review .stage iframe{ display: block; width: 100%; height: 80vh; border: 0; background: var(--bg); }
+#view-review .loading{ position: absolute; inset: 3rem 0 auto; text-align: center; font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-faint); letter-spacing: 0.14em; }
+#view-review .sel-btn{
     position: absolute; z-index: 20; display: none;
     background: var(--ink); color: #fff; border-radius: 999px;
     font-size: 0.74rem; padding: 0.4rem 0.85rem; box-shadow: 0 4px 14px rgba(0,0,0,0.22);
   }
-  .sel-btn.show { display: block; }
-
-  /* 우: 제안 레일 */
-  .rail-wrap { padding-top: 1rem; }
-  .rail { position: relative; }
-  .rail-head { display: none; }
-  .empty { font-size: 0.78rem; color: var(--ink-faint); padding: 1rem 0.2rem; line-height: 1.7; }
-  .rail .empty { position: absolute; top: 0; left: 0; right: 0; }
-
-  .card {
+#view-review .sel-btn.show{ display: block; }
+#view-review .rail-wrap{ padding-top: 1rem; }
+#view-review .rail{ position: relative; }
+#view-review .rail-head{ display: none; }
+#view-review .empty{ font-size: 0.78rem; color: var(--ink-faint); padding: 1rem 0.2rem; line-height: 1.7; }
+#view-review .rail .empty{ position: absolute; top: 0; left: 0; right: 0; }
+#view-review .card{
     position: absolute; left: 0; right: 0;
     background: var(--bg-card); border: 1px solid var(--rule); border-radius: 8px;
     padding: 0.7rem 0.8rem; font-size: 0.8rem;
     transition: top 0.15s ease, border-color 0.15s, box-shadow 0.15s;
   }
-  .card.active { border-color: var(--accent); box-shadow: 0 3px 14px rgba(40,60,90,0.12); z-index: 5; }
-  .card.done { opacity: 0.62; }
-  .card.done.active { opacity: 1; background: #ecedec; border-color: var(--ink-faint); }
-  .card .quote {
+#view-review .card.active{ border-color: var(--accent); box-shadow: 0 3px 14px rgba(40,60,90,0.12); z-index: 5; }
+#view-review .card.done{ opacity: 0.62; }
+#view-review .card.done.active{ opacity: 1; background: #ecedec; border-color: var(--ink-faint); }
+#view-review .card .quote{
     font-size: 0.72rem; color: var(--ink-light); border-left: 2px solid #f0c24d;
     padding-left: 0.5rem; margin-bottom: 0.45rem;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
-  .card.active .quote { -webkit-line-clamp: 6; }
-  .card .quote.lost { border-left-color: var(--hl); }
-  .card .lost-note { font-family: var(--font-mono); font-size: 0.54rem; color: var(--hl); letter-spacing: 0.06em; margin-bottom: 0.3rem; }
-  .card .body { white-space: pre-wrap; overflow-wrap: anywhere; }
-  .card .meta { font-family: var(--font-mono); font-size: 0.56rem; color: var(--ink-faint); letter-spacing: 0.04em; margin-top: 0.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
-  .card .meta b { font-weight: 500; color: var(--ink-light); }
-  .card .acts { display: flex; gap: 0.7rem; margin-top: 0.5rem; }
-  .card .acts button { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.08em; color: var(--ink-light); text-transform: uppercase; }
-  .card .acts button:hover { color: var(--accent); }
-  .card .acts .del:hover { color: var(--hl); }
-  .replies { margin-top: 0.55rem; border-top: 1px dashed var(--rule); padding-top: 0.45rem; display: grid; gap: 0.45rem; }
-  .reply .body { font-size: 0.76rem; }
-  .reply-form { margin-top: 0.5rem; display: flex; gap: 0.4rem; }
-  .reply-form input { flex: 1; min-width: 0; }
-
-  textarea, input[type=text] {
+#view-review .card.active .quote{ -webkit-line-clamp: 6; }
+#view-review .card .quote.lost{ border-left-color: var(--hl); }
+#view-review .card .lost-note{ font-family: var(--font-mono); font-size: 0.54rem; color: var(--hl); letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+#view-review .card .body{ white-space: pre-wrap; overflow-wrap: anywhere; }
+#view-review .card .meta{ font-family: var(--font-mono); font-size: 0.56rem; color: var(--ink-faint); letter-spacing: 0.04em; margin-top: 0.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+#view-review .card .meta b{ font-weight: 500; color: var(--ink-light); }
+#view-review .card .acts{ display: flex; gap: 0.7rem; margin-top: 0.5rem; }
+#view-review .card .acts button{ font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.08em; color: var(--ink-light); text-transform: uppercase; }
+#view-review .card .acts button:hover{ color: var(--accent); }
+#view-review .card .acts .del:hover{ color: var(--hl); }
+#view-review .replies{ margin-top: 0.55rem; border-top: 1px dashed var(--rule); padding-top: 0.45rem; display: grid; gap: 0.45rem; }
+#view-review .reply .body{ font-size: 0.76rem; }
+#view-review .reply-form{ margin-top: 0.5rem; display: flex; gap: 0.4rem; }
+#view-review .reply-form input{ flex: 1; min-width: 0; }
+#view-review textarea,#view-review input[type=text]{
     width: 100%; font: inherit; font-size: 0.8rem; color: var(--ink);
     background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 0.5rem 0.6rem; outline: none;
   }
-  textarea:focus, input[type=text]:focus { border-color: var(--accent); }
-  textarea { resize: vertical; min-height: 4.6rem; }
-  .composer .row { display: flex; gap: 0.4rem; margin-top: 0.45rem; align-items: center; }
-  .composer .row input { flex: 1; min-width: 0; }
-  .btn { font-size: 0.74rem; padding: 0.42rem 0.85rem; border-radius: 6px; border: 1px solid var(--rule); background: #fff; white-space: nowrap; }
-  .btn.pri { background: var(--ink); border-color: var(--ink); color: #fff; }
-  .btn:disabled { opacity: 0.4; cursor: default; }
-
-  @media (max-width: 520px) {
-    .topbar { padding: 0 0.6rem; gap: 0.4rem; }
-    .brand { font-size: 0.54rem; letter-spacing: 0.1em; }
-    .chip { padding: 0.35rem 0.55rem; font-size: 0.54rem; letter-spacing: 0.04em; }
-    .top-actions { gap: 0.25rem; }
-  }
-
-  /* ── 좁은 화면: 목록·제안을 드로어로 ── */
-  @media (max-width: 1179px) {
-    .shell { grid-template-columns: minmax(0, 44rem); padding: 0 0.5rem; }
-    .chip.nav-only { display: inline-block; }
-    .list {
+#view-review textarea:focus,#view-review input[type=text]:focus{ border-color: var(--accent); }
+#view-review textarea{ resize: vertical; min-height: 4.6rem; }
+#view-review .composer .row{ display: flex; gap: 0.4rem; margin-top: 0.45rem; align-items: center; }
+#view-review .composer .row input{ flex: 1; min-width: 0; }
+#view-review .btn{ font-size: 0.74rem; padding: 0.42rem 0.85rem; border-radius: 6px; border: 1px solid var(--rule); background: #fff; white-space: nowrap; }
+#view-review .btn.pri{ background: var(--ink); border-color: var(--ink); color: #fff; }
+#view-review .btn:disabled{ opacity: 0.4; cursor: default; }
+@media (max-width: 1179px){#view-review .shell{ grid-template-columns: minmax(0, 44rem); padding: 0 0.5rem; }
+#view-review .list{
       position: fixed; z-index: 150; top: var(--top); left: 0; bottom: 0; width: min(18rem, 86vw);
       background: var(--bg); border-right: 1px solid var(--rule); padding: 1.2rem 0.8rem 2rem;
       transform: translateX(-102%); transition: transform 0.2s ease; max-height: none;
     }
-    .list.open { transform: none; box-shadow: 6px 0 24px rgba(0,0,0,0.12); }
-    .rail-wrap {
+#view-review .list.open{ transform: none; box-shadow: 6px 0 24px rgba(0,0,0,0.12); }
+#view-review .rail-wrap{
       position: fixed; z-index: 150; left: 0; right: 0; bottom: 0; padding: 0;
       max-height: 62vh; overflow-y: auto; background: var(--bg);
       border-top: 1px solid var(--rule); box-shadow: 0 -6px 24px rgba(0,0,0,0.12);
       transform: translateY(102%); transition: transform 0.2s ease;
     }
-    .rail-wrap.open { transform: none; }
-    .rail-head {
+#view-review .rail-wrap.open{ transform: none; }
+#view-review .rail-head{
       display: flex; justify-content: space-between; align-items: center;
       position: sticky; top: 0; background: var(--bg); padding: 0.7rem 1rem; border-bottom: 1px solid var(--rule); z-index: 6;
       font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light);
     }
-    .rail { padding: 0.8rem 1rem 1.4rem; display: grid; gap: 0.6rem; }
-    .rail .card { position: static; }
-    .rail .empty { position: static; }
-  }
+#view-review .rail{ padding: 0.8rem 1rem 1.4rem; display: grid; gap: 0.6rem; }
+#view-review .rail .card{ position: static; }
+#view-review .rail .empty{ position: static; }}
 </style>
 </head>
-<body>
+<body data-tab="guide">
 
-<header class="topbar">
-  <a class="brand" href="index.html"><span>SRC Plus</span> · Review</a>
+<header class="mtop">
+  <div class="mtop-l">
+    <a class="brand" href="index.html"><span>SRC Plus</span> · Members</a>
+    <nav class="mtabs">
+      <button class="mtab active" data-tab="guide">가이드</button>
+      <button class="mtab" data-tab="review">리뷰</button>
+    </nav>
+  </div>
   <div class="top-actions">
     <button class="chip nav-only" id="btnList">리포트</button>
     <button class="chip nav-only" id="btnRail">제안 <span id="railCount">0</span></button>
-    <button class="chip" id="btnResolved" title="해결된 제안 표시">해결됨 보기</button>
+    <button class="chip" id="btnResolved" title="해결된 제안 표시"><span class="long">해결됨 보기</span><span class="short">해결</span></button>
     <button class="chip" id="btnName" title="표시 이름 변경">이름</button>
   </div>
+  <div class="progress" id="progress"></div>
 </header>
+
+<div id="view-guide">
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" onclick="scrollToChapter('ch-intro')"><span class="tab-num">00</span> 시작하기 전에</button>
+    <button class="tab-btn" onclick="scrollToChapter('ch-guide')"><span class="tab-num">01</span> 리포트 제작 &amp; 업로드</button>
+    <button class="tab-btn" onclick="scrollToChapter('ch-cardnews')"><span class="tab-num">02</span> 카드뉴스 제작 &amp; 업로드</button>
+    <button class="tab-btn" onclick="scrollToChapter('ch-reference')"><span class="tab-num">03</span> 참고: 전체 페이지 배포 구조</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- 00 시작하기 전에 -->
+  <section class="chapter" id="ch-intro" style="--chnum:'00';">
+    <div class="chapter-divider" style="border-top:none; padding-top: 2.8rem;">
+      <span class="div-num">00</span>
+      <span class="div-title">시작하기 전에</span>
+      <span class="div-line"></span>
+    </div>
+    <p class="ch-desc">SRC Plus 스터디의 운영 방식과, 리포트 제작부터 게시까지의 전체 프로세스를 소개한다.</p>
+
+    <div class="prose">
+
+      <details class="accordion">
+        <summary>
+          <div>
+            <span class="acc-num">00-1</span>
+            <span class="acc-title">스터디 운영 방식</span>
+          </div>
+          <span class="acc-toggle"></span>
+        </summary>
+        <div class="acc-body">
+          <ul>
+            <li><strong>일정</strong> — 매주 고정 요일(현재 일요일 오전 10:30)에 줌(Zoom)으로 진행, 소요시간 약 1시간</li>
+            <li><strong>발표 방식</strong> — 매주 2~3명이 돌아가며 각자 조사해온 내용을 공유하고 질의응답 진행(참여자별 2~3주에 한 번 발표)</li>
+            <li><strong>주제 범위</strong> — 부동산, 인프라, 도시, 금융 등 SRC 활동범위와 연관된 모든 주제 가능(Insights / Issues / Sectors)</li>
+            <li><strong>자료 형식</strong> — 자유 양식으로 자료조사 후 AI를 활용해 HTML 리포트로 변환(발표 및 SRC Plus 게시용)</li>
+            <li><strong>향후 계획</strong> — 리포트가 일정 분량 이상 쌓이면 순차적으로 인스타그램 카드뉴스로 변환 예정</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <div>
+            <span class="acc-num">00-2</span>
+            <span class="acc-title">전체 프로세스 개요</span>
+          </div>
+          <span class="acc-toggle"></span>
+        </summary>
+        <div class="acc-body">
+          <p>각 참여자가 자유 양식으로 작성한 리서치 자료를 AI를 활용해 HTML 리포트로 변환하고, 공통 디자인 시스템이 적용된 웹 아카이브에 게시한다. 리포트가 게시될 때마다 핵심 내용을 추린 인스타그램 카드뉴스를 별도로 제작해 아카이브로의 유입을 유도한다.</p>
+
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
+              <div class="flow-body">
+                <div class="flow-label">STEP 1</div>
+                <div class="flow-title">자료조사 및 작성</div>
+                <div class="flow-desc">자유 양식의 리서치 자료 및 데이터 작성</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
+              <div class="flow-body">
+                <div class="flow-label">STEP 2</div>
+                <div class="flow-title">AI 리포트 변환</div>
+                <div class="flow-desc">AI 활용, 공통 양식의 리포트(html 파일)로 변환</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
+              <div class="flow-body">
+                <div class="flow-label">STEP 3</div>
+                <div class="flow-title">웹페이지 업로드</div>
+                <div class="flow-desc">변환된 리포트를 GitHub 리포지토리(공유 데이터 공간)에 업로드 시 현재 웹페이지에 자동으로 게시 가능</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
+              <div class="flow-body">
+                <div class="flow-label">STEP 4</div>
+                <div class="flow-title">카드뉴스 변환</div>
+                <div class="flow-desc">주요 내용 발췌 및 요약, 공통 양식의 카드뉴스(pptx 파일)로 변환</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-left"><div class="flow-dot"></div></div>
+              <div class="flow-body">
+                <div class="flow-label">STEP 5</div>
+                <div class="flow-title">인스타그램 업로드</div>
+                <div class="flow-desc">이미지 파일로 변환해 인스타그램(SRC_Plus 계정) 게시</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- 01 리포트 제작 & 업로드 -->
+  <section class="chapter" id="ch-guide" style="--chnum:'01';">
+    <div class="chapter-divider">
+      <span class="div-num">01</span>
+      <span class="div-title">리포트 제작 &amp; 업로드</span>
+      <span class="div-line"></span>
+    </div>
+    <p class="ch-desc">원본 자료를 AI로 변환해 미리보기로 확인하고, 수정한 뒤, 최종본을 GitHub에 업로드한다.</p>
+
+    <div class="prose">
+
+      <details class="accordion">
+        <summary>
+          <div>
+            <span class="acc-num">01-1</span>
+            <span class="acc-title">일반 AI 활용</span>
+          </div>
+          <span class="acc-toggle"></span>
+        </summary>
+        <div class="acc-body">
+
+          <h3>STEP 1 · 준비사항</h3>
+          <ul>
+            <li><strong>GitHub 가입</strong> — GitHub 계정을 생성하고(구글계정 연결 가능), 기존 참여자에게 문의해 'SRC_Plus' 리포지토리의 업로드 및 수정권한을 부여(Collaborators로 추가)받는다.</li>
+            <li><strong>양식 파일 다운로드</strong> — 중앙 폴더에서 아래 3개 파일을 미리 다운로드받는다. 자유양식의 리포트를 공통 양식으로 변환할 때, 이 3개 파일을 AI에게 주어진 프롬프트와 함께 첨부하면 된다.</li>
+          </ul>
+          <div class="file-list">
+            <div class="file-item"><div class="file-name">assets_report.css</div><div class="file-desc">디자인 시스템 CSS — 시각 스타일 참조용</div></div>
+            <div class="file-item"><div class="file-name">assets_report.js</div><div class="file-desc">공용 스크립트 — 구조 참조용</div></div>
+            <div class="file-item"><div class="file-name">레퍼런스 리포트 .html 1개</div><div class="file-desc">HTML 구조·말투·포맷 참조용. 기존 리포트 파일 중 아무거나 하나 사용한다.</div></div>
+          </div>
+
+          <h3>STEP 2 · AI에 입력할 내용</h3>
+          <p>아래 프롬프트를 복사해, 리포트로 변환할 원본 자료(자유 양식)과, 앞서 다운로드한 3개의 파일(위 표 참고)과 함께 대화창에 붙여넣는다. <em class="hl">붉은색으로 표시된 부분</em>만 본인 정보로 채워서 사용한다. 이 프롬프트는 <strong>미리보기 → 수정 → 최종본 요청</strong>까지 전체 흐름을 AI에게 미리 지시해두는 내용이다.</p>
+
+          <div class="prompt-wrap">
+            <div class="prompt-header">
+              <div class="prompt-label">Prompt — 대화창에 붙여넣기</div>
+              <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/></svg>
+                <span id="copyLabel">복사</span>
+              </button>
+            </div>
+            <div class="prompt-body" id="promptBody">첨부한 파일은 다음과 같아:
+
+1. assets_report.css — 디자인 시스템 CSS
+2. assets_report.js — 공용 스크립트
+3. <span class="ph">[레퍼런스 리포트 파일명]</span>.html — 구조·포맷 참조용 기존 리포트
+4. <span class="ph">[원본 자료 파일명]</span> — 이번에 리포트로 만들 원본 자료
+
+원본 자료를 바탕으로 리포트 HTML 파일을 만들어줘.
+아래 규칙과 작업 순서를 반드시 지켜줘.
+
+---
+
+[파일명 규칙 — 최종본 기준]
+reports_{cat}_{slug}_{seq}.html  (2편 이상 이어지는 시리즈물)
+reports_{cat}_{slug}.html  (한 편으로 끝나는 단일 리포트 — seq 생략)
+  - cat: insights / issues / sectors 중 하나
+  - slug: 주제를 영어로 요약, 단어는 하이픈(-)으로 연결. 시리즈 번호는 넣지 않음
+  - seq: 시리즈물일 때만 붙임. 같은 슬러그 안에서 몇 번째 글인지 (내가 직접 지정함): <span class="ph">[seq 번호 — 예: 1]</span>. 단일 리포트면 이 부분 자체를 생략하고 파일명을 slug 뒤에서 바로 끝낸다.
+
+[report-meta 블록]
+아래 6개 필드는 모두 필수이며 하나도 빠짐없이 포함해야 한다. 특히 published는 항상 true로 고정하고, 임의로 생략하거나 다른 값으로 바꾸지 않는다.
+파일 최상단 &lt;!DOCTYPE html&gt; 바로 뒤에 아래 형식으로 작성:
+&lt;script type="application/json" id="report-meta"&gt;
+{
+  "title": "리포트 제목 (한국어, 문장형)",
+  "topic": "주제어 (짧게, 예: 공유수면매립사업)",
+  "cat": "insights / issues / sectors 중 하나",
+  "date": "최초 작성일 YYMMDD (신규 작성이면 오늘 날짜, 기존 리포트 수정이면 처음 게시했던 날짜 그대로 유지 — 수정일로 바꾸지 않음)",
+  "author": "<span class="ph">[본인 author ID — 예: jbchoi, jhahn, sjahn]</span>",
+  "published": true
+}
+&lt;/script&gt;
+
+[HTML 구조]
+첨부한 레퍼런스 리포트의 HTML 구조를 그대로 따른다.
+topbar, article.article, footer.article-foot 구조를 유지한다.
+article-head 안에는 반드시 아래 두 줄을 비워둔다 (report.js가 자동 주입):
+  &lt;p class="a-topic"&gt;&lt;/p&gt;
+  &lt;h1 class="a-title"&gt;&lt;/h1&gt;
+a-meta에는 날짜만 표시하고, author(작성자)는 화면에 표시하지 않는다. 작성자 정보는 report-meta JSON의 author 필드에만 남긴다.
+
+[분량]
+본문 텍스트 기준 공백 제외 2,500~5,000자.
+- 짧으면 살을 붙여달라고 요청한다.
+- 길면 자연스러운 지점에서 분할해 파일을 2개로 나눠달라고 요청한다.
+
+[말투]
+- "~이다", "~한다", "~있다" 형태의 건조한 단문 서술체
+- "~요", "~습니다" 등 구어체 금지
+- 감상·평가 표현 없이 사실과 구조 중심으로 서술
+
+[구성]
+- 섹션 수, 목차 구조, callout·formula·table 사용 여부는 내용에 맞게 자유롭게 결정
+- lead 문단(p.lead)으로 시작하는 것을 권장
+
+---
+
+[★ 작업 순서 — 반드시 이 순서를 따라줘]
+
+1단계 — 미리보기(_PREVIEW) 버전 먼저 출력
+  - 파일명 끝에 "_PREVIEW"를 붙인다 (예: reports_sectors_xxx_1_PREVIEW.html)
+  - CSS/JS 참조 경로를 아래 절대경로로 바꿔서 넣는다:
+      &lt;link rel="stylesheet" href="https://srcplus.vercel.app/assets_report.css"&gt;
+      &lt;script src="https://srcplus.vercel.app/assets_report.js"&gt;&lt;/script&gt;
+  - 화면(또는 파일 상단)에 "PREVIEW — 업로드 금지" 라는 표시를 눈에 띄게 넣는다.
+  - 이 미리보기 파일은 내가 다운로드해서 로컬에서 더블클릭으로 열어 확인할 것이다. 인터넷 연결만 있으면 폴더 위치 상관없이 실제 서비스와 동일하게 보인다.
+
+2단계 — 자연어 수정
+  - 내가 "3번 섹션 표로 바꿔줘" 같은 방식으로 수정을 요청하면, 수정된 새 _PREVIEW 파일을 다시 준다.
+  - 수정을 마칠 때마다 매번 응답 끝에 이렇게 리마인드해줘:
+    "▶ 확인 후 만족스러우면, 업로드 전에 반드시 '최종본 줘'라고 요청하세요. 지금 이 _PREVIEW 파일은 업로드하면 안 됩니다."
+
+3단계 — 최종본 요청 시
+  - 내가 "최종본 줘" 또는 이와 유사한 표현으로 요청하면:
+    a. 파일명에서 "_PREVIEW"를 뗀다 → reports_{cat}_{slug}_{seq}.html (시리즈물) 또는 reports_{cat}_{slug}.html (단일 리포트)
+    b. CSS/JS 경로를 절대경로에서 상대경로로 되돌린다:
+        href="assets_report.css"
+        src="assets_report.js"
+    c. "PREVIEW — 업로드 금지" 표시를 제거한다.
+    d. 완성된 최종 파일명을 명확히 알려준다.
+  - 이 최종본 파일이 GitHub에 실제로 업로드할 파일이다.</div>
+          </div>
+
+          <h3>STEP 3 · 미리보기 확인 방법</h3>
+          <p>1단계에서 받은 <code>_PREVIEW</code> 파일은 다음과 같이 확인한다.</p>
+          <ol class="step-list">
+            <li>파일을 다운로드한다 (바탕화면, 다운로드 폴더 등 아무 곳이나 상관없음)</li>
+            <li>더블클릭해서 브라우저로 연다</li>
+            <li>인터넷에 연결되어 있으면 실제 서비스와 동일한 디자인으로 보인다</li>
+          </ol>
+          <div class="callout warn">
+            <div class="callout-label">이 파일은 업로드 금지</div>
+            <p><code>_PREVIEW</code>가 붙은 파일, 또는 링크에 <code>srcplus.vercel.app</code>이 하드코딩된 파일은 절대 GitHub에 올리지 않는다. 실수로 올라간 걸 발견하면 내용을 고칠 필요 없이 그 파일만 삭제하면 된다 (파일명에 PREVIEW가 그대로 보이니 식별이 쉽다).</p>
+          </div>
+
+          <h3>STEP 4 · 검토 및 수정</h3>
+          <p>미리보기를 열어보고 마음에 들 때까지 아래 두 방식으로 반복 수정한다.</p>
+          <p><strong>AI에게 재요청 — 도식화, 레이아웃, 문단 구조 수정.</strong> 대화창에 자연어로 요청한다. AI가 수정된 새 <code>_PREVIEW</code> 파일을 다시 준다. 매 응답 끝에 "최종본을 요청하라"는 안내가 따라온다.</p>
+          <p><strong>메모장으로 직접 편집 — 오탈자, 단순 텍스트 수정.</strong> <code>_PREVIEW</code> 파일을 메모장(Mac은 텍스트 편집기)으로 열어 <code>Ctrl+F</code>(Mac: <code>Cmd+F</code>)로 찾아 고쳐도 된다. 다만 이렇게 직접 고친 파일도 <code>_PREVIEW</code> 상태 그대로이므로, <strong>수정이 끝나면 반드시 AI에게 다시 "최종본 줘"라고 요청</strong>해서 절대경로를 상대경로로 바꾼 버전을 받아야 한다.</p>
+
+          <div class="callout warn">
+            <div class="callout-label">가장 중요한 한 가지</div>
+            <p>수정을 아무리 많이 해도, <strong>업로드 직전에는 반드시 "최종본 줘"라고 요청해서 받은 파일</strong>만 GitHub에 올린다. _PREVIEW가 붙어있거나 절대경로가 남아있는 파일을 그대로 올리면 안 된다.</p>
+          </div>
+
+          <h3>STEP 5 · 완성 후 업로드</h3>
+          <ol class="step-list">
+            <li>GitHub 저장소 접속</li>
+            <li>우측 상단 <strong>Add file → Upload files</strong></li>
+            <li>최종본 HTML 파일(파일명에 _PREVIEW 없는 것)을 저장소 루트에 드래그앤드롭</li>
+            <li>하단 커밋 메시지 입력란에 작업 유형에 맞게 작성 <em>(아래 표 참고)</em></li>
+            <li><strong>Commit directly to main branch</strong> 선택 후 커밋</li>
+          </ol>
+
+          <table class="data-table">
+            <thead><tr><th>메시지</th><th>사용 시점</th><th>예시</th></tr></thead>
+            <tbody>
+              <tr><td>add:</td><td>신규 리포트 추가</td><td><code>add: reports_issues_asset-lite_1.html</code></td></tr>
+              <tr><td>update:</td><td>기존 리포트 수정 후 재업로드</td><td><code>update: reports_issues_asset-lite_1.html</code></td></tr>
+              <tr><td>remove:</td><td>리포트 삭제</td><td><code>remove: reports_issues_asset-lite_1.html</code></td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout warn">
+            <div class="callout-label">주의</div>
+            <p>GitHub 웹 UI 업로드만 사용한다. 업로드 후 약 1~2분 내 자동 배포되며, GitHub Actions 탭에서 진행 상황을 확인할 수 있다.</p>
+          </div>
+
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <div>
+            <span class="acc-num">01-2</span>
+            <span class="acc-title">코딩 에이전트 활용</span>
+          </div>
+          <span class="acc-toggle"></span>
+        </summary>
+        <div class="acc-body">
+
+          <h3>STEP 1 · 준비사항</h3>
+          <ul>
+            <li><strong>GitHub 가입</strong> — GitHub 계정을 생성하고(구글계정 연결 가능), 기존 참여자에게 문의해 'SRC_Plus' 리포지토리의 업로드 및 수정권한을 부여(Collaborators로 추가)받는다.</li>
+            <li><strong>리포지토리 연결</strong> — 코딩 에이전트(Claude Code, OpenAI Codex, Gemini CLI..)에 GitHub 계정을 연결, SRC_Plus 리포지토리에서 이 가이드 문서와 폴더 구조를 학습시킨다.</li>
+          </ul>
+
+          <div class="callout">
+            <div class="callout-label">별도 파일 첨부 필요 없음</div>
+            <p>코딩 에이전트는 이미 리포지토리에 연결되어 있어 <code>assets_report.css</code>, <code>assets_report.js</code>, 레퍼런스 리포트를 직접 읽는다. 일반 AI 활용 방식과 달리 이 3개 파일을 미리 다운로드하거나 첨부할 필요가 없다.</p>
+          </div>
+
+          <h3>STEP 2 · AI에 입력할 내용</h3>
+          <p>아래 프롬프트를 복사해, 리포트로 변환할 원본 자료(자유 양식)와 함께 대화창에 붙여넣는다. 작업에 필요한 모든 규칙은 저장소 루트의 <code>prompt-for-agent.md</code>에 정리되어 있고, 코딩 에이전트가 이 파일을 직접 읽고 작업을 진행한다.</p>
+
+          <div class="prompt-wrap">
+            <div class="prompt-header">
+              <div class="prompt-label">Prompt — 대화창에 붙여넣기</div>
+              <button class="copy-btn" id="copyBtnAgent" onclick="copyPromptAgent()">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/></svg>
+                <span id="copyLabelAgent">복사</span>
+              </button>
+            </div>
+            <div class="prompt-body" id="promptBodyAgent">prompt-for-agent.md를 읽고, 그 지시에 따라 작업해줘.
+
+원본 자료: <span class="ph">[원본 자료 파일 경로 또는 붙여넣은 텍스트]</span>
+author ID: <span class="ph">[본인 author ID — 예: jbchoi, jhahn, sjahn]</span>
+카테고리(cat): <span class="ph">[insights / issues / sectors 중 하나]</span>
+시리즈물 여부: <span class="ph">[단일 리포트면 "단일", 시리즈물이면 몇 번째 글인지 — 예: "2번째 글"]</span></div>
+          </div>
+
+          <h3>STEP 3 · 미리보기 확인 방법</h3>
+          <p>일반 AI 활용과 동일하게, 코딩 에이전트도 먼저 <code>_PREVIEW</code> 파일을 만든다. 다음과 같이 확인한다.</p>
+          <ol class="step-list">
+            <li>파일을 다운로드한다 (바탕화면, 다운로드 폴더 등 아무 곳이나 상관없음)</li>
+            <li>더블클릭해서 브라우저로 연다</li>
+            <li>인터넷에 연결되어 있으면 실제 서비스와 동일한 디자인으로 보인다</li>
+          </ol>
+          <div class="callout warn">
+            <div class="callout-label">이 파일은 업로드 금지</div>
+            <p><code>_PREVIEW</code>가 붙은 파일, 또는 링크에 <code>srcplus.vercel.app</code>이 하드코딩된 파일은 절대 GitHub에 올리지 않는다. 실수로 올라간 걸 발견하면 내용을 고칠 필요 없이 그 파일만 삭제하면 된다 (파일명에 PREVIEW가 그대로 보이니 식별이 쉽다).</p>
+          </div>
+
+          <h3>STEP 4 · 검토 및 수정</h3>
+          <p>미리보기를 열어보고 마음에 들 때까지 아래 두 방식으로 반복 수정한다.</p>
+          <p><strong>AI에게 재요청 — 도식화, 레이아웃, 문단 구조 수정.</strong> 대화창에 자연어로 요청한다. 에이전트가 수정된 새 <code>_PREVIEW</code> 파일을 다시 준다. 매 응답 끝에 "최종본을 요청하라"는 안내가 따라온다.</p>
+          <p><strong>메모장으로 직접 편집 — 오탈자, 단순 텍스트 수정.</strong> <code>_PREVIEW</code> 파일을 메모장(Mac은 텍스트 편집기)으로 열어 <code>Ctrl+F</code>(Mac: <code>Cmd+F</code>)로 찾아 고쳐도 된다. 다만 이렇게 직접 고친 파일도 <code>_PREVIEW</code> 상태 그대로이므로, <strong>수정이 끝나면 반드시 에이전트에게 다시 "최종본 줘"라고 요청</strong>해서 절대경로를 상대경로로 바꾼 버전을 받아야 한다.</p>
+
+          <div class="callout warn">
+            <div class="callout-label">가장 중요한 한 가지</div>
+            <p>수정을 아무리 많이 해도, <strong>업로드 직전에는 반드시 "최종본 줘"라고 요청해서 받은 파일</strong>만 GitHub에 올린다. _PREVIEW가 붙어있거나 절대경로가 남아있는 파일을 그대로 올리면 안 된다.</p>
+          </div>
+
+          <h3>STEP 5 · 완성 후 업로드</h3>
+          <p>일반 AI 활용과 달리, 코딩 에이전트는 리포지토리 쓰기 권한이 있어 직접 커밋한다. 커밋 메시지 규칙은 <code>prompt-for-agent.md</code>에 이미 정리되어 있어 에이전트가 알아서 적용한다 — 참여자가 따로 지정할 필요 없다.</p>
+          <ol class="step-list">
+            <li>최종본을 확인한 뒤 에이전트에게 "커밋해줘"라고 요청한다</li>
+            <li>에이전트가 최종본 파일명(<code>_PREVIEW</code> 없는 것)이 저장소 루트에 저장되어 있는지 확인한다</li>
+            <li>에이전트가 <strong><code>main</code> 브랜치에 직접 커밋</strong>한다 — push 전에는 에이전트가 반드시 참여자의 확인을 받는다</li>
+          </ol>
+
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- 02 카드뉴스 제작 & 업로드 -->
+  <section class="chapter" id="ch-cardnews" style="--chnum:'02';">
+    <div class="chapter-divider">
+      <span class="div-num">02</span>
+      <span class="div-title">카드뉴스 제작 &amp; 업로드</span>
+      <span class="div-line"></span>
+    </div>
+    <p class="ch-desc">완성된 리포트를 바탕으로 인스타그램용 카드뉴스를 제작하고 게시한다.</p>
+
+    <div class="prose">
+      <h2 id="sec-cardnews-overview">카드뉴스 개요</h2>
+      <p>카드뉴스는 <strong>표지 1장 + 본문 최대 5장</strong>으로 구성한다. 리포트의 모든 내용을 담으려 하지 않는다. SRC Plus 인스타그램 게시물 본문이나 댓글에 리포트 전체 링크를 달아 전체 내용은 아카이브에서 읽도록 유도한다.</p>
+
+      <table class="data-table">
+        <thead><tr><th>슬라이드</th><th>역할</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>표지 (1장)</td><td>주목 유도</td><td>리포트 제목 또는 핵심 질문</td></tr>
+          <tr><td>본문 (최대 5장)</td><td>내용 전달</td><td>각 장마다 하나의 포인트</td></tr>
+          <tr><td>뒤표지</td><td>본문 연결</td><td>HTML 리포트 내용 예고 및 방문 유도</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="sec-cardnews-content">콘텐츠 구성</h2>
+      <p>카드뉴스는 PPT 파일에서 참여자가 직접 작업하므로, AI 활용 범위를 자유롭게 설정하면 된다.<br>아래의 프롬프트를 입력해 페이지 기획부터 AI의 도움을 받아도 되고, 페이지 기획 및 이미지 생성까지 먼저 마친 뒤 이미지에 어울리는 카드뉴스 글을 추천받아도 된다.<br>다만 어느 쪽을 선택하든, 최종 내용 검수 및 기존 SRC Plus 카드뉴스(인스타그램 참고)와 서술톤을 맞추는 작업은 참여자가 수행한다.</p>
+      <div class="prompt-wrap">
+        <div class="prompt-header">
+          <div class="prompt-label">Prompt — 콘텐츠 구성 요청</div>
+          <button class="copy-btn" id="copyBtn2" onclick="copyPrompt2()">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/></svg>
+            <span id="copyLabel2">복사</span>
+          </button>
+        </div>
+        <div class="prompt-body">첨부한 파일은 완성된 리포트 HTML이야.
+
+이 리포트를 인스타그램 카드뉴스로 만들려고 해.
+아래 조건에 맞게 슬라이드 구성안을 제안해줘.
+
+- 표지 1장 + 본문 최대 5장, 총 6장 이내
+- 리포트 전체를 요약하는 게 아니라, 흥미롭거나 유익한 포인트만 골라서
+- 각 슬라이드마다: 제목(한 줄), 본문(2~4줄 이내)
+- 본문은 수치·구조·핵심 개념 중심으로 간결하게
+- 말투: "~이다", "~한다" 단문 서술체
+
+슬라이드별로 [제목 / 본문] 형식으로 정리해줘.</div>
+      </div>
+
+      <h2 id="sec-cardnews-template">템플릿 편집</h2>
+      <p>AI가 제안한 구성안을 바탕으로 PowerPoint 템플릿(<code>cardnews-template.pptx</code>)을 편집한다. 편집 시 아래 두 가지도 함께 채운다.</p>
+      <ul>
+        <li>우측 상단 카테고리 — <strong>Insights / Issues / Sectors</strong> 중 해당 리포트의 카테고리를 하나 선택해 표시한다.</li>
+        <li>우측 하단 이미지 출처 — 슬라이드에 사용한 이미지의 출처를 기입한다.</li>
+      </ul>
+      <div class="callout warn">
+        <div class="callout-label">건드리지 말 것</div>
+        <p>검은색 그라데이션 박스, 좌상단 브랜드명(SRC Plus), 텍스트 폰트 유형 및 크기는 그대로 유지한다.</p>
+      </div>
+
+      <h2 id="sec-cardnews-publish">인스타그램 게시</h2>
+      <ol class="step-list">
+        <li>PowerPoint에서 <strong>파일 → 내보내기 → 이미지로 저장</strong> (PNG 권장)</li>
+        <li>인스타그램 게시물 작성 시 슬라이드 이미지를 순서대로 첨부</li>
+        <li>게시물 본문에 간단한 카드뉴스 소개 본문 및 HTML 리포트 링크 추가</li>
+      </ol>
+
+      <div class="prompt-wrap">
+        <div class="prompt-header">
+          <div class="prompt-label">예시 — 게시물 본문</div>
+          <button class="copy-btn" id="copyBtnCaption" onclick="copyPromptCaption()">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/></svg>
+            <span id="copyLabelCaption">복사</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="promptBodyCaption">📍 공공의 바다를 누군가의 땅으로 — 공유수면매립사업의 법적 절차와 사업성
+
+✔️ 2025년 12월, 17년 전 발급된 창원 진해구 안골만 매립사업에 대한 매립면허 효력상실이 고시되었다. 매립사업은 왜 장기간 지연되고, 또 왜 빈번하게 좌초되는가.
+
+✔️ 공유수면 매립사업은 단순히 바다를 메워 토지를 조성하는 사업이 아니다. 어업권 보상, 문화재 발굴, 환경영향 검토, 인허가권자와의 협의 등 복수의 이해관계와 행정절차가 중첩되는 고난도 개발사업이다.
+
+✔️ 또한 매립이 완료되더라도 사업시행자가 조성된 토지를 전부 취득하는 것은 아니다. 시행자가 취득할 수 있는 토지는 총사업비에 상당하는 범위로 제한되며, 이를 초과하는 잔여매립지는 국가로부터 별도로 매수해야 한다.
+
+✔️ 이 때문에 민간사업자는 매립 자체에서 발생하는 토지취득 효과만으로 사업성을 확보하기 어렵다. 실무상으로는 항만배후단지, 택지지구, 산업단지 등 후속 개발사업의 개발권을 결합해 사업성을 보완하는 구조가 활용된다.
+
+✔️ 결국 공유수면매립사업의 핵심은 바다를 토지로 바꾸는 기술적 문제가 아니라, 이를 둘러싼 권리관계와 사업성 구조를 어떻게 조정할 것인가에 있다.
+
+공유수면매립사업의 법적 절차와 사업성에 대한 자세한 내용은 SRC_Plus 리포트에서 확인하실 수 있습니다.
+🔗 <span class="ph">[업로드 완료된 HTML 리포트 주소]</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 참고: 전체 페이지 배포 구조 -->
+  <section class="chapter" id="ch-reference" style="--chnum:'03';">
+    <div class="chapter-divider">
+      <span class="div-num">03</span>
+      <span class="div-title">참고: 전체 페이지 배포 구조</span>
+      <span class="div-line"></span>
+    </div>
+    <details class="accordion">
+      <summary>
+        <span class="acc-title" style="font-size:0.95rem; font-weight:500; color:var(--ink-light);">배포 자동화 흐름, 파일 구조, 카테고리 정의 등 세부 내용 보기</span>
+        <span class="acc-toggle"></span>
+      </summary>
+      <div class="acc-body">
+
+    <p class="ch-desc">리포트/카드뉴스 작업 및 업로드에 직접적으로 관련있는 내용은 아니다. 최종본 파일이 GitHub에 올라간 뒤 실제 웹사이트에 반영되기까지의 흐름과, 저장소가 어떻게 구성되어 있는지 궁금할 때 참고한다.</p>
+
+    <div class="prose">
+
+      <h2 id="sec-deploy-flow">배포 자동화 흐름</h2>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
+          <div class="flow-body">
+            <div class="flow-label">Step 01</div>
+            <div class="flow-title">최종본 HTML 파일 업로드</div>
+            <div class="flow-desc">참여자가 GitHub 웹 UI에서 저장소 <strong>루트</strong>에 <code>reports_...html</code> 파일을 업로드하고 <code>main</code> 브랜치에 커밋한다.</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
+          <div class="flow-body">
+            <div class="flow-label">Step 02</div>
+            <div class="flow-title">GitHub Actions 자동 실행</div>
+            <div class="flow-desc"><code>reports_*.html</code> 파일 변경이 감지되면 <code>build.yml</code> 워크플로우가 트리거된다.</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-left"><div class="flow-dot"></div><div class="flow-line"></div></div>
+          <div class="flow-body">
+            <div class="flow-label">Step 03</div>
+            <div class="flow-title">build.py 실행 — index.html 자동 갱신</div>
+            <div class="flow-desc"><code>build.py</code>가 저장소 루트를 스캔해 <code>reports_</code>로 시작하는 파일들의 <code>report-meta</code> 블록에서 메타데이터를 추출하고, <code>index.html</code>의 REPORTS 배열을 자동으로 업데이트한 뒤 커밋한다.</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-left"><div class="flow-dot"></div></div>
+          <div class="flow-body">
+            <div class="flow-label">Step 04</div>
+            <div class="flow-title">Vercel 자동 배포</div>
+            <div class="flow-desc"><code>main</code> 브랜치에 새 커밋이 생기면 Vercel이 감지해 자동 배포한다. 업로드 후 약 1~2분 내 실제 사이트에 반영된다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-label">주의</div>
+        <p>GitHub 웹 UI 업로드만 사용한다. index.html은 직접 편집하지 않는다 — build.py가 자동으로 덮어쓴다.</p>
+      </div>
+
+      <div class="callout good">
+        <div class="callout-label">덮어써도 안전합니다</div>
+        <p>기존 리포트를 수정해서 같은 파일명으로 재업로드해도 예전 내용이 사라지지 않는다. GitHub이 모든 이전 버전을 자동으로 보관하기 때문이다. 해당 파일 페이지 상단의 <strong>History</strong> 버튼을 누르면 지금까지의 모든 수정 이력과 예전 내용을 언제든 확인할 수 있다.</p>
+      </div>
+
+      <h2 id="sec-folder">저장소 파일 구조</h2>
+      <p>GitHub 저장소는 하위 폴더 없이 평탄화되어 있다. 파일명 접두어만으로 역할을 구분한다.</p>
+
+      <div class="folder-tree">
+<span class="dir">{프로젝트명}/</span>  <span class="faint">← 폴더 구분 없이 전부 루트에 위치</span>
+├── <span class="accent">index.html</span>              <span class="faint">← 아카이브 메인 페이지 (build.py가 자동 갱신, 직접 수정 금지)</span>
+├── <span class="accent">build.py</span>                <span class="faint">← 루트 스캔 → index.html REPORTS 배열 갱신</span>
+├── .github/workflows/
+│   └── <span class="accent">build.yml</span>           <span class="faint">← GitHub Actions 워크플로우</span>
+├── <span class="accent">assets_report.css</span>       <span class="faint">← 리포트 공용 스타일시트</span>
+├── <span class="accent">assets_report.js</span>        <span class="faint">← 리포트 공용 스크립트 (topic/title 자동 주입)</span>
+├── <span class="accent">reports_insights_..._1.html</span>
+├── <span class="accent">reports_issues_..._1.html</span>
+└── <span class="accent">reports_sectors_..._1.html</span>  <span class="faint">← 개별 리포트, 계속 늘어남</span></div>
+
+      <div class="callout">
+        <div class="callout-label">왜 이런 구조인가</div>
+        <p>모든 파일이 같은 위치(저장소 루트)에 있어서, 리포트 파일을 로컬 어디에 두든 CSS/JS 참조가 항상 정상 작동한다. 파일명 접두어(<code>assets_</code>, <code>reports_</code>)만으로 역할을 구분한다.</p>
+      </div>
+
+      <h2 id="sec-naming">파일명 규칙</h2>
+      <p>리포트 파일명은 아래 요소를 언더스코어(<code>_</code>)로 연결한다. 슬러그 내 단어 구분은 하이픈(<code>-</code>)을 사용한다.</p>
+
+      <div class="file-list">
+        <div class="file-item">
+          <div class="file-name">접두어</div>
+          <div class="file-desc">항상 <code>reports_</code> 로 시작</div>
+        </div>
+        <div class="file-item">
+          <div class="file-name">cat</div>
+          <div class="file-desc"><code>insights</code> / <code>issues</code> / <code>sectors</code> 중 하나</div>
+        </div>
+        <div class="file-item">
+          <div class="file-name">slug</div>
+          <div class="file-desc">주제를 영어로 요약. 단어는 하이픈으로 연결. <strong>시리즈 번호는 넣지 않는다</strong> (예: <code>kb-balhae-1</code>이 아니라 <code>kb-balhae</code>)</div>
+        </div>
+        <div class="file-item">
+          <div class="file-name">seq</div>
+          <div class="file-desc">같은 슬러그 안에서 몇 번째 글인지 나타내는 순번(1, 2, 3...). 참여자가 직접 부여한다. 시리즈 파트든, 나중에 같은 주제로 새로 쓴 별개의 글이든 이 번호 하나로 구분한다. <strong>2편 이상으로 이어지는 시리즈물에만 붙인다.</strong> 한 편으로 끝나는 단일 리포트는 seq를 생략한다 — 파일명 끝에 번호를 붙이지 않는다.</div>
+        </div>
+      </div>
+
+      <p>예시: <code>reports_sectors_land-reclamation.html</code> (단일 리포트, seq 없음), <code>reports_insights_kb-balhae_2.html</code> (시리즈 2번째 글, seq 있음)</p>
+
+      <div class="callout warn">
+        <div class="callout-label">수정 시 규칙</div>
+        <p>기존 리포트 내용을 고칠 때는 <strong>같은 파일명으로 덮어써서 재업로드</strong>한다. seq 번호를 새로 매기지 않는다. report-meta의 <code>date</code>도 <strong>최초 업로드일 그대로 유지</strong>하고 수정일로 바꾸지 않는다 — 아카이브 정렬이 이 값을 기준으로 하기 때문이다. 실제 수정 시점과 변경 이력은 GitHub History에서 항상 확인 가능하니 걱정하지 않아도 된다.</p>
+      </div>
+
+      <h2 id="sec-meta">report-meta 블록</h2>
+      <p>각 리포트 파일 최상단 <code>&lt;!DOCTYPE html&gt;</code> 바로 뒤에 작성한다. build.py가 이 블록을 읽어 index 페이지를 갱신한다. (이 블록의 필드 구성은 이전과 동일하다 — cat 값도 <code>insights</code>처럼 복수형 그대로 쓴다)</p>
+
+      <div class="prompt-wrap">
+        <div class="prompt-header"><div class="prompt-label">report-meta 형식</div></div>
+        <div class="prompt-body">&lt;script type="application/json" id="report-meta"&gt;
+{
+  "title": "리포트 제목 (한국어, 문장형)",
+  "topic": "주제어 (짧게, 예: 공유수면매립사업)",
+  "cat": "insights / issues / sectors 중 하나",
+  "date": "YYMMDD",
+  "author": "author ID",
+  "published": true
+}
+&lt;/script&gt;</div>
+      </div>
+
+      <h2 id="sec-cats">카테고리 정의</h2>
+      <table class="data-table">
+        <thead><tr><th>Cat</th><th>설명</th><th>예시 주제</th></tr></thead>
+        <tbody>
+          <tr><td>insights</td><td>개념·구조 해설</td><td>인프라펀드 밸류에이션, 리츠 구조</td></tr>
+          <tr><td>issues</td><td>시장·정책·딜 이슈</td><td>에셋라이트 전략, 월드컵 인프라 금융</td></tr>
+          <tr><td>sectors</td><td>자산군·산업군 정리</td><td>공유수면매립, 물류센터</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+      </div>
+    </details>
+  </section>
+
+  <div class="page-foot">
+    <span>RE &amp; Infra Report Archive</span>
+    <span>Internal — Team Guide</span>
+  </div>
+
+</div>
+
+
+</div>
+
+<div id="view-review" hidden>
 <div class="banner" id="banner" hidden>로컬 데모 모드 — Firebase 설정 전이라 제안이 이 브라우저에만 저장됩니다. (설정 방법: member-review-setup.md)</div>
 
 <div class="shell">
@@ -211,6 +1102,182 @@
     <div class="rail" id="rail"></div>
   </aside>
 </div>
+
+
+</div>
+
+<script>
+  const progress = document.getElementById('progress');
+  function onScroll() {
+    const max = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    progress.style.width = (max > 0 ? Math.min(100, document.documentElement.scrollTop / max * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const chapters = ['ch-intro', 'ch-guide', 'ch-cardnews', 'ch-reference'];
+  function scrollToChapter(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+  function updateActiveTab() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    let active = 0;
+    chapters.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 130) active = i;
+    });
+    tabBtns.forEach((btn, i) => btn.classList.toggle('active', i === active));
+  }
+  window.addEventListener('scroll', updateActiveTab, { passive: true });
+
+  const PROMPT_RAW = `첨부한 파일은 다음과 같아:
+
+1. assets_report.css — 디자인 시스템 CSS
+2. assets_report.js — 공용 스크립트
+3. [레퍼런스 리포트 파일명].html — 구조·포맷 참조용 기존 리포트
+4. [원본 자료 파일명] — 이번에 리포트로 만들 원본 자료
+
+원본 자료를 바탕으로 리포트 HTML 파일을 만들어줘.
+아래 규칙과 작업 순서를 반드시 지켜줘.
+
+---
+
+[파일명 규칙 — 최종본 기준]
+reports_{cat}_{slug}_{seq}.html  (2편 이상 이어지는 시리즈물)
+reports_{cat}_{slug}.html  (한 편으로 끝나는 단일 리포트 — seq 생략)
+  - cat: insights / issues / sectors 중 하나
+  - slug: 주제를 영어로 요약, 단어는 하이픈(-)으로 연결. 시리즈 번호는 넣지 않음
+  - seq: 시리즈물일 때만 붙임. 같은 슬러그 안에서 몇 번째 글인지 (내가 직접 지정함): [seq 번호 — 예: 1]. 단일 리포트면 이 부분 자체를 생략하고 파일명을 slug 뒤에서 바로 끝낸다.
+
+[report-meta 블록]
+아래 6개 필드는 모두 필수이며 하나도 빠짐없이 포함해야 한다. 특히 published는 항상 true로 고정하고, 임의로 생략하거나 다른 값으로 바꾸지 않는다.
+파일 최상단 <!DOCTYPE html> 바로 뒤에 아래 형식으로 작성:
+<script type="application/json" id="report-meta">
+{
+  "title": "리포트 제목 (한국어, 문장형)",
+  "topic": "주제어 (짧게, 예: 공유수면매립사업)",
+  "cat": "insights / issues / sectors 중 하나",
+  "date": "최초 작성일 YYMMDD (신규 작성이면 오늘 날짜, 기존 리포트 수정이면 처음 게시했던 날짜 그대로 유지 — 수정일로 바꾸지 않음)",
+  "author": "[본인 author ID — 예: jbchoi, jhahn, sjahn]",
+  "published": true
+}
+<\\/script>
+
+[HTML 구조]
+첨부한 레퍼런스 리포트의 HTML 구조를 그대로 따른다.
+topbar, article.article, footer.article-foot 구조를 유지한다.
+article-head 안에는 반드시 아래 두 줄을 비워둔다 (report.js가 자동 주입):
+  <p class="a-topic"></p>
+  <h1 class="a-title"></h1>
+a-meta에는 날짜만 표시하고, author(작성자)는 화면에 표시하지 않는다. 작성자 정보는 report-meta JSON의 author 필드에만 남긴다.
+
+[분량]
+본문 텍스트 기준 공백 제외 2,500~5,000자.
+- 짧으면 살을 붙여달라고 요청한다.
+- 길면 자연스러운 지점에서 분할해 파일을 2개로 나눠달라고 요청한다.
+
+[말투]
+- "~이다", "~한다", "~있다" 형태의 건조한 단문 서술체
+- "~요", "~습니다" 등 구어체 금지
+- 감상·평가 표현 없이 사실과 구조 중심으로 서술
+
+[구성]
+- 섹션 수, 목차 구조, callout·formula·table 사용 여부는 내용에 맞게 자유롭게 결정
+- lead 문단(p.lead)으로 시작하는 것을 권장
+
+---
+
+[★ 작업 순서 — 반드시 이 순서를 따라줘]
+
+1단계 — 미리보기(_PREVIEW) 버전 먼저 출력
+  - 파일명 끝에 "_PREVIEW"를 붙인다 (예: reports_sectors_xxx_1_PREVIEW.html)
+  - CSS/JS 참조 경로를 아래 절대경로로 바꿔서 넣는다:
+      <link rel="stylesheet" href="https://srcplus.vercel.app/assets_report.css">
+      <script src="https://srcplus.vercel.app/assets_report.js"><\\/script>
+  - 화면(또는 파일 상단)에 "PREVIEW — 업로드 금지" 라는 표시를 눈에 띄게 넣는다.
+  - 이 미리보기 파일은 내가 다운로드해서 로컬에서 더블클릭으로 열어 확인할 것이다. 인터넷 연결만 있으면 폴더 위치 상관없이 실제 서비스와 동일하게 보인다.
+
+2단계 — 자연어 수정
+  - 내가 "3번 섹션 표로 바꿔줘" 같은 방식으로 수정을 요청하면, 수정된 새 _PREVIEW 파일을 다시 준다.
+  - 수정을 마칠 때마다 매번 응답 끝에 이렇게 리마인드해줘:
+    "▶ 확인 후 만족스러우면, 업로드 전에 반드시 '최종본 줘'라고 요청하세요. 지금 이 _PREVIEW 파일은 업로드하면 안 됩니다."
+
+3단계 — 최종본 요청 시
+  - 내가 "최종본 줘" 또는 이와 유사한 표현으로 요청하면:
+    a. 파일명에서 "_PREVIEW"를 뗀다 → reports_{cat}_{slug}_{seq}.html (시리즈물) 또는 reports_{cat}_{slug}.html (단일 리포트)
+    b. CSS/JS 경로를 절대경로에서 상대경로로 되돌린다:
+        href="assets_report.css"
+        src="assets_report.js"
+    c. "PREVIEW — 업로드 금지" 표시를 제거한다.
+    d. 완성된 최종 파일명을 명확히 알려준다.
+  - 이 최종본 파일이 GitHub에 실제로 업로드할 파일이다.`;
+
+  function copyPrompt() {
+    navigator.clipboard.writeText(PROMPT_RAW).then(() => {
+      const btn = document.getElementById('copyBtn');
+      const label = document.getElementById('copyLabel');
+      btn.classList.add('copied'); label.textContent = '복사됨';
+      setTimeout(() => { btn.classList.remove('copied'); label.textContent = '복사'; }, 2000);
+    });
+  }
+  const PROMPT_AGENT_RAW = `prompt-for-agent.md를 읽고, 그 지시에 따라 작업해줘.
+
+원본 자료: [원본 자료 파일 경로 또는 붙여넣은 텍스트]
+author ID: [본인 author ID — 예: jbchoi, jhahn, sjahn]
+카테고리(cat): [insights / issues / sectors 중 하나]
+시리즈물 여부: [단일 리포트면 "단일", 시리즈물이면 몇 번째 글인지 — 예: "2번째 글"]`;
+
+  function copyPromptAgent() {
+    navigator.clipboard.writeText(PROMPT_AGENT_RAW).then(() => {
+      const btn = document.getElementById('copyBtnAgent');
+      const label = document.getElementById('copyLabelAgent');
+      btn.classList.add('copied'); label.textContent = '복사됨';
+      setTimeout(() => { btn.classList.remove('copied'); label.textContent = '복사'; }, 2000);
+    });
+  }
+
+  const PROMPT_CAPTION_RAW = `📍 공공의 바다를 누군가의 땅으로 — 공유수면매립사업의 법적 절차와 사업성
+
+✔️ 2025년 12월, 17년 전 발급된 창원 진해구 안골만 매립사업에 대한 매립면허 효력상실이 고시되었다. 매립사업은 왜 장기간 지연되고, 또 왜 빈번하게 좌초되는가.
+
+✔️ 공유수면 매립사업은 단순히 바다를 메워 토지를 조성하는 사업이 아니다. 어업권 보상, 문화재 발굴, 환경영향 검토, 인허가권자와의 협의 등 복수의 이해관계와 행정절차가 중첩되는 고난도 개발사업이다.
+
+✔️ 또한 매립이 완료되더라도 사업시행자가 조성된 토지를 전부 취득하는 것은 아니다. 시행자가 취득할 수 있는 토지는 총사업비에 상당하는 범위로 제한되며, 이를 초과하는 잔여매립지는 국가로부터 별도로 매수해야 한다.
+
+✔️ 이 때문에 민간사업자는 매립 자체에서 발생하는 토지취득 효과만으로 사업성을 확보하기 어렵다. 실무상으로는 항만배후단지, 택지지구, 산업단지 등 후속 개발사업의 개발권을 결합해 사업성을 보완하는 구조가 활용된다.
+
+✔️ 결국 공유수면매립사업의 핵심은 바다를 토지로 바꾸는 기술적 문제가 아니라, 이를 둘러싼 권리관계와 사업성 구조를 어떻게 조정할 것인가에 있다.
+
+공유수면매립사업의 법적 절차와 사업성에 대한 자세한 내용은 SRC_Plus 리포트에서 확인하실 수 있습니다.
+🔗 [업로드 완료된 HTML 리포트 주소]`;
+
+  function copyPromptCaption() {
+    navigator.clipboard.writeText(PROMPT_CAPTION_RAW).then(() => {
+      const btn = document.getElementById('copyBtnCaption');
+      const label = document.getElementById('copyLabelCaption');
+      btn.classList.add('copied'); label.textContent = '복사됨';
+      setTimeout(() => { btn.classList.remove('copied'); label.textContent = '복사'; }, 2000);
+    });
+  }
+
+  function copyPrompt2() {
+    const text = `첨부한 파일은 완성된 리포트 HTML이야.
+
+이 리포트를 인스타그램 카드뉴스로 만들려고 해.
+아래 조건에 맞게 슬라이드 구성안을 제안해줘.
+
+- 표지 1장 + 본문 최대 5장, 총 6장 이내
+- 리포트 전체를 요약하는 게 아니라, 흥미롭거나 유익한 포인트만 골라서
+- 각 슬라이드마다: 제목(한 줄), 본문(2~4줄 이내)
+- 본문은 수치·구조·핵심 개념 중심으로 간결하게
+- 말투: "~이다", "~한다" 단문 서술체
+
+슬라이드별로 [제목 / 본문] 형식으로 정리해줘.`;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyBtn2');
+      const label = document.getElementById('copyLabel2');
+      btn.classList.add('copied'); label.textContent = '복사됨';
+      setTimeout(() => { btn.classList.remove('copied'); label.textContent = '복사'; }, 2000);
+    });
+  }
+</script>
 
 <script id="report-list-data">
 const REPORTS = [
@@ -353,7 +1420,7 @@ function selectReport(href, push = true) {
   if (!REPORTS.some((r) => r.href === href)) href = REPORTS[0]?.href;
   if (!href) return;
   state.cur = href; state.active = null; state.draft = null; hideSelBtn();
-  if (push) history.replaceState(null, "", "?r=" + encodeURIComponent(href));
+  if (push) if (curTab) history.replaceState(null, "", urlFor());
   $("loading").style.display = "";
   idoc = null; rangeCache.clear(); clearCards(); renderList();
   frame.src = href;
@@ -590,13 +1657,15 @@ function relayout() {
 }
 
 function setActive(id, fromText) {
-  state.active = state.active === id && !fromText ? null : id;
+  const off = state.active === id;
+  state.active = off ? null : id;
   rebuild();
+  if (off) return;
   const r = rangeCache.get(id);
   if (!wide.matches) { openRailDrawer(); rail.querySelector(`[data-id="${id}"]`)?.scrollIntoView({ block: "nearest" }); }
   else if (!fromText && r) {
     const y = frame.getBoundingClientRect().top + window.scrollY + topOf(r) - 160;
-    if (Math.abs(window.scrollY - y) > 400 || fromText === false) window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+    if (Math.abs(window.scrollY - y) > 400) window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
   }
 }
 
@@ -619,6 +1688,36 @@ store.subscribe((list) => {
 renderList();
 const want = new URLSearchParams(location.search).get("r");
 selectReport(want || REPORTS[0]?.href, false);
+
+/* ═══ 상단 탭 (가이드 / 리뷰) ═══ */
+const scrollMem = { guide: 0, review: 0 };
+let curTab = null;
+function urlFor() {
+  const p = new URLSearchParams();
+  p.set("tab", curTab);
+  if (curTab === "review" && state.cur) p.set("r", state.cur);
+  return "?" + p.toString();
+}
+function showTab(t, push = true) {
+  if (curTab) scrollMem[curTab] = window.scrollY;
+  curTab = t;
+  document.body.dataset.tab = t;
+  $("view-guide").hidden = t !== "guide";
+  $("view-review").hidden = t !== "review";
+  document.querySelectorAll(".mtab").forEach((b) => b.classList.toggle("active", b.dataset.tab === t));
+  document.title = t === "guide" ? "SRC Plus 멤버 · 가이드" : "SRC Plus 멤버 · 리뷰";
+  hideSelBtn(); closeDrawers();
+  if (push) history.replaceState(null, "", urlFor());
+  window.scrollTo({ top: scrollMem[t] || 0, behavior: "instant" });
+  if (t === "review") { fitFrame(); rebuild(); }
+}
+document.querySelectorAll(".mtab").forEach((b) => (b.onclick = () => showTab(b.dataset.tab)));
+{
+  const q = new URLSearchParams(location.search);
+  showTab(q.get("tab") === "review" || (!q.get("tab") && q.get("r")) ? "review" : "guide", false);
+}
+
 </script>
+
 </body>
 </html>
