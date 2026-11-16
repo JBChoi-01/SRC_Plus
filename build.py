@@ -25,7 +25,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = "."
 INDEX_FILE = "index.html"
 # REPORTS 배열을 함께 동기화할 추가 페이지 (멤버 전용 리뷰 페이지 등)
-EXTRA_FILES = ["member-review.html"]
+EXTRA_FILES = ["member.html"]
 FILENAME_PREFIX = "reports_"
 
 CAT_ORDER = ["insights", "issues", "sectors"]
