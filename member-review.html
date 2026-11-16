@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SRC Plus 리포트 리뷰</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f1f2f2;
+    --bg-card: #f8f8f7;
+    --ink: #18191a;
+    --ink-light: #66686b;
+    --ink-faint: #a9abad;
+    --rule: #d8d9d8;
+    --rule-soft: #e4e4e3;
+    --accent: oklch(0.56 0.05 248);
+    --accent-soft: oklch(0.56 0.05 248 / 0.10);
+    --hl: oklch(0.59 0.17 15);
+    --mark: rgba(255, 207, 92, 0.5);
+    --font-sans: 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --top: 52px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 15px; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--font-sans); line-height: 1.55; word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
+  a { color: inherit; }
+
+  /* ── 상단 바 ── */
+  .topbar {
+    position: sticky; top: 0; z-index: 100; height: var(--top);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1.2rem; gap: 1rem;
+  }
+  .brand { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+  .brand span { color: var(--accent); }
+  .top-actions { display: flex; align-items: center; gap: 0.4rem; }
+  .chip {
+    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-light); border: 1px solid var(--rule); border-radius: 999px;
+    padding: 0.38rem 0.75rem; background: var(--bg-card); white-space: nowrap;
+  }
+  .chip:hover { color: var(--ink); border-color: var(--ink-faint); }
+  .chip.on { color: var(--accent); border-color: var(--accent); }
+  .chip.nav-only { display: none; }
+
+  .banner {
+    background: #fff4d6; color: #6b5200; font-size: 0.74rem; text-align: center;
+    padding: 0.45rem 1rem; border-bottom: 1px solid #ecd9a0;
+  }
+  .banner[hidden] { display: none; }
+
+  /* ── 3열 레이아웃 ── */
+  .shell {
+    display: grid; align-items: start; justify-content: center;
+    grid-template-columns: 14.5rem minmax(0, 44rem) 21rem; gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  /* 좌: 리포트 목록 */
+  .list {
+    position: sticky; top: var(--top); align-self: start;
+    max-height: calc(100vh - var(--top)); overflow-y: auto;
+    padding: 1.6rem 0 2rem;
+  }
+  .list-title { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 0.9rem 0.2rem; }
+  .cat { margin-bottom: 1.3rem; }
+  .cat-h { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin: 0 0 0.3rem 0.2rem; }
+  .item {
+    display: block; width: 100%; text-align: left;
+    padding: 0.55rem 0.6rem; border-radius: 6px; border-left: 2px solid transparent;
+    font-size: 0.8rem; line-height: 1.4; color: var(--ink-light);
+  }
+  .item:hover { background: var(--accent-soft); color: var(--ink); }
+  .item.active { background: var(--accent-soft); color: var(--ink); border-left-color: var(--accent); font-weight: 500; }
+  .item .row { display: flex; gap: 0.4rem; align-items: baseline; justify-content: space-between; }
+  .item small { display: block; font-family: var(--font-mono); font-size: 0.54rem; letter-spacing: 0.06em; color: var(--ink-faint); margin-top: 0.15rem; }
+  .badge { font-family: var(--font-mono); font-size: 0.56rem; background: var(--hl); color: #fff; border-radius: 999px; padding: 0.05rem 0.42rem; flex: none; }
+  .draft-tag { color: var(--hl); }
+
+  /* 중: 리포트 */
+  .stage { position: relative; padding-top: 1rem; }
+  .stage iframe { display: block; width: 100%; height: 80vh; border: 0; background: var(--bg); }
+  .loading { position: absolute; inset: 3rem 0 auto; text-align: center; font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-faint); letter-spacing: 0.14em; }
+  .sel-btn {
+    position: absolute; z-index: 20; display: none;
+    background: var(--ink); color: #fff; border-radius: 999px;
+    font-size: 0.74rem; padding: 0.4rem 0.85rem; box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+  }
+  .sel-btn.show { display: block; }
+
+  /* 우: 제안 레일 */
+  .rail-wrap { padding-top: 1rem; }
+  .rail { position: relative; }
+  .rail-head { display: none; }
+  .empty { font-size: 0.78rem; color: var(--ink-faint); padding: 1rem 0.2rem; line-height: 1.7; }
+  .rail .empty { position: absolute; top: 0; left: 0; right: 0; }
+
+  .card {
+    position: absolute; left: 0; right: 0;
+    background: var(--bg-card); border: 1px solid var(--rule); border-radius: 8px;
+    padding: 0.7rem 0.8rem; font-size: 0.8rem;
+    transition: top 0.15s ease, border-color 0.15s, box-shadow 0.15s;
+  }
+  .card.active { border-color: var(--accent); box-shadow: 0 3px 14px rgba(40,60,90,0.12); z-index: 5; }
+  .card.done { opacity: 0.62; }
+  .card .quote {
+    font-size: 0.72rem; color: var(--ink-light); border-left: 2px solid #f0c24d;
+    padding-left: 0.5rem; margin-bottom: 0.45rem;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .card.active .quote { -webkit-line-clamp: 6; }
+  .card .quote.lost { border-left-color: var(--hl); }
+  .card .lost-note { font-family: var(--font-mono); font-size: 0.54rem; color: var(--hl); letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+  .card .body { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .card .meta { font-family: var(--font-mono); font-size: 0.56rem; color: var(--ink-faint); letter-spacing: 0.04em; margin-top: 0.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+  .card .meta b { font-weight: 500; color: var(--ink-light); }
+  .card .acts { display: flex; gap: 0.7rem; margin-top: 0.5rem; }
+  .card .acts button { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.08em; color: var(--ink-light); text-transform: uppercase; }
+  .card .acts button:hover { color: var(--accent); }
+  .card .acts .del:hover { color: var(--hl); }
+  .replies { margin-top: 0.55rem; border-top: 1px dashed var(--rule); padding-top: 0.45rem; display: grid; gap: 0.45rem; }
+  .reply .body { font-size: 0.76rem; }
+  .reply-form { margin-top: 0.5rem; display: flex; gap: 0.4rem; }
+  .reply-form input { flex: 1; min-width: 0; }
+
+  textarea, input[type=text] {
+    width: 100%; font: inherit; font-size: 0.8rem; color: var(--ink);
+    background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 0.5rem 0.6rem; outline: none;
+  }
+  textarea:focus, input[type=text]:focus { border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 4.6rem; }
+  .composer .row { display: flex; gap: 0.4rem; margin-top: 0.45rem; align-items: center; }
+  .composer .row input { flex: 1; min-width: 0; }
+  .btn { font-size: 0.74rem; padding: 0.42rem 0.85rem; border-radius: 6px; border: 1px solid var(--rule); background: #fff; white-space: nowrap; }
+  .btn.pri { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .btn:disabled { opacity: 0.4; cursor: default; }
+
+  @media (max-width: 520px) {
+    .topbar { padding: 0 0.6rem; gap: 0.4rem; }
+    .brand { font-size: 0.54rem; letter-spacing: 0.1em; }
+    .chip { padding: 0.35rem 0.55rem; font-size: 0.54rem; letter-spacing: 0.04em; }
+    .top-actions { gap: 0.25rem; }
+  }
+
+  /* ── 좁은 화면: 목록·제안을 드로어로 ── */
+  @media (max-width: 1179px) {
+    .shell { grid-template-columns: minmax(0, 44rem); padding: 0 0.5rem; }
+    .chip.nav-only { display: inline-block; }
+    .list {
+      position: fixed; z-index: 150; top: var(--top); left: 0; bottom: 0; width: min(18rem, 86vw);
+      background: var(--bg); border-right: 1px solid var(--rule); padding: 1.2rem 0.8rem 2rem;
+      transform: translateX(-102%); transition: transform 0.2s ease; max-height: none;
+    }
+    .list.open { transform: none; box-shadow: 6px 0 24px rgba(0,0,0,0.12); }
+    .rail-wrap {
+      position: fixed; z-index: 150; left: 0; right: 0; bottom: 0; padding: 0;
+      max-height: 62vh; overflow-y: auto; background: var(--bg);
+      border-top: 1px solid var(--rule); box-shadow: 0 -6px 24px rgba(0,0,0,0.12);
+      transform: translateY(102%); transition: transform 0.2s ease;
+    }
+    .rail-wrap.open { transform: none; }
+    .rail-head {
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; background: var(--bg); padding: 0.7rem 1rem; border-bottom: 1px solid var(--rule); z-index: 6;
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light);
+    }
+    .rail { padding: 0.8rem 1rem 1.4rem; display: grid; gap: 0.6rem; }
+    .rail .card { position: static; }
+    .rail .empty { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span>SRC Plus</span> · Review</a>
+  <div class="top-actions">
+    <button class="chip nav-only" id="btnList">리포트</button>
+    <button class="chip nav-only" id="btnRail">제안 <span id="railCount">0</span></button>
+    <button class="chip" id="btnResolved" title="해결된 제안 표시">해결됨 보기</button>
+    <button class="chip" id="btnName" title="표시 이름 변경">이름</button>
+  </div>
+</header>
+<div class="banner" id="banner" hidden>로컬 데모 모드 — Firebase 설정 전이라 제안이 이 브라우저에만 저장됩니다. (설정 방법: member-review-setup.md)</div>
+
+<div class="shell">
+  <nav class="list" id="list" aria-label="리포트 목록"></nav>
+
+  <main class="stage" id="stage">
+    <div class="loading" id="loading">LOADING…</div>
+    <iframe id="frame" title="리포트 본문"></iframe>
+    <button class="sel-btn" id="selBtn" type="button">＋ 이 부분에 제안</button>
+  </main>
+
+  <aside class="rail-wrap" id="railWrap">
+    <div class="rail-head"><span>수정 제안</span><button class="chip" id="btnRailClose">닫기</button></div>
+    <div class="rail" id="rail"></div>
+  </aside>
+</div>
+
+<script id="report-list-data">
+const REPORTS = [
+  // ── INSIGHTS ──
+  { cat: 'insights', topic: "산업단지 구조고도화사업을 통한 데이터센터 개발 구조와 쟁점", title: "데이터센터는 왜 산업단지로 가는가 — 구조고도화사업과 임대구조의 법적 관문", date: '2026 · 09', author: 'yhlee', n: 1, href: 'reports_insights_industrial-complex-datacenter.html', published: true },
+  { cat: 'insights', topic: "KB 발해인프라로 보는 상장 인프라펀드의 역할", title: "주식시장이 너무 뜨거울 때, 인프라는 왜 필요할까", date: '2026 · 06', author: 'jhahn', n: 1, href: 'reports_insights_kb-balhae.html', published: true },
+  { cat: 'insights', topic: "부동산 PF 규제 변화의 세 지점", title: "PF 규제는 위험을 줄였나, 부담의 순서를 바꿨나", date: '2026 · 09', author: 'jbchoi', n: 1, href: 'reports_insights_pf-regulation-shift.html', published: true },
+  { cat: 'insights', topic: "부동산 사모대출의 구조, 시장 성장과 국내 법적 프레임워크", title: "은행이 줄인 자리, 부동산 사모대출이 채우는 이유", date: '2026 · 09', author: 'jhahn', n: 1, href: 'reports_insights_private-credit.html', published: true },
+  // ── ISSUES ──
+  { cat: 'issues', topic: "에셋라이트", title: "에셋 라이트냐, 자산보유냐, 그것이 문제로다", date: '2026 · 06', author: 'sjahn', n: 1, href: 'reports_issues_asset-lite-revised.html', published: true },
+  { cat: 'issues', topic: "에셋라이트 (2)", title: "에셋라이트와 자산 보유 사이의 선택 — 케이스 스터디", date: '2026 · 06', author: 'sjahn', n: 2, href: 'reports_issues_asset-lite-revised_2.html' },
+  { cat: 'issues', topic: "건설공사비", title: "자재값은 안정됐다는데, 왜 공사비는 안 떨어질까", date: '2026 · 10', author: 'tmdqor4', n: 1, href: 'reports_issues_construction-costs-stay-high-despite-stable-materials.html', published: true },
+  { cat: 'issues', topic: "2026 북중미 월드컵과 인프라 금융", title: "월드컵 개최 모델은 어떻게 분산되고 있는가", date: '2025 · 06', author: 'jbchoi', n: 1, href: 'reports_issues_worldcup-infra.html' },
+  // ── SECTORS ──
+  { cat: 'sectors', topic: "공유수면매립사업", title: "공공의 바다를 누군가의 땅으로", date: '2025 · 06', author: 'jbchoi', n: 1, href: 'reports_sectors_land-reclamation.html', published: true },
+  { cat: 'sectors', topic: "MFC(마이크로 풀필먼트센터)", title: "MFC — 리테일 매장은 어떻게 도심형 물류거점이 되는가", date: '2026 · 07', author: 'sjahn', n: 1, href: 'reports_sectors_micro-fulfillment-center_final.html', published: true },
+  { cat: 'sectors', topic: "리테일 디벨로퍼", title: "한·미·일 리테일 디벨로퍼 비교 및 한국의 과제", date: '2026 · 09', author: 'minimanimo_design', n: 1, href: 'reports_sectors_retail-developer.html', published: true },
+  { cat: 'sectors', topic: "해저 통신케이블 인프라", title: "해저 통신케이블은 어떻게 투자자산이 되는가", date: '2026 · 07', author: 'jbchoi', n: 1, href: 'reports_sectors_submarine-cable.html', published: true },
+];
+</script>
+
+<script type="module">
+/* ═══════════════════════════════════════════════
+   설정 — Firebase 프로젝트 값을 채우면 실시간 공유 모드가 켜진다.
+   비워두면 로컬 데모 모드(이 브라우저에만 저장)로 동작한다.
+   설정 방법은 member-review-setup.md 참고.
+═══════════════════════════════════════════════ */
+const FIREBASE_CONFIG = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  appId: ""
+};
+const COLLECTION = "suggestions";
+
+/* ── 유틸 ── */
+const $ = (id) => document.getElementById(id);
+const LS = {
+  get(k, d = null) { try { const v = localStorage.getItem(k); return v === null ? d : v; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+};
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
+const norm = (s) => s.replace(/\s+/g, " ").trim();
+function h(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") el.className = v;
+    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null) el.append(kid.nodeType ? kid : document.createTextNode(kid));
+  return el;
+}
+function ago(t) {
+  const s = (Date.now() - t) / 1000;
+  if (s < 60) return "방금";
+  if (s < 3600) return Math.floor(s / 60) + "분 전";
+  if (s < 86400) return Math.floor(s / 3600) + "시간 전";
+  const d = new Date(t);
+  return `${d.getMonth() + 1}/${d.getDate()}`;
+}
+const CID = (() => { let c = LS.get("src-review-cid"); if (!c) { c = uid(); LS.set("src-review-cid", c); } return c; })();
+function getName(forcePrompt) {
+  let n = LS.get("src-review-name", "");
+  if (!n || forcePrompt) {
+    const v = window.prompt("제안에 표시할 이름(닉네임)을 입력하세요", n || "");
+    if (v && v.trim()) { n = v.trim().slice(0, 20); LS.set("src-review-name", n); }
+  }
+  return n;
+}
+
+/* ═══ 저장소: Firebase(실시간) / 로컬(데모) ═══ */
+function localStore() {
+  const KEY = "src-review-local";
+  const read = () => { try { return JSON.parse(LS.get(KEY, "[]")); } catch { return []; } };
+  const write = (l) => LS.set(KEY, JSON.stringify(l));
+  let cb = () => {};
+  window.addEventListener("storage", (e) => { if (e.key === KEY) cb(read()); });
+  return {
+    demo: true,
+    subscribe(fn) { cb = fn; fn(read()); },
+    async add(d) { const l = read(); l.push({ id: uid(), ...d }); write(l); cb(l); },
+    async patch(id, f) { const l = read(); const x = l.find((i) => i.id === id); if (x) Object.assign(x, f); write(l); cb(l); },
+    async reply(id, r) { const l = read(); const x = l.find((i) => i.id === id); if (x) (x.replies ||= []).push(r); write(l); cb(l); },
+    async remove(id) { const l = read().filter((i) => i.id !== id); write(l); cb(l); },
+  };
+}
+async function firebaseStore() {
+  const V = "10.12.2";
+  const [{ initializeApp }, fs] = await Promise.all([
+    import(`https://www.gstatic.com/firebasejs/${V}/firebase-app.js`),
+    import(`https://www.gstatic.com/firebasejs/${V}/firebase-firestore.js`),
+  ]);
+  const db = fs.getFirestore(initializeApp(FIREBASE_CONFIG));
+  const col = fs.collection(db, COLLECTION);
+  return {
+    demo: false,
+    subscribe(fn) { fs.onSnapshot(col, (snap) => fn(snap.docs.map((d) => ({ id: d.id, ...d.data() })))); },
+    add: (d) => fs.addDoc(col, d),
+    patch: (id, f) => fs.updateDoc(fs.doc(db, COLLECTION, id), f),
+    reply: (id, r) => fs.updateDoc(fs.doc(db, COLLECTION, id), { replies: fs.arrayUnion(r) }),
+    remove: (id) => fs.deleteDoc(fs.doc(db, COLLECTION, id)),
+  };
+}
+
+/* ═══ 상태 ═══ */
+const state = { all: [], cur: null, showResolved: false, active: null, draft: null };
+const store = FIREBASE_CONFIG.projectId ? await firebaseStore() : localStore();
+if (store.demo) $("banner").hidden = false;
+
+const CAT = { insights: "Insights", issues: "Issues", sectors: "Sectors" };
+const frame = $("frame"), rail = $("rail"), selBtn = $("selBtn");
+const wide = window.matchMedia("(min-width: 1180px)");
+let idoc = null, iwin = null, textIndex = null;
+const rangeCache = new Map();   // 제안 id → Range | null
+const cardEls = new Map();      // 제안 id → 카드 엘리먼트 (+ 서명)
+const replyDrafts = new Map();
+let pendingSel = null;
+
+/* ═══ 좌측 리포트 목록 ═══ */
+function openCount(href) { return state.all.filter((s) => s.report === href && !s.resolved).length; }
+function renderList() {
+  const box = $("list"); box.replaceChildren(h("div", { class: "list-title" }, "Reports"));
+  for (const cat of ["insights", "issues", "sectors"]) {
+    const items = REPORTS.filter((r) => r.cat === cat).sort((a, b) => a.n - b.n);
+    if (!items.length) continue;
+    const g = h("div", { class: "cat" }, h("div", { class: "cat-h" }, CAT[cat]));
+    for (const r of items) {
+      const n = openCount(r.href);
+      g.append(h("button", { class: "item" + (state.cur === r.href ? " active" : ""), onclick: () => { selectReport(r.href); closeDrawers(); } },
+        h("div", { class: "row" }, h("span", {}, r.title || r.topic), n ? h("span", { class: "badge" }, n) : null),
+        h("small", {}, r.date + " · " + r.author, r.published ? "" : " · ", r.published ? null : h("span", { class: "draft-tag" }, "초안"))));
+    }
+    box.append(g);
+  }
+}
+
+/* ═══ 리포트 로딩 ═══ */
+function selectReport(href, push = true) {
+  if (!REPORTS.some((r) => r.href === href)) href = REPORTS[0]?.href;
+  if (!href) return;
+  state.cur = href; state.active = null; state.draft = null; hideSelBtn();
+  if (push) history.replaceState(null, "", "?r=" + encodeURIComponent(href));
+  $("loading").style.display = "";
+  idoc = null; rangeCache.clear(); clearCards(); renderList();
+  frame.src = href;
+}
+frame.addEventListener("load", () => {
+  try { idoc = frame.contentDocument; iwin = frame.contentWindow; if (!idoc?.body) return; } catch { return; }
+  $("loading").style.display = "none";
+  const st = idoc.createElement("style");
+  st.textContent = `
+    .topbar, .progress { display: none !important; }
+    ::highlight(src-open) { background: rgba(255,207,92,.5); }
+    ::highlight(src-done) { background: rgba(160,170,180,.28); }
+    ::highlight(src-active) { background: rgba(255,160,40,.75); }
+    ::highlight(src-draft) { background: rgba(110,160,255,.4); }`;
+  idoc.head.append(st);
+  textIndex = buildIndex(idoc);
+  fitFrame();
+  new iwin.ResizeObserver(() => { fitFrame(); relayout(); }).observe(idoc.body);
+  idoc.addEventListener("selectionchange", onSelection);
+  idoc.addEventListener("mouseup", onSelection);
+  idoc.addEventListener("touchend", () => setTimeout(onSelection, 50));
+  idoc.addEventListener("click", onFrameClick, true);
+  rebuild();
+});
+function fitFrame() {
+  if (!idoc) return;
+  const hgt = Math.max(idoc.documentElement.scrollHeight, idoc.body.scrollHeight);
+  frame.style.height = hgt + "px";
+}
+function onFrameClick(e) {
+  const a = e.target.closest?.("a[href]");
+  if (a) {
+    const href = a.getAttribute("href");
+    if (href.startsWith("#")) return;
+    e.preventDefault();
+    const file = href.split("#")[0].split("/").pop();
+    if (REPORTS.some((r) => r.href === file)) selectReport(file); else window.open(a.href, "_blank", "noopener");
+    return;
+  }
+  if (!idoc.getSelection().isCollapsed) return;
+  for (const [id, r] of rangeCache) {
+    if (!r) continue;
+    for (const q of r.getClientRects()) {
+      if (e.clientX >= q.left && e.clientX <= q.right && e.clientY >= q.top && e.clientY <= q.bottom) { setActive(id, true); return; }
+    }
+  }
+}
+
+/* ═══ 텍스트 인덱스 & 앵커 ═══ */
+const BLOCK = "p,li,td,th,h1,h2,h3,h4,h5,h6,div,blockquote,tr,figcaption,section,article,header,footer,pre";
+function buildIndex(doc) {
+  const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => (n.parentElement && !n.parentElement.closest("script,style,noscript") ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT),
+  });
+  let text = "", map = [], lastSpace = true, prevBlock = null, n;
+  while ((n = walker.nextNode())) {
+    const blk = n.parentElement.closest(BLOCK);
+    if (blk !== prevBlock && !lastSpace) { text += " "; map.push([n, 0]); lastSpace = true; }
+    prevBlock = blk;
+    const s = n.nodeValue;
+    for (let i = 0; i < s.length; i++) {
+      let c = s[i];
+      if (/\s/.test(c)) { if (lastSpace) continue; c = " "; lastSpace = true; } else lastSpace = false;
+      text += c; map.push([n, i]);
+    }
+  }
+  return { text, map };
+}
+function findAll(text, q) { const out = []; let i = -1; while ((i = text.indexOf(q, i + 1)) !== -1) out.push(i); return out; }
+function rangeFor(s) {
+  if (!textIndex) return null;
+  const { text, map } = textIndex;
+  let q = s.quote, hits = findAll(text, q);
+  if (!hits.length && q.length > 30) { q = q.slice(0, 30); hits = findAll(text, q); }
+  if (!hits.length) return null;
+  const i = hits[Math.min(s.occ || 0, hits.length - 1)];
+  const a = map[i], b = map[i + q.length - 1];
+  if (!a || !b) return null;
+  const r = idoc.createRange();
+  try { r.setStart(a[0], a[1]); r.setEnd(b[0], b[1] + 1); } catch { return null; }
+  return r;
+}
+function occurrenceOf(range, quote) {
+  const { text, map } = textIndex;
+  let start = -1;
+  for (let i = 0; i < map.length; i++) { if (range.isPointInRange(map[i][0], map[i][1])) { start = i; break; } }
+  const hits = findAll(text, quote);
+  if (start < 0) return 0;
+  let occ = 0; for (const p of hits) { if (p < start) occ++; else break; }
+  return Math.min(occ, Math.max(hits.length - 1, 0));
+}
+const topOf = (r) => { const b = r.getBoundingClientRect(); return b.top + (iwin.scrollY || 0); };
+
+/* ═══ 선택 → 제안 버튼 ═══ */
+function hideSelBtn() { selBtn.classList.remove("show"); pendingSel = null; }
+function onSelection() {
+  if (!idoc) return;
+  const sel = iwin.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return hideSelBtn();
+  const r = sel.getRangeAt(0);
+  const quote = norm(sel.toString()).slice(0, 400).trim();
+  if (quote.length < 2 || !idoc.body.contains(r.commonAncestorContainer)) return hideSelBtn();
+  pendingSel = { range: r.cloneRange(), quote, occ: occurrenceOf(r, quote) };
+  const rects = r.getClientRects(); const last = rects[rects.length - 1] || r.getBoundingClientRect();
+  const stage = $("stage"), fr = frame.getBoundingClientRect(), st = stage.getBoundingClientRect();
+  const left = Math.min(fr.left - st.left + last.right - 20, st.width - 140);
+  selBtn.style.left = Math.max(6, left) + "px";
+  selBtn.style.top = fr.top - st.top + last.bottom + 8 + "px";
+  selBtn.classList.add("show");
+}
+selBtn.addEventListener("pointerdown", (e) => e.preventDefault());
+selBtn.addEventListener("click", () => {
+  if (!pendingSel) return;
+  state.draft = pendingSel; hideSelBtn(); iwin.getSelection().removeAllRanges();
+  openRailDrawer(); rebuild(true);
+});
+
+/* ═══ 제안 카드 ═══ */
+const visible = () => state.all.filter((s) => s.report === state.cur && (state.showResolved || !s.resolved)).sort((a, b) => a.createdAt - b.createdAt);
+function clearCards() { rail.replaceChildren(); cardEls.clear(); }
+
+function sign(s) { return JSON.stringify([s.text, s.resolved, s.replies || [], state.active === s.id, rangeCache.get(s.id) ? 1 : 0]); }
+
+function buildCard(s) {
+  const lost = !rangeCache.get(s.id);
+  const own = s.cid === CID;
+  const card = h("div", { class: "card" + (s.resolved ? " done" : "") + (state.active === s.id ? " active" : ""), "data-id": s.id,
+    onclick: (e) => { if (!e.target.closest("button,input,textarea")) setActive(s.id, false); } });
+  if (lost) card.append(h("div", { class: "lost-note" }, "원문 위치를 찾지 못함 (본문이 수정됐을 수 있어요)"));
+  card.append(h("div", { class: "quote" + (lost ? " lost" : "") }, s.quote));
+  card.append(h("div", { class: "body" }, s.text));
+  card.append(h("div", { class: "meta" }, h("b", {}, s.name), ago(s.createdAt), s.resolved ? "· 해결됨" : null));
+  if (s.replies?.length) {
+    card.append(h("div", { class: "replies" }, s.replies.map((r) =>
+      h("div", { class: "reply" }, h("div", { class: "body" }, r.text), h("div", { class: "meta" }, h("b", {}, r.name), ago(r.at))))));
+  }
+  if (state.active === s.id) {
+    const inp = h("input", { type: "text", placeholder: "답글 달기…", value: replyDrafts.get(s.id) || "",
+      oninput: (e) => replyDrafts.set(s.id, e.target.value),
+      onkeydown: (e) => { if (e.key === "Enter" && !e.isComposing) sendReply(s.id, e.target); } });
+    card.append(h("div", { class: "reply-form" }, inp, h("button", { class: "btn", onclick: () => sendReply(s.id, inp) }, "등록")));
+  }
+  card.append(h("div", { class: "acts" },
+    h("button", { onclick: () => store.patch(s.id, { resolved: !s.resolved }) }, s.resolved ? "다시 열기" : "해결됨"),
+    own ? h("button", { class: "del", onclick: () => { if (confirm("이 제안을 삭제할까요?")) store.remove(s.id); } }, "삭제") : null));
+  return card;
+}
+async function sendReply(id, input) {
+  const text = input.value.trim(); if (!text) return;
+  const name = getName(); if (!name) return;
+  replyDrafts.delete(id); input.value = "";
+  await store.reply(id, { id: uid(), name, cid: CID, text: text.slice(0, 1000), at: Date.now() });
+}
+
+function buildComposer() {
+  const d = state.draft;
+  const ta = h("textarea", { placeholder: "수정 제안을 입력하세요 (예: 이 수치는 2025년 기준으로 바꿔야 할 것 같아요)", maxlength: "2000" });
+  const name = h("input", { type: "text", placeholder: "이름", value: LS.get("src-review-name", ""), maxlength: "20" });
+  const ok = h("button", { class: "btn pri", onclick: async () => {
+    const text = ta.value.trim(), nm = name.value.trim();
+    if (!text) return ta.focus();
+    if (!nm) return name.focus();
+    LS.set("src-review-name", nm);
+    ok.disabled = true;
+    state.draft = null;
+    await store.add({ report: state.cur, quote: d.quote, occ: d.occ, text: text.slice(0, 2000), name: nm, cid: CID, createdAt: Date.now(), resolved: false, replies: [] });
+    rebuild();
+  } }, "제안 등록");
+  const el = h("div", { class: "card active composer" },
+    h("div", { class: "quote" }, d.quote), ta,
+    h("div", { class: "row" }, name, h("button", { class: "btn", onclick: () => { state.draft = null; rebuild(); } }, "취소"), ok));
+  setTimeout(() => ta.focus({ preventScroll: true }), 30);
+  return el;
+}
+
+/* ═══ 렌더 / 레이아웃 ═══ */
+function paintHighlights() {
+  if (!iwin?.CSS?.highlights) return;
+  const H = iwin.Highlight, reg = iwin.CSS.highlights;
+  const open = [], done = [], act = [];
+  for (const s of visible()) {
+    const r = rangeCache.get(s.id); if (!r) continue;
+    if (state.active === s.id) act.push(r); else (s.resolved ? done : open).push(r);
+  }
+  reg.set("src-open", new H(...open)); reg.set("src-done", new H(...done)); reg.set("src-active", new H(...act));
+  reg.set("src-draft", new H(...(state.draft ? [state.draft.range] : [])));
+}
+
+function rebuild(focusDraft) {
+  if (!idoc) return;
+  const list = visible();
+  rangeCache.clear();
+  for (const s of list) rangeCache.set(s.id, rangeFor(s));
+
+  // 레일 동기화 (바뀐 카드만 교체)
+  const keep = new Set(list.map((s) => s.id));
+  for (const [id, e] of [...cardEls]) if (!keep.has(id)) { e.el.remove(); cardEls.delete(id); }
+  const typing = document.activeElement && rail.contains(document.activeElement) ? document.activeElement : null;
+  for (const s of list) {
+    const sg = sign(s); const cur = cardEls.get(s.id);
+    if (cur && cur.sg === sg) continue;
+    const el = buildCard(s);
+    if (cur) cur.el.replaceWith(el); else rail.append(el);
+    cardEls.set(s.id, { el, sg });
+    if (typing && typing.tagName === "INPUT" && el.contains(el.querySelector(".reply-form input")) && state.active === s.id) el.querySelector(".reply-form input").focus();
+  }
+  rail.querySelector(".composer")?.remove();
+  if (state.draft) rail.append(Object.assign(buildComposer(), { }));
+  rail.querySelector(".empty")?.remove();
+  if (!list.length && !state.draft) rail.append(h("div", { class: "empty" }, "본문에서 고치고 싶은 문장을 드래그(모바일은 길게 눌러 선택)하면 ‘이 부분에 제안’ 버튼이 나타나요."));
+
+  $("railCount").textContent = state.all.filter((s) => s.report === state.cur && !s.resolved).length;
+  paintHighlights(); relayout(); renderList();
+  if (focusDraft && wide.matches && state.draft) window.scrollTo({ top: Math.max(0, frame.getBoundingClientRect().top + window.scrollY + topOf(state.draft.range) - 140), behavior: "smooth" });
+}
+
+function relayout() {
+  if (!idoc) return;
+  if (!wide.matches) { rail.style.minHeight = ""; for (const e of rail.children) e.style.top = ""; return; }
+  const items = [];
+  for (const [id, e] of cardEls) { const r = rangeCache.get(id); items.push({ el: e.el, top: r ? topOf(r) : Infinity, t: state.all.find((s) => s.id === id)?.createdAt || 0 }); }
+  const comp = rail.querySelector(".composer");
+  if (comp && state.draft) items.push({ el: comp, top: topOf(state.draft.range), t: 0 });
+  items.sort((a, b) => a.top - b.top || a.t - b.t);
+  let y = 0;
+  for (const it of items) {
+    const top = Math.max(it.top === Infinity ? y : it.top - 6, y);
+    it.el.style.top = top + "px";
+    y = top + it.el.offsetHeight + 8;
+  }
+  rail.style.minHeight = Math.max(frame.offsetHeight, y) + "px";
+}
+
+function setActive(id, fromText) {
+  state.active = state.active === id && !fromText ? null : id;
+  rebuild();
+  const r = rangeCache.get(id);
+  if (!wide.matches) { openRailDrawer(); rail.querySelector(`[data-id="${id}"]`)?.scrollIntoView({ block: "nearest" }); }
+  else if (!fromText && r) {
+    const y = frame.getBoundingClientRect().top + window.scrollY + topOf(r) - 160;
+    if (Math.abs(window.scrollY - y) > 400 || fromText === false) window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  }
+}
+
+/* ═══ 드로어 / 상단 버튼 ═══ */
+function openRailDrawer() { if (!wide.matches) $("railWrap").classList.add("open"); }
+function closeDrawers() { $("list").classList.remove("open"); $("railWrap").classList.remove("open"); }
+$("btnList").onclick = () => { $("railWrap").classList.remove("open"); $("list").classList.toggle("open"); };
+$("btnRail").onclick = () => { $("list").classList.remove("open"); $("railWrap").classList.toggle("open"); };
+$("btnRailClose").onclick = closeDrawers;
+$("btnName").onclick = () => getName(true);
+$("btnResolved").onclick = (e) => { state.showResolved = !state.showResolved; e.currentTarget.classList.toggle("on", state.showResolved); rebuild(); };
+wide.addEventListener("change", () => { closeDrawers(); rebuild(); });
+window.addEventListener("resize", () => { fitFrame(); relayout(); });
+
+/* ═══ 시작 ═══ */
+store.subscribe((list) => {
+  state.all = list.map((s) => ({ replies: [], resolved: false, ...s }));
+  if (idoc) rebuild(); else renderList();
+});
+renderList();
+const want = new URLSearchParams(location.search).get("r");
+selectReport(want || REPORTS[0]?.href, false);
+</script>
+</body>
+</html>
