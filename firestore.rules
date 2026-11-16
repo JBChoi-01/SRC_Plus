@@ -1,7 +1,7 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // member-review.html 전용. 인증 없이 URL을 아는 사람만 접근하는 구조이므로
+    // member.html 전용. 인증 없이 URL을 아는 사람만 접근하는 구조이므로
     // 필드 형식·크기만 제한한다. (강한 접근 제어가 필요하면 member-review-setup.md의 "보안" 참고)
     match /suggestions/{id} {
       allow read: if true;
