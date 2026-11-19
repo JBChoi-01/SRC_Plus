@@ -24,6 +24,8 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 ROOT_DIR = "."
 INDEX_FILE = "index.html"
+# REPORTS 배열을 함께 동기화할 추가 페이지 (멤버 전용 리뷰 페이지 등)
+EXTRA_FILES = ["member.html"]
 FILENAME_PREFIX = "reports_"
 
 CAT_ORDER = ["insights", "issues", "sectors"]
@@ -168,9 +170,12 @@ def build_reports_js(reports):
     return "\n".join(lines)
 
 
-def update_index(new_reports_js):
-    """index.html의 REPORTS 배열을 교체합니다."""
-    with open(INDEX_FILE, encoding="utf-8") as f:
+def update_index(new_reports_js, target=INDEX_FILE):
+    """target 파일(기본 index.html)의 REPORTS 배열을 교체합니다."""
+    if not os.path.exists(target):
+        print(f"[건너뜀] {target} 없음")
+        return True
+    with open(target, encoding="utf-8") as f:
         content = f.read()
 
     # const REPORTS = [ ... ]; 블록을 찾아 교체
@@ -179,12 +184,12 @@ def update_index(new_reports_js):
         re.DOTALL
     )
     if not pattern.search(content):
-        print("[오류] index.html에서 REPORTS 배열을 찾을 수 없습니다.")
+        print(f"[오류] {target}에서 REPORTS 배열을 찾을 수 없습니다.")
         return False
 
-    new_content = pattern.sub(new_reports_js, content)
+    new_content = pattern.sub(lambda m: new_reports_js, content, count=1)
 
-    with open(INDEX_FILE, "w", encoding="utf-8") as f:
+    with open(target, "w", encoding="utf-8") as f:
         f.write(new_content)
 
     return True
@@ -207,6 +212,10 @@ def main():
         print(f"[완료] {INDEX_FILE} 업데이트 성공 — 총 {len(reports)}개 리포트")
     else:
         print("[실패] index.html 업데이트 실패")
+
+    for extra in EXTRA_FILES:
+        if update_index(new_js, extra):
+            print(f"[완료] {extra} 목록 동기화")
 
 
 if __name__ == "__main__":
