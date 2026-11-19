@@ -21,7 +21,7 @@
   --on-dark-dim: rgba(237,237,236,0.55);
   --on-dark-faint: rgba(237,237,236,0.32);
   --font-sans: 'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-mono: 'Pretendard Variable', Pretendard, 'Noto Sans KR', -apple-system, 'Helvetica Neue', Arial, sans-serif;
   --measure: 39rem;
   --pad: 2rem;
 }
@@ -70,8 +70,8 @@ a { color: inherit; }
   gap: 0.6rem;
   text-decoration: none;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-light);
   transition: color 0.16s;
@@ -88,8 +88,8 @@ a { color: inherit; }
 
 .crumb {
   font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-faint);
   display: flex;
@@ -122,8 +122,8 @@ a { color: inherit; }
   align-items: center;
   gap: 0.7rem;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1.6rem;
@@ -133,8 +133,8 @@ a { color: inherit; }
 
 .a-topic {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-faint);
   margin-bottom: 0.5rem;
@@ -155,8 +155,8 @@ a { color: inherit; }
   gap: 0.75rem;
   flex-wrap: wrap;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-faint);
   padding-bottom: 1.6rem;
@@ -174,8 +174,8 @@ a { color: inherit; }
 }
 .toc-label {
   font-family: var(--font-mono);
-  font-size: 0.56rem;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-faint);
   margin-bottom: 0.7rem;
@@ -194,7 +194,7 @@ a { color: inherit; }
 .toc a::before {
   content: counter(toc, decimal-leading-zero);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   color: var(--accent);
 }
 .toc a:hover { color: var(--accent); }
@@ -247,9 +247,9 @@ a { color: inherit; }
   content: counter(h2, decimal-leading-zero);
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   font-weight: 400;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.03em;
   color: var(--accent);
   margin-bottom: 0.7rem;
 }
@@ -305,9 +305,9 @@ a { color: inherit; }
   display: block;
   margin-top: 0.7rem;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   font-style: normal;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
@@ -330,8 +330,8 @@ a { color: inherit; }
 .formula .eq-note {
   margin-top: 0.9rem;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.06em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   color: var(--on-dark-faint);
 }
 
@@ -345,8 +345,8 @@ a { color: inherit; }
 }
 .callout-label {
   font-family: var(--font-mono);
-  font-size: 0.56rem;
-  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.6rem;
@@ -364,9 +364,9 @@ a { color: inherit; }
 .prose thead th {
   text-align: left;
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-light);
   padding: 0 0.9rem 0.6rem;
@@ -400,8 +400,8 @@ a { color: inherit; }
 }
 .fig-ph span {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-faint);
   background: var(--bg);
@@ -411,8 +411,8 @@ a { color: inherit; }
 .prose figcaption {
   margin-top: 0.7rem;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.06em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   color: var(--ink-faint);
   display: flex;
   gap: 0.6rem;
@@ -444,8 +444,8 @@ a { color: inherit; }
 }
 .footnotes-label {
   font-family: var(--font-mono);
-  font-size: 0.56rem;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-faint);
   margin-bottom: 0.9rem;
@@ -464,7 +464,7 @@ a { color: inherit; }
   position: absolute;
   left: 0; top: 0;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   color: var(--accent);
 }
 
@@ -480,8 +480,8 @@ a { color: inherit; }
   gap: 0.5rem;
   text-decoration: none;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-light);
   padding: 0.7rem 0;
@@ -511,8 +511,8 @@ a { color: inherit; }
 .pager a.next { text-align: right; align-items: flex-end; }
 .pager .pg-dir {
   font-family: var(--font-mono);
-  font-size: 0.56rem;
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
@@ -549,8 +549,8 @@ a { color: inherit; }
 }
 .draft-label {
   font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.6rem;
