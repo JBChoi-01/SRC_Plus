@@ -7,23 +7,25 @@
 <title>SRC Plus 멤버 페이지</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 
   :root {
     --bg: #f1f2f2;
     --bg-card: #f8f8f7;
     --ink: #18191a;
-    --ink-light: #66686b;
-    --ink-faint: #a9abad;
+    --ink-light: #4a5160;
+    --ink-faint: #7a808a;
     --rule: #d8d9d8;
     --rule-soft: #e4e4e3;
     --accent: oklch(0.56 0.05 248);
     --accent-soft: oklch(0.56 0.05 248 / 0.10);
     --hl: oklch(0.59 0.17 15);
     --mark: rgba(255, 207, 92, 0.5);
-    --font-sans: 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --font-sans: 'Pretendard Variable', Pretendard, 'Noto Sans KR', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'Pretendard Variable', Pretendard, 'Noto Sans KR', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --font-code: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
     --top: 52px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,21 +50,21 @@
     display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 1.2rem;
   }
   .mtop-l { display: flex; align-items: center; gap: 1.4rem; min-width: 0; }
-  .brand { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+  .brand { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
   .brand span { color: var(--accent); }
   .mtabs { display: flex; height: var(--top); }
   .mtab {
-    padding: 0 1rem; font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink-faint); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .15s, border-color .15s;
+    padding: 0 1rem; font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--ink-light); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .15s, border-color .15s;
   }
-  .mtab:hover { color: var(--ink-light); }
+  .mtab:hover { color: var(--ink); }
   .mtab.active { color: var(--ink); border-bottom-color: var(--accent); }
   .progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 0%; background: var(--accent); transition: width 0.08s linear; }
   body[data-tab="review"] .progress { display: none; }
   .top-actions { display: flex; align-items: center; gap: 0.4rem; }
   body[data-tab="guide"] .top-actions { display: none; }
   .chip {
-    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; text-transform: uppercase;
     color: var(--ink-light); border: 1px solid var(--rule); border-radius: 999px;
     padding: 0.38rem 0.75rem; background: var(--bg-card); white-space: nowrap;
   }
@@ -87,8 +89,8 @@
     --bg-card: #f6f6f5;
     --bg-dark: #161718;
     --ink: #18191a;
-    --ink-light: #66686b;
-    --ink-faint: #a9abad;
+    --ink-light: #4a5160;
+    --ink-faint: #7a808a;
     --rule: #d8d9d8;
     --rule-soft: #e4e4e3;
     --accent: oklch(0.56 0.05 248);
@@ -98,8 +100,9 @@
     --on-dark: #ededec;
     --on-dark-dim: rgba(237,237,236,0.55);
     --on-dark-faint: rgba(237,237,236,0.32);
-    --font-sans: 'Noto Sans KR', 'Dotum', '돋움', 'Helvetica Neue', Arial, sans-serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --font-sans: 'Pretendard Variable', Pretendard, 'Noto Sans KR', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'Pretendard Variable', Pretendard, 'Noto Sans KR', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --font-code: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
     --measure: 40rem;
     --pad: 2rem;
   }
@@ -126,13 +129,13 @@
     display: flex; align-items: center; justify-content: space-between;
   }
 #view-guide .brand{
-    font-family: var(--font-mono); font-size: 0.62rem;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink);
+    font-family: var(--font-mono); font-size: 0.75rem;
+    letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink);
   }
 #view-guide .brand span{ color: var(--accent); }
 #view-guide .crumb{
-    font-family: var(--font-mono); font-size: 0.58rem;
-    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light);
+    font-family: var(--font-mono); font-size: 0.75rem;
+    letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-light);
   }
 #view-guide .progress{
     position: absolute; left: 0; bottom: -1px;
@@ -155,17 +158,17 @@
     display: flex; align-items: center; gap: 0.5rem;
     padding: 0.85rem 1.1rem;
     border: none; background: transparent;
-    font-family: var(--font-mono); font-size: 0.6rem;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--ink-faint); cursor: pointer;
+    font-family: var(--font-sans); font-size: 0.875rem; font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--ink-light); cursor: pointer;
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
     transition: color 0.15s, border-color 0.15s;
     white-space: nowrap;
   }
-#view-guide .tab-btn:hover{ color: var(--ink-light); }
+#view-guide .tab-btn:hover{ color: var(--ink); }
 #view-guide .tab-btn.active{ color: var(--ink); border-bottom-color: var(--accent); }
-#view-guide .tab-num{ font-size: 0.52rem; color: var(--accent); opacity: 0.7; }
+#view-guide .tab-num{ font-size: 0.72rem; font-variant-numeric: tabular-nums; color: var(--accent); opacity: 0.7; }
 #view-guide .tab-btn.active .tab-num{ opacity: 1; }
 #view-guide .page-wrap{
     max-width: calc(var(--measure) + var(--pad) * 2);
@@ -181,8 +184,8 @@
     border-top: 3px solid var(--ink);
   }
 #view-guide .chapter-divider .div-num{
-    font-family: var(--font-mono); font-size: 0.62rem;
-    letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent);
+    font-family: var(--font-mono); font-size: 0.75rem;
+    letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent);
   }
 #view-guide .chapter-divider .div-title{
     font-family: var(--font-sans); font-size: 1.5rem;
@@ -209,8 +212,8 @@
 #view-guide .prose h2::before{
     content: var(--chnum, '00') '-' counter(h2);
     display: block;
-    font-family: var(--font-mono); font-size: 0.6rem;
-    font-weight: 400; letter-spacing: 0.1em; color: var(--accent);
+    font-family: var(--font-mono); font-size: 0.75rem;
+    font-weight: 400; letter-spacing: 0.03em; color: var(--accent);
     margin-bottom: 0.5rem;
   }
 #view-guide .prose h3{ font-size: 1rem; font-weight: 600; color: var(--ink); margin: 1.8rem 0 0.6rem; }
@@ -218,7 +221,7 @@
 #view-guide .prose em{ font-style: normal; color: var(--accent); font-weight: 500; }
 #view-guide .prose em.hl{ color: var(--hl); }
 #view-guide .prose code{
-    font-family: var(--font-mono); font-size: 0.82em;
+    font-family: var(--font-code); font-size: 0.82em;
     background: var(--bg-card); border: 1px solid var(--rule);
     padding: 0.1em 0.38em; color: var(--ink);
   }
@@ -235,15 +238,15 @@
 #view-guide .accordion > summary::-webkit-details-marker{ display: none; }
 #view-guide .acc-num{
     display: block;
-    font-family: var(--font-mono); font-size: 0.6rem;
-    font-weight: 400; letter-spacing: 0.1em; color: var(--accent);
+    font-family: var(--font-mono); font-size: 0.75rem;
+    font-weight: 400; letter-spacing: 0.03em; color: var(--accent);
     margin-bottom: 0.5rem;
   }
 #view-guide .acc-title{ font-size: 1.22rem; font-weight: 600; color: var(--ink); line-height: 1.4; }
 #view-guide .acc-toggle{
     flex-shrink: 0;
-    font-family: var(--font-mono); font-size: 0.56rem;
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
+    font-family: var(--font-mono); font-size: 0.75rem;
+    letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-faint);
     border: 1px solid var(--rule); padding: 0.32rem 0.7rem;
   }
 #view-guide .acc-toggle::before{ content: '펼치기 +'; }
@@ -256,8 +259,8 @@
     padding: 1.1rem 1.2rem;
     border: 1px dashed var(--rule);
     text-align: center;
-    font-family: var(--font-mono); font-size: 0.62rem;
-    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
+    font-family: var(--font-mono); font-size: 0.75rem;
+    letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-faint);
   }
 #view-guide .flow{ margin: 1.4rem 0; display: flex; flex-direction: column; gap: 0; }
 #view-guide .flow-step{ display: grid; grid-template-columns: 2.4rem 1fr; gap: 0 1rem; position: relative; }
@@ -270,13 +273,13 @@
 #view-guide .flow-line{ flex: 1; width: 1px; background: var(--rule); margin-top: 4px; min-height: 1.4rem; }
 #view-guide .flow-body{ padding: 0.85rem 0 1.2rem; border-bottom: 1px solid var(--rule-soft); }
 #view-guide .flow-step:last-child .flow-body{ border-bottom: none; }
-#view-guide .flow-label{ font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+#view-guide .flow-label{ font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
 #view-guide .flow-title{ font-size: 0.97rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
 #view-guide .flow-desc{ font-size: 0.88rem; color: var(--ink-light); line-height: 1.7; }
 #view-guide .folder-tree{
     margin: 1.2rem 0; padding: 1.3rem 1.4rem;
     background: var(--bg-dark);
-    font-family: var(--font-mono); font-size: 0.8rem;
+    font-family: var(--font-code); font-size: 0.8rem;
     line-height: 2; color: var(--on-dark-dim);
   }
 #view-guide .folder-tree .dir{ color: var(--on-dark); }
@@ -288,7 +291,7 @@
     padding: 0.75rem 1.1rem; border-bottom: 1px solid var(--rule-soft); font-size: 0.9rem;
   }
 #view-guide .file-item:last-child{ border-bottom: none; }
-#view-guide .file-name{ font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink); }
+#view-guide .file-name{ font-family: var(--font-code); font-size: 0.78rem; color: var(--ink); }
 #view-guide .file-desc{ color: var(--ink-light); font-size: 0.86rem; }
 #view-guide .callout{
     margin: 1.5rem 0; padding: 1rem 1.2rem;
@@ -296,8 +299,8 @@
     border: 1px solid var(--rule); border-left: 2px solid var(--accent);
   }
 #view-guide .callout-label{
-    font-family: var(--font-mono); font-size: 0.54rem;
-    letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem;
+    font-family: var(--font-mono); font-size: 0.75rem;
+    letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem;
   }
 #view-guide .callout p{ font-size: 0.88rem; line-height: 1.8; margin: 0; color: var(--ink-light); }
 #view-guide .callout p + p{ margin-top: 0.55rem; }
@@ -316,29 +319,29 @@
 #view-guide .step-list li::before{
     content: counter(step);
     position: absolute; left: 0.85rem; top: 0.8rem;
-    font-family: var(--font-mono); font-size: 0.66rem;
+    font-family: var(--font-mono); font-size: 0.75rem;
     color: var(--accent); font-weight: 500; line-height: 1.6;
   }
 #view-guide .data-table{ width: 100%; border-collapse: collapse; margin: 1rem 0 1.3rem; font-size: 0.86rem; }
 #view-guide .data-table th{
-    text-align: left; font-family: var(--font-mono); font-size: 0.54rem;
-    font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    text-align: left; font-family: var(--font-mono); font-size: 0.75rem;
+    font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase;
     color: var(--ink-light); padding: 0 0.9rem 0.55rem;
     border-bottom: 1px solid var(--ink);
   }
 #view-guide .data-table td{ padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--rule-soft); vertical-align: top; line-height: 1.55; }
 #view-guide .data-table tr:last-child td{ border-bottom: 1px solid var(--rule); }
-#view-guide .data-table td:first-child{ font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); white-space: nowrap; }
+#view-guide .data-table td:first-child{ font-family: var(--font-code); font-size: 0.78rem; color: var(--accent); white-space: nowrap; }
 #view-guide .data-table td:nth-child(2){ color: var(--ink-light); }
 #view-guide .prompt-wrap{ margin: 1.3rem 0; border: 1px solid var(--rule); background: var(--bg-dark); }
 #view-guide .prompt-header{ display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
-#view-guide .prompt-label{ font-family: var(--font-mono); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-dark-faint); }
+#view-guide .prompt-label{ font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--on-dark-faint); }
 #view-guide .copy-btn{
     display: flex; align-items: center; gap: 0.4rem;
     padding: 0.35rem 0.8rem;
     background: transparent; border: 1px solid rgba(255,255,255,0.14);
-    font-family: var(--font-mono); font-size: 0.56rem;
-    letter-spacing: 0.1em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: 0.75rem;
+    letter-spacing: 0.03em; text-transform: uppercase;
     color: var(--on-dark-dim); cursor: pointer; transition: all 0.16s;
   }
 #view-guide .copy-btn:hover,#view-guide .copy-btn.copied{ border-color: var(--accent-bright); color: var(--accent-bright); }
@@ -354,12 +357,12 @@
     margin-top: 4rem; padding: 1.4rem 0 5rem;
     border-top: 1px solid var(--rule);
     display: flex; justify-content: space-between;
-    font-family: var(--font-mono); font-size: 0.54rem;
-    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+    font-family: var(--font-mono); font-size: 0.75rem;
+    letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-faint);
   }
 @media (max-width: 640px){#view-guide{ --pad: 1.3rem; }
 #view-guide .file-item{ grid-template-columns: 1fr; gap: 0.2rem; }
-#view-guide .tab-btn{ padding: 0.75rem 0.7rem; font-size: 0.54rem; }
+#view-guide .tab-btn{ padding: 0.75rem 0.7rem; font-size: 0.8rem; }
 #view-guide .page-foot{ flex-direction: column; gap: 0.5rem; }}
 @media (prefers-reduced-motion: no-preference){#view-guide .chapter{ animation: aUp 0.4s cubic-bezier(0.2,0.7,0.2,1) both; }}
 @keyframes aUp{ from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
@@ -379,9 +382,9 @@
     max-height: calc(100vh - var(--top)); overflow-y: auto;
     padding: 1.6rem 0 2rem;
   }
-#view-review .list-title{ font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 0.9rem 0.2rem; }
+#view-review .list-title{ font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 0.9rem 0.2rem; }
 #view-review .cat{ margin-bottom: 1.3rem; }
-#view-review .cat-h{ font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin: 0 0 0.3rem 0.2rem; }
+#view-review .cat-h{ font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-light); margin: 0 0 0.3rem 0.2rem; }
 #view-review .item{
     display: block; width: 100%; text-align: left;
     padding: 0.55rem 0.6rem; border-radius: 6px; border-left: 2px solid transparent;
@@ -390,12 +393,13 @@
 #view-review .item:hover{ background: var(--accent-soft); color: var(--ink); }
 #view-review .item.active{ background: var(--accent-soft); color: var(--ink); border-left-color: var(--accent); font-weight: 500; }
 #view-review .item .row{ display: flex; gap: 0.4rem; align-items: baseline; justify-content: space-between; }
-#view-review .item small{ display: block; font-family: var(--font-mono); font-size: 0.54rem; letter-spacing: 0.06em; color: var(--ink-faint); margin-top: 0.15rem; }
-#view-review .badge{ font-family: var(--font-mono); font-size: 0.56rem; background: var(--hl); color: #fff; border-radius: 999px; padding: 0.05rem 0.42rem; flex: none; }
-#view-review .draft-tag{ color: var(--hl); }
+#view-review .item small{ display: block; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; color: var(--ink-faint); margin-top: 0.15rem; }
+#view-review .badge{ font-family: var(--font-mono); font-size: 0.75rem; background: var(--ink-light); color: #fff; border-radius: 999px; padding: 0.05rem 0.42rem; flex: none; }
+#view-review .wk{ display: inline-block; margin-left: 0.4rem; padding: 0.08rem 0.4rem; border-radius: 4px; background: var(--hl); color: #fff;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0; line-height: 1.4; vertical-align: 0.08em; white-space: nowrap; }
 #view-review .stage{ position: relative; padding-top: 1rem; }
 #view-review .stage iframe{ display: block; width: 100%; height: 80vh; border: 0; background: var(--bg); }
-#view-review .loading{ position: absolute; inset: 3rem 0 auto; text-align: center; font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-faint); letter-spacing: 0.14em; }
+#view-review .loading{ position: absolute; inset: 3rem 0 auto; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-faint); letter-spacing: 0.03em; }
 #view-review .sel-btn{
     position: absolute; z-index: 20; display: none;
     background: var(--ink); color: #fff; border-radius: 999px;
@@ -423,12 +427,12 @@
   }
 #view-review .card.active .quote{ -webkit-line-clamp: 6; }
 #view-review .card .quote.lost{ border-left-color: var(--hl); }
-#view-review .card .lost-note{ font-family: var(--font-mono); font-size: 0.54rem; color: var(--hl); letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+#view-review .card .lost-note{ font-family: var(--font-mono); font-size: 0.75rem; color: var(--hl); letter-spacing: 0.03em; margin-bottom: 0.3rem; }
 #view-review .card .body{ white-space: pre-wrap; overflow-wrap: anywhere; }
-#view-review .card .meta{ font-family: var(--font-mono); font-size: 0.56rem; color: var(--ink-faint); letter-spacing: 0.04em; margin-top: 0.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+#view-review .card .meta{ font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-faint); letter-spacing: 0.04em; margin-top: 0.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
 #view-review .card .meta b{ font-weight: 500; color: var(--ink-light); }
 #view-review .card .acts{ display: flex; gap: 0.7rem; margin-top: 0.5rem; }
-#view-review .card .acts button{ font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.08em; color: var(--ink-light); text-transform: uppercase; }
+#view-review .card .acts button{ font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; color: var(--ink-light); text-transform: uppercase; }
 #view-review .card .acts button:hover{ color: var(--accent); }
 #view-review .card .acts .del:hover{ color: var(--hl); }
 #view-review .replies{ margin-top: 0.55rem; border-top: 1px dashed var(--rule); padding-top: 0.45rem; display: grid; gap: 0.45rem; }
@@ -463,7 +467,7 @@
 #view-review .rail-head{
       display: flex; justify-content: space-between; align-items: center;
       position: sticky; top: 0; background: var(--bg); padding: 0.7rem 1rem; border-bottom: 1px solid var(--rule); z-index: 6;
-      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light);
+      font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-light);
     }
 #view-review .rail{ padding: 0.8rem 1rem 1.4rem; display: grid; gap: 0.6rem; }
 #view-review .rail .card{ position: static; }
@@ -471,7 +475,7 @@
 
 /* ═══ 의견 확장: 글 전체 / 단락 사이 / 링크 ═══ */
 #view-review .stage { padding-top: 3.4rem; }
-#view-review .stage-hint { position: absolute; top: 1.05rem; left: 0; font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.06em; color: var(--ink-faint); }
+#view-review .stage-hint { position: absolute; top: 1.05rem; left: 0; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; color: var(--ink-faint); }
 #view-review .rail-tools { height: 2.4rem; display: flex; align-items: center; }
 #view-review .rail-tools .btn { font-size: 0.72rem; padding: 0.34rem 0.75rem; border-radius: 999px; }
 #view-review .gapmarks { position: absolute; left: 0; right: 0; height: 0; pointer-events: none; }
@@ -485,7 +489,7 @@
 #view-review .gap-btn { position: absolute; z-index: 20; display: none; transform: translate(-50%, -50%); background: #fff; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; font-size: 0.7rem; padding: 0.22rem 0.7rem; box-shadow: 0 2px 8px rgba(0,0,0,0.12); white-space: nowrap; }
 #view-review .gap-btn.show { display: block; }
 @media (pointer: coarse) { #view-review .gap-btn { font-size: 0.8rem; padding: 0.4rem 1rem; } }
-#view-review .tag { display: inline-block; font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.08em; color: var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 0.1rem 0.45rem; margin-bottom: 0.4rem; }
+#view-review .tag { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.03em; color: var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 0.1rem 0.45rem; margin-bottom: 0.4rem; }
 #view-review .quote.soft { border-left-color: var(--rule); }
 #view-review .hint { font-size: 0.66rem; color: var(--ink-faint); margin-top: 0.35rem; }
 #view-review .card .body a, #view-review .reply .body a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
@@ -1432,18 +1436,26 @@ const replyDrafts = new Map();
 let pendingSel = null;
 
 /* ═══ 좌측 리포트 목록 ═══ */
+// 리뷰 탭에는 게시(published) 리포트만 노출한다. 초안은 숨김.
+const VISIBLE = REPORTS.filter((r) => r.published);
+// '이번주' 리뷰 대상 — 매주 이 목록의 href만 바꾸면 된다. (REPORTS는 build.py가 덮어쓰므로 여기서 관리)
+const THIS_WEEK = new Set([
+  "reports_issues_asset-lite-revised.html",
+  "reports_insights_private-credit.html",
+  "reports_sectors_land-reclamation.html",
+]);
 function openCount(href) { return state.all.filter((s) => s.report === href && !s.resolved).length; }
 function renderList() {
   const box = $("list"); box.replaceChildren(h("div", { class: "list-title" }, "Reports"));
   for (const cat of ["insights", "issues", "sectors"]) {
-    const items = REPORTS.filter((r) => r.cat === cat).sort((a, b) => a.n - b.n);
+    const items = VISIBLE.filter((r) => r.cat === cat).sort((a, b) => a.n - b.n);
     if (!items.length) continue;
     const g = h("div", { class: "cat" }, h("div", { class: "cat-h" }, CAT[cat]));
     for (const r of items) {
       const n = openCount(r.href);
       g.append(h("button", { class: "item" + (state.cur === r.href ? " active" : ""), onclick: () => { selectReport(r.href); closeDrawers(); } },
-        h("div", { class: "row" }, h("span", {}, r.title || r.topic), n ? h("span", { class: "badge" }, n) : null),
-        h("small", {}, r.date + " · " + r.author, r.published ? "" : " · ", r.published ? null : h("span", { class: "draft-tag" }, "초안"))));
+        h("div", { class: "row" }, h("span", { class: "ttl" }, r.title || r.topic, THIS_WEEK.has(r.href) ? h("span", { class: "wk" }, "이번주") : null), n ? h("span", { class: "badge" }, n) : null),
+        h("small", {}, r.date + " · " + r.author)));
     }
     box.append(g);
   }
@@ -1451,7 +1463,7 @@ function renderList() {
 
 /* ═══ 리포트 로딩 ═══ */
 function selectReport(href, push = true) {
-  if (!REPORTS.some((r) => r.href === href)) href = REPORTS[0]?.href;
+  if (!VISIBLE.some((r) => r.href === href)) href = VISIBLE[0]?.href;
   if (!href) return;
   state.cur = href; state.active = null; state.draft = null; hideSelBtn();
   if (push) if (curTab) history.replaceState(null, "", urlFor());
@@ -1496,7 +1508,7 @@ function onFrameClick(e) {
     if (href.startsWith("#")) return;
     e.preventDefault();
     const file = href.split("#")[0].split("/").pop();
-    if (REPORTS.some((r) => r.href === file)) selectReport(file); else window.open(a.href, "_blank", "noopener");
+    if (VISIBLE.some((r) => r.href === file)) selectReport(file); else window.open(a.href, "_blank", "noopener");
     return;
   }
   if (!idoc.getSelection().isCollapsed) return;
@@ -1858,7 +1870,7 @@ store.subscribe((list) => {
 });
 renderList();
 const want = new URLSearchParams(location.search).get("r");
-selectReport(want || REPORTS[0]?.href, false);
+selectReport(want || VISIBLE[0]?.href, false);
 
 /* ═══ 상단 탭 (가이드 / 리뷰) ═══ */
 const scrollMem = { guide: 0, review: 0 };
